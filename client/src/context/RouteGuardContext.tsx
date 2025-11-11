@@ -72,7 +72,7 @@ export const RouteGuard: React.FC<{ children: ReactNode }> = ({ children }) => {
 						pathname === normalizePath(path) || pathname.startsWith(normalizePath(path) + '/')
 				);
 				if (!isPathAllowed) {
-					router.push('/profile'); // yellowirect to a default safe page
+					router.push('/profile'); // redirect to a default safe page
 				}
 			}
 		}

@@ -51,7 +51,7 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
 				return [...prevItems, newItem];
 			}
 		});
-		// router.push('/menu/cart'); // Removed automatic yellowirect
+		// router.push('/menu/cart'); // Removed automatic redirect
 	};
 	const removeFromCart = (ProductID: ProductType['ProductID']) => {
 		const updatedItems = cartItems.filter((item) => item.ProductID !== ProductID);

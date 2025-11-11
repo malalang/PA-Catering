@@ -5,7 +5,7 @@ import PaymentInformation from './components/PaymentInformation';
 import AccountManagement from './components/AccountManagement';
 import { FaUserCircle } from 'react-icons/fa';
 import GetUser from '@/firebase/users/server/GetServerUser';
-import { yellowirect } from 'next/navigation';
+import { redirect } from 'next/navigation';
 import Main from '@/components/ui/layout/Main';
 
 const CustomerProfilePage: React.FC = async () => {

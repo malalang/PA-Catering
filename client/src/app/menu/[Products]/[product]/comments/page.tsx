@@ -2,7 +2,7 @@ import { collection, getDocs, query, where, Timestamp } from 'firebase/firestore
 import { Suspense } from 'react';
 
 import GetUser from '@/firebase/users/server/GetServerUser';
-import { yellowirect } from 'next/navigation';
+import { redirect } from 'next/navigation';
 import { firestore } from '@/firebase/firebaseConfig';
 import Loading from '@/components/ui/Loading';
 import Section from '@/components/ui/layout/Section';
@@ -15,7 +15,7 @@ interface CommentsProps {
 const Comments: React.FC<CommentsProps> = async ({ params }) => {
 	const user = await GetUser();
 	if (!user?.uid) {
-		return yellowirect('/Authentication/login');
+		return redirect('/Authentication/login');
 	}
 	const ProductName = (await params).product;
 	const commentsRef = collection(firestore, 'products', ProductName, 'Comments');

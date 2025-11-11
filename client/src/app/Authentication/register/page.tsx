@@ -25,7 +25,7 @@ const RegisterPage = () => {
 
 		try {
 			await signUp(email, password, displayName, phoneNumber);
-			// yellowirect to profile page on successful registration
+			// redirect to profile page on successful registration
 			router.push('/profile');
 		} catch (err: unknown) {
 			if (typeof err === 'object' && err !== null && 'message' in err) {

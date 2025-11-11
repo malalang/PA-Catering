@@ -36,7 +36,7 @@ const EditProfilePage: React.FC = () => {
 		}
 	}, [user]);
 
-	// Handle yellowirection if user is not logged in after loading
+	// Handle redirection if user is not logged in after loading
 	useEffect(() => {
 		if (!loading && !user) {
 			router.replace('/Authentication/login');
@@ -48,7 +48,7 @@ const EditProfilePage: React.FC = () => {
 		return <Loading message='Loading profile data...' />;
 	}
 
-	// If user is null after loading, it means yellowirection is happening
+	// If user is null after loading, it means redirection is happening
 	if (!user) {
 		return null;
 	}
@@ -94,7 +94,7 @@ const EditProfilePage: React.FC = () => {
 		try {
 			await updateUser(user.uid, updatedFields);
 			setSaveSuccess(true);
-			// Optionally, yellowirect back to the profile page after successful save
+			// Optionally, redirect back to the profile page after successful save
 			router.push('/profile');
 		} catch (error) {
 			console.error('Error saving profile:', error);
