@@ -14,17 +14,30 @@ interface UserContextType {
 }
 
 // Create the UserContext with an initial undefined value.
-const UserContext = createContext<UserContextType | undefined>(undefined);
+// Create the UserContext with a default value
+const UserContext = createContext<UserContextType>({
+	user: null,
+	loading: false
+});
 
 export const UserProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
-	const { user, loading } = useAuth();
+	try {
+		const { user, loading } = useAuth();
 
-	// Provide the user data, loading status, and error to the rest of the application.
-	return (
-		<UserContext.Provider value={{ user, loading }}>
-			{children}
-		</UserContext.Provider>
-	);
+		// Provide the user data and loading status to the rest of the application
+		return (
+			<UserContext.Provider value={{ user, loading }}>
+				{children}
+			</UserContext.Provider>
+		);
+	} catch (error) {
+		// If there's an error (like during static generation), return default context
+		return (
+			<UserContext.Provider value={{ user: null, loading: false }}>
+				{children}
+			</UserContext.Provider>
+		);
+	}
 };
 
 /**
@@ -33,9 +46,5 @@ export const UserProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
  */
 
 export const useUser = (): UserContextType => {
-	const context = useContext(UserContext);
-	if (context === undefined) {
-		throw new Error('useUser must be used within a UserProvider');
-	}
-	return context;
+    return useContext(UserContext);
 };
