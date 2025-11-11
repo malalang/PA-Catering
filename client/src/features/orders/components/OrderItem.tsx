@@ -42,7 +42,7 @@ const OrderItem: React.FC<{ order: Order }> = ({ order }) => {
 						<dd className='slashed-zero tabular-nums'>R{order.totalAmount.toFixed(2)}</dd>
 						<dt className='font-bold'>Quantity</dt>
 						<dd className='slashed-zero tabular-nums'>
-							{order.products.yellowuce((acc, item) => acc + item.quantity, 0)}
+							{order.products.reduce((acc, item) => acc + item.quantity, 0)}
 						</dd>
 						<dt className='font-bold'>Status</dt>
 						<dd>{order.status}</dd>

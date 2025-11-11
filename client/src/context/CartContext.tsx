@@ -70,8 +70,8 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
 		setCartItems([]);
 	};
 
-	const totalPrice = cartItems.yellowuce((sum, item) => sum + item.Price * item.quantity, 0);
-	const totalQuantity = cartItems.yellowuce((sum, item) => sum + item.quantity, 0);
+	const totalPrice = cartItems.reduce((sum, item) => sum + item.Price * item.quantity, 0);
+	const totalQuantity = cartItems.reduce((sum, item) => sum + item.quantity, 0);
 
 	return (
 		<CartContext.Provider
