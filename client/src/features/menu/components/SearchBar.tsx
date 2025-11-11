@@ -13,7 +13,7 @@ const highlightMatch = (text: string, match: string) => {
 	return (
 		<>
 			{text.slice(0, idx)}
-			<span className='bg-red-700 text-white font-bold'>{text.slice(idx, idx + match.length)}</span>
+			<span className='bg-yellow-700 text-white font-bold'>{text.slice(idx, idx + match.length)}</span>
 			{text.slice(idx + match.length)}
 		</>
 	);
@@ -64,7 +64,7 @@ const SearchBar: React.FC = () => {
 			<div className='relative w-full'>
 				<TextInput
 					id='menu-search'
-					className='bg-red-700/20'
+					className='bg-yellow-700/20'
 					type='text'
 					placeholder='Search for food or categories...'
 					value={search}
@@ -107,7 +107,7 @@ const SearchBar: React.FC = () => {
 										}}
 										onMouseEnter={() => setActiveIdx(idx)}
 										className={`w-full flex items-center justify-start text-left p-2 rounded-md ${
-											activeIdx === idx ? 'bg-red-700' : ''
+											activeIdx === idx ? 'bg-yellow-700' : ''
 										}`}
 										aria-label={
 											s.type === 'category' ? `Category: ${s.name}` : `Product: ${s.name}`

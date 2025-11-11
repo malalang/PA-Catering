@@ -72,14 +72,14 @@ export const RouteGuard: React.FC<{ children: ReactNode }> = ({ children }) => {
 						pathname === normalizePath(path) || pathname.startsWith(normalizePath(path) + '/')
 				);
 				if (!isPathAllowed) {
-					router.push('/profile'); // Redirect to a default safe page
+					router.push('/profile'); // yellowirect to a default safe page
 				}
 			}
 		}
 	}, [user, loading, pathname, router]);
 
 	if (loading) {
-		return <Loading message='Checking credentials...' />;
+		return <Loading message='Checking cyellowentials...' />;
 	}
 
 	return <>{children}</>;

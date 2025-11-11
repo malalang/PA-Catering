@@ -22,7 +22,7 @@ import { Analytics } from '@vercel/analytics/next';
 //         url: '/images/og-image.jpg', // Replace with your actual OG image
 //         width: 1200,
 //         height: 630,
-//         alt: 'Central Eatery',
+//         alt: 'PA Luxe Creation',
 //       },
 //     ],
 //   },

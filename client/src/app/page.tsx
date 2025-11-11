@@ -1,6 +1,7 @@
 import AboutUsSnippet from '@/components/home/AboutUsSnippet';
 import ContactSection from '@/components/home/ContactSection';
-import FeaturedItemsServices from '@/components/home/FeaturedItemsServices';
+import FeatuyellowItemsServices from '@/components/home/FeaturedItemsServices';
+
 import HeroSection from '@/components/home/HeroSection';
 import KeyDifferentiators from '@/components/home/KeyDifferentiators';
 import TargetMarketCallout from '@/components/home/TargetMarketCallout';
@@ -12,7 +13,7 @@ const HomePage = () => {
 			<HeroSection />
 			<AboutUsSnippet />
 			<KeyDifferentiators />
-			<FeaturedItemsServices />
+			<FeatuyellowItemsServices />
 			<TargetMarketCallout />
 			<Testimonials />
 			<ContactSection />

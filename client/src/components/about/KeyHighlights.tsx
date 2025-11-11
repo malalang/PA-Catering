@@ -6,14 +6,14 @@ import Section from '@/components/ui/layout/Section';
 
 const KeyHighlights = () => {
 	return (
-		<Section tittle='Key Highlights of Central Eatery'>
+		<Section tittle='Key Highlights of PA Luxe Creation'>
 			<div className='grid grid-cols-1 md:grid-cols-2  gap-2 '>
 				{/* Highlight 1: Unique Combination of Services */}
 				<article>
 					<Icon icon={IoBusiness} />
 					<h3>Unique Service Combination</h3>
 					<p className=' text-center'>
-						Central Eatery stands out by offering a convenient combination of a car wash and an
+						PA Luxe Creation stands out by offering a convenient combination of a car wash and an
 						eatery, catering to multiple needs in one stop.
 					</p>
 				</article>

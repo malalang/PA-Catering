@@ -7,10 +7,10 @@ interface StatusBadgeProps {
 }
 
 const statusStyles = {
-	pending: 'bg-red-500/20 text-red-300',
+	pending: 'bg-yellow-500/20 text-yellow-300',
 	confirmed: 'bg-white/20 text-white',
 	completed: 'bg-green-500/20 text-green-300',
-	cancelled: 'bg-red-500/20 text-red-300',
+	cancelled: 'bg-yellow-500/20 text-yellow-300',
 	deleted: 'bg-gray-500/20 text-gray-300',
 };
 

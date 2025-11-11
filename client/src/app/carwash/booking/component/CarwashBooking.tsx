@@ -13,12 +13,12 @@ import Loading from '@/components/ui/Loading';
 import Section from '@/components/ui/layout/Section';
 
 const formInputStyle =
-	'w-full p-3 rounded-md bg-black/30 border border-white/20 focus:ring-2 focus:ring-red-500 focus:border-red-500 outline-none';
+	'w-full p-3 rounded-md bg-black/30 border border-white/20 focus:ring-2 focus:ring-yellow-500 focus:border-yellow-500 outline-none';
 
 const Alert = ({ message, type }: { message: string; type: 'success' | 'error' }) => (
 	<div
 		className={`mt-4 text-center p-3 rounded-md flex items-center justify-center gap-2 ${
-			type === 'success' ? 'bg-green-500/20 text-green-300' : 'bg-red-500/20 text-red-300'
+			type === 'success' ? 'bg-green-500/20 text-green-300' : 'bg-yellow-500/20 text-yellow-300'
 		}`}>
 		{type === 'success' ? <FaCheckCircle /> : <FaExclamationTriangle />}
 		<span>{message}</span>
@@ -45,10 +45,10 @@ interface StatusBadgeProps {
 
 const StatusBadge: React.FC<StatusBadgeProps> = ({ status }) => {
 	const statusStyles = {
-		pending: 'bg-red-500/20 text-red-300',
+		pending: 'bg-yellow-500/20 text-yellow-300',
 		confirmed: 'bg-white/20 text-white',
 		completed: 'bg-green-500/20 text-green-300',
-		cancelled: 'bg-red-500/20 text-red-300',
+		cancelled: 'bg-yellow-500/20 text-yellow-300',
 	};
 	return (
 		<span
@@ -164,7 +164,7 @@ const CarwashBookingComponent: React.FC<{ booking: CarWashBooking }> = ({ bookin
 						<select
 							name='service'
 							id='service'
-							required
+							requiyellow
 							className={formInputStyle}
 							value={editableBooking.service}
 							onChange={handleInputChange}>

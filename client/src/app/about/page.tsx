@@ -16,7 +16,7 @@ import { IoFastFoodOutline } from 'react-icons/io5';
 const AboutPage = () => {
 	return (
 		<Main
-			tittle='About Central Eatery'
+			tittle='About PA Luxe Creation'
 			Icon={IoFastFoodOutline}>
 			<OurJourney />
 			<OurVision />

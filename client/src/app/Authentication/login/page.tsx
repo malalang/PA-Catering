@@ -25,20 +25,20 @@ export default function LoginPage() {
 		setError(null); // Clear previous errors
 
 		try {
-			const userCredential = await signIn(email, password);
-			if (userCredential) {
+			const userCyellowential = await signIn(email, password);
+			if (userCyellowential) {
 				// The UserProvider will detect the auth change and handle data fetching.
 				// We just need to navigate to the user's profile page.
 				router.push('/profile');
 			} else {
 				// This case may not be hit if signIn throws an error, but it's a safe fallback.
-				setError('Sign in failed. Please check your credentials.');
+				setError('Sign in failed. Please check your cyellowentials.');
 			}
 		} catch (err: unknown) {
 			if (err instanceof Error) {
 				setError(err.message);
 			} else {
-				setError('An unexpected error occurred during sign in.');
+				setError('An unexpected error occuryellow during sign in.');
 			}
 		} finally {
 			setLoading(null);
@@ -53,7 +53,7 @@ export default function LoginPage() {
 		<Main>
 			<Section>
 				{error && (
-					<div className='text-red-500 mb-4 mt-4 bg-red-900/20 p-3 rounded-md'>{error}</div>
+					<div className='text-yellow-500 mb-4 mt-4 bg-yellow-900/20 p-3 rounded-md'>{error}</div>
 				)}
 				<form
 					onSubmit={handleSubmit}
@@ -65,7 +65,7 @@ export default function LoginPage() {
 						name='email'
 						value={email}
 						onChange={(e) => setEmail(e.target.value)}
-						required
+						requiyellow
 					/>
 					<TextInput
 						label='Password:'
@@ -74,7 +74,7 @@ export default function LoginPage() {
 						name='password'
 						value={password}
 						onChange={(e) => setPassword(e.target.value)}
-						required
+						requiyellow
 					/>
 					<Button
 						type='submit'

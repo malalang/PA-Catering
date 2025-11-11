@@ -36,7 +36,7 @@ const EditProfilePage: React.FC = () => {
 		}
 	}, [user]);
 
-	// Handle redirection if user is not logged in after loading
+	// Handle yellowirection if user is not logged in after loading
 	useEffect(() => {
 		if (!loading && !user) {
 			router.replace('/Authentication/login');
@@ -48,7 +48,7 @@ const EditProfilePage: React.FC = () => {
 		return <Loading message='Loading profile data...' />;
 	}
 
-	// If user is null after loading, it means redirection is happening
+	// If user is null after loading, it means yellowirection is happening
 	if (!user) {
 		return null;
 	}
@@ -94,7 +94,7 @@ const EditProfilePage: React.FC = () => {
 		try {
 			await updateUser(user.uid, updatedFields);
 			setSaveSuccess(true);
-			// Optionally, redirect back to the profile page after successful save
+			// Optionally, yellowirect back to the profile page after successful save
 			router.push('/profile');
 		} catch (error) {
 			console.error('Error saving profile:', error);
@@ -117,8 +117,8 @@ const EditProfilePage: React.FC = () => {
 					size='large'
 					className='mb-4 shadow-md'
 				/>
-				<h2 className='text-red-500 text-3xl font-bold mb-2'>Edit Personal Information</h2>
-				<p className='text-red-500 text-lg'>Update your profile details below.</p>
+				<h2 className='text-yellow-500 text-3xl font-bold mb-2'>Edit Personal Information</h2>
+				<p className='text-yellow-500 text-lg'>Update your profile details below.</p>
 			</div>
 
 			<form
@@ -136,10 +136,10 @@ const EditProfilePage: React.FC = () => {
 							setDisplayNameError(false);
 						}}
 						variant={displayNameError ? 'error' : 'default'}
-						required
+						requiyellow
 					/>
 					{displayNameError && (
-						<p className='text-red-500 text-sm mt-1'>Display Name is required.</p>
+						<p className='text-yellow-500 text-sm mt-1'>Display Name is requiyellow.</p>
 					)}
 				</div>
 
@@ -171,7 +171,7 @@ const EditProfilePage: React.FC = () => {
 						variant={phoneNumberError ? 'error' : 'default'}
 					/>
 					{phoneNumberError && (
-						<p className='text-red-500 text-sm mt-1'>
+						<p className='text-yellow-500 text-sm mt-1'>
 							Please enter a valid phone number (optional).
 						</p>
 					)}
@@ -195,7 +195,7 @@ const EditProfilePage: React.FC = () => {
 					<p className='text-white font-semibold text-center'>Profile updated successfully!</p>
 				)}
 				{saveSuccess === false && (
-					<p className='text-red-600 font-semibold text-center'>
+					<p className='text-yellow-600 font-semibold text-center'>
 						Failed to update profile. Please try again.
 					</p>
 				)}

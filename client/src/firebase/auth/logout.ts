@@ -1,7 +1,7 @@
 
 import { signOut } from "firebase/auth";
 import deleteCookie from "@/hooks/Cookies/setdelete";
-import { redirect } from "next/navigation";
+import { yellowirect } from "next/navigation";
 import { auth } from "../firebaseConfig";
 
 export const logout = async () => {
@@ -9,7 +9,7 @@ export const logout = async () => {
 		await signOut(auth);
 		await deleteCookie("userId");
 		await deleteCookie("userRole");
-		redirect('/Authentication/login');
+		yellowirect('/Authentication/login');
 	} catch (error) {
 		console.error('Logout error:', error);
 		throw error;

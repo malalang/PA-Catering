@@ -17,7 +17,7 @@ const CarWashOperations: React.FC = () => {
 	const { bookings, loading, error } = useCarWashBookings();
 
 	if (loading) return <Loading message='Loading Car Wash Data...' />;
-	if (error) return <div className='text-red-500 bg-red-500/10 p-4 rounded-md'>Error: {error}</div>;
+	if (error) return <div className='text-yellow-500 bg-yellow-500/10 p-4 rounded-md'>Error: {error}</div>;
 
 	return (
 <Section tittle='Car Wash Operations' Icon={FaCar}>	

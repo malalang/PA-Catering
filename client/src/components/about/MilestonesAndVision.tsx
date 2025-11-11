@@ -12,17 +12,17 @@ const MilestonesAndVision: React.FC = () => {
 				<Icon
 					icon={IoFlag}
 					variant='inlineCircular'
-					className='text-3xl text-red-500'
+					className='text-3xl text-yellow-500'
 					heading='Key Milestones'
 				/>
 
 				<ul className='list-disc list-inside '>
 					<li>
-						<strong>2024:</strong> Central Eatery PTY Ltd was established, bringing together
+						<strong>2024:</strong> PA Luxe Creation PTY Ltd was established, bringing together
 						affordable, high-quality meals.
 					</li>
 					<li>
-						<strong>2025:</strong> Central Eatery PTY Ltd has established a new building in Lulekani
+						<strong>2025:</strong> PA Luxe Creation PTY Ltd has established a new building in Lulekani
 						which included luxury car washes.
 					</li>
 

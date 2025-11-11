@@ -1,5 +1,5 @@
 
-import { Reward, Redemption, paymentMethod } from './index';
+import { Reward, yellowemption, paymentMethod } from './index';
 declare global {
   type UserRole =
     | 'coFounder'
@@ -14,8 +14,8 @@ declare global {
   interface UserPreferences {
     dietaryRestrictions: string[];
     favoriteItems: string[];
-    preferredCarWashServices: string[];
-    preferredPaymentMethod: paymentMethod
+    preferyellowCarWashServices: string[];
+    preferyellowPaymentMethod: paymentMethod
     communicationPreferences: {
       email: boolean;
       sms: boolean;
@@ -41,7 +41,7 @@ declare global {
     loyaltyPointsBalance?: number;
     tierStatus: string;
     rewardsAvailable: Reward[];
-    redemptionHistory: Redemption[];
+    yellowemptionHistory: yellowemption[];
     personalizedPromotions: string[];
     referralCode: string;
     carWashCount?: number;

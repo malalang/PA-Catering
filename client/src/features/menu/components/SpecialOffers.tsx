@@ -6,11 +6,11 @@ const SpecialOffers: React.FC = () => {
 			<article>
 				<div className='grid grid-cols-1 md:grid-cols-2 gap-6'>
 					{/* Offer 1 */}
-					<div className='bg-black/50 border border-red-500 rounded-md p-2 flex flex-col'>
-						<div className='bg-red-700 rounded-md p-6 flex flex-col h-full'>
+					<div className='bg-black/50 border border-yellow-500 rounded-md p-2 flex flex-col'>
+						<div className='bg-yellow-700 rounded-md p-6 flex flex-col h-full'>
 							<h3
 								className='text-xl font-bold text-white mb-2'
-								style={{ filter: 'drop-shadow(0 0 2px #ff0000)' }}>
+								style={{ filter: 'drop-shadow(0 0 2px #f0b100)' }}>
 								Weekend Promotion
 							</h3>
 							<p className='text-white flex-grow'>
@@ -19,11 +19,11 @@ const SpecialOffers: React.FC = () => {
 						</div>
 					</div>
 					{/* Offer 2 */}
-					<div className='bg-black/50 border border-red-500 rounded-md p-2 flex flex-col'>
-						<div className='bg-red-700 rounded-md p-6 flex flex-col h-full'>
+					<div className='bg-black/50 border border-yellow-500 rounded-md p-2 flex flex-col'>
+						<div className='bg-yellow-700 rounded-md p-6 flex flex-col h-full'>
 							<h3
 								className='text-xl font-bold text-white mb-2'
-								style={{ filter: 'drop-shadow(0 0 2px #ff0000)' }}>
+								style={{ filter: 'drop-shadow(0 0 2px #f0b100)' }}>
 								Taxi Partnerships
 							</h3>
 							<p className='text-white flex-grow'>

@@ -26,7 +26,7 @@ const ProductInfo: React.FC<ProductInfoProps> = ({ product }) => {
 			{/* Product Name and Price */}
 			<article>
 				<h1 className='text-4xl font-extrabold'>{product.Name}</h1>
-				<p className='text-3xl text-center text-red-500 font-bold text-white mt-2'>
+				<p className='text-3xl text-center text-yellow-500 font-bold text-white mt-2'>
 					R{product.Price.toFixed(2)}
 				</p>
 			</article>
@@ -41,12 +41,12 @@ const ProductInfo: React.FC<ProductInfoProps> = ({ product }) => {
 				</ul>
 				<div className='flex flex-wrap gap-3 mt-4'>
 					{isVegetarian && (
-						<span className='flex items-center gap-2 px-3 py-1 bg-red-600 text-white rounded-full text-sm font-semibold'>
+						<span className='flex items-center gap-2 px-3 py-1 bg-yellow-600 text-white rounded-full text-sm font-semibold'>
 							<FaLeaf /> Vegetarian
 						</span>
 					)}
 					{isSpicy && (
-						<span className='flex items-center gap-2 px-3 py-1 bg-red-600 text-white rounded-full text-sm font-semibold'>
+						<span className='flex items-center gap-2 px-3 py-1 bg-yellow-600 text-white rounded-full text-sm font-semibold'>
 							<FaFire /> Spicy
 						</span>
 					)}
@@ -55,9 +55,9 @@ const ProductInfo: React.FC<ProductInfoProps> = ({ product }) => {
 
 			{/* Allergen Warnings Card */}
 			{allergens.length > 0 && (
-				<article className='bg-red-500/20 border border-red-500/50 rounded-md p-4'>
+				<article className='bg-yellow-500/20 border border-yellow-500/50 rounded-md p-4'>
 					<div className='flex items-center gap-3 mb-3'>
-						<FaExclamationTriangle className='text-red-400 text-xl' />
+						<FaExclamationTriangle className='text-yellow-400 text-xl' />
 						<h3 className='text-xl font-bold text-white'>Allergen Information</h3>
 					</div>
 					<p className='text-white text-sm mb-3'>This product contains the following allergens:</p>
@@ -65,7 +65,7 @@ const ProductInfo: React.FC<ProductInfoProps> = ({ product }) => {
 						{allergens.map((allergen: string, index: number) => (
 							<span
 								key={index}
-								className='px-2.5 py-1 bg-red-600 text-white rounded-md text-xs font-medium'>
+								className='px-2.5 py-1 bg-yellow-600 text-white rounded-md text-xs font-medium'>
 								{allergen}
 							</span>
 						))}
@@ -80,7 +80,7 @@ const ProductInfo: React.FC<ProductInfoProps> = ({ product }) => {
 					{Object.entries(nutritionalInfo).map(([key, value]) => (
 						<div
 							key={key}
-							className='text-center bg-red-500/20 p-3 rounded-md'>
+							className='text-center bg-yellow-500/20 p-3 rounded-md'>
 							<div className='text-2xl font-bold text-white'>{value}</div>
 							<div className='text-sm text-white capitalize'>{key}</div>
 						</div>

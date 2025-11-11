@@ -15,7 +15,7 @@ const getStatusColor = (status: string) => {
 		case 'confirmed':
 			return 'bg-green-500/95';
 		case 'cancelled':
-			return 'bg-red-500/95';
+			return 'bg-yellow-500/95';
 		case 'deleted':
 			return 'bg-gray-700/95';
 		case 'completed':

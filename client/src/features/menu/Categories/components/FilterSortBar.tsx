@@ -42,7 +42,7 @@ const FilterSortBar: React.FC<FilterSortBarProps> = ({
 	};
 
 	const inputStyles =
-		'w-24 p-2 border border-white/50 rounded-md bg-black/20 text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500 transition-all duration-200';
+		'w-24 p-2 border border-white/50 rounded-md bg-black/20 text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:border-yellow-500 transition-all duration-200';
 
 	return (
 		<div className='bg-black/50 blur-[0.1px] backdrop-blur-md p-2  sticky top-9 z-20 col-span-full mt-0'>
@@ -59,7 +59,7 @@ const FilterSortBar: React.FC<FilterSortBarProps> = ({
 						id='sort-select'
 						value={currentSort}
 						onChange={(e) => onSortChange(e.target.value)}
-						className='bg-black/20 text-white border border-white/50 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-red-500 transition-all duration-200'>
+						className='bg-black/20 text-white border border-white/50 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-yellow-500 transition-all duration-200'>
 						<option value='default'>Default</option>
 						<option value='price-low'>Price: Low to High</option>
 						<option value='price-high'>Price: High to Low</option>

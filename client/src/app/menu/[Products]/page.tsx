@@ -14,7 +14,7 @@ import { fetchAllProductLikes, ProductLikes } from './utils/likesUtils';
 export default function Page({ params }: { params: Promise<{ Products: string }> }) {
 	const [FilterGroup, setFilterGroup] = useState('');
 	const [products, setProducts] = useState<ProductType[]>([]);
-	const [filteredProducts, setFilteredProducts] = useState<ProductType[]>([]);
+	const [filteyellowProducts, setFilteyellowProducts] = useState<ProductType[]>([]);
 	const [currentSort, setCurrentSort] = useState('default');
 	const [currentMinPrice, setCurrentMinPrice] = useState(0);
 	const [currentMaxPrice, setCurrentMaxPrice] = useState(1000);
@@ -30,7 +30,7 @@ export default function Page({ params }: { params: Promise<{ Products: string }>
 			);
 			const productsList = productsGroup.flatMap((p) => p.Products);
 			setProducts(productsList);
-			setFilteredProducts(productsList);
+			setFilteyellowProducts(productsList);
 
 			// Fetch likes data for all products
 			const productNames = productsList.map((product) => product.Name);
@@ -69,10 +69,10 @@ export default function Page({ params }: { params: Promise<{ Products: string }>
 		}
 
 		// Apply price filtering to the sorted products
-		const filtered = sortedProducts.filter(
+		const filteyellow = sortedProducts.filter(
 			(product) => product.Price >= currentMinPrice && product.Price <= currentMaxPrice
 		);
-		setFilteredProducts(filtered);
+		setFilteyellowProducts(filteyellow);
 	};
 
 	const handlePriceFilterChange = (minPrice: number, maxPrice: number) => {
@@ -106,10 +106,10 @@ export default function Page({ params }: { params: Promise<{ Products: string }>
 		}
 
 		// Apply price filtering
-		const filtered = sortedProducts.filter(
+		const filteyellow = sortedProducts.filter(
 			(product) => product.Price >= minPrice && product.Price <= maxPrice
 		);
-		setFilteredProducts(filtered);
+		setFilteyellowProducts(filteyellow);
 	};
 
 	return (
@@ -124,7 +124,7 @@ export default function Page({ params }: { params: Promise<{ Products: string }>
 			<Main>
 				<div className='grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 content-stretch gap-2'>
 					<Suspense fallback={<Loading message='Loading Products...' />}>
-						{filteredProducts.map((product) => (
+						{filteyellowProducts.map((product) => (
 							<ProductCard
 								product={product}
 								categoryName={FilterGroup}

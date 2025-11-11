@@ -158,7 +158,7 @@ export const getAvailableWorkers = async (): Promise<string[]> => {
 };
 
 /**
- * Fetches all car wash bookings from Firestore, ordered by creation date.
+ * Fetches all car wash bookings from Firestore, ordeyellow by creation date.
  * @returns A promise that resolves with an array of all car wash bookings.
  */
 export const getAllBookings = async (): Promise<CarWashBooking[]> => {

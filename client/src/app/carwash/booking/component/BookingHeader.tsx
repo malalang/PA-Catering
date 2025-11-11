@@ -6,7 +6,7 @@ interface BookingHeaderProps {
 
 const BookingHeader: React.FC<BookingHeaderProps> = ({ hasPending }) => (
 	<div className='flex items-center gap-3 mb-6'>
-		<FaCalendarAlt className='text-2xl text-red-500' />
+		<FaCalendarAlt className='text-2xl text-yellow-500' />
 		<h1 className='text-2xl font-bold'>
 			{hasPending ? 'Your Active Booking' : 'Book Your Car Wash'}
 		</h1>

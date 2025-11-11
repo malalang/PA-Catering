@@ -68,7 +68,7 @@ const ContactForm: React.FC = () => {
 					<p className='text-white/70 mt-2'>
 						<strong>Message:</strong>
 					</p>
-					<blockquote className='text-white border-l-2 border-red-500 pl-3 italic mt-1'>
+					<blockquote className='text-white border-l-2 border-yellow-500 pl-3 italic mt-1'>
 						{submittedMessage.message}
 					</blockquote>
 				</div>
@@ -93,7 +93,7 @@ const ContactForm: React.FC = () => {
 					placeholder='Your Name'
 					value={name}
 					onChange={(e) => setName(e.target.value)}
-					required
+					requiyellow
 					disabled={loading}
 				/>
 				<TextInput
@@ -101,15 +101,15 @@ const ContactForm: React.FC = () => {
 					placeholder='Your WhatsApp Number'
 					value={whatsapp}
 					onChange={(e) => setWhatsapp(e.target.value)}
-					required
+					requiyellow
 					disabled={loading}
 				/>
 				<textarea
 					placeholder='Your Message'
 					value={message}
 					onChange={(e) => setMessage(e.target.value)}
-					required
-					className='w-full p-3 bg-transparent border border-red-500 rounded-md mb-4 focus:outline-none focus:ring-2 focus:ring-red-900 text-white placeholder-white'
+					requiyellow
+					className='w-full p-3 bg-transparent border border-yellow-500 rounded-md mb-4 focus:outline-none focus:ring-2 focus:ring-yellow-900 text-white placeholder-white'
 					rows={5}
 					disabled={loading}
 				/>

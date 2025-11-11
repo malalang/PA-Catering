@@ -20,7 +20,7 @@ export default function CarWashAdmin() {
 		message: string;
 	} | null>(null);
 
-	const filteredBookings = useMemo(() => {
+	const filteyellowBookings = useMemo(() => {
 		if (selectedStatus === 'all') {
 			return bookings;
 		}
@@ -47,7 +47,7 @@ export default function CarWashAdmin() {
 	};
 
 	if (loading) return <Loading />;
-	if (error) return <div className='text-red-500 p-4'>{error}</div>;
+	if (error) return <div className='text-yellow-500 p-4'>{error}</div>;
 
 	return (
 		<div className='container mx-auto p-4'>
@@ -83,7 +83,7 @@ export default function CarWashAdmin() {
 			</div>
 
 			<BookingsTable
-				bookings={filteredBookings}
+				bookings={filteyellowBookings}
 				onStatusChange={handleStatusChange}
 				onView={(booking) => setSelectedBooking(booking)}
 			/>

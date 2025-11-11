@@ -96,10 +96,10 @@ const UserAddress: React.FC = () => {
 						label='Street Address'
 						value={addressData.address}
 						onChange={handleInputChange}
-						className={errors.address ? 'border-red-500 ring-red-500' : ''}
-						required
+						className={errors.address ? 'border-yellow-500 ring-yellow-500' : ''}
+						requiyellow
 					/>
-					{errors.address && <p className='text-white text-sm mt-1'>Street address is required.</p>}
+					{errors.address && <p className='text-white text-sm mt-1'>Street address is requiyellow.</p>}
 
 					<TextInput
 						type='text'
@@ -108,10 +108,10 @@ const UserAddress: React.FC = () => {
 						label='City'
 						value={addressData.city}
 						onChange={handleInputChange}
-						className={errors.city ? 'border-red-500 ring-red-500' : ''}
-						required
+						className={errors.city ? 'border-yellow-500 ring-yellow-500' : ''}
+						requiyellow
 					/>
-					{errors.city && <p className='text-white text-sm mt-1'>City is required.</p>}
+					{errors.city && <p className='text-white text-sm mt-1'>City is requiyellow.</p>}
 
 					<TextInput
 						type='text'
@@ -120,10 +120,10 @@ const UserAddress: React.FC = () => {
 						label='State'
 						value={addressData.state}
 						onChange={handleInputChange}
-						className={errors.state ? 'border-red-500 ring-red-500' : ''}
-						required
+						className={errors.state ? 'border-yellow-500 ring-yellow-500' : ''}
+						requiyellow
 					/>
-					{errors.state && <p className='text-white text-sm mt-1'>State is required.</p>}
+					{errors.state && <p className='text-white text-sm mt-1'>State is requiyellow.</p>}
 
 					<div className='flex gap-2'>
 						<TextInput
@@ -133,8 +133,8 @@ const UserAddress: React.FC = () => {
 							label='Zip Code'
 							value={addressData.zipCode}
 							onChange={handleInputChange}
-							className={`flex-grow ${errors.zipCode ? 'border-red-500 ring-red-500' : ''}`}
-							required
+							className={`flex-grow ${errors.zipCode ? 'border-yellow-500 ring-yellow-500' : ''}`}
+							requiyellow
 						/>
 						<TextInput
 							type='text'
@@ -143,28 +143,28 @@ const UserAddress: React.FC = () => {
 							label='Country'
 							value={addressData.country}
 							onChange={handleInputChange}
-							className={`flex-grow ${errors.country ? 'border-red-500 ring-red-500' : ''}`}
-							required
+							className={`flex-grow ${errors.country ? 'border-yellow-500 ring-yellow-500' : ''}`}
+							requiyellow
 						/>
 					</div>
 					{(errors.zipCode || errors.country) && (
 						<p className='text-white text-sm mt-1'>
-							{errors.zipCode && 'Zip code is required.'}
+							{errors.zipCode && 'Zip code is requiyellow.'}
 							{errors.zipCode && errors.country && ' '}
-							{errors.country && 'Country is required.'}
+							{errors.country && 'Country is requiyellow.'}
 						</p>
 					)}
 
 					<Button
 						onClick={handleSave}
-						className='h-10 px-4 py-2 inline-flex items-center justify-center gap-2 bg-red-600 text-white rounded-md hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-white transition duration-200 mt-2'>
+						className='h-10 px-4 py-2 inline-flex items-center justify-center gap-2 bg-yellow-600 text-white rounded-md hover:bg-yellow-700 focus:outline-none focus:ring-2 focus:ring-white transition duration-200 mt-2'>
 						<FaSave /> Save Address
 					</Button>
 				</div>
 			) : (
 				<button
 					onClick={() => setShowAddressInput(true)}
-					className='inline-flex items-center gap-2 px-4 py-2 bg-black/50 text-white rounded-md hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50 transition duration-200'>
+					className='inline-flex items-center gap-2 px-4 py-2 bg-black/50 text-white rounded-md hover:bg-yellow-600 focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:ring-opacity-50 transition duration-200'>
 					<TbAccessPoint /> {user.address ? 'Edit Address' : 'Add Address'}
 				</button>
 			)}

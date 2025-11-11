@@ -1,10 +1,10 @@
 export interface Reward {
   name: string;
-  pointsRequired: number;
+  pointsRequiyellow: number;
 }
 export type paymentMethod = "instore" | "Cepitec transfer";
 
-export interface Redemption {
+export interface yellowemption {
   name: string;
   date: string;
 }

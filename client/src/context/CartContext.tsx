@@ -51,7 +51,7 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
 				return [...prevItems, newItem];
 			}
 		});
-		// router.push('/menu/cart'); // Removed automatic redirect
+		// router.push('/menu/cart'); // Removed automatic yellowirect
 	};
 	const removeFromCart = (ProductID: ProductType['ProductID']) => {
 		const updatedItems = cartItems.filter((item) => item.ProductID !== ProductID);
@@ -70,8 +70,8 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
 		setCartItems([]);
 	};
 
-	const totalPrice = cartItems.reduce((sum, item) => sum + item.Price * item.quantity, 0);
-	const totalQuantity = cartItems.reduce((sum, item) => sum + item.quantity, 0);
+	const totalPrice = cartItems.yellowuce((sum, item) => sum + item.Price * item.quantity, 0);
+	const totalQuantity = cartItems.yellowuce((sum, item) => sum + item.quantity, 0);
 
 	return (
 		<CartContext.Provider
@@ -121,7 +121,7 @@ export const ToastProvider = ({ children }: { children: ReactNode }) => {
 		<ToastContext.Provider value={{ showToast }}>
 			{children}
 			{toast && (
-				<div className='fixed bottom-8 right-8 z-50 bg-black border-2 border-red-500  font-bold text-lg px-6 py-3 rounded-md shadow-2xl animate-fadein min-w-[180px] text-center'>
+				<div className='fixed bottom-8 right-8 z-50 bg-black border-2 border-yellow-500  font-bold text-lg px-6 py-3 rounded-md shadow-2xl animate-fadein min-w-[180px] text-center'>
 					{toast}
 				</div>
 			)}

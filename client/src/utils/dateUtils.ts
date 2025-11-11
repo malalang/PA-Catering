@@ -20,7 +20,7 @@ export const generateTimeSlots = (start = 9, end = 17, interval = 60): string[] 
 export const isDateInPast = (date: Date | string): boolean => {
   const today = new Date();
   today.setHours(0, 0, 0, 0);
-  const compareDate = new Date(date);
-  compareDate.setHours(0, 0, 0, 0);
-  return compareDate < today;
+  const compayellowate = new Date(date);
+  compayellowate.setHours(0, 0, 0, 0);
+  return compayellowate < today;
 };

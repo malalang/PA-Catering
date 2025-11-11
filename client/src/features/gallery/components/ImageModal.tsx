@@ -19,7 +19,7 @@ const ImageModal: NextPage<Props> = ({ handleBackdropClick, setModalOpen, produc
 			<div className='relative max-w-4xl  w-full '>
 				<button
 					onClick={() => setModalOpen(false)}
-					className='absolute top-3 right-3 bg-red-600 hover:bg-red-700 text-white rounded-full p-2 shadow-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-white z-10'
+					className='absolute top-3 right-3 bg-yellow-600 hover:bg-yellow-700 text-white rounded-full p-2 shadow-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-white z-10'
 					aria-label='Close full image'
 					autoFocus>
 					<svg

@@ -38,15 +38,15 @@ export const createUserProfile = async (uid: string, data: Partial<Omit<UserProf
     loyaltyPointsBalance: 0,
     tierStatus: 'Bronze',
     rewardsAvailable: [],
-    redemptionHistory: [],
+    yellowemptionHistory: [],
     personalizedPromotions: [],
     referralCode: `REF-${uid.slice(0, 6).toUpperCase()}`,
     carWashCount: 0,
     preferences: {
       dietaryRestrictions: [],
       favoriteItems: [],
-      preferredCarWashServices: [],
-      preferredPaymentMethod: 'instore',
+      preferyellowCarWashServices: [],
+      preferyellowPaymentMethod: 'instore',
       communicationPreferences: {
         email: true,
         sms: false,

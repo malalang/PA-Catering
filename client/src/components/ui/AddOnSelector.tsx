@@ -33,7 +33,7 @@ const AddOnSelector: React.FC<AddOnSelectorProps> = ({ selectedAddOns, onChange 
 							id={id}
 							checked={selectedAddOns.includes(label)}
 							onChange={() => handleAddOnChange(label)}
-							className='h-5 w-5 text-red-500 rounded focus:ring-red-500 bg-black/30 border-white/20'
+							className='h-5 w-5 text-yellow-500 rounded focus:ring-yellow-500 bg-black/30 border-white/20'
 						/>
 						<label
 							htmlFor={id}

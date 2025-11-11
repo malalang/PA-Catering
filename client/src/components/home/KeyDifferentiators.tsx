@@ -8,7 +8,7 @@ import { RiMoneyDollarCircleLine } from 'react-icons/ri';
 
 const KeyDifferentiators: React.FC = () => {
 	return (
-		<Section tittle='What Makes Central Eatery Special?'>
+		<Section tittle='What Makes PA Luxe Creation Special?'>
 			<div className='grid grid-cols-1 md:grid-cols-2 gap-2'>
 				{/* Unique Combination */}
 				<article>

@@ -38,15 +38,15 @@ const Comments: React.FC<CommentsProps> = async ({ product }) => {
 			{user && (
 				<article className='sticky top-0 z-10'>
 					<div className='flex items-start gap-4'>
-						<div className='flex-shrink-0 w-10 h-10 bg-red-600 rounded-full flex items-center justify-center text-white font-bold text-lg'>
+						<div className='flex-shrink-0 w-10 h-10 bg-yellow-600 rounded-full flex items-center justify-center text-white font-bold text-lg'>
 							{user.displayName?.charAt(0).toUpperCase()}
 						</div>
 						<div className='flex-1'>
 							<textarea
-								className='w-full p-3 border border-white/50 rounded-md bg-black/20 text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500 transition-all duration-200'
+								className='w-full p-3 border border-white/50 rounded-md bg-black/20 text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:border-yellow-500 transition-all duration-200'
 								placeholder={`Commenting as ${user.displayName}...`}
 								rows={3}></textarea>
-							<Button className='mt-3 px-6 py-2 bg-red-600 text-white font-semibold rounded-md hover:bg-red-500 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-red-700 focus:ring-white'>
+							<Button className='mt-3 px-6 py-2 bg-yellow-600 text-white font-semibold rounded-md hover:bg-yellow-500 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-yellow-700 focus:ring-white'>
 								<BiCommentAdd size={25} /> Post Comment
 							</Button>
 						</div>
@@ -62,7 +62,7 @@ const Comments: React.FC<CommentsProps> = async ({ product }) => {
 							key={comment.id}
 							className='bg-black/20 border border-white/50 rounded-md p-4'>
 							<div className='flex items-start gap-4'>
-								<div className='flex-shrink-0 w-10 h-10 bg-red-600 rounded-full flex items-center justify-center text-white font-bold text-lg'>
+								<div className='flex-shrink-0 w-10 h-10 bg-yellow-600 rounded-full flex items-center justify-center text-white font-bold text-lg'>
 									{comment.userName.charAt(0).toUpperCase()}
 								</div>
 								<div className='flex-1'>
@@ -73,7 +73,7 @@ const Comments: React.FC<CommentsProps> = async ({ product }) => {
 										</span>
 									</div>
 									<p className='text-white'>{comment.comment}</p>
-									<button className='mt-3 px-3 py-1 bg-red-600 text-white text-xs font-semibold rounded-md hover:bg-red-600/100 transition-colors duration-200'>
+									<button className='mt-3 px-3 py-1 bg-yellow-600 text-white text-xs font-semibold rounded-md hover:bg-yellow-600/100 transition-colors duration-200'>
 										Reply
 									</button>
 								</div>

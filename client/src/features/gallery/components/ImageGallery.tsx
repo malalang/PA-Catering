@@ -57,7 +57,7 @@ const ImageGallery: React.FC = () => {
 						product.Image && (
 							<article
 								key={product.Name}
-								className='group cursor-pointer rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-black/50 focus:ring-red-500
+								className='group cursor-pointer rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-black/50 focus:ring-yellow-500
 								relative w-full aspect-w-1 aspect-h-1 rounded-md overflow-hidden transition-transform duration-300 m-0 p-2 group-hover:scale-105'
 								tabIndex={0}
 								aria-label={`Show full image of ${product.Name}`}

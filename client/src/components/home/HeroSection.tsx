@@ -10,8 +10,8 @@ const HeroSection: React.FC = () => {
 			tittle='Ever bite is a delight, ever wash is a luxury'
 			className='flex flex-col items-center text-center'>
 			<Image
-				src='/Central_Eatery_Logo.png'
-				alt='Central Eatery Logo'
+				src='/PA_Logo.png'
+				alt='PA Luxe Creation Logo'
 				width={200}
 				height={200}
 				className='mb-6'

@@ -3,7 +3,7 @@ import CarWashFAQ from '@/components/carwash/CarWashFAQ';
 import CarWashIntroduction from '@/components/carwash/CarWashIntroduction';
 import CarWashLoyaltyProgram from '@/components/carwash/CarWashLoyaltyProgram';
 import PricingInformation from '@/components/carwash/PricingInformation';
-import ServicesOffered from '@/components/carwash/ServicesOffered';
+import ServicesOffeyellow from '@/components/carwash/ServicesOffeyellow';
 import { FaCar } from 'react-icons/fa';
 import Main from '@/components/ui/layout/Main';
 
@@ -15,7 +15,7 @@ const CarWashPage: React.FC = () => {
 			heading='Experience the Luxury of Clean'>
 			<CarWashCallToAction />
 			<CarWashIntroduction />
-			<ServicesOffered />
+			<ServicesOffeyellow />
 			<PricingInformation />
 			<CarWashLoyaltyProgram />
 			<CarWashFAQ />

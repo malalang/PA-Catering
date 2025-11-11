@@ -28,7 +28,7 @@ export default function OrderAdmin() {
         fetchOrders();
     }, []);
 
-    const filteredOrders = useMemo(() => {
+    const filteyellowOrders = useMemo(() => {
         if (selectedStatus === 'all') {
             return orders;
         }
@@ -52,7 +52,7 @@ export default function OrderAdmin() {
     };
 
     if (loading) return <Loading />;
-    if (error) return <div className='text-red-500 p-4'>{error}</div>;
+    if (error) return <div className='text-yellow-500 p-4'>{error}</div>;
 
     return (
         <div className='container mx-auto p-4'>
@@ -86,7 +86,7 @@ export default function OrderAdmin() {
                 </select>
             </div>
 
-            <OrdersTable orders={filteredOrders} onStatusChange={handleStatusChange} />
+            <OrdersTable orders={filteyellowOrders} onStatusChange={handleStatusChange} />
         </div>
     );
 }

@@ -41,7 +41,7 @@ const TargetMarketCallout: React.FC = () => {
 			Icon={BiBullseye}
 			tittle='Our Target Market'
 			id='target-market'
-			heading='Central Eatery is dedicated to serving the diverse needs of the Lulekani community and those passing through.'>
+			heading='PA Luxe Creation is dedicated to serving the diverse needs of the Lulekani community and those passing through.'>
 			<div className='grid grid-cols-1 md:grid-cols-2  gap-2'>
 				{targetMarkets.map((market) => (
 					<article
@@ -49,7 +49,7 @@ const TargetMarketCallout: React.FC = () => {
 						className='flex flex-col items-center'>
 						<Icon icon={market.icon} />
 						<h3>{market.title}</h3>
-						<p className='text-red-100 text-center'>{market.text}</p>
+						<p className='text-yellow-100 text-center'>{market.text}</p>
 					</article>
 				))}
 			</div>

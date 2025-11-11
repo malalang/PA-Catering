@@ -34,7 +34,7 @@ const FAQItem: React.FC<FAQItemProps> = ({ faq, isOpen, onClick }) => (
 			onClick={onClick}>
 			<span className='text-lg font-medium text-white'>{faq.question}</span>
 			<FaChevronDown
-				className={`transform transition-transform duration-300 text-red-500 ${
+				className={`transform transition-transform duration-300 text-yellow-500 ${
 					isOpen ? 'rotate-180' : ''
 				}`}
 			/>

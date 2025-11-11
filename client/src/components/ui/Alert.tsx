@@ -18,7 +18,7 @@ const Alert: React.FC<AlertProps> = ({
 }) => {
   const styles = {
     success: 'bg-green-500/20 text-white',
-    danger: 'bg-red-500/20 text-white',
+    danger: 'bg-yellow-500/20 text-white',
   };
 
   const displayMessage = children || message;

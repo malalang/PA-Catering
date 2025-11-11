@@ -10,7 +10,7 @@ const Testimonials: React.FC = () => {
 	const testimonials = [
 		{
 			id: 1,
-			text: "Central Eatery offers the best Kota's in town and their car wash service is super convenient!",
+			text: "PA Luxe Creation offers the best Kota's in town and their car wash service is super convenient!",
 			author: 'Happy Customer A',
 		},
 		{
@@ -20,7 +20,7 @@ const Testimonials: React.FC = () => {
 		},
 		{
 			id: 3,
-			text: 'The team at Central Eatery is always friendly and the service is top-notch. Highly recommended!',
+			text: 'The team at PA Luxe Creation is always friendly and the service is top-notch. Highly recommended!',
 			author: 'Regular Visitor C',
 		},
 	];
@@ -38,7 +38,7 @@ const Testimonials: React.FC = () => {
 						</div>
 						<div className='mt-auto'>
 							<div className='flex items-center mb-4'>
-								<span className='flex-shrink-0 w-10 h-10 rounded-full bg-red-500 flex items-center justify-center text-white font-bold text-lg'>
+								<span className='flex-shrink-0 w-10 h-10 rounded-full bg-yellow-500 flex items-center justify-center text-white font-bold text-lg'>
 									{testimonial.author.charAt(0).toUpperCase()}
 								</span>
 								<p className='font-semibold text-white ml-3'>{testimonial.author}</p>
@@ -49,7 +49,7 @@ const Testimonials: React.FC = () => {
 									aria-label={`Like testimonial by ${testimonial.author}`}>
 									<BiSolidLike
 										size={20}
-										className='text-white hover:text-red-500 transition-colors'
+										className='text-white hover:text-yellow-500 transition-colors'
 									/>
 								</Button>
 								<Button
@@ -57,7 +57,7 @@ const Testimonials: React.FC = () => {
 									aria-label={`Comment on testimonial by ${testimonial.author}`}>
 									<BiSolidComment
 										size={20}
-										className='text-white hover:text-red-500 transition-colors'
+										className='text-white hover:text-yellow-500 transition-colors'
 									/>
 								</Button>
 								<Button
@@ -65,7 +65,7 @@ const Testimonials: React.FC = () => {
 									aria-label={`Share testimonial by ${testimonial.author}`}>
 									<BiSolidShare
 										size={20}
-										className='text-white hover:text-red-500 transition-colors'
+										className='text-white hover:text-yellow-500 transition-colors'
 									/>
 								</Button>
 							</div>

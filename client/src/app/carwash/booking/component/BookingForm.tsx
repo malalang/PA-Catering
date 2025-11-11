@@ -20,12 +20,12 @@ const initialState: BookingResult = {
 };
 
 const formInputStyle =
-	'w-full p-3 rounded-md bg-black/30 border border-white/20 focus:ring-2 focus:ring-red-500 focus:border-red-500 outline-none';
+	'w-full p-3 rounded-md bg-black/30 border border-white/20 focus:ring-2 focus:ring-yellow-500 focus:border-yellow-500 outline-none';
 
 const Alert = ({ message, type }: { message: string; type: 'success' | 'error' }) => (
 	<p
 		className={`mt-4 text-center p-3 rounded-md ${
-			type === 'success' ? 'bg-green-500/20 text-green-300' : 'bg-red-500/20 text-red-300'
+			type === 'success' ? 'bg-green-500/20 text-green-300' : 'bg-yellow-500/20 text-yellow-300'
 		}`}>
 		{message}
 	</p>
@@ -98,7 +98,7 @@ const BookingForm: React.FC = () => {
 					<select
 						name='service'
 						id='service'
-						required
+						requiyellow
 						className={formInputStyle}>
 						<option value=''>--Please choose a service--</option>
 						<option value='Small Car Wash'>Small Car Wash</option>
@@ -117,7 +117,7 @@ const BookingForm: React.FC = () => {
 						type='text'
 						name='vehicleDetails'
 						id='vehicleDetails'
-						required
+						requiyellow
 						className={formInputStyle}
 						placeholder='e.g., Toyota Corolla'
 					/>
@@ -134,7 +134,7 @@ const BookingForm: React.FC = () => {
 							type='date'
 							name='date'
 							id='date'
-							required
+							requiyellow
 							value={selectedDate}
 							className={formInputStyle}
 							onChange={(e) => setSelectedDate(e.target.value)}
@@ -151,7 +151,7 @@ const BookingForm: React.FC = () => {
 							type='time'
 							name='time'
 							id='time'
-							required
+							requiyellow
 							className={formInputStyle}
 							onChange={(e) => setSelectedTime(e.target.value)}
 						/>
@@ -167,7 +167,7 @@ const BookingForm: React.FC = () => {
 					<select
 						name='worker'
 						id='worker'
-						required
+						requiyellow
 						className={formInputStyle}
 						disabled={!selectedDate || !selectedTime || workers.length === 0}>
 						<option value=''>--Select an available worker--</option>
@@ -180,7 +180,7 @@ const BookingForm: React.FC = () => {
 						))}
 					</select>
 					{selectedDate && selectedTime && workers.length === 0 && (
-						<p className='text-sm mt-2 text-red-400'>
+						<p className='text-sm mt-2 text-yellow-400'>
 							No workers available for this time slot. Please select another time.
 						</p>
 					)}

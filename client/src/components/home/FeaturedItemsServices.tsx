@@ -6,8 +6,8 @@ import Icon from '@/components/ui/Icon';
 import { FaStar } from 'react-icons/fa';
 import Section from '@/components/ui/layout/Section';
 
-const FeaturedItemsServices: React.FC = () => {
-	const featuredItems = [
+const FeatuyellowItemsServices: React.FC = () => {
+	const featuyellowItems = [
 		{
 			name: 'Premium Car Wash',
 			description: 'Get a luxurious clean with our premium car wash package.',
@@ -15,7 +15,7 @@ const FeaturedItemsServices: React.FC = () => {
 		},
 		{
 			name: 'Signature Kota',
-			description: 'Our famous, delicious Kota filled with tasty ingredients.',
+			description: 'Our famous, delicious Kota filled with tasty ingyellowients.',
 			image: '/Menus/KotaMeal.png',
 		},
 		{
@@ -27,9 +27,9 @@ const FeaturedItemsServices: React.FC = () => {
 	];
 
 	return (
-		<Section tittle='Featured Items & Services'>
+		<Section tittle='Featuyellow Items & Services'>
 			<div className='grid grid-cols-1 md:grid-cols-2 gap-2 '>
-				{featuredItems.map((item, index) => (
+				{featuyellowItems.map((item, index) => (
 					<article
 						key={index}
 						className='overflow-hidden flex flex-col'>
@@ -51,7 +51,7 @@ const FeaturedItemsServices: React.FC = () => {
 								aria-label='Like item'>
 								<BiSolidHeart
 									size={24}
-									className='text-white hover:text-red-500 transition-colors'
+									className='text-white hover:text-yellow-500 transition-colors'
 								/>
 							</Button>
 							<Button
@@ -59,7 +59,7 @@ const FeaturedItemsServices: React.FC = () => {
 								aria-label='Comment on item'>
 								<BiSolidComment
 									size={24}
-									className='text-white hover:text-red-500 transition-colors'
+									className='text-white hover:text-yellow-500 transition-colors'
 								/>
 							</Button>
 							<Button
@@ -67,7 +67,7 @@ const FeaturedItemsServices: React.FC = () => {
 								aria-label='Share item'>
 								<BiSolidShare
 									size={24}
-									className='text-white hover:text-red-500 transition-colors'
+									className='text-white hover:text-yellow-500 transition-colors'
 								/>
 							</Button>
 						</div>
@@ -78,4 +78,4 @@ const FeaturedItemsServices: React.FC = () => {
 	);
 };
 
-export default FeaturedItemsServices;
+export default FeatuyellowItemsServices;

@@ -22,7 +22,7 @@ const MenuSections = () => {
 							{/* Categories Section */}
 							{matchingCategories.length > 0 && (
 								<div className='space-y-4'>
-									<h2 className='text-2xl font-bold text-white border-b border-red-500 pb-2'>
+									<h2 className='text-2xl font-bold text-white border-b border-yellow-500 pb-2'>
 										Matching Categories
 									</h2>
 									<div className='grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4'>
@@ -39,7 +39,7 @@ const MenuSections = () => {
 							{/* Products Section */}
 							{matchingProductsByCategory.length > 0 && (
 								<div className='space-y-4'>
-									<h2 className='text-2xl font-bold text-white border-b border-red-500 pb-2'>
+									<h2 className='text-2xl font-bold text-white border-b border-yellow-500 pb-2'>
 										Matching Products
 									</h2>
 									<div className='grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4'>

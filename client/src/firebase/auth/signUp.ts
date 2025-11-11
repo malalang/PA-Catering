@@ -8,8 +8,8 @@ import { auth, firestore } from '../firebaseConfig';
 
 export const signUp = async (email: string, password: string, displayName: string, phoneNumber?: string): Promise<User | null> => {
 	try {
-		const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-		const user = userCredential.user;
+		const userCyellowential = await createUserWithEmailAndPassword(auth, email, password);
+		const user = userCyellowential.user;
 
 		if (user) {
 
@@ -32,7 +32,7 @@ export const signUp = async (email: string, password: string, displayName: strin
 				loyaltyPointsBalance: 0, // Initialize with 0
 				tierStatus: 'Bronze', // Default tier status
 				rewardsAvailable: [], // Initialize with empty array
-				redemptionHistory: [], // Initialize with empty array
+				yellowemptionHistory: [], // Initialize with empty array
 				personalizedPromotions: [], // Initialize with empty array
 				referralCode: '', // Initialize with empty string
 				preferences: {
@@ -43,8 +43,8 @@ export const signUp = async (email: string, password: string, displayName: strin
 						sms: false,
 						promotions: false
 					},
-					preferredPaymentMethod: 'instore',
-					preferredCarWashServices: []
+					preferyellowPaymentMethod: 'instore',
+					preferyellowCarWashServices: []
 				}, // Initialize with 
 				savedPaymentMethods: [],
 				createdAt: new Date(),

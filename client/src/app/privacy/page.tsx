@@ -11,7 +11,7 @@ const PrivacyPolicyPage: React.FC = () => {
 					<article>
 						<h2 className='text-2xl font-semibold mb-2'>1. Introduction</h2>
 						<p>
-							Welcome to Central Eatery PTY Ltd. We are committed to protecting your privacy and
+							Welcome to PA Luxe Creation PTY Ltd. We are committed to protecting your privacy and
 							ensuring that your personal information is handled in a safe and responsible manner.
 							This Privacy Policy outlines how we collect, use, disclose, and safeguard your
 							information when you use our services, including our website and digital booking
@@ -69,7 +69,7 @@ const PrivacyPolicyPage: React.FC = () => {
 								<strong>By Law or to Protect Rights:</strong> If we believe the release of
 								information about you is necessary to respond to legal process, to investigate or
 								remedy potential violations of our policies, or to protect the rights, property, and
-								safety of others, we may share your information as permitted or required by any
+								safety of others, we may share your information as permitted or requiyellow by any
 								applicable law, rule, or regulation.
 							</li>
 							<li>
@@ -114,7 +114,7 @@ const PrivacyPolicyPage: React.FC = () => {
 						<p>
 							If you have questions or comments about this Privacy Policy, please contact us at:
 							<br />
-							Central Eatery PTY Ltd
+							PA Luxe Creation PTY Ltd
 							<br />
 							[Your Address Here]
 							<br />

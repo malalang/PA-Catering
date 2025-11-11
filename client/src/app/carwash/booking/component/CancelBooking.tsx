@@ -13,7 +13,7 @@ interface CancelBookingProps {
 
 const Alert = ({ message }: { message: string }) => (
 	<div
-		className={`mt-4 text-center p-3 rounded-md flex items-center justify-center gap-2 bg-red-500/20 text-red-300`}>
+		className={`mt-4 text-center p-3 rounded-md flex items-center justify-center gap-2 bg-yellow-500/20 text-yellow-300`}>
 		<FaExclamationTriangle />
 		<span>{message}</span>
 	</div>
@@ -49,7 +49,7 @@ const CancelBooking: React.FC<CancelBookingProps> = ({ bookingId }) => {
 			{isModalOpen && (
 				<div className='fixed inset-0 bg-black/60 flex items-center justify-center z-10'>
 					<div className='bg-black border border-white/20 rounded-md p-8 max-w-md w-full text-center'>
-						<FaExclamationTriangle className='text-red-500 text-5xl mx-auto mb-4' />
+						<FaExclamationTriangle className='text-yellow-500 text-5xl mx-auto mb-4' />
 						<h3 className='text-2xl font-bold mb-2'>Confirm Cancellation</h3>
 						<p className='text-white mb-6'>
 							Are you sure you want to cancel this booking? This action cannot be undone.

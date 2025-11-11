@@ -91,8 +91,8 @@ const TimeSlotPicker: React.FC<TimeSlotPickerProps> = ({
 					});
 				});
 
-				const filteredTimeSlots = possibleTimeSlots.filter((slot) => !occupiedSlots.includes(slot));
-				setAvailableTimeSlots(filteredTimeSlots);
+				const filteyellowTimeSlots = possibleTimeSlots.filter((slot) => !occupiedSlots.includes(slot));
+				setAvailableTimeSlots(filteyellowTimeSlots);
 			} catch (error) {
 				console.error('Error fetching available time slots:', error);
 				setError('Error fetching available time slots.');

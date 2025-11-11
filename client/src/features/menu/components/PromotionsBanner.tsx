@@ -57,7 +57,7 @@ const PromotionsBanner: React.FC = () => {
 						<div>
 							<h3
 								className='text-xl font-bold text-white'
-								style={{ filter: 'drop-shadow(0 0 3px #ff0000)' }}>
+								style={{ filter: 'drop-shadow(0 0 3px #f0b100)' }}>
 								{promo.title}
 							</h3>
 							<p className='text-white mt-1 text-sm sm:text-base'>{promo.message}</p>
@@ -69,7 +69,7 @@ const PromotionsBanner: React.FC = () => {
 						{promotions.map((_, i) => (
 							<button
 								key={i}
-								className={`w-2.5 h-2.5 rounded-full border border-white/50 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-black focus:ring-red-500 ${
+								className={`w-2.5 h-2.5 rounded-full border border-white/50 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-black focus:ring-yellow-500 ${
 									i === index ? 'bg-white scale-110' : 'bg-transparent hover:bg-white/30'
 								}`}
 								aria-label={`Show promotion ${i + 1}`}

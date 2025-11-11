@@ -26,8 +26,8 @@ const MapEmbed = () => (
 const ContactInfo = () => (
   <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
     <div className="flex items-start space-x-4 p-4 bg-white/5 rounded-lg">
-      <div className="p-2 bg-red-500/10 rounded-full">
-        <FaMapMarkerAlt className="text-red-500/95 text-xl" />
+      <div className="p-2 bg-yellow-500/10 rounded-full">
+        <FaMapMarkerAlt className="text-yellow-500/95 text-xl" />
       </div>
       <div>
         <h3 className="text-lg font-semibold text-white mb-1">Our Location</h3>
@@ -36,8 +36,8 @@ const ContactInfo = () => (
     </div>
     
     <div className="flex items-start space-x-4 p-4 bg-white/5 rounded-lg">
-      <div className="p-2 bg-red-500/10 rounded-full">
-        <FaPhone className="text-red-500/95 text-xl" />
+      <div className="p-2 bg-yellow-500/10 rounded-full">
+        <FaPhone className="text-yellow-500/95 text-xl" />
       </div>
       <div>
         <h3 className="text-lg font-semibold text-white mb-1">Phone</h3>
@@ -46,8 +46,8 @@ const ContactInfo = () => (
     </div>
     
     <div className="flex items-start space-x-4 p-4 bg-white/5 rounded-lg">
-      <div className="p-2 bg-red-500/10 rounded-full">
-        <FaEnvelope className="text-red-500/95 text-xl" />
+      <div className="p-2 bg-yellow-500/10 rounded-full">
+        <FaEnvelope className="text-yellow-500/95 text-xl" />
       </div>
       <div>
         <h3 className="text-lg font-semibold text-white mb-1">Email</h3>
@@ -56,8 +56,8 @@ const ContactInfo = () => (
     </div>
     
     <div className="flex items-start space-x-4 p-4 bg-white/5 rounded-lg">
-      <div className="p-2 bg-red-500/10 rounded-full">
-        <FaClock className="text-red-500/95 text-xl" />
+      <div className="p-2 bg-yellow-500/10 rounded-full">
+        <FaClock className="text-yellow-500/95 text-xl" />
       </div>
       <div>
         <h3 className="text-lg font-semibold text-white mb-1">Opening Hours</h3>
@@ -73,7 +73,7 @@ export default function ContactPage() {
     <div className="py-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
       <div className="text-center mb-12">
         <h1 className="text-4xl font-bold text-white mb-4">Get In Touch</h1>
-        <div className="w-24 h-1 bg-red-500/95 mx-auto"></div>
+        <div className="w-24 h-1 bg-yellow-500/95 mx-auto"></div>
         <p className="mt-6 text-lg text-gray-300 max-w-2xl mx-auto">
           Have questions or feedback? We'd love to hear from you. Fill out the form below or reach out to us directly.
         </p>

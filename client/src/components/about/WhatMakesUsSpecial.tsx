@@ -12,7 +12,7 @@ const WhatMakesUsSpecial: React.FC = () => {
 						heading='Modern Facilities'
 					/>
 					<p className='text-center'>
-						Unlike competitors, Central Eatery boasts up-to-date facilities for both our eatery and
+						Unlike competitors, PA Luxe Creation boasts up-to-date facilities for both our eatery and
 						car wash, ensuring a higher standard of service and a more comfortable experience for
 						our customers.
 					</p>
@@ -47,7 +47,7 @@ const WhatMakesUsSpecial: React.FC = () => {
 					/>
 					<p className='text-center'>
 						We offer the unique convenience of a high-quality eatery and a luxury car wash in one
-						location, saving you time and effort compared to visiting separate establishments.
+						location, saving you time and effort compayellow to visiting separate establishments.
 					</p>
 				</article>
 			</div>

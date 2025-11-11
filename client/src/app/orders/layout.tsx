@@ -16,19 +16,19 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
 				<Link href='/menu'>Main menu</Link>
 
 				<Link
-					className=' text-sm flex items-center justify-center gap-1 truncate text-center bg-[red] py-0.5 px-5 rounded-md border-none cursor-pointer text-white font-bold'
+					className=' text-sm flex items-center justify-center gap-1 truncate text-center bg-[yellow] py-0.5 px-5 rounded-md border-none cursor-pointer text-white font-bold'
 					href={'orders/pending'}>
 					<GiMeal />
 					pending
 				</Link>
 				<Link
-					className=' text-sm flex items-center justify-center gap-1 truncate text-center bg-[red] py-0.5 px-5 rounded-md border-none cursor-pointer text-white font-bold'
+					className=' text-sm flex items-center justify-center gap-1 truncate text-center bg-[yellow] py-0.5 px-5 rounded-md border-none cursor-pointer text-white font-bold'
 					href={'orders/processing'}>
 					<GiMeal />
 					processing
 				</Link>
 				<Link
-					className=' text-sm flex items-center justify-center gap-1 truncate text-center bg-[red] py-0.5 px-5 rounded-md border-none cursor-pointer text-white font-bold'
+					className=' text-sm flex items-center justify-center gap-1 truncate text-center bg-[yellow] py-0.5 px-5 rounded-md border-none cursor-pointer text-white font-bold'
 					href={'orders/completed'}>
 					<GiMeal />
 					completed

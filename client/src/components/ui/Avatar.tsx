@@ -23,7 +23,7 @@ const Avatar: React.FC<AvatarProps> = ({ src, alt, size = 'medium', className })
 	return (
 		<div
 			className={classNames(
-				'relative flex items-center justify-center rounded-full bg-red-200 overflow-hidden',
+				'relative flex items-center justify-center rounded-full bg-yellow-200 overflow-hidden',
 				currentSizeClasses, // Apply the size-specific classes
 				className // Apply any additional classes passed from parent
 			)}>
@@ -35,7 +35,7 @@ const Avatar: React.FC<AvatarProps> = ({ src, alt, size = 'medium', className })
 				/>
 			) : (
 				// Fallback for no image: display first letter of alt text
-				<span className='text-red-600 font-bold uppercase flex items-center justify-center h-full w-full'>
+				<span className='text-yellow-600 font-bold uppercase flex items-center justify-center h-full w-full'>
 					{alt.charAt(0)}
 				</span>
 			)}

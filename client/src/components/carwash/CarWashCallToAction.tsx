@@ -15,12 +15,12 @@ const CarWashCallToAction: React.FC = () => {
 				Icon={FaCar}
 				tittle='Ready for a Sparkling Clean Car?'>
 				<p className='mt-4 text-lg text-white max-w-2xl mx-auto'>
-					Experience the luxury and convenience of Central Eatery&apos;s car wash services. Book
+					Experience the luxury and convenience of PA Luxe Creation&apos;s car wash services. Book
 					your wash today!
 				</p>
 				<div className='mt-8 flex justify-center items-center gap-4'>
 					<AppLink
-						className='bg-red-900 hover:bg-red-900'
+						className='bg-yellow-900 hover:bg-yellow-900'
 						variant='button'
 						href='/carwash/booking'>
 						<FaCar /> Book Your Car Wash

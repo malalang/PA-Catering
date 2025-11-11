@@ -26,33 +26,33 @@
   } */
 
 	h1 {
-		filter: drop-shadow(0 0 3px #ff0000);
+		filter: drop-shadow(0 0 3px #f0b100);
 		@apply text-4xl md:text-5xl font-bold;
 	}
 
 	h2 {
-		@apply text-2xl md:text-4xl font-bold  border-b-2 p-2 border-red-500 mb-4;
-		filter: drop-shadow(0 0 3px #ff0000);
+		@apply text-2xl md:text-4xl font-bold  border-b-2 p-2 border-yellow-500 mb-4;
+		filter: drop-shadow(0 0 3px #f0b100);
 	}
 	h3 {
 		@apply text-xl md:text-2xl font-semibold;
 	}
 	strong {
-		@apply text-red-100 font-bold;
+		@apply text-yellow-100 font-bold;
 	}
 
 	h4 {
 		@apply text-lg md:text-xl font-semibold;
-		filter: drop-shadow(0 0 3px #ff0000);
+		filter: drop-shadow(0 0 3px #f0b100);
 	}
 
 	h5 {
 		@apply text-base md:text-lg font-semibold;
-		filter: drop-shadow(0 0 3px #ff0000);
+		filter: drop-shadow(0 0 3px #f0b100);
 	}
 	h6 {
 		@apply text-sm md:text-base font-semibold;
-		filter: drop-shadow(0 0 3px #ff0000);
+		filter: drop-shadow(0 0 3px #f0b100);
 	}
 	p {
 		@apply text-balance text-base md:text-lg font-normal;
@@ -65,7 +65,7 @@
 
 	h1 {
 		@apply text-4xl md:text-5xl font-bold;
-		filter: drop-shadow(0 0 3px #ff0000);
+		filter: drop-shadow(0 0 3px #f0b100);
 	}
 
 	/* All other heading tags remain white for consistency */

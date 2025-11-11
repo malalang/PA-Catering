@@ -46,12 +46,12 @@ const CommentModal: React.FC<CommentModalProps> = ({ product, handleCloseComment
 					onChange={(e) => setCommentText(e.target.value)}></textarea>
 				<div className='flex justify-end gap-2'>
 					<button
-						className='px-4 py-2 bg-red-700 rounded-md hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-white'
+						className='px-4 py-2 bg-yellow-700 rounded-md hover:bg-yellow-600 focus:outline-none focus:ring-2 focus:ring-white'
 						onClick={handleCloseCommentModal}>
 						Cancel
 					</button>
 					<button
-						className='px-4 py-2 bg-red-700 text-white rounded-md hover:bg-red-800 focus:outline-none focus:ring-2 focus:ring-white'
+						className='px-4 py-2 bg-yellow-700 text-white rounded-md hover:bg-yellow-800 focus:outline-none focus:ring-2 focus:ring-white'
 						onClick={handleSubmitComment}>
 						Submit Comment
 					</button>

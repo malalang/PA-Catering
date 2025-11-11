@@ -1,14 +1,14 @@
 import { DefaultSeoProps } from 'next-seo';
 
 export const SEO: DefaultSeoProps = {
-  titleTemplate: '%s | Central Eatery',
-  defaultTitle: 'Central Eatery - Delicious Food & Drinks',
+  titleTemplate: '%s | PA Luxe Creation',
+  defaultTitle: 'PA Luxe Creation - Delicious Food & Drinks',
   description: 'Experience the best dining with our delicious menu and warm atmosphere. Open for breakfast, lunch, and dinner.',
   openGraph: {
     type: 'website',
     locale: 'en_IE',
     url: 'https://yourdomain.com',
-    siteName: 'Central Eatery',
+    siteName: 'PA Luxe Creation',
   },
   twitter: {
     handle: '@centraleatery',

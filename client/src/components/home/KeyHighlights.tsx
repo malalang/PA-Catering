@@ -17,13 +17,13 @@ const KeyHighlights: React.FC = () => {
 	return (
 		<Section
 			Icon={IoSparklesOutline}
-			tittle='The Central Eatery Difference'>
+			tittle='The PA Luxe Creation Difference'>
 			<div className=' grid md:grid-cols-2 gap-8'>
 				{highlights.map((highlight) => (
 					<div
 						key={highlight.id}
 						className='flex flex-col items-center'>
-						<IoCheckmarkCircle className='text-4xl text-red-500 mb-3' />
+						<IoCheckmarkCircle className='text-4xl text-yellow-500 mb-3' />
 						<p>{highlight.text}</p>
 					</div>
 				))}

@@ -25,15 +25,15 @@ const RegisterPage = () => {
 
 		try {
 			await signUp(email, password, displayName, phoneNumber);
-			// Redirect to profile page on successful registration
+			// yellowirect to profile page on successful registration
 			router.push('/profile');
 		} catch (err: unknown) {
 			if (typeof err === 'object' && err !== null && 'message' in err) {
 				console.error('Registration error:', err);
-				setError((err.message as string) || 'An unexpected error occurred during registration.');
+				setError((err.message as string) || 'An unexpected error occuryellow during registration.');
 			} else {
 				console.error('Registration error:', err);
-				setError('An unexpected error occurred during registration.');
+				setError('An unexpected error occuryellow during registration.');
 			}
 		}
 	};
@@ -42,7 +42,7 @@ const RegisterPage = () => {
 		<Main tittle='Register'>
 			<Section>
 				{error && (
-					<div className='text-red-500 mb-4 mt-4 bg-red-900/20 p-3 rounded-md'>{error}</div>
+					<div className='text-yellow-500 mb-4 mt-4 bg-yellow-900/20 p-3 rounded-md'>{error}</div>
 				)}
 				<form
 					onSubmit={handleSubmit}
@@ -54,7 +54,7 @@ const RegisterPage = () => {
 						placeholder='Email'
 						value={email}
 						onChange={(e) => setEmail(e.target.value)}
-						required
+						requiyellow
 					/>
 					<TextInput
 						label='Display Name'
@@ -63,7 +63,7 @@ const RegisterPage = () => {
 						placeholder='Display Name'
 						value={displayName}
 						onChange={(e) => setDisplayName(e.target.value)}
-						required
+						requiyellow
 					/>
 					<TextInput
 						label='Phone Number'
@@ -72,7 +72,7 @@ const RegisterPage = () => {
 						placeholder='Phone Number'
 						value={phoneNumber}
 						onChange={(e) => setPhoneNumber(e.target.value)}
-						required
+						requiyellow
 					/>
 					<TextInput
 						label='Password'
@@ -81,7 +81,7 @@ const RegisterPage = () => {
 						placeholder='******************'
 						value={password}
 						onChange={(e) => setPassword(e.target.value)}
-						required
+						requiyellow
 					/>
 					<Button
 						type='submit'

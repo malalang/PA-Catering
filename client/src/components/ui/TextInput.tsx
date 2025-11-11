@@ -16,8 +16,8 @@ interface TextInputProps extends React.InputHTMLAttributes<HTMLInputElement> {
 const baseClasses = 'block rounded-md transition-all duration-200 focus:outline-none focus:ring-2 ';
 
 const variantClasses = {
-	default: 'border-white/30 bg-black/20 focus:border-red-500 focus:ring-red-500',
-	error: 'border-red-500 bg-black/20 focus:border-red-500 focus:ring-red-500',
+	default: 'border-white/30 bg-black/20 focus:border-yellow-500 focus:ring-yellow-500',
+	error: 'border-yellow-500 bg-black/20 focus:border-yellow-500 focus:ring-yellow-500',
 };
 
 // Use the new custom size type here

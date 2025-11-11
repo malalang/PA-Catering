@@ -11,13 +11,13 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
 }
 
 const baseClasses =
-	'rounded-md flex gap-2 items-center justify-center font-semibold transition-colors duration-200 focus:outline-none focus-visible:ring-4  focus-visible:ring-red-400 text-nowrap';
+	'rounded-md flex gap-2 items-center justify-center font-semibold transition-colors duration-200 focus:outline-none focus-visible:ring-4  focus-visible:ring-yellow-400 text-nowrap';
 const variantClasses = {
-	primary: 'bg-red-600 text-white hover:bg-red-700 shadow-sm shadow-black',
-	secondary: 'bg-white text-red-600 border border-red-400 hover:bg-red-50',
-	danger: 'bg-red-100 text-red-700 border border-red-400 hover:bg-red-200',
-	icon: 'bg-none text-red-500 hover:text-red-700',
-	suggestion: 'bg-transparent text-white hover:bg-red-700',
+	primary: 'bg-yellow-600 text-white hover:bg-yellow-700 shadow-sm shadow-black',
+	secondary: 'bg-white text-yellow-600 border border-yellow-400 hover:bg-yellow-50',
+	danger: 'bg-yellow-100 text-yellow-700 border border-yellow-400 hover:bg-yellow-200',
+	icon: 'bg-none text-yellow-500 hover:text-yellow-700',
+	suggestion: 'bg-transparent text-white hover:bg-yellow-700',
 };
 const sizeClasses = {
 	sm: 'px-3 py-1 text-sm',
@@ -41,7 +41,7 @@ const Button: React.FC<ButtonProps> = ({
 		disabled={disabled || loading}
 		{...props}>
 		{loading ? (
-			<span className='inline-block w-4 h-4 border-2 border-white border-t-red-600 rounded-full animate-spin mr-2'></span>
+			<span className='inline-block w-4 h-4 border-2 border-white border-t-yellow-600 rounded-full animate-spin mr-2'></span>
 		) : (
 			children
 		)}

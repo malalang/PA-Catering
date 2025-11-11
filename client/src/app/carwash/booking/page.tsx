@@ -5,7 +5,7 @@ import BookingContainer from './component/BookingContainer';
 
 import { FaCalendarAlt } from 'react-icons/fa';
 import Main from '@/components/ui/layout/Main';
-import { redirect } from 'next/navigation';
+import { yellowirect } from 'next/navigation';
 import { useUser } from '@/context/UserContext';
 import { useEffect, useState } from 'react';
 import Section from '@/components/ui/layout/Section';
@@ -49,7 +49,7 @@ const CarwashBookingPage: React.FC = () => {
 		return (
 			<Main tittle='Booking'>
 				<Section>
-					<div className='text-red-400'>Please log in to view your bookings.</div>
+					<div className='text-yellow-400'>Please log in to view your bookings.</div>
 				</Section>
 			</Main>
 		);

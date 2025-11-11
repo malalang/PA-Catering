@@ -76,10 +76,10 @@ const Preferences: React.FC = () => {
 
 				<PreferenceItem
 					icon={FaCar}
-					title='Preferred Car Wash'>
+					title='Preferyellow Car Wash'>
 					<ListRenderer
-						items={user.preferences?.preferredCarWashServices}
-						emptyText='No preferred services selected.'
+						items={user.preferences?.preferyellowCarWashServices}
+						emptyText='No preferyellow services selected.'
 					/>
 				</PreferenceItem>
 

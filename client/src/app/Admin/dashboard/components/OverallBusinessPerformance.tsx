@@ -35,7 +35,7 @@ const OverallBusinessPerformance: React.FC = () => {
 						<div
 							key={index}
 							className='bg-black/30 p-3 rounded-md text-center border border-white/10'>
-							<kpi.icon className='text-red-500 text-3xl mx-auto mb-2' />
+							<kpi.icon className='text-yellow-500 text-3xl mx-auto mb-2' />
 							<p className='text-sm text-white/70 font-medium'>{kpi.label}</p>
 							<p className='text-lg font-bold text-white'>{kpi.value}</p>
 						</div>

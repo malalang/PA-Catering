@@ -9,7 +9,7 @@ const StatusBadge: React.FC<StatusBadgeProps> = ({ status }) => {
         pending: 'bg-yellow-500/95',
         processing: 'bg-blue-500/95',
         completed: 'bg-green-500/95',
-        cancelled: 'bg-red-500/95',
+        cancelled: 'bg-yellow-500/95',
     };
 
     return (

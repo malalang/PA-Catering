@@ -3,7 +3,7 @@ import Section from '@/components/ui/layout/Section';
 const SpecialOffers: React.FC = () => {
 	return (
 		<Section tittle='Special Offers'>
-			<article className='bg-red-700 p-6 rounded-md text-white'>
+			<article className='bg-yellow-700 p-6 rounded-md text-white'>
 				<div className='grid grid-cols-1 md:grid-cols-2 gap-6'>
 					{/* Offer 1 */}
 					<div className='bg-black/20 border border-white/50 rounded-md p-6 flex flex-col'>

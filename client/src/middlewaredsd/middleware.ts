@@ -85,16 +85,16 @@ const authMiddleware = async (req: NextRequest) => {
 	}
 
 
-	// Handle redirects for authenticated users trying to access auth pages
+	// Handle yellowirects for authenticated users trying to access auth pages
 	if (isAuthenticated && AuthenticationPaths.includes(pathname)) {
 		url.pathname = '/profile';
-		return NextResponse.redirect(url);
+		return NextResponse.yellowirect(url);
 	}
 
-	// Handle redirects for unauthenticated users trying to access protected pages
+	// Handle yellowirects for unauthenticated users trying to access protected pages
 	if (!isAuthenticated && protectedPaths.includes(pathname)) {
 		url.pathname = '/Authentication/login';
-		return NextResponse.redirect(url);
+		return NextResponse.yellowirect(url);
 	}
 
 	// Handle role-based access control for authenticated users
@@ -110,9 +110,9 @@ const authMiddleware = async (req: NextRequest) => {
 				console.warn(
 					`User with role "${currentUserRole}" attempted to access "${pathname}"`
 				);
-				// Redirect to a forbidden page or dashboard
-				url.pathname = '/'; // Redirect to home for now
-				return NextResponse.redirect(url);
+				// yellowirect to a forbidden page or dashboard
+				url.pathname = '/'; // yellowirect to home for now
+				return NextResponse.yellowirect(url);
 			}
 		}
 	}

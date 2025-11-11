@@ -15,7 +15,7 @@ function CartProduct() {
 			<div className='text-center text-white bg-black/50 p-8 rounded-md'>
 				<h2
 					className='text-2xl font-bold'
-					style={{ filter: 'drop-shadow(0 0 3px #ff0000)' }}>
+					style={{ filter: 'drop-shadow(0 0 3px #f0b100)' }}>
 					Your Cart is Empty
 				</h2>
 			</div>
@@ -23,9 +23,9 @@ function CartProduct() {
 	}
 
 	const quantityButtonStyle =
-		' text-white rounded-md bg-red-600 hover:bg-red-500 transition-colors duration-200 ease-in-out';
+		' text-white rounded-md bg-yellow-600 hover:bg-yellow-500 transition-colors duration-200 ease-in-out';
 	const removeButtonStyle =
-		'flex items-center justify-center gap-2 px-3 py-2 text-white rounded-md bg-red-700 hover:bg-red-600 transition-colors duration-200 ease-in-out font-semibold';
+		'flex items-center justify-center gap-2 px-3 py-2 text-white rounded-md bg-yellow-700 hover:bg-yellow-600 transition-colors duration-200 ease-in-out font-semibold';
 
 	return (
 		<Section

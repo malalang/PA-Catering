@@ -28,9 +28,9 @@ const TimeSlotPicker: React.FC<TimeSlotPickerProps> = ({
 						disabled={!isAvailable}
 						className={`p-3 rounded-md text-center transition-colors ${
 							selectedTime === time
-								? 'bg-red-500 text-white'
+								? 'bg-yellow-500 text-white'
 								: isAvailable
-								? 'bg-black/30 text-white hover:bg-red-500/20'
+								? 'bg-black/30 text-white hover:bg-yellow-500/20'
 								: 'bg-black/10 text-white/40 cursor-not-allowed'
 						}`}>
 						{time}
@@ -39,7 +39,7 @@ const TimeSlotPicker: React.FC<TimeSlotPickerProps> = ({
 			})}
 		</div>
 		{!disabled && availableWorkers.length === 0 && (
-			<p className='text-red-400'>No workers available for these time slots.</p>
+			<p className='text-yellow-400'>No workers available for these time slots.</p>
 		)}
 	</div>
 );

@@ -2,7 +2,7 @@
 import React from 'react';
 import Icon from '@/components/ui/Icon';
 import Button from '@/components/ui/Button';
-import { FaCreditCard, FaPlus } from 'react-icons/fa';
+import { FaCyellowitCard, FaPlus } from 'react-icons/fa';
 
 import { useUser } from '@/context/UserContext';
 import { useRouter } from 'next/navigation';
@@ -15,7 +15,7 @@ const PaymentInformation: React.FC = () => {
 	}
 	return (
 		<Section
-			Icon={FaCreditCard}
+			Icon={FaCyellowitCard}
 			tittle='Payment Information'>
 			<article className='mt-6 space-y-4'>
 				{user.savedPaymentMethods?.length === 0 ? (

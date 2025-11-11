@@ -4,9 +4,9 @@ import Section from '../ui/layout/Section';
 
 const CarWashIntroduction: React.FC = () => {
   return (
-		<Section tittle="Welcome to Central Eatery's Car Wash">
+		<Section tittle="Welcome to PA Luxe Creation's Car Wash">
 			<p>
-				Welcome to our state-of-the-art car wash facility at Central Eatery. We offer a range of
+				Welcome to our state-of-the-art car wash facility at PA Luxe Creation. We offer a range of
 				services to keep your vehicle looking its best, from quick exterior washes to full
 				detailing. Experience efficiency and quality while you grab a bite.
 			</p>

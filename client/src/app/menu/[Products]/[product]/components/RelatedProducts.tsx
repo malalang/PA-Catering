@@ -35,7 +35,7 @@ const RelatedProducts: React.FC<RelatedProductsProps> = ({ currentProduct, categ
 						href={`/menu/${categoryName
 							.toLowerCase()
 							.replace(/\s+/g, '-')}/${product.Name.toLowerCase().replace(/\s+/g, '-')}`}
-						className='group relative bg-red-700  rounded-md p-2 pt-6  flex flex-col transition-transform duration-300 hover:scale-105 hover:border-white'>
+						className='group relative bg-yellow-700  rounded-md p-2 pt-6  flex flex-col transition-transform duration-300 hover:scale-105 hover:border-white'>
 						{product.Image && (
 							<div className='relative w-full aspect-square  overflow-hidden rounded-md'>
 								<Image
@@ -52,7 +52,7 @@ const RelatedProducts: React.FC<RelatedProductsProps> = ({ currentProduct, categ
 							</h1>
 							<p className='text-white font-bold text-md mt-auto'>R{product.Price.toFixed(2)}</p>
 							{product.badge && (
-								<span className='absolute w-full top-0 right-0 px-2 py-1 rounded-t-md text-xs font-bold bg-red-600 text-white'>
+								<span className='absolute w-full top-0 right-0 px-2 py-1 rounded-t-md text-xs font-bold bg-yellow-600 text-white'>
 									{product.badge}
 								</span>
 							)}

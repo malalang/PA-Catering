@@ -49,7 +49,7 @@ async function ProductPage({ params }: { params: Promise<{ product: string; Prod
 					<div className='flex flex-wrap gap-4 mt-8'>
 						<AddtoCart
 							product={product}
-							className='bg-black/50 hover:bg-red-500'>
+							className='bg-black/50 hover:bg-yellow-500'>
 							Add to Cart
 						</AddtoCart>
 						<FavoriteButton product={product} />

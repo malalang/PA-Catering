@@ -40,7 +40,7 @@ const DesktopNavbar: React.FC = () => {
 	return (
 		<nav className='md:flex gap-2 hidden justify-between items-center p-0 m-0 w-full'>
 			<Image
-				src='/Central_Eatery_Logo.png'
+				src='/PA_Logo.png'
 				alt='Logo'
 				width={64}
 				height={64}

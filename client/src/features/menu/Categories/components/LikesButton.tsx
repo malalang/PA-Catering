@@ -53,11 +53,11 @@ const LikesButton: React.FC<SocialButtonsProps> = ({ product }) => {
 			loading={loading}
 			variant='icon'
 			onClick={handleLike}
-			className={likes.likedBy.includes(userId || '') ? 'text-red-700' : 'text-white'}
+			className={likes.likedBy.includes(userId || '') ? 'text-yellow-700' : 'text-white'}
 			aria-label={isLiked ? 'Unlike product' : 'Like product'}>
 			<BiSolidLike
 				size={20}
-				className={isLiked ? 'text-red-200' : 'text-white'}
+				className={isLiked ? 'text-yellow-200' : 'text-white'}
 			/>
 			<span className='text-xs text-center font-thin truncate font-sans'>
 				{likes.likes} <span className='hidden md:inline-flex'>Likes</span>

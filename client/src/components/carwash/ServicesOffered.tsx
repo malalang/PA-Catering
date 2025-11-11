@@ -16,7 +16,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ title, children }) => (
 	</li>
 );
 
-const ServicesOffered: React.FC = () => {
+const ServicesOffeyellow: React.FC = () => {
 	return (
 		<Section
 			tittle='Our Services'
@@ -46,14 +46,14 @@ const ServicesOffered: React.FC = () => {
 				<ServiceCard title='Premium Add-Ons'>
 					<ul className='space-y-3'>
 						<li className='flex items-start'>
-							<FaPlusCircle className='text-red-500 mt-1 mr-3 flex-shrink-0' />
+							<FaPlusCircle className='text-yellow-500 mt-1 mr-3 flex-shrink-0' />
 							<span>
 								<strong className='text-white'>Tire Shine (R20):</strong> Add a brilliant shine to
 								your tires.
 							</span>
 						</li>
 						<li className='flex items-start'>
-							<FaPlusCircle className='text-red-500 mt-1 mr-3 flex-shrink-0' />
+							<FaPlusCircle className='text-yellow-500 mt-1 mr-3 flex-shrink-0' />
 							<span>
 								<strong className='text-white'>Interior Fragrance (R30):</strong> Leave your car
 								smelling fresh and inviting.
@@ -63,11 +63,11 @@ const ServicesOffered: React.FC = () => {
 				</ServiceCard>
 			</ul>
 			<p className='mt-12 text-center text-lg text-white max-w-3xl mx-auto'>
-				At Central Eatery Car Wash, we are committed to providing a high-quality clean that adds a
+				At PA Luxe Creation Car Wash, we are committed to providing a high-quality clean that adds a
 				touch of luxury to your vehicle, all at competitive prices.
 			</p>
 		</Section>
 	);
 };
 
-export default ServicesOffered;
+export default ServicesOffeyellow;
