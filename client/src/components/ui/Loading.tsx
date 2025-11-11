@@ -5,7 +5,7 @@ import Section from './layout/Section';
 
 const Loading = ({ message = 'Loading...' }: { message?: string }) => (
 	<Main className='flex flex-col justify-center items-center min-h-screen  p-4' tittle='PA Luxe Creation' heading='Experience the unique convenience of delicious food and a state-of-the-art car wash, all in
-				one place in Lulekani.'>
+				one place in Evander.'>
 		<Section className='flex flex-col items-center text-center max-w-md'>
 			<div className='mt-8 animate-pulse'>
 				<Image

@@ -8,7 +8,7 @@ const AboutUsSnippet: React.FC = () => {
 		<Section
 			Icon={IoInformationCircleOutline}
 			tittle='About PA Luxe Creation'
-			heading='	PA Luxe Creation aims to revolutionize convenience in Lulekani by offering both affordable, high-quality meals and competitively priced luxury car washes under one roof. Founded with a vision to be the premier destination for these combined services, we are driven by innovation, quality, and community trust.'>
+			heading='	PA Luxe Creation aims to revolutionize convenience in Evander by offering both affordable, high-quality meals and competitively priced luxury car washes under one roof. Founded with a vision to be the premier destination for these combined services, we are driven by innovation, quality, and community trust.'>
 			<div className='mt-6'>
 				<AppLink
 					variant='primary'

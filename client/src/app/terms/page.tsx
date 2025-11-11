@@ -14,7 +14,7 @@ export default function TermsAndConditionsPage() {
 			name: 'Ntsako Nyath',
 			role: 'Maneger (Industrial Engineering)',
 			image: '/users/Abram.jpg',
-			bio: 'My name is Abram Elton Ntsako Nyathi and I live in Phalaborwa Lulekani. I’m passionate about chess and enjoy playing it in my free time. I’m also interested in entrepreneurship and my goal is to have and run my own company. I have experience in coding (HTML, CSS, JavaScript), CAD (Fusion 360), and editing (Photoshop, Illustrator, After Effects). I’m proficient in Microsoft Word, Excel, and PowerPoint. I’m currently a student at Vaal University of Technology studying Industrial Engineering. Here are some of the subjects I’ve taken so far:',
+			bio: 'My name is Abram Elton Ntsako Nyathi and I live in Phalaborwa Evander. I’m passionate about chess and enjoy playing it in my free time. I’m also interested in entrepreneurship and my goal is to have and run my own company. I have experience in coding (HTML, CSS, JavaScript), CAD (Fusion 360), and editing (Photoshop, Illustrator, After Effects). I’m proficient in Microsoft Word, Excel, and PowerPoint. I’m currently a student at Vaal University of Technology studying Industrial Engineering. Here are some of the subjects I’ve taken so far:',
 			link: {
 				Link: 'http://abrameltonntsako.web.app',
 				Name: 'abrameltonntsako.web.app',

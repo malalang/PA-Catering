@@ -19,7 +19,7 @@ const HeroSection: React.FC = () => {
 			/>
 			<p className='mt-4 text-lg max-w-2xl'>
 				Experience the unique convenience of delicious food and a state-of-the-art car wash, all in
-				one place in Lulekani.
+				one place in Evander.
 			</p>
 			<div className='flex bg-transparent w-full justify-center gap-6 mt-8'>
 				<Link

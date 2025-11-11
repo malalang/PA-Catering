@@ -9,7 +9,7 @@ const OurVision: React.FC = () => {
 			tittle='Our Vision'>
 			<article>
 				<p className='text-center '>
-					<strong>Our vision</strong> is to become Lulekani&apos;s premier destination for
+					<strong>Our vision</strong> is to become Evander&apos;s premier destination for
 					affordable, high-quality meals and competitively priced luxury car washes, driven by
 					innovation, quality, and community trust.
 				</p>

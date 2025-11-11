@@ -27,7 +27,7 @@ const CoreValues: React.FC = () => {
 					/>
 					<p>
 						We aim to build strong relationships with our customers and contribute positively to the
-						Lulekani community.
+						Evander community.
 					</p>
 				</article>
 			</div>

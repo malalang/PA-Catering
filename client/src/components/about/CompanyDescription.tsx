@@ -7,8 +7,8 @@ import Section from '@/components/ui/layout/Section';
 const CompanyDescription: React.FC = () => {
 	return (
 		<Section
-			heading='PA Luxe Creation PTY Ltd was established in 2024 by Kanny Molapo. Molapo identified a need
-					in Lulekani for modern, affordable services that combined convenience and quality. This
+			heading='PA Luxe Creation PTY Ltd was established in 2024 by Precious Nyathi. Precious identified a need
+					in Evander for modern, affordable services that combined convenience and quality. This
 					led to the concept of a dual-service establishment offering both delicious,
 					budget-friendly meals and premium car care.'
 			tittle='Company Description'

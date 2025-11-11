@@ -10,7 +10,7 @@ const KeyHighlights: React.FC = () => {
 		{ id: 2, text: "Affordability: Quality food and car wash services that won't break the bank." },
 		{
 			id: 3,
-			text: "Community-Centric: We're dedicated to serving and supporting the Lulekani community.",
+			text: "Community-Centric: We're dedicated to serving and supporting the Evander community.",
 		},
 	];
 

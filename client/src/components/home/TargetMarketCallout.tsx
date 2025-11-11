@@ -12,7 +12,7 @@ const TargetMarketCallout: React.FC = () => {
 	const targetMarkets = [
 		{
 			id: 1,
-			title: 'Residents of Lulekani',
+			title: 'Residents of Evander',
 			text: 'Catering to families, professionals, and students seeking convenient, high-quality meals and car care.',
 			icon: IoHomeOutline,
 		},
@@ -41,7 +41,7 @@ const TargetMarketCallout: React.FC = () => {
 			Icon={BiBullseye}
 			tittle='Our Target Market'
 			id='target-market'
-			heading='PA Luxe Creation is dedicated to serving the diverse needs of the Lulekani community and those passing through.'>
+			heading='PA Luxe Creation is dedicated to serving the diverse needs of the Evander community and those passing through.'>
 			<div className='grid grid-cols-1 md:grid-cols-2  gap-2'>
 				{targetMarkets.map((market) => (
 					<article

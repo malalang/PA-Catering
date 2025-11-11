@@ -36,7 +36,7 @@ const KeyLeadership: React.FC = () => {
 					This unique blend of technical and creative expertise is instrumental in driving Central
 					Eatery&apos;s success, from implementing innovative technology solutions to optimizing our
 					operational workflows. A.E.N Nyathi&apos;s contributions ensure that PA Luxe Creation
-					remains at the forefront of convenience and quality in Lulekani.
+					remains at the forefront of convenience and quality in Evander.
 				</p>
 			</article>
 		</Section>
