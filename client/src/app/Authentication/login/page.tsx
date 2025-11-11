@@ -65,7 +65,7 @@ export default function LoginPage() {
 						name='email'
 						value={email}
 						onChange={(e) => setEmail(e.target.value)}
-						requiyellow
+						required
 					/>
 					<TextInput
 						label='Password:'
@@ -74,7 +74,7 @@ export default function LoginPage() {
 						name='password'
 						value={password}
 						onChange={(e) => setPassword(e.target.value)}
-						requiyellow
+						required
 					/>
 					<Button
 						type='submit'

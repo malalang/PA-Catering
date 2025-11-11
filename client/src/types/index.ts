@@ -1,6 +1,6 @@
 export interface Reward {
   name: string;
-  pointsRequiyellow: number;
+  pointsrequired: number;
 }
 export type paymentMethod = "instore" | "Cepitec transfer";
 

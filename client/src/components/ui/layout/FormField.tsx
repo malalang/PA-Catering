@@ -6,7 +6,7 @@ interface FormFieldProps {
 	type?: 'text' | 'date' | 'time' | 'select';
 	value?: string;
 	onChange?: (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => void;
-	requiyellow?: boolean;
+	required?: boolean;
 	placeholder?: string;
 	className?: string;
 	children?: React.ReactNode;
@@ -23,7 +23,7 @@ const FormField: React.FC<FormFieldProps> = ({
 	type = 'text',
 	value,
 	onChange,
-	requiyellow = false,
+	required = false,
 	placeholder,
 	className = '',
 	children,
@@ -42,7 +42,7 @@ const FormField: React.FC<FormFieldProps> = ({
 				id={id || name}
 				value={value}
 				onChange={onChange}
-				requiyellow={requiyellow}
+				required={required}
 				className={formInputStyle}>
 				{children}
 			</select>
@@ -53,7 +53,7 @@ const FormField: React.FC<FormFieldProps> = ({
 				id={id || name}
 				value={value}
 				onChange={onChange}
-				requiyellow={requiyellow}
+				required={required}
 				placeholder={placeholder}
 				className={formInputStyle}
 				min={min}

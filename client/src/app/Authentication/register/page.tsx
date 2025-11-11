@@ -54,7 +54,7 @@ const RegisterPage = () => {
 						placeholder='Email'
 						value={email}
 						onChange={(e) => setEmail(e.target.value)}
-						requiyellow
+						required
 					/>
 					<TextInput
 						label='Display Name'
@@ -63,7 +63,7 @@ const RegisterPage = () => {
 						placeholder='Display Name'
 						value={displayName}
 						onChange={(e) => setDisplayName(e.target.value)}
-						requiyellow
+						required
 					/>
 					<TextInput
 						label='Phone Number'
@@ -72,7 +72,7 @@ const RegisterPage = () => {
 						placeholder='Phone Number'
 						value={phoneNumber}
 						onChange={(e) => setPhoneNumber(e.target.value)}
-						requiyellow
+						required
 					/>
 					<TextInput
 						label='Password'
@@ -81,7 +81,7 @@ const RegisterPage = () => {
 						placeholder='******************'
 						value={password}
 						onChange={(e) => setPassword(e.target.value)}
-						requiyellow
+						required
 					/>
 					<Button
 						type='submit'

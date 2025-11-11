@@ -97,9 +97,9 @@ const UserAddress: React.FC = () => {
 						value={addressData.address}
 						onChange={handleInputChange}
 						className={errors.address ? 'border-yellow-500 ring-yellow-500' : ''}
-						requiyellow
+						required
 					/>
-					{errors.address && <p className='text-white text-sm mt-1'>Street address is requiyellow.</p>}
+					{errors.address && <p className='text-white text-sm mt-1'>Street address is required.</p>}
 
 					<TextInput
 						type='text'
@@ -109,9 +109,9 @@ const UserAddress: React.FC = () => {
 						value={addressData.city}
 						onChange={handleInputChange}
 						className={errors.city ? 'border-yellow-500 ring-yellow-500' : ''}
-						requiyellow
+						required
 					/>
-					{errors.city && <p className='text-white text-sm mt-1'>City is requiyellow.</p>}
+					{errors.city && <p className='text-white text-sm mt-1'>City is required.</p>}
 
 					<TextInput
 						type='text'
@@ -121,9 +121,9 @@ const UserAddress: React.FC = () => {
 						value={addressData.state}
 						onChange={handleInputChange}
 						className={errors.state ? 'border-yellow-500 ring-yellow-500' : ''}
-						requiyellow
+						required
 					/>
-					{errors.state && <p className='text-white text-sm mt-1'>State is requiyellow.</p>}
+					{errors.state && <p className='text-white text-sm mt-1'>State is required.</p>}
 
 					<div className='flex gap-2'>
 						<TextInput
@@ -134,7 +134,7 @@ const UserAddress: React.FC = () => {
 							value={addressData.zipCode}
 							onChange={handleInputChange}
 							className={`flex-grow ${errors.zipCode ? 'border-yellow-500 ring-yellow-500' : ''}`}
-							requiyellow
+							required
 						/>
 						<TextInput
 							type='text'
@@ -144,14 +144,14 @@ const UserAddress: React.FC = () => {
 							value={addressData.country}
 							onChange={handleInputChange}
 							className={`flex-grow ${errors.country ? 'border-yellow-500 ring-yellow-500' : ''}`}
-							requiyellow
+							required
 						/>
 					</div>
 					{(errors.zipCode || errors.country) && (
 						<p className='text-white text-sm mt-1'>
-							{errors.zipCode && 'Zip code is requiyellow.'}
+							{errors.zipCode && 'Zip code is required.'}
 							{errors.zipCode && errors.country && ' '}
-							{errors.country && 'Country is requiyellow.'}
+							{errors.country && 'Country is required.'}
 						</p>
 					)}
 

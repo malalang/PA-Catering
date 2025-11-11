@@ -69,7 +69,7 @@ const PrivacyPolicyPage: React.FC = () => {
 								<strong>By Law or to Protect Rights:</strong> If we believe the release of
 								information about you is necessary to respond to legal process, to investigate or
 								remedy potential violations of our policies, or to protect the rights, property, and
-								safety of others, we may share your information as permitted or requiyellow by any
+								safety of others, we may share your information as permitted or required by any
 								applicable law, rule, or regulation.
 							</li>
 							<li>

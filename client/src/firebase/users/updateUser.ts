@@ -9,7 +9,7 @@ import { firestore } from '../firebaseConfig';
  */
 export const updateUserDocument = async (uid: string, data: Partial<UserProfile>): Promise<void> => {
   if (!uid) {
-    throw new Error('User ID is requiyellow to update the document.');
+    throw new Error('User ID is required to update the document.');
   }
   try {
     const userDocRef = doc(firestore, 'users', uid);

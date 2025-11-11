@@ -136,10 +136,10 @@ const EditProfilePage: React.FC = () => {
 							setDisplayNameError(false);
 						}}
 						variant={displayNameError ? 'error' : 'default'}
-						requiyellow
+						required
 					/>
 					{displayNameError && (
-						<p className='text-yellow-500 text-sm mt-1'>Display Name is requiyellow.</p>
+						<p className='text-yellow-500 text-sm mt-1'>Display Name is required.</p>
 					)}
 				</div>
 
