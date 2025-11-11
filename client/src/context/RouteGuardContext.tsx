@@ -6,7 +6,7 @@ import { useUser } from './UserContext';
 import Loading from '@/components/ui/Loading';
 
 // --- Route Protection Logic --- //
-export const publicPaths = ['/', '/contact', '/about', '/gallery', '/carwash', '/terms', '/blog'];
+export const publicPaths = ['/', '/contact', '/about', '/gallery', '/terms', '/blog'];
 export const AuthenticationPaths = ['/Authentication/login', '/Authentication/register'];
 export const protectedPaths = ['/profile', '/orders', '/carwash/booking', '/menu'];
 export const adminPaths = [
