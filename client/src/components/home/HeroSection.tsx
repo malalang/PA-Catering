@@ -3,7 +3,7 @@ import Link from '@/components/ui/Link';
 import { FaShoppingCart, FaCar } from 'react-icons/fa';
 import Icon from '@/components/ui/Icon';
 import Section from '@/components/ui/layout/Section';
-
+import { BiCamera } from 'react-icons/bi';
 const HeroSection: React.FC = () => {
 	return (
 		<Section
@@ -31,10 +31,10 @@ const HeroSection: React.FC = () => {
 				</Link>
 				<Link
 					variant='button'
-					href='/carwash'
+					href='/photo'
 					className='flex items-center gap-2'>
-					<FaCar />
-					<span>Book Car Wash</span>
+					<BiCamera />
+					<span>Book 360 phot boot</span>
 				</Link>
 			</div>
 		</Section>

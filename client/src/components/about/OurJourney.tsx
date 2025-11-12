@@ -12,7 +12,7 @@ const OurJourney: React.FC = () => {
 				className='float-right'
 			/>
 			<p className='text-start'>
-				PA Luxe Creation PTY Ltd was established in 2024 by Kanny Molapo. Molapo identified a need in
+				PA Luxe Creation PTY Ltd was established in 2024 by Precious Nyathi. Nyathi identified a need in
 				Evander for modern, affordable services that combined convenience and quality. This vision
 				led to the concept of a dual-service establishment offering both delicious, budget-friendly
 				meals and premium car care. Our journey is fueled by a commitment to providing a unique and
