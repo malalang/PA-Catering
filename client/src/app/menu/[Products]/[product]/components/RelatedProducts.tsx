@@ -1,7 +1,7 @@
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import Products from '@/context/Products';
+import Products from '@/lib/constant/Products';
 
 import Section from '@/components/ui/layout/Section';
 

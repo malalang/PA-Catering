@@ -4,9 +4,9 @@ import type { Metadata } from 'next';
 import './globals.css';
 import './layout.css';
 
-import { UserProvider } from '@/context/UserContext';
+import { UserProvider } from '@/lib/context/UserContext';
 import Navbar from '@/components/Navbar/Navbar';
-import { RouteGuard } from '@/context/RouteGuardContext';
+import { RouteGuard } from '@/lib/context/RouteGuardContext';
 import { Analytics } from '@vercel/analytics/next';
 
 // export const metadata: Metadata = {

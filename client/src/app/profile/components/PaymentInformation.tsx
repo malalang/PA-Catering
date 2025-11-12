@@ -4,7 +4,7 @@ import Icon from '@/components/ui/Icon';
 import Button from '@/components/ui/Button';
 import { FaCreditCard, FaPlus } from 'react-icons/fa';
 
-import { useUser } from '@/context/UserContext';
+import { useUser } from '@/lib/context/UserContext';
 import { useRouter } from 'next/navigation';
 import Section from '@/components/ui/layout/Section';
 

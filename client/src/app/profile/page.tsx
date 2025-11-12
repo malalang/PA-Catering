@@ -4,7 +4,7 @@ import Preferences from './components/Preferences';
 import PaymentInformation from './components/PaymentInformation';
 import AccountManagement from './components/AccountManagement';
 import { FaUserCircle } from 'react-icons/fa';
-import GetUser from '@/firebase/users/server/GetServerUser';
+import GetUser from '@/lib/firebase/users/server/GetServerUser';
 import { redirect } from 'next/navigation';
 import Main from '@/components/ui/layout/Main';
 

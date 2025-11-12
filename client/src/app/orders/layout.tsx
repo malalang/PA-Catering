@@ -1,6 +1,6 @@
 'use client';
 
-import { CartProvider } from '@/context/CartContext';
+import { CartProvider } from '@/lib/context/CartContext';
 import React, { ReactNode } from 'react';
 import Link from 'next/link';
 import { GiMeal } from 'react-icons/gi';

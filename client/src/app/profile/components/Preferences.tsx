@@ -4,7 +4,7 @@ import React from 'react';
 import Icon from '@/components/ui/Icon';
 import Button from '@/components/ui/Button';
 import { FaCog, FaLeaf, FaHeart, FaCar, FaEnvelope } from 'react-icons/fa';
-import { useUser } from '@/context/UserContext';
+import { useUser } from '@/lib/context/UserContext';
 import Section from '@/components/ui/layout/Section';
 
 interface PreferencesProps {

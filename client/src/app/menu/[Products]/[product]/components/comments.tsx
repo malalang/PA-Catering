@@ -1,7 +1,7 @@
 import { collection, getDocs, query, where, Timestamp } from 'firebase/firestore';
 
-import GetUser from '@/firebase/users/server/GetServerUser';
-import { firestore } from '@/firebase/firebaseConfig';
+import GetUser from '@/lib/firebase/users/server/GetServerUser';
+import { firestore } from '@/lib/firebase/firebaseConfig';
 import Button from '@/components/ui/Button';
 import { BiCommentAdd } from 'react-icons/bi';
 import Section from '@/components/ui/layout/Section';

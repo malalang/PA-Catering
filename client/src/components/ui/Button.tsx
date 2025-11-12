@@ -14,7 +14,7 @@ const baseClasses =
 	'rounded-md flex gap-2 items-center justify-center font-semibold transition-colors duration-200 focus:outline-none focus-visible:ring-4  focus-visible:ring-yellow-400 text-nowrap';
 const variantClasses = {
 	primary: 'bg-yellow-600 text-white hover:bg-yellow-700 shadow-sm shadow-black',
-	secondary: 'bg-white text-yellow-600 border border-yellow-400 hover:bg-yellow-50',
+	secondary: 'bg-white text-yellow-600 border border-yellow-400 hover:bg-red-50',
 	danger: 'bg-yellow-100 text-yellow-700 border border-yellow-400 hover:bg-yellow-200',
 	icon: 'bg-none text-yellow-500 hover:text-yellow-700',
 	suggestion: 'bg-transparent text-white hover:bg-yellow-700',

@@ -7,8 +7,8 @@ import TextInput from '@/components/ui/TextInput';
 import Button from '@/components/ui/Button';
 import Avatar from '@/components/ui/Avatar';
 import Loading from '@/components/ui/Loading'; // Assuming you have a Loading component
-import { useUser } from '@/context/UserContext';
-import { updateUser } from '@/firebase/users/utils';
+import { useUser } from '@/lib/context/UserContext';
+import { updateUser } from '@/lib/firebase/users/utils';
 
 import Section from '@/components/ui/layout/Section';
 

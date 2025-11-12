@@ -1,11 +1,11 @@
 import React from 'react';
 
-import GetUser from '@/firebase/users/server/GetServerUser';
+import GetUser from '@/lib/firebase/users/server/GetServerUser';
 import Image from 'next/image';
 
 import Main from '@/components/ui/layout/Main';
 import Section from '@/components/ui/layout/Section';
-import { getOrdersForUserFromFirestore } from '@/firebase/orders/getOrderFromFirestore';
+import { getOrdersForUserFromFirestore } from '@/lib/firebase/orders/getOrderFromFirestore';
 
 
 const StateOrderPage = async () => {

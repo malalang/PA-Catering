@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { signIn } from '@/firebase/auth/signIn';
+import { signIn } from '@/lib/firebase/auth/signIn';
 import Loading from '@/components/ui/Loading';
 import { useRouter } from 'next/navigation';
 

@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { signUp } from '@/firebase/auth/signUp';
+import { signUp } from '@/lib/firebase/auth/signUp';
 import Button from '@/components/ui/Button';
 import TextInput from '@/components/ui/TextInput';
 import AppLink from '@/components/ui/Link';

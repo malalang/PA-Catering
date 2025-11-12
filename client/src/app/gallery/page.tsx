@@ -1,4 +1,4 @@
-import ImageGallery from '@/features/gallery/components/ImageGallery';
+import ImageGallery from '@/app/gallery/components/ImageGallery';
 import Main from '@/components/ui/layout/Main';
 import { FcGallery } from 'react-icons/fc';
 

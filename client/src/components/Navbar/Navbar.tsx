@@ -2,7 +2,7 @@
 import { useState } from 'react';
 import DesktopNavbar from './DesktopNavbar';
 import MobileNavbar from './MobileNavbar';
-import { useUser } from '@/context/UserContext';
+import { useUser } from '@/lib/context/UserContext';
 import ProfileMenu from './ProfileMenu';
 import AuthButton from './AuthButton';
 import MobileMenu from './MobileMenu';

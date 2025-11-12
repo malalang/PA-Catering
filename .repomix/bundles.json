@@ -1,0 +1,15 @@
+{
+  "bundles": {
+    "clone-272": {
+      "name": "clone",
+      "created": "2025-11-12T07:18:27.209Z",
+      "lastUsed": "2025-11-12T07:18:27.209Z",
+      "tags": [],
+      "files": [
+        "client/public",
+        "client/src",
+        "client/package.json"
+      ]
+    }
+  }
+}

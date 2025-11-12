@@ -1,11 +1,11 @@
-import AboutUsSnippet from '@/components/home/AboutUsSnippet';
-import ContactSection from '@/components/home/ContactSection';
-import FeatuyellowItemsServices from '@/components/home/FeaturedItemsServices';
+import AboutUsSnippet from '@/app/home-components/AboutUsSnippet';
+import ContactSection from '@/app/home-components/ContactSection';
+import FeatuyellowItemsServices from '@/app/home-components/FeaturedItemsServices';
 
-import HeroSection from '@/components/home/HeroSection';
-import KeyDifferentiators from '@/components/home/KeyDifferentiators';
-import TargetMarketCallout from '@/components/home/TargetMarketCallout';
-import Testimonials from '@/components/home/Testimonials';
+import HeroSection from '@/app/home-components/HeroSection';
+import KeyDifferentiators from '@/app/home-components/KeyDifferentiators';
+import TargetMarketCallout from '@/app/home-components/TargetMarketCallout';
+import Testimonials from '@/app/home-components/Testimonials';
 import Main from '@/components/ui/layout/Main';
 const HomePage = () => {
 	return (

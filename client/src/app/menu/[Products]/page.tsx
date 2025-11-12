@@ -1,15 +1,15 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import Products from '@/context/Products';
+import Products from '@/lib/constant/Products';
 
 import { Suspense } from 'react';
 import Loading from '@/components/ui/Loading';
 
-import ProductCard from '@/features/menu/components/ProductCard';
-import FilterSortBar from '@/features/menu/Categories/components/FilterSortBar';
+import FilterSortBar from '@/app/menu/[Products]/components/FilterSortBar';
 import Main from '@/components/ui/layout/Main';
 import { fetchAllProductLikes, ProductLikes } from './utils/likesUtils';
+import ProductCard from '../components/ProductCard';
 
 export default function Page({ params }: { params: Promise<{ Products: string }> }) {
 	const [FilterGroup, setFilterGroup] = useState('');

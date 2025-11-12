@@ -1,7 +1,7 @@
 export const dynamic = 'force-dynamic';
-import { getOrdersForUserFromFirestore } from '@/firebase/orders/getOrderFromFirestore';
-import GetUser from '@/firebase/users/server/GetServerUser';
-import OrderItem from '@/features/orders/components/OrderItem';
+import { getOrdersForUserFromFirestore } from '@/lib/firebase/orders/getOrderFromFirestore';
+import GetUser from '@/lib/firebase/users/server/GetServerUser';
+import OrderItem from '@/app/orders/components/OrderItem';
 import Main from '@/components/ui/layout/Main';
 import { FaHistory } from 'react-icons/fa';
 const OrderHistory: React.FC = async () => {

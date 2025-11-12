@@ -1,7 +1,7 @@
 'use client';
 
-import { CartProvider } from '@/context/CartContext';
-import { ToastProvider } from '@/context/CartContext';
+import { CartProvider } from '@/lib/context/CartContext';
+import { ToastProvider } from '@/lib/context/CartContext';
 // import { RouteGuard } from '@/context/RouteGuardContext';
 import React, { ReactNode } from 'react';
 

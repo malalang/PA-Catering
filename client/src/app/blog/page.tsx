@@ -1,5 +1,5 @@
 import React from 'react';
-import BlogPostList from '@/features/blog/components/BlogPostList';
+import BlogPostList from '@/app/blog/components/BlogPostList';
 import Main from '@/components/ui/layout/Main';
 import { FaBlog } from 'react-icons/fa';
 import Section from '@/components/ui/layout/Section';

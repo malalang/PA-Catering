@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import { FaHeart, FaRegHeart } from 'react-icons/fa';
 import { doc, getDoc, setDoc } from 'firebase/firestore';
-import { auth, firestore } from '@/firebase/firebaseConfig';
+import { auth, firestore } from '@/lib/firebase/firebaseConfig';
 
 import Button from '@/components/ui/Button';
 

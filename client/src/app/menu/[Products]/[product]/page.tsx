@@ -1,13 +1,13 @@
-import Products from '@/context/Products';
+import Products from '@/lib/constant/Products';
 import Image from 'next/image';
-import SocialButtons from '../../../../features/menu/Categories/components/SocialButtons';
+import SocialButtons from '../components/SocialButtons';
 import Comments from './components/comments';
 import ProductInfo from './components/ProductInfo';
 import RelatedProducts from './components/RelatedProducts';
 import FavoriteButton from './components/FavoriteButton';
 import { Suspense } from 'react';
 import Loading from '@/components/ui/Loading';
-import AddtoCart from '@/features/menu/AddtoCart';
+import AddtoCart from '@/app/menu/[Products]/[product]/components/AddtoCart';
 import Main from '@/components/ui/layout/Main';
 import Section from '@/components/ui/layout/Section';
 

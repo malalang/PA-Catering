@@ -1,9 +1,9 @@
 import { collection, getDocs, query, where, Timestamp } from 'firebase/firestore';
 import { Suspense } from 'react';
 
-import GetUser from '@/firebase/users/server/GetServerUser';
+import GetUser from '@/lib/firebase/users/server/GetServerUser';
 import { redirect } from 'next/navigation';
-import { firestore } from '@/firebase/firebaseConfig';
+import { firestore } from '@/lib/firebase/firebaseConfig';
 import Loading from '@/components/ui/Loading';
 import Section from '@/components/ui/layout/Section';
 import Button from '@/components/ui/Button';

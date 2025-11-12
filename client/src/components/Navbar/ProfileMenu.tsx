@@ -1,10 +1,10 @@
-import { protectedPaths, adminPaths, roleBasedPaths } from '@/context/RouteGuardContext';
+import { protectedPaths, adminPaths, roleBasedPaths } from '@/lib/context/RouteGuardContext';
 import AppLink from '../ui/Link';
 import { FaCar, FaClipboardList, FaSignOutAlt, FaUserCircle, FaUtensils } from 'react-icons/fa';
 import Button from '../ui/Button';
-import { logout } from '@/firebase/auth/logout';
+import { logout } from '@/lib/firebase/auth/logout';
 import { useEffect, useRef } from 'react';
-import { useUser } from '@/context/UserContext';
+import { useUser } from '@/lib/context/UserContext';
 
 const ProfileMenu: React.FC<{ setMenubar: (path: 'mobile' | 'profile') => void }> = ({
 	setMenubar,

@@ -1,7 +1,7 @@
 'use client';
 import AppLink from '@/components/ui/Link';
 import Button from '@/components/ui/Button';
-import { useUser } from '@/context/UserContext';
+import { useUser } from '@/lib/context/UserContext';
 import { FaSignInAlt, FaUserCircle } from 'react-icons/fa';
 const AuthButton: React.FC<{ setMenubar: (path: 'mobile' | 'profile') => void }> = ({
 	setMenubar,

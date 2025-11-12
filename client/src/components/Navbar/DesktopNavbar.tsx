@@ -13,11 +13,11 @@ import {
 	FaUtensils,
 	FaImages,
 } from 'react-icons/fa';
-import { logout } from '@/firebase/auth/logout';
+import { logout } from '@/lib/firebase/auth/logout';
 import React, { useState, useRef, useEffect } from 'react';
 import Button from '@/components/ui/Button';
-import { publicPaths, AuthenticationPaths, protectedPaths } from '@/context/RouteGuardContext';
-import { useUser } from '@/context/UserContext';
+import { publicPaths, AuthenticationPaths, protectedPaths } from '@/lib/context/RouteGuardContext';
+import { useUser } from '@/lib/context/UserContext';
 import { FaBlog } from 'react-icons/fa6';
 
 const DesktopNavbar: React.FC = () => {

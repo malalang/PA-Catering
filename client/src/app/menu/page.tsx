@@ -1,11 +1,11 @@
 import { Suspense } from 'react';
-import ImageGallery from '@/features/gallery/components/ImageGallery';
+import ImageGallery from '@/app/gallery/components/ImageGallery';
 import Loading from '@/components/ui/Loading';
-import PromotionsBanner from '@/features/menu/components/PromotionsBanner';
-import SearchBar from '@/features/menu/components/SearchBar';
-import MenuSections from '@/features/menu/components/MenuSections';
+import PromotionsBanner from '@/app/menu/components/PromotionsBanner';
+import MenuSections from '@/app/menu/components/MenuSections';
 import Main from '@/components/ui/layout/Main';
 import { CgMenuCheese } from 'react-icons/cg';
+import SearchBar from './components/SearchBar';
 
 const HomePage = () => {
 	return (

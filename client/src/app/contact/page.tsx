@@ -1,4 +1,4 @@
-import ContactForm from '@/components/ContactForm';
+import ContactForm from '@/app/contact/components/ContactForm';
 import React from 'react';
 import { FaMapMarkerAlt, FaClock, FaEnvelope, FaPhone } from 'react-icons/fa';
 // import dynamic from 'next/dynamic';

@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import GetUser from '@/firebase/users/server/GetServerUser';
+import GetUser from '@/lib/firebase/users/server/GetServerUser';
 
 export async function GET() {
   try {

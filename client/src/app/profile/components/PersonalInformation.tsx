@@ -2,10 +2,10 @@
 
 import Icon from '@/components/ui/Icon';
 import { FaUserCircle } from 'react-icons/fa';
-import UserAddress from './Elements/UserAddress';
+import UserAddress from './UserAddress';
 import AppLink from '@/components/ui/Link';
 import { useRouter } from 'next/navigation';
-import { useUser } from '@/context/UserContext';
+import { useUser } from '@/lib/context/UserContext';
 import Section from '@/components/ui/layout/Section';
 
 interface PersonalInformationProps {
