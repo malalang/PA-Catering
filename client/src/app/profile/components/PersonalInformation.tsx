@@ -2,7 +2,7 @@
 
 import Icon from '@/components/ui/Icon';
 import { FaUserCircle } from 'react-icons/fa';
-import UserAddress from './UserAddress';
+import UserAddress from '../../../lib/forms/UserAddressForm';
 import AppLink from '@/components/ui/Link';
 import { useRouter } from 'next/navigation';
 import { useUser } from '@/lib/context/UserContext';

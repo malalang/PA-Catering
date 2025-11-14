@@ -7,7 +7,7 @@ import { useCart } from '@/lib/context/CartContext';
 import React from 'react';
 import { FaMinusCircle, FaPlusCircle, FaTrashAlt } from 'react-icons/fa';
 
-function CartProduct() {
+function CartProductForm() {
 	const { cartItems, removeFromCart, minisItemQuantity, addItem } = useCart();
 
 	if (!cartItems || cartItems.length === 0) {
@@ -74,4 +74,4 @@ function CartProduct() {
 	);
 }
 
-export default CartProduct;
+export default CartProductForm;
