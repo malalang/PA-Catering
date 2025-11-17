@@ -1,6 +1,6 @@
 import AppLink from '../ui/Link';
 import { FaHome, FaInfoCircle, FaCar, FaEnvelope, FaImages } from 'react-icons/fa';
-import { publicPaths } from '@/lib/context/RouteGuardContext';
+const publicPaths = ['/', '/contact', '/about', '/gallery', '/terms', '/blog','/photo'];
 import { Dispatch, SetStateAction, useEffect, useRef } from 'react';
 const MobileMenu: React.FC<{
 	setMenubar: (path: 'mobile' | 'profile') => void;

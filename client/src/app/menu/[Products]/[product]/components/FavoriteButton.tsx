@@ -2,8 +2,8 @@
 
 import React, { useState, useEffect } from 'react';
 import { FaHeart, FaRegHeart } from 'react-icons/fa';
-import { doc, getDoc, setDoc } from 'firebase/firestore';
-import { auth, firestore } from '@/lib/firebase/firebaseConfig';
+import { useAuth } from '@/lib/supabase/auth/useAuth';
+import { getUserFavorites, toggleFavorite } from '@/lib/supabase/favorites';
 
 import Button from '@/components/ui/Button';
 
@@ -14,59 +14,37 @@ interface FavoriteButtonProps {
 const FavoriteButton: React.FC<FavoriteButtonProps> = ({ product }) => {
 	const [isFavorite, setIsFavorite] = useState(false);
 	const [isLoading, setIsLoading] = useState(false);
-	const userId = auth.currentUser?.uid;
+	const { user } = useAuth();
+	const userId = (user as any)?.id || (user as any)?.uid || null;
+
+	// Determine product id/key used in this app (fallbacks for different shapes)
+	const productKey = (product as any).ProductID || (product as any).id || (product as any).Name || (product as any).slug || (product as any).Slug;
 
 	useEffect(() => {
-		if (!userId) return;
+		if (!userId || !productKey) return;
 
 		const checkFavoriteStatus = async () => {
 			try {
-				const userFavoritesRef = doc(firestore, 'userFavorites', userId);
-				const userFavoritesDoc = await getDoc(userFavoritesRef);
-
-				if (userFavoritesDoc.exists()) {
-					const favorites = userFavoritesDoc.data().favorites || [];
-					setIsFavorite(favorites.includes(product.Name));
-				}
+				const favorites = await getUserFavorites(userId);
+				setIsFavorite(favorites.includes(productKey));
 			} catch (error) {
 				console.error('Error checking favorite status:', error);
 			}
 		};
 
 		checkFavoriteStatus();
-	}, [userId, product.Name]);
+	}, [userId, productKey]);
 
-	const toggleFavorite = async () => {
+	const handleToggleFavorite = async () => {
 		if (!userId) {
-			// Handle case where user is not logged in
 			alert('Please log in to save favorites');
 			return;
 		}
 
 		setIsLoading(true);
 		try {
-			const userFavoritesRef = doc(firestore, 'userFavorites', userId);
-			const userFavoritesDoc = await getDoc(userFavoritesRef);
-
-			if (userFavoritesDoc.exists()) {
-				const favorites = userFavoritesDoc.data().favorites || [];
-
-				if (isFavorite) {
-					// Remove from favorites
-					const updatedFavorites = favorites.filter((name: string) => name !== product.Name);
-					await setDoc(userFavoritesRef, { favorites: updatedFavorites });
-					setIsFavorite(false);
-				} else {
-					// Add to favorites
-					const updatedFavorites = [...favorites, product.Name];
-					await setDoc(userFavoritesRef, { favorites: updatedFavorites });
-					setIsFavorite(true);
-				}
-			} else {
-				// Create new favorites document
-				await setDoc(userFavoritesRef, { favorites: [product.Name] });
-				setIsFavorite(true);
-			}
+			const result = await toggleFavorite(userId, productKey);
+			setIsFavorite(result.added);
 		} catch (error) {
 			console.error('Error toggling favorite:', error);
 			alert('Failed to update favorites');
@@ -77,7 +55,7 @@ const FavoriteButton: React.FC<FavoriteButtonProps> = ({ product }) => {
 
 	return (
 		<Button
-			onClick={toggleFavorite}
+			onClick={handleToggleFavorite}
 			disabled={isLoading || !userId}
 			className={`flex items-center justify-center gap-2 px-4 py-2 rounded-md border border-transparent font-semibold text-white transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-black/50 focus:ring-white ${
 				isLoading || !userId ? 'bg-yellow-900/50 cursor-not-allowed' : 'bg-yellow-600 hover:bg-yellow-700'

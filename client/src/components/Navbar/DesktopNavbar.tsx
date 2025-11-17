@@ -13,15 +13,14 @@ import {
 	FaUtensils,
 	FaImages,
 } from 'react-icons/fa';
-import { logout } from '@/lib/firebase/auth/logout';
 import React, { useState, useRef, useEffect } from 'react';
 import Button from '@/components/ui/Button';
-import { publicPaths, AuthenticationPaths, protectedPaths } from '@/lib/context/RouteGuardContext';
-import { useUser } from '@/lib/context/UserContext';
+const publicPaths = ['/', '/contact', '/about', '/gallery', '/terms', '/blog','/photo'];
+import { useAuth } from '@/lib/supabase/auth/useAuth';
 import { FaBlog } from 'react-icons/fa6';
 
 const DesktopNavbar: React.FC = () => {
-	const { user } = useUser();
+	const { user } = useAuth();
 	const [profileOpen, setProfileOpen] = useState(false);
 	const profileRef = useRef<HTMLLIElement>(null);
 

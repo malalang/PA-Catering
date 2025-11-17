@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { signIn } from '@/lib/firebase/auth/signIn';
+import { signIn } from '@/lib/supabase/auth/signIn';
 import Loading from '@/components/ui/Loading';
 import { useRouter } from 'next/navigation';
 
@@ -17,28 +17,25 @@ export default function LoginForm() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState<string | null>(null);
-    const [loading, setLoading] = useState<string | null>(null); // To manage initial user check
+    const [loading, setLoading] = useState<string | null>(null);
 
     const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
-        event.preventDefault(); // Prevent default form submission
-        setLoading('Signing in...'); // Set loading state to indicate sign-in process
-        setError(null); // Clear previous errors
+        event.preventDefault();
+        setLoading('Signing in...');
+        setError(null);
 
         try {
-            const userCyellowential = await signIn(email, password);
-            if (userCyellowential) {
-                // The UserProvider will detect the auth change and handle data fetching.
-                // We just need to navigate to the user's profile page.
+            const user = await signIn(email, password);
+            if (user) {
                 router.push('/profile');
             } else {
-                // This case may not be hit if signIn throws an error, but it's a safe fallback.
-                setError('Sign in failed. Please check your cyellowentials.');
+                setError('Sign in failed. Please check your credentials.');
             }
         } catch (err: unknown) {
             if (err instanceof Error) {
                 setError(err.message);
             } else {
-                setError('An unexpected error occuryellow during sign in.');
+                setError('An unexpected error occurred during sign in.');
             }
         } finally {
             setLoading(null);
@@ -50,7 +47,6 @@ export default function LoginForm() {
     }
 
     return (
-
         <Section>
             {error && (
                 <div className='text-yellow-500 mb-4 mt-4 bg-yellow-900/20 p-3 rounded-md'>{error}</div>
@@ -89,6 +85,5 @@ export default function LoginForm() {
                 Don&apos;t have an account? <AppLink href='/Authentication/register'>Sign Up</AppLink>
             </p>
         </Section>
-
     );
 }

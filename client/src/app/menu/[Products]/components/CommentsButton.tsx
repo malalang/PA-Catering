@@ -3,8 +3,8 @@
 import React, { useState, useEffect } from 'react';
 import { BiSolidComment } from 'react-icons/bi';
 import Button from '@/components/ui/Button';
-import { doc, onSnapshot, collection } from 'firebase/firestore';
-import { auth, firestore } from '@/lib/firebase/firebaseConfig';
+import { useAuth } from '@/lib/supabase/auth/useAuth';
+import { getCommentsForProduct } from '@/lib/supabase/comments';
 
 import CommentModal from './CommentModal';
 
@@ -16,12 +16,13 @@ const CommentsButton: React.FC<CommentsButtonsProps> = ({ product }) => {
 	const [commentCount, setCommentCount] = useState(0);
 	const [showCommentModal, setShowCommentModal] = useState(false);
 	const [loading, setLoading] = useState(true);
-	const userId = auth.currentUser?.uid;
+	const { user } = useAuth();
 
-	const commentsRef = collection(firestore, 'products', product.Name, 'Comments');
-	const docRef = doc(firestore, 'products', product.Name);
+	// Determine product id/key used in this app (fallbacks for different shapes)
+	const productKey = (product as any).ProductID || (product as any).id || (product as any).Name || (product as any).slug || (product as any).Slug;
 
 	const handleCommentClick = () => {
+		const userId = (user as any)?.id || (user as any)?.uid || null;
 		if (!userId) {
 			alert('Please login to comment');
 			return;
@@ -32,17 +33,30 @@ const CommentsButton: React.FC<CommentsButtonsProps> = ({ product }) => {
 	const handleCloseCommentModal = () => {
 		setShowCommentModal(false);
 	};
+
 	useEffect(() => {
-		const unsubscribe = onSnapshot(commentsRef, (docSnap) => {
-			if (!docSnap.empty) {
-				setCommentCount(docSnap.size);
-				setLoading(false);
-			} else {
-				setLoading(false);
+		let mounted = true;
+		const load = async () => {
+			setLoading(true);
+			try {
+				if (!productKey) {
+					setCommentCount(0);
+					setLoading(false);
+					return;
+				}
+				const comments = await getCommentsForProduct(productKey);
+				if (!mounted) return;
+				setCommentCount(Array.isArray(comments) ? comments.length : 0);
+			} catch (err) {
+				console.error('Failed to load comments', err);
 			}
-		});
-		return () => unsubscribe(); // Unsubscribe when the component unmounts
-	}, [product.ProductID, docRef, userId]);
+			setLoading(false);
+		};
+		load();
+		return () => {
+			mounted = false;
+		};
+	}, [productKey]);
 
 	if (showCommentModal) {
 		return (

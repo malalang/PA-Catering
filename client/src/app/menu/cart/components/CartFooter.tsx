@@ -1,7 +1,7 @@
 'use client';
 import Button from '@/components/ui/Button';
 import { useCart } from '@/lib/context/CartContext';
-import { addOrderToFirestore } from '@/lib/firebase/orders/addOrderToFirestore';
+import { addOrder } from '@/lib/supabase/orders/orders';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import { IoAddCircle } from 'react-icons/io5';
@@ -16,7 +16,9 @@ function CartFooter() {
 		if (isPlacingOrder) return;
 		setIsPlacingOrder(true);
 		try {
-			await addOrderToFirestore(cartItems, totalPrice, totalQuantity);
+			const userId = 'anonymous';
+			// If you have user from context, pass real user id here
+			await addOrder(userId, cartItems, totalPrice, totalQuantity);
 			router.push('/orders');
 			clearCart();
 		} catch (error) {

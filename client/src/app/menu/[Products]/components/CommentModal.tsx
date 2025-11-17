@@ -1,8 +1,7 @@
-import { addDoc, collection } from 'firebase/firestore';
 import { useState } from 'react';
-import { firestore } from '@/lib/firebase/firebaseConfig';
+import { createClient } from '@/lib/supabase/client';
 
-import { useUser } from '@/lib/context/UserContext';
+import { useAuth } from '@/lib/supabase/auth/useAuth';
 import { useParams, useRouter } from 'next/navigation';
 interface CommentModalProps {
 	product: ProductType;
@@ -10,21 +9,22 @@ interface CommentModalProps {
 }
 const CommentModal: React.FC<CommentModalProps> = ({ product, handleCloseCommentModal }) => {
 	const [commentText, setCommentText] = useState('');
-	const { user } = useUser();
+	const { user } = useAuth();
 	const route = useRouter();
 	const params = useParams() as { Products: string };
 	const handleSubmitComment = async () => {
-		if (!product?.Name || !commentText.trim() || !user?.uid) {
+		if (!product?.Name || !commentText.trim() || !user?.id) {
 			handleCloseCommentModal();
 			return;
 		}
 		try {
-			const commentsRef = collection(firestore, 'products', product.Name, 'Comments');
-			await addDoc(commentsRef, {
-				userId: user.uid,
-				userName: user.displayName || 'Anonymous', // Use display name or fallback
-				comment: commentText.trim(),
-				timestamp: new Date(),
+			const supabase = createClient();
+			await supabase.from('comments').insert({
+				product_id: product.ProductID || product.Name,
+				user_id: user?.id || null,
+				user_name: (user as any)?.user_metadata?.full_name || (user as any)?.email || 'Anonymous',
+				body: commentText.trim(),
+				created_at: new Date().toISOString(),
 			});
 			setCommentText('');
 			handleCloseCommentModal();

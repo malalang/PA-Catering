@@ -2,21 +2,14 @@
 
 import React, { ReactNode, useEffect } from 'react';
 import { usePathname, useRouter } from 'next/navigation';
-import { useUser } from './UserContext';
+import { useAuth } from '@/lib/supabase/auth/useAuth';
 import Loading from '@/components/ui/Loading';
 
 // --- Route Protection Logic --- //
 export const publicPaths = ['/', '/contact', '/about', '/gallery', '/terms', '/blog','/photo'];
 export const AuthenticationPaths = ['/Authentication/login', '/Authentication/register'];
 export const protectedPaths = ['/profile', '/orders', '/carwash/booking', '/menu'];
-export const adminPaths = [
-	'/Admin/menu',
-	'/Admin/order',
-	'/Admin/carwash',
-	'/Admin/inventory',
-	'/Admin/dashboard',
-	'/Admin/seed',
-];
+
 
 export const roleBasedPaths: Record<UserRole, string[]> = {
 	coFounder: ['*'],
@@ -37,7 +30,7 @@ export function normalizePath(path: string) {
 }
 
 export const RouteGuard: React.FC<{ children: ReactNode }> = ({ children }) => {
-	const { user, loading } = useUser();
+	const { user, loading } = useAuth();
 	const router = useRouter();
 	const pathname = normalizePath(usePathname());
 

@@ -1,15 +1,14 @@
-import { protectedPaths, adminPaths, roleBasedPaths } from '@/lib/context/RouteGuardContext';
+const protectedPaths = ['/profile', '/orders', '/carwash/booking', '/menu'];
 import AppLink from '../ui/Link';
 import { FaCar, FaClipboardList, FaSignOutAlt, FaUserCircle, FaUtensils } from 'react-icons/fa';
 import Button from '../ui/Button';
-import { logout } from '@/lib/firebase/auth/logout';
 import { useEffect, useRef } from 'react';
-import { useUser } from '@/lib/context/UserContext';
+import { useAuth } from '@/lib/supabase/auth/useAuth';
 
 const ProfileMenu: React.FC<{ setMenubar: (path: 'mobile' | 'profile') => void }> = ({
 	setMenubar,
 }) => {
-	const { user } = useUser();
+	const { user } = useAuth();
 	const navRef = useRef<HTMLUListElement>(null);
 	if (!user) return null;
 	
@@ -45,31 +44,16 @@ const ProfileMenu: React.FC<{ setMenubar: (path: 'mobile' | 'profile') => void }
 						</AppLink>
 					</li>
 				))}
-				{user.role !== "Customer" &&
-					adminPaths.map((path) => (
-						<li key={path}>
-							<AppLink
-								href={path}
-								variant='primary'
-								onClick={() => setMenubar('profile')}>
-								<span className='flex items-center gap-2'>
-									{path === '/menu' && <FaUtensils />}
-									{path === '/profile' && <FaUserCircle />}
-									{path === '/orders' && <FaClipboardList />}
-									{path === '/carwash/booking' && <FaCar />}
-									{path.replace('/', '').charAt(0).toUpperCase() + path.replace('/', '').slice(1)}
-								</span>
-							</AppLink>
-						</li>
-					))}
 			</ul>
 
 			<Button
 				variant='primary'
-				onClick={async () => {
-					await logout();
-					setMenubar('profile');
-				}}
+				       onClick={async () => {
+					       const { createClient } = await import('@/lib/supabase/client');
+					       const supabase = createClient();
+					       await supabase.auth.signOut();
+					       setMenubar('profile');
+				       }}
 				className='flex items-center justify-between gap-2 px-4 py-2 w-full text-left'>
 				<span className='flex items-center gap-2'>
 					<FaSignOutAlt /> Log Out

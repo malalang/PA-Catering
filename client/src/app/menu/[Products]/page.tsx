@@ -53,7 +53,7 @@ export default function Page({ params }: { params: Promise<{ Products: string }>
 				sortedProducts.sort((a, b) => b.Price - a.Price);
 				break;
 			case 'popularity':
-				// Sort by likes count from Firestore
+				   // Sort by likes count
 				sortedProducts.sort((a, b) => {
 					const likesA = productLikes[a.Name]?.likes || 0;
 					const likesB = productLikes[b.Name]?.likes || 0;
@@ -90,7 +90,7 @@ export default function Page({ params }: { params: Promise<{ Products: string }>
 				sortedProducts.sort((a, b) => b.Price - a.Price);
 				break;
 			case 'popularity':
-				// Sort by likes count from Firestore
+				   // Sort by likes count
 				sortedProducts.sort((a, b) => {
 					const likesA = productLikes[a.Name]?.likes || 0;
 					const likesB = productLikes[b.Name]?.likes || 0;

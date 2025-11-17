@@ -7,13 +7,12 @@ import TextInput from '@/components/ui/TextInput';
 import Button from '@/components/ui/Button';
 import Avatar from '@/components/ui/Avatar';
 import Loading from '@/components/ui/Loading'; // Assuming you have a Loading component
-import { useUser } from '@/lib/context/UserContext';
-import { updateUser } from '@/lib/firebase/users/utils';
+import { useAuth } from '@/lib/supabase/auth/useAuth';
 
 import Section from '@/components/ui/layout/Section';
 
 const EditProfileForm: React.FC = () => {
-    const { user, loading } = useUser();
+    const { user, loading } = useAuth();
     const router = useRouter();
 
     // State for form fields
@@ -30,9 +29,9 @@ const EditProfileForm: React.FC = () => {
     // Effect to initialize form fields when user data loads or changes
     useEffect(() => {
         if (user) {
-            setDisplayName(user.displayName || '');
-            setPhoneNumber(user.phoneNumber || '');
-            setPhotoURL(user.photoURL || '');
+            setDisplayName(user.user_metadata?.displayName || '');
+            setPhoneNumber(user.user_metadata?.phoneNumber || '');
+            setPhotoURL(user.user_metadata?.photoURL || '');
         }
     }, [user]);
 
@@ -85,16 +84,19 @@ const EditProfileForm: React.FC = () => {
         setIsSaving(true);
         setSaveSuccess(null); // Reset feedback
 
-        const updatedFields: Partial<UserProfile> = {
-            displayName: displayName.trim(),
-            phoneNumber: phoneNumber.trim() || null, // Store null if empty
-            photoURL: photoURL.trim() || null, // Store null if empty
-        };
-
+        // Update user metadata in Supabase
         try {
-            await updateUser(user.uid, updatedFields);
+            const { error } = await fetch('/api/user', {
+                method: 'PATCH',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    displayName: displayName.trim(),
+                    phoneNumber: phoneNumber.trim() || null,
+                    photoURL: photoURL.trim() || null,
+                }),
+            }).then(res => res.json());
+            if (error) throw error;
             setSaveSuccess(true);
-            // Optionally, redirect back to the profile page after successful save
             router.push('/profile');
         } catch (error) {
             console.error('Error saving profile:', error);
@@ -112,8 +114,8 @@ const EditProfileForm: React.FC = () => {
         <Section>
             <div className='flex flex-col items-center mb-8'>
                 <Avatar
-                    src={photoURL || user.photoURL} // Show current input photoURL if available, else user's
-                    alt={displayName || user.displayName || 'User'}
+                    src={photoURL || user.user_metadata?.photoURL || ''}
+                    alt={displayName || user.user_metadata?.displayName || user.email || 'User'}
                     size='large'
                     className='mb-4 shadow-md'
                 />

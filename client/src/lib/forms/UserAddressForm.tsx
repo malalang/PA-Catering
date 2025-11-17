@@ -5,13 +5,12 @@ import TextInput from '@/components/ui/TextInput';
 import Button from '@/components/ui/Button';
 import { FaMapMarkerAlt, FaSave } from 'react-icons/fa';
 import { TbAccessPoint } from 'react-icons/tb';
-import { updateUserDocument } from '@/lib/firebase/users/updateUser';
 import Loading from '@/components/ui/Loading';
 import Alert from '@/components/ui/Alert';
-import { useUser } from '@/lib/context/UserContext';
+import { useAuth } from '@/lib/supabase/auth/useAuth';
 
-const UserAddress: React.FC = () => {
-	const { user, loading } = useUser();
+const UserAddressForm: React.FC = () => {
+	const { user, loading } = useAuth();
 	const [showAddressInput, setShowAddressInput] = useState(false);
 
 	const [addressData, setAddressData] = useState({
@@ -30,17 +29,17 @@ const UserAddress: React.FC = () => {
 		country: false,
 	});
 
-	useEffect(() => {
-		if (user) {
-			setAddressData({
-				address: user.address || '',
-				city: user.city || 'Phalaborwa',
-				state: user.state || 'Limpopo',
-				zipCode: user.zipCode || '1392',
-				country: user.country || 'South Africa',
-			});
-		}
-	}, [user]);
+	       useEffect(() => {
+		       if (user) {
+			       setAddressData({
+				       address: user.user_metadata?.address || '',
+				       city: user.user_metadata?.city || 'Phalaborwa',
+				       state: user.user_metadata?.state || 'Limpopo',
+				       zipCode: user.user_metadata?.zipCode || '1392',
+				       country: user.user_metadata?.country || 'South Africa',
+			       });
+		       }
+	       }, [user]);
 
 	const validateFields = () => {
 		const newErrors = {
@@ -54,19 +53,24 @@ const UserAddress: React.FC = () => {
 		return !Object.values(newErrors).some(Boolean);
 	};
 
-	const handleSave = async () => {
-		if (!validateFields() || !user?.uid) {
-			console.error('Validation failed or user not logged in.');
-			return;
-		}
+	       const handleSave = async () => {
+		       if (!validateFields() || !user?.id) {
+			       console.error('Validation failed or user not logged in.');
+			       return;
+		       }
 
-		try {
-			await updateUserDocument(user.uid, addressData);
-			setShowAddressInput(false);
-		} catch (error) {
-			console.error('Failed to save address:', error);
-		}
-	};
+		       try {
+			       const { error } = await fetch('/api/user', {
+				       method: 'PATCH',
+				       headers: { 'Content-Type': 'application/json' },
+				       body: JSON.stringify(addressData),
+			       }).then(res => res.json());
+			       if (error) throw error;
+			       setShowAddressInput(false);
+		       } catch (error) {
+			       console.error('Failed to save address:', error);
+		       }
+	       };
 
 	const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 		const { name, value } = e.target;
@@ -77,18 +81,18 @@ const UserAddress: React.FC = () => {
 	if (loading) return <Loading />;
 	if (!user) return null;
 
-	const fullAddress = `${user.address}, ${user.city}, ${user.state}, ${user.zipCode}, ${user.country}`;
+	const fullAddress = `${user.user_metadata?.address || ''}, ${user.user_metadata?.city || ''}, ${user.user_metadata?.state || ''}, ${user.user_metadata?.zipCode || ''}, ${user.user_metadata?.country || ''}`;
 
-	return (
-		<article>
-			<h3 className='flex items-center gap-2 text-xl font-bold mb-3'>
-				<FaMapMarkerAlt /> Shipping Address
-			</h3>
+	       return (
+		       <article>
+			       <h3 className='flex items-center gap-2 text-xl font-bold mb-3'>
+				       <FaMapMarkerAlt /> Shipping Address
+			       </h3>
 
-			{user.address && !showAddressInput ? <p className='text-white'>{fullAddress}</p> : null}
+			       {user.user_metadata?.address && !showAddressInput ? <p className='text-white'>{fullAddress}</p> : null}
 
-			{showAddressInput ? (
-				<div className='mt-4 flex flex-col gap-3'>
+			       {showAddressInput ? (
+				       <div className='mt-4 flex flex-col gap-3'>
 					<TextInput
 						type='text'
 						name='address'
@@ -162,14 +166,14 @@ const UserAddress: React.FC = () => {
 					</Button>
 				</div>
 			) : (
-				<button
-					onClick={() => setShowAddressInput(true)}
-					className='inline-flex items-center gap-2 px-4 py-2 bg-black/50 text-white rounded-md hover:bg-yellow-600 focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:ring-opacity-50 transition duration-200'>
-					<TbAccessPoint /> {user.address ? 'Edit Address' : 'Add Address'}
-				</button>
+				       <button
+					       onClick={() => setShowAddressInput(true)}
+					       className='inline-flex items-center gap-2 px-4 py-2 bg-black/50 text-white rounded-md hover:bg-yellow-600 focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:ring-opacity-50 transition duration-200'>
+					       <TbAccessPoint /> {user.user_metadata?.address ? 'Edit Address' : 'Add Address'}
+				       </button>
 			)}
 		</article>
 	);
 };
 
-export default UserAddress;
+export default UserAddressForm;

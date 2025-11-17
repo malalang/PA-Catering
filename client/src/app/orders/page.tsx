@@ -1,24 +1,20 @@
 export const dynamic = 'force-dynamic';
-import { getOrdersForUserFromFirestore } from '@/lib/firebase/orders/getOrderFromFirestore';
-import GetUser from '@/lib/firebase/users/server/GetServerUser';
+import { createClient } from '@/lib/supabase/server';
+import { getOrdersByUser } from '@/lib/supabase/orders/orders';
 import OrderItem from '@/app/orders/components/OrderItem';
 import Main from '@/components/ui/layout/Main';
 import { FaHistory } from 'react-icons/fa';
-const OrderHistory: React.FC = async () => {
-	const user = await GetUser();
+import { redirect } from 'next/navigation';
 
-	if (!user) {
-		return (
-			<Main
-				tittle='Order History'
-				Icon={FaHistory}
-				className='p-4'>
-				<p className='text-white text-center'>Please log in to see your order history.</p>
-			</Main>
-		);
+const OrderHistory: React.FC = async () => {
+	const supabase = await createClient();
+	const { data: { user }, error } = await supabase.auth.getUser();
+
+	if (error || !user?.id) {
+		return redirect('/Authentication/login');
 	}
 
-	const orders = await getOrdersForUserFromFirestore(user.uid);
+	const orders = await getOrdersByUser(user.id);
 
 	if (orders.length === 0) {
 		return (
@@ -38,7 +34,7 @@ const OrderHistory: React.FC = async () => {
 			className='p-4 space-y-4'>
 			{orders.map((order) => (
 				<OrderItem
-					key={order.orderId}
+					key={order.id}
 					order={order}
 				/>
 			))}

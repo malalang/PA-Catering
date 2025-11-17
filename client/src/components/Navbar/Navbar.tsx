@@ -2,14 +2,14 @@
 import { useState } from 'react';
 import DesktopNavbar from './DesktopNavbar';
 import MobileNavbar from './MobileNavbar';
-import { useUser } from '@/lib/context/UserContext';
+import { useAuth } from '@/lib/supabase/auth/useAuth';
 import ProfileMenu from './ProfileMenu';
 import AuthButton from './AuthButton';
 import MobileMenu from './MobileMenu';
 import { useMenubarToggle } from './useMenubarToggle';
 
 const Navbar: React.FC = () => {
-	const { user } = useUser();
+	const { user } = useAuth();
 	const { profileOpen, mobileOpen, setMenubar } = useMenubarToggle();
 
 	return (

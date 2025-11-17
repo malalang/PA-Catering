@@ -1,25 +1,22 @@
 import React from 'react';
-
-import GetUser from '@/lib/firebase/users/server/GetServerUser';
+import { createClient } from '@/lib/supabase/server';
 import Image from 'next/image';
+import { redirect } from 'next/navigation';
 
 import Main from '@/components/ui/layout/Main';
 import Section from '@/components/ui/layout/Section';
-import { getOrdersForUserFromFirestore } from '@/lib/firebase/orders/getOrderFromFirestore';
+import { getOrdersByUser } from '@/lib/supabase/orders/orders';
 
 
 const StateOrderPage = async () => {
-	const user = await GetUser();
+	const supabase = await createClient();
+	const { data: { user }, error } = await supabase.auth.getUser();
 
-	if (!user) {
-		return (
-			<main className='p-4'>
-				<p className='text-white text-center'>Please log in to see your order history.</p>
-			</main>
-		);
+	if (error || !user?.id) {
+		return redirect('/Authentication/login');
 	}
 
-	const orders = await getOrdersForUserFromFirestore(user.uid);
+	const orders = await getOrdersByUser(user.id);
 
 	if (orders.length === 0) {
 		return (
@@ -31,54 +28,26 @@ const StateOrderPage = async () => {
 
 	return (
 		<Main>
-			{orders.map((order: Order) => (
+			{orders.map((order: any) => (
 				<Section
-					tittle={`Order on ${new Date(order.orderDate).toLocaleDateString()}`}
-					key={order.orderId}>
+					tittle={`Order on ${new Date(order.created_at).toLocaleDateString()}`}
+					key={order.id}>
 					<ul className='text-white'>
 						<li>
 							<p>
-								<b>Order Number:</b> {order.orderId}
+								<b>Order Number:</b> {order.id}
 							</p>
 							<p>
-								<b>Date:</b> {new Date(order.orderDate).toLocaleDateString()}
+								<b>Date:</b> {new Date(order.created_at).toLocaleDateString()}
 							</p>
 							<p className='mt-2'>
-								<b>Products:</b>
-							</p>
-							<ul className='mt-2 space-y-2'>
-								{order.products?.map((item: CartItem) => (
-									<li
-										className='border-t border-white/20 py-2'
-										key={item.ProductID + Math.random().toString()}>
-										<article className='flex gap-4 items-center'>
-											{item.Image && (
-												<Image
-													src={item.Image}
-													alt={item.Name}
-													width={80}
-													height={80}
-													className='rounded-md'
-												/>
-											)}
-											<div>
-												<h3 className='font-semibold text-white'>{item.Name}</h3>
-												<p>
-													<b>Quantity:</b> {item.quantity}
-												</p>
-												<p>
-													<b>Price:</b> R{item.Price.toFixed(2)}
-												</p>
-											</div>
-										</article>
-									</li>
-								))}
-							</ul>
-							<p className='mt-2'>
-								<b>Total:</b> R{order.totalAmount.toFixed(2)}
+								<b>Total Price:</b> R{order.total_price?.toFixed(2) || '0.00'}
 							</p>
 							<p>
-								<b>Status:</b> <span className='font-semibold text-white'>{order.status}</span>
+								<b>Total Quantity:</b> {order.total_quantity || 0}
+							</p>
+							<p>
+								<b>Status:</b> {order.status || 'pending'}
 							</p>
 						</li>
 					</ul>

@@ -1,12 +1,13 @@
-import GetServerUser from "@/lib/firebase/users/server/GetServerUser";
+import { createClient } from "@/lib/supabase/server";
 import CommentsForm from "@/lib/forms/CommentsForm";
 import { redirect } from "next/navigation";
 interface CommentsProps {
 	params: Promise<{ product: string }>;
 }
 const Comments:React.FC<CommentsProps> = async ({ params }) => {
-		const user = await GetServerUser();
-	if (!user?.uid) {
+		const supabase = await createClient();
+		const { data: { user }, error } = await supabase.auth.getUser();
+	if (error || !user?.id) {
 		return redirect('/Authentication/login');
 	}
 	const ProductName = (await params).product;

@@ -2,7 +2,6 @@
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { signUp } from '@/lib/firebase/auth/signUp';
 import Button from '@/components/ui/Button';
 import TextInput from '@/components/ui/TextInput';
 import AppLink from '@/components/ui/Link';
@@ -21,16 +20,20 @@ const RegisterForm = () => {
         setError(null); // Clear previous errors
 
         try {
-            await signUp(email, password, displayName, phoneNumber);
-            // redirect to profile page on successful registration
+            const res = await fetch('/api/user', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ email, password, displayName, phoneNumber }),
+            });
+            if (!res.ok) throw new Error('Registration failed');
             router.push('/profile');
         } catch (err: unknown) {
             if (typeof err === 'object' && err !== null && 'message' in err) {
                 console.error('Registration error:', err);
-                setError((err.message as string) || 'An unexpected error occuryellow during registration.');
+                setError((err.message as string) || 'An unexpected error occurred during registration.');
             } else {
                 console.error('Registration error:', err);
-                setError('An unexpected error occuryellow during registration.');
+                setError('An unexpected error occurred during registration.');
             }
         }
     };

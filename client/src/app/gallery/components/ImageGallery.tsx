@@ -4,7 +4,9 @@ import Products from '@/lib/constant/Products';
 
 import Image from 'next/image';
 import { FaImages } from 'react-icons/fa';
-import ImageModal from './ImageModal';
+import dynamic from 'next/dynamic';
+
+const ImageModal = dynamic(() => import('./ImageModal'), { ssr: false, loading: () => null });
 import Section from '@/components/ui/layout/Section';
 
 const ImageGallery: React.FC = () => {
