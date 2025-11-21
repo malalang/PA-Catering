@@ -1,0 +1,52 @@
+{
+  "placeholderImages": [
+    {
+      "id": "hero",
+      "description": "A glamorous party scene with people celebrating.",
+      "imageUrl": "https://images.unsplash.com/photo-1425421598808-4a22ce59cc97?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw2fHxwYXJ0eSUyMGV2ZW50fGVufDB8fHx8MTc2MTE0Mjk4MHww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "party event"
+    },
+    {
+      "id": "service-360-booth",
+      "description": "A 360 photo booth in action at an event.",
+      "imageUrl": "https://images.unsplash.com/photo-1727892349109-54d06e3478ee?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxwaG90byUyMGJvb3RofGVufDB8fHx8MTc2MTEzOTcxOHww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "photo booth"
+    },
+    {
+      "id": "service-red-carpet",
+      "description": "A red carpet entrance with stanchions.",
+      "imageUrl": "https://images.unsplash.com/photo-1614115866447-c9a299154650?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxyZWQlMjBjYXJwZXR8ZW58MHx8fHwxNzYxMTQyOTgwfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "red carpet"
+    },
+    {
+      "id": "event-graduations",
+      "description": "Graduates celebrating at a party.",
+      "imageUrl": "https://images.unsplash.com/photo-1533120921505-7f40f5237ee1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxncmFkdWF0aW9uJTIwcGFydHl8ZW58MHx8fHwxNzYxMTQyOTgwfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "graduation party"
+    },
+    {
+      "id": "event-weddings",
+      "description": "A wedding reception with guests dancing.",
+      "imageUrl": "https://images.unsplash.com/photo-1723832348105-2e69f948135a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHx3ZWRkaW5nJTIwcmVjZXB0aW9ufGVufDB8fHx8MTc2MTEyMTEyOXww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "wedding reception"
+    },
+    {
+      "id": "event-baby-showers",
+      "description": "Decorations at a baby shower.",
+      "imageUrl": "https://images.unsplash.com/photo-1594150878496-a921e5af8907?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw2fHxiYWJ5JTIwc2hvd2VyfGVufDB8fHx8MTc2MTA1NjI3OHww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "baby shower"
+    },
+    {
+      "id": "event-school-events",
+      "description": "Students at a school dance.",
+      "imageUrl": "https://images.unsplash.com/photo-1504609813442-a8924e83f76e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxzY2hvb2wlMjBkYW5jZXxlbnwwfHx8fDE3NjExNDI5ODN8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "school dance"
+    },
+    {
+      "id": "event-birthdays",
+      "description": "A lively birthday party.",
+      "imageUrl": "https://images.unsplash.com/photo-1556125574-d7f27ec36a06?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxiaXJ0aGRheSUyMHBhcnR5fGVufDB8fHx8MTc2MTA0MTM0N3ww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "birthday party"
+    }
+  ]
+}

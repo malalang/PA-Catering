@@ -1,0 +1,15 @@
+# Allow all web crawlers to index the site
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://yourdomain.com/sitemap.xml
+
+# Disallow admin and API routes
+Disallow: /admin/
+Disallow: /api/
+
+# Allow media files
+Allow: /public/
+
+# Crawl-delay: 10  # Uncomment and adjust if needed to limit crawl rate
