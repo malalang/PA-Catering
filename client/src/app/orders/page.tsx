@@ -11,7 +11,7 @@ const OrderHistory: React.FC = async () => {
 	const { data: { user }, error } = await supabase.auth.getUser();
 
 	if (error || !user?.id) {
-		return redirect('/Authentication/login');
+		return redirect('/login');
 	}
 
 	const orders = await getOrdersByUser(user.id);

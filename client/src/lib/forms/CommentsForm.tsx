@@ -13,7 +13,7 @@ const CommentsForm: React.FC<CommentsProps> = async ({ ProductName }) => {
 	const user: any = null; // TODO: Get authenticated user from Supabase session
 
        if (!user) {
-	       return redirect('/Authentication/login');
+	       return redirect('/login');
        }
 
        let comments: Array<{ id: string; user_name: string | null; created_at: string; body: string }> = [];

@@ -1,64 +1,46 @@
-**Role:** Senior Full-Stack Engineer & Next.js Architect
-**Task:** Comprehensive Refactor, Supabase Integration, and Production Optimization
-**Context:** @context.xml  (Contains @admin  and @client  Next.js repositories)
+**Role:** Senior Next.js 16 Architect & UI/UX Designer
+**Task:** Finalize Architecture, Fix Routing/API Errors, Seed Data, and Polish UI
+**Context:** Updated `context.xml` (References `client` and `admin` apps)
 
 **Objective:**
-Analyze the provided @context.xml  to understand the current codebase. Refactor both the @admin  and @client  applications to strictly follow **Next.js 16** best practices. The goal is to eliminate client-side data fetching and routing logic in favor of **React Server Components (RSC)**, **Server Actions**, and **Middleware**, ensuring the applications are production-ready, responsive, and fully integrated with Supabase.
+We are in the final phase of refactoring the **Client** application. `RouteGuardContext` has been successfully removed, and we are using `client/src/proxy.ts` for route protection. The goal now is to fix the remaining directory structure issues, replace the legacy API route with Server Actions, seed the database, and elevate the "PA Luxe" design.
 
----
+### **1. Architecture & Routing Fixes (Critical)**
+* **Fix Auth Directory Structure:**
+    * Currently, auth pages are located at `client/src/app/Authentication/login` & `register`. This creates awkward URLs (`/Authentication/login`).
+    * **Action:** Move these to a Route Group: `client/src/app/(auth)/login` and `client/src/app/(auth)/register`.
+    * **Action:** Update `client/src/proxy.ts` to redirect unauthenticated users to `/login` (not `/Authentication/login`).
+* **Remove Legacy API Route:**
+    * **Action:** Delete `client/src/app/api/user/route.ts`. This file is causing **405 Method Not Allowed** errors because `EditProfileForm` attempts to PATCH to it.
+    * **Replacement:** Implement **Server Actions** for all data mutations.
 
-### **1. Architectural Standards (Next.js 16)**
-* **Default to Server Components:** Convert all `page.tsx` and `layout.tsx` files to `async` Server Components.
-* **Client Component Boundary:** Move all interactivity (clicks, form inputs, state hooks like `useState`, `useEffect`) to isolated leaf components (e.g., `<AddToCartButton />`, `<SearchBar />`). Add `'use client'` directives *only* to these specific files.
-* **Remove Legacy Routing:** **Delete `RouteGuardContext.tsx`**. Replace its functionality (protecting routes based on auth) entirely with `middleware.ts` and server-side session checks in layouts/pages the @client must not have user roles.
-* **Data Fetching:** Remove all client-side `useEffect` data fetching. Fetch data directly in Server Components using the Supabase Server Client.
+### **2. Server Actions Implementation (Next.js 16)**
+* **Auth Actions:**
+    * Create `client/src/lib/actions/auth.ts`.
+    * Move the logic from `client/src/lib/supabase/auth/signIn.ts` and `signUp.ts` (currently client-side) into this Server Action.
+    * Refactor `LoginForm.tsx` and `RegisterForm.tsx` to use the React 19 `useActionState` hook.
+* **Profile Actions:**
+    * Create `client/src/lib/actions/profile.ts`.
+    * Create `updateProfile` and `updateAddress` actions.
+    * Refactor `EditProfileForm.tsx` and `UserAddressForm.tsx` to use these actions instead of `fetch('/api/user')`.
 
-### **2. Supabase Integration & Data Layer**
-* **Utilize Supabase MCP:** Use available tools to inspect the schema and ensure queries match the `create_tables.sql` definitions. use the MCP to add all the proctucts from @products.ts 
-* **Single Source of Truth:**
-    * **Delete** @products.ts  and @Stock.ts . we don't us the @Stock.ts on the @client 
-    * Refactor the Client app to fetch **products**, **images**, and **prices** dynamically from the Supabase `products` table.
-    * Ensure images served from Supabase Storage are optimized using `next/image`.
-* **Server Actions:** Convert all form submissions (Login, Register, Add to Cart, Contact Form) to **Server Actions** (`"use server"`), handling validation and DB mutations on the server.
+### **3. Database Seeding**
+* **Populate Products:**
+    * The file `client/supabase_migrations/seed_products.sql` contains the necessary data.
+    * **Action:** Execute this SQL against the Supabase instance to populate the `products` table with the "PA Luxe" menu items (Burgers, Kotas, etc.).
+* **Verify Schema:** Ensure the `products` table schema in Supabase matches the types used in `client/src/app/menu/page.tsx`.
 
-### **3. Client Application Refactor @client  **
-* **Pages:** Convert @page.tsx  , @page.tsx  , etc., to Server Components. They should fetch data and pass it as props to client-side interactive islands if necessary.
-* **Search & Filtering:** Move the search/filter logic from @CartContext.tsx  to **URL Search Params**.
-    * Example: Filtering by category should update the URL to `?category=meals`. The Server Page reads `searchParams` and queries Supabase accordingly.
-* **Cart Context:** Keep @CartContext.tsx  *only* for managing the temporary state of the shopping cart (local storage). Remove any data-fetching logic from it.
+### **4. UI/UX Design Polish (Theme: PA Luxe)**
+* **Visual Identity:** Enforce the **Black & Gold** luxury aesthetic (`bg-black`, `text-white`, `border-yellow-500`).
+* **Components:**
+    * **Glassmorphism:** Apply `bg-white/10 backdrop-blur-md` to the Navbar, Product Cards, and Form containers.
+    * **Typography:** Ensure headings use the "Luxurious" font stack defined in `globals.css` with gold drop-shadows.
+* **Responsiveness:**
+    * Check `client/src/app/menu/page.tsx` grid layouts. Ensure 1 column on mobile, 2 on tablet, 4 on desktop.
 
-### **4. UI/UX & Theming**
-* **Design System:** Enforce the existing **Yellow/Black/Dark** aesthetic. Ensure the design is fully responsive (Mobile First) using Tailwind CSS.
-* **Accessibility:** Ensure all inputs and buttons have proper labels and focus states.
-
-### **5. Execution Plan**
-
-**Step 1: Configuration & Middleware**
-* Review `middleware.ts`. Ensure it correctly protects `/profile`, `/orders`, and `/admin` routes by validating Supabase sessions before rendering.
-* Set up strict types for Supabase tables based on `create_tables.sql`.
-
-**Step 2: Admin Refactor**
-* Ensure Admin pages are Server Components.
-* Verify Admin mutations (Add Product, Update Order) use Server Actions with `revalidatePath`.
-
-**Step 3: Client Refactor (The Core Task)**
-* Remove @RouteGuardContext.tsx 
-* Rewrite @page.tsx  :
-    1.  Accept `searchParams`.
-    2.  Fetch filtered products from Supabase (Server-side).
-    3.  Render the list.
-* Refactor @ProductCard.tsx  and @page.tsx  to use dynamic data.
-* Refactor @Navbar  : Use a Server Component to check the session and render "Login" or "Profile" buttons accordingly.
-
-**Step 4: Clean Up**
-* Delete unused files (placeholder JSONs, hardcoded TS data files).
-* Ensure no secrets are exposed in client bundles.
-
-**Step 5: Verification**
-* Run `npx tsc --noEmit` to ensure strict type safety across the new architecture.
-* Run `npm run build` to verify that static generation and server builds succeed without errors.
-
----
-
-**Immediate Action:**
-Start by analyzing `middleware.ts` and `client/src/lib/supabase/server.ts` to ensure the authentication foundation is solid, then proceed to convert the Client Menu page to a Server Component fetching from Supabase.
+### **Execution Order**
+1.  **Move Directories:** Fix `(auth)` folder structure immediately.
+2.  **Delete & Replace:** Remove `api/user/route.ts` and implement `actions/profile.ts`.
+3.  **Refactor Auth:** Implement `actions/auth.ts` and update forms.
+4.  **Seed Data:** Run the SQL seed.
+5.  **Polish:** Apply final CSS refinements to the Menu and Profile pages.

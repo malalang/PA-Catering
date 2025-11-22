@@ -20,7 +20,7 @@ export default function Section({
 		<section
 			{...props}
 			className={
-				className ? className : ' bg-black/30 border border-yellow-500/20 rounded-md p-2 my-4'
+				className ? className : 'bg-white/10 backdrop-blur-md border border-yellow-500/20 rounded-md p-2 my-4'
 			}>
 			<header>
 				{Icon ? (

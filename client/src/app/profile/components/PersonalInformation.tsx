@@ -26,7 +26,7 @@ const PersonalInformation: React.FC = () => {
        const { user } = useAuth();
        const route = useRouter();
        if (!user) {
-	       route.replace('/Authentication/login');
+	       route.replace('/login');
 	       return null;
        }
        return (

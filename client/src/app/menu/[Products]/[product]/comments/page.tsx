@@ -8,7 +8,7 @@ const Comments:React.FC<CommentsProps> = async ({ params }) => {
 		const supabase = await createClient();
 		const { data: { user }, error } = await supabase.auth.getUser();
 	if (error || !user?.id) {
-		return redirect('/Authentication/login');
+		return redirect('/login');
 	}
 	const ProductName = (await params).product;
 	return (

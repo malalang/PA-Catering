@@ -22,7 +22,7 @@ const AuthButton: React.FC<{ setMenubar: (path: 'mobile' | 'profile') => void; u
 		<AppLink
 			variant='button'
 			className='my-1'
-			href='/Authentication/login'>
+			href='/login'>
 			<FaSignInAlt /> Log in
 		</AppLink>
 	);

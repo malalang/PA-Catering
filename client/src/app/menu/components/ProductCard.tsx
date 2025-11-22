@@ -12,7 +12,7 @@ interface ProductCardProps {
 }
 
 const ProductCard: React.FC<ProductCardProps> = ({ product, categoryName }) => (
-	<article className='m-0 group flex flex-col h-full bg-black/50 border border-yellow-500 rounded-md p-4 transition-shadow duration-300 hover:shadow-lg hover:shadow-yellow-500/20'>
+	<article className='m-0 group flex flex-col h-full bg-white/10 backdrop-blur-md border border-yellow-500 rounded-md p-4 transition-shadow duration-300 hover:shadow-lg hover:shadow-yellow-500/20'>
 		<span className='flex items-center justify-between gap-2'>
 			{product.badge && (
 				<span className='px-2 py-1 rounded-full text-xs font-bold z-10 shadow-lg bg-yellow-700 text-white'>
