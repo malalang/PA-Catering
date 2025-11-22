@@ -25,6 +25,8 @@ export async function signInAction(
     };
   }
 
+  let user = null;
+
   try {
     const supabase: SupabaseClient<Database> = await createClient();
     const { data, error } = await supabase.auth.signInWithPassword({
@@ -39,20 +41,22 @@ export async function signInAction(
       };
     }
 
-    if (data.user) {
-      redirect("/profile");
-    }
-
-    return {
-      success: false,
-      error: "Sign in failed. Please check your credentials.",
-    };
+    user = data.user;
   } catch (error) {
     return {
       success: false,
       error: error instanceof Error ? error.message : "An unexpected error occurred during sign in.",
     };
   }
+
+  if (user) {
+    redirect("/profile");
+  }
+
+  return {
+    success: false,
+    error: "Sign in failed. Please check your credentials.",
+  };
 }
 
 export async function signUpAction(
@@ -70,6 +74,8 @@ export async function signUpAction(
       error: "Email, password, and display name are required.",
     };
   }
+
+  let user = null;
 
   try {
     const supabase: SupabaseClient<Database> = await createClient();
@@ -93,16 +99,18 @@ export async function signUpAction(
       };
     }
 
+    user = authData.user;
+
     // Create user profile in public.profiles table
-    if (authData.user) {
+    if (user) {
       const { error: profileError } = await (supabase
         .from("profiles") as any).insert({
-          id: authData.user.id,
-          email: authData.user.email,
+          id: user.id,
+          email: user.email,
           display_name: displayName,
           phone: phoneNumber || "",
           role: "customer",
-          uid: authData.user.id,
+          uid: user.id,
           email_verified: false,
           photo_url: null,
           address: "",
@@ -138,22 +146,25 @@ export async function signUpAction(
 
       if (profileError) {
         console.error("Error creating user profile:", profileError);
-        // Don't fail the signup if profile creation fails, but log it
+        // We might want to return an error here, but for now we'll proceed
+        // return { success: false, error: "Failed to create profile: " + profileError.message };
       }
-
-      redirect("/profile");
     }
-
-    return {
-      success: false,
-      error: "Registration failed. Please try again.",
-    };
   } catch (error) {
     return {
       success: false,
       error: error instanceof Error ? error.message : "An unexpected error occurred during registration.",
     };
   }
+
+  if (user) {
+    redirect("/profile");
+  }
+
+  return {
+    success: false,
+    error: "Registration failed. Please try again.",
+  };
 }
 
 

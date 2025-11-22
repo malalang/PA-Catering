@@ -28,15 +28,16 @@ ALTER TABLE profiles ENABLE ROW LEVEL SECURITY;
 
 -- Policy: Profiles are viewable by everyone (or just authenticated users)
 -- User requested: "Profiles are viewable by everyone"
+-- Policy: Profiles are viewable by everyone
 CREATE POLICY "Profiles are viewable by everyone"
 ON profiles FOR SELECT
-TO authenticated, anon
+TO PUBLIC
 USING ( true );
 
 -- Policy: Users can insert their own profile
 CREATE POLICY "Users can insert their own profile"
 ON profiles FOR INSERT
-TO authenticated, anon
+TO authenticated
 WITH CHECK ( auth.uid() = id );
 
 -- Policy: Users can update their own profile
