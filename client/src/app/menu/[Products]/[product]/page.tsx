@@ -67,7 +67,7 @@ async function ProductPage({ params }: { params: Promise<{ product: string; Prod
 			.from('products')
 			.select('*')
 			.ilike('name', productNameSlug)
-			.single();
+		.single();
 
 		if (exactMatch && !exactError) {
 			productData = exactMatch as ProductRow;

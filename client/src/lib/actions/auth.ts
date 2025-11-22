@@ -95,14 +95,13 @@ export async function signUpAction(
     // Create user profile in public.profiles table
     if (authData.user) {
       const { error: profileError } = await supabase
-        .from("profiles")
-        // @ts-ignore - Supabase type inference issue with Database types
-        .insert({
+        .from("profiles").insert({
           id: authData.user.id,
           email: authData.user.email,
           display_name: displayName,
           phone: phoneNumber || "",
-        });
+          role: "customer",
+        } as any);
 
       if (profileError) {
         console.error("Error creating user profile:", profileError);
