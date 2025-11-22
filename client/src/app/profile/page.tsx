@@ -49,7 +49,7 @@ const CustomerProfilePage: React.FC = async () => {
 		loyaltyPointsBalance: profile.loyalty_points_balance || 0,
 		tierStatus: profile.tier_status || 'Bronze',
 		rewardsAvailable: (profile.rewards_available as any) || [],
-		yellowemptionHistory: (profile.yellowemption_history as any) || [],
+		yellowemptionHistory: (profile.redemption_history as any) || [],
 		personalizedPromotions: (profile.personalized_promotions as any) || [],
 		referralCode: profile.referral_code || '',
 		carWashCount: profile.car_wash_count || 0,

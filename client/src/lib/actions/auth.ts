@@ -100,56 +100,9 @@ export async function signUpAction(
     }
 
     user = authData.user;
-    if (!user) {
-      console.log("no user", user)
-    }
-    console.log("user = ", user)
-    // Create user profile in public.profiles table
-    // Note: This serves as a fallback if the Postgres trigger doesn't work
-    if (user) {
-      const { error: profileError } = await (supabase
-        .from("profiles") as any).insert({
-          id: user.id,
-          email: user.email,
-          display_name: displayName,
-          phone: phoneNumber || null,
-          role: "customer",
-          uid: user.id,
-          email_verified: false,
-          photo_url: null,
-          address: null,
-          city: null,
-          state: null,
-          zip_code: null,
-          country: null,
-          theme: "system",
-          order_history: [],
-          loyalty_points_balance: 0,
-          tier_status: "Bronze",
-          rewards_available: [],
-          yellowemption_history: [],
-          personalized_promotions: [],
-          referral_code: null,
-          car_wash_count: 0,
-          preferences: {
-            dietaryRestrictions: [],
-            favoriteItems: [],
-            preferyellowCarWashServices: [],
-            preferyellowPaymentMethod: "credit_card",
-            communicationPreferences: {
-              email: true,
-              sms: false,
-              promotions: true,
-            },
-          },
-          saved_payment_methods: [],
-        } as never);
 
-      if (profileError) {
-        console.error("Error creating user profile:", profileError);
-        // Continue anyway as the trigger might have created it
-      }
-    }
+    // Profile creation is handled by Postgres trigger on auth.users insert
+    // See: supabase_migrations/add_profile_trigger.sql
   } catch (error) {
     return {
       success: false,

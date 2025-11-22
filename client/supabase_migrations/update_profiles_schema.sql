@@ -21,7 +21,7 @@ ALTER TABLE IF EXISTS public.profiles
   ADD COLUMN IF NOT EXISTS loyalty_points_balance integer DEFAULT 0,
   ADD COLUMN IF NOT EXISTS tier_status text DEFAULT 'Bronze',
   ADD COLUMN IF NOT EXISTS rewards_available jsonb DEFAULT '[]'::jsonb,
-  ADD COLUMN IF NOT EXISTS yellowemption_history jsonb DEFAULT '[]'::jsonb,
+  ADD COLUMN IF NOT EXISTS redemption_history jsonb DEFAULT '[]'::jsonb,
   ADD COLUMN IF NOT EXISTS personalized_promotions jsonb DEFAULT '[]'::jsonb,
   ADD COLUMN IF NOT EXISTS referral_code text,
   ADD COLUMN IF NOT EXISTS car_wash_count integer DEFAULT 0,
