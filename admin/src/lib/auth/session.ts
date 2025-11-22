@@ -5,7 +5,7 @@ import type { SupabaseServerClient } from "@/lib/supabase/server";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 import type { AdminProfileSummary } from "@/lib/types";
 
-const PROFILE_COLUMNS = "id,email,full_name,role";
+const PROFILE_COLUMNS = "id,email,display_name,role";
 
 async function fetchProfile(
   client: SupabaseServerClient,

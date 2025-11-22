@@ -55,6 +55,6 @@ export interface UserProfile {
 export interface AdminProfileSummary {
   id: string;
   email?: string;
-  full_name?: string;
+  display_name?: string;
   role: UserRole;
 }

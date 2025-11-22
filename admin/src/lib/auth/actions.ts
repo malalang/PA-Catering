@@ -66,7 +66,7 @@ export async function registerAction(
     options: {
       data: {
         role: "admin",
-        full_name: fullName,
+        display_name: fullName,
       },
     },
   });
@@ -79,7 +79,7 @@ export async function registerAction(
     const profileData: Database["public"]["Tables"]["profiles"]["Insert"] = {
       id: data.user.id,
       email,
-      full_name: fullName,
+      display_name: fullName,
       role: "admin",
     };
     // @ts-expect-error - Supabase type inference issue with Database types

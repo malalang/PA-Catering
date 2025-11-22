@@ -15,7 +15,7 @@ export const AdminTopbar = ({ profile }: Props) => (
         Operations
       </p>
       <h1 className="text-xl font-semibold text-white">
-        Welcome back, {profile.full_name ?? "Admin"}
+        Welcome back, {profile.display_name ?? "Admin"}
       </h1>
     </div>
 
