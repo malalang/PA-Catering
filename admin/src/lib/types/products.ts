@@ -39,6 +39,5 @@ export interface ProductRecord {
   image_url?: string;
   badge?: string;
   created_at?: string;
-  updated_at?: string;
   is_featured?: boolean;
 }

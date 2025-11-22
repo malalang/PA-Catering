@@ -6,9 +6,9 @@ export const fetchProductCatalog = async (): Promise<ProductRecord[]> => {
   const { data, error } = await supabase
     .from("products")
     .select(
-      "id,name,category,price,stock,badge,description,image_url,updated_at",
+      "id,name,category,price,stock,badge,description,image_url,created_at",
     )
-    .order("updated_at", { ascending: false });
+    .order("created_at", { ascending: false });
 
   if (error) {
     console.error("Failed to fetch products", error);

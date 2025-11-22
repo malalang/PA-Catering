@@ -40,7 +40,6 @@ export const updateOrderStatusAction = async (
   };
   const { error } = await supabase
     .from("orders")
-    // @ts-ignore - Supabase type inference issue with Database types
     .update(updateData)
     .eq("id", orderId);
 

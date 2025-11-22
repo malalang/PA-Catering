@@ -82,7 +82,6 @@ export async function registerAction(
       display_name: fullName,
       role: "admin",
     };
-    // @ts-expect-error - Supabase type inference issue with Database types
     await supabase.from("profiles").upsert(profileData);
   }
 

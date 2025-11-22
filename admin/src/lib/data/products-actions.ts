@@ -42,7 +42,6 @@ export const createProductAction = async (
     price,
     stock: Number.isNaN(stock) ? 0 : stock,
   };
-  // @ts-expect-error - Supabase type inference issue with Database types
   const { error } = await supabase.from("products").insert(productData);
 
   if (error) {
@@ -91,7 +90,6 @@ export const updateProductAction = async (
   };
   const { error } = await supabase
     .from("products")
-    // @ts-ignore - Supabase type inference issue with Database types
     .update(updateData)
     .eq("id", id);
 
