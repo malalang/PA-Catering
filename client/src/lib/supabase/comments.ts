@@ -1,8 +1,8 @@
 import { createClient } from './client';
 
-const supabaseBrowser = createClient();
 
 export const getCommentsForProduct = async (productId: string) => {
+  const supabaseBrowser = createClient();
   const { data, error } = await supabaseBrowser
     .from('comments')
     .select('*')
@@ -13,10 +13,10 @@ export const getCommentsForProduct = async (productId: string) => {
 };
 
 export const addComment = async (productId: string, userId: string | null, userName: string | null, body: string) => {
+  const supabaseBrowser = createClient();
   const { data, error } = await supabaseBrowser
     .from('comments')
-    // @ts-ignore - Supabase type inference issue with Database types
-    .insert([{ product_id: productId, user_id: userId, user_name: userName, body }])
+    .insert({ product_id: productId, user_id: userId, user_name: userName, body } as any)
     .select()
     .single();
   if (error) throw error;

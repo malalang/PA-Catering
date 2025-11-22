@@ -36,10 +36,20 @@ export async function proxy(request: NextRequest) {
     );
 
     if (isProtected && !user) {
-        const redirectUrl = request.nextUrl.clone();
-        redirectUrl.pathname = '/login';
-        redirectUrl.searchParams.set('redirectTo', request.nextUrl.pathname);
-        return NextResponse.redirect(redirectUrl);
+        const url = request.nextUrl.clone();
+        url.pathname = '/login';
+        url.searchParams.set('redirectTo', request.nextUrl.pathname);
+
+        // Create a redirect response
+        const redirectResponse = NextResponse.redirect(url);
+
+        // Copy cookies from the original response (which might have refreshed tokens)
+        // to the redirect response
+        response.cookies.getAll().forEach((cookie) => {
+            redirectResponse.cookies.set(cookie.name, cookie.value, cookie);
+        });
+
+        return redirectResponse;
     }
 
     return response;

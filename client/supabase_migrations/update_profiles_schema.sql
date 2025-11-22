@@ -1,47 +1,73 @@
--- Add missing columns to profiles table
-ALTER TABLE profiles
-ADD COLUMN IF NOT EXISTS role text DEFAULT 'customer',
-ADD COLUMN IF NOT EXISTS uid text,
-ADD COLUMN IF NOT EXISTS email_verified boolean DEFAULT false,
-ADD COLUMN IF NOT EXISTS photo_url text,
-ADD COLUMN IF NOT EXISTS address text,
-ADD COLUMN IF NOT EXISTS city text,
-ADD COLUMN IF NOT EXISTS state text,
-ADD COLUMN IF NOT EXISTS zip_code text,
-ADD COLUMN IF NOT EXISTS country text,
-ADD COLUMN IF NOT EXISTS theme text DEFAULT 'system',
-ADD COLUMN IF NOT EXISTS order_history jsonb DEFAULT '[]'::jsonb,
-ADD COLUMN IF NOT EXISTS loyalty_points_balance integer DEFAULT 0,
-ADD COLUMN IF NOT EXISTS tier_status text DEFAULT 'Bronze',
-ADD COLUMN IF NOT EXISTS rewards_available jsonb DEFAULT '[]'::jsonb,
-ADD COLUMN IF NOT EXISTS yellowemption_history jsonb DEFAULT '[]'::jsonb,
-ADD COLUMN IF NOT EXISTS personalized_promotions jsonb DEFAULT '[]'::jsonb,
-ADD COLUMN IF NOT EXISTS referral_code text,
-ADD COLUMN IF NOT EXISTS car_wash_count integer DEFAULT 0,
-ADD COLUMN IF NOT EXISTS preferences jsonb DEFAULT '{}'::jsonb,
-ADD COLUMN IF NOT EXISTS saved_payment_methods jsonb DEFAULT '[]'::jsonb,
-ADD COLUMN IF NOT EXISTS updated_at timestamp with time zone DEFAULT now(),
-ADD COLUMN IF NOT EXISTS last_login timestamp with time zone DEFAULT now();
+-- Ensure pgcrypto (for gen_random_uuid)
+CREATE EXTENSION IF NOT EXISTS "pgcrypto";
+
+-- Make sure profiles.id has a safe default (optional)
+ALTER TABLE IF EXISTS public.profiles
+  ALTER COLUMN id SET DEFAULT gen_random_uuid();
+
+-- Add missing columns to profiles (no-op if they already exist)
+ALTER TABLE IF EXISTS public.profiles
+  ADD COLUMN IF NOT EXISTS role text DEFAULT 'customer',
+  ADD COLUMN IF NOT EXISTS uid text,
+  ADD COLUMN IF NOT EXISTS email_verified boolean DEFAULT false,
+  ADD COLUMN IF NOT EXISTS photo_url text,
+  ADD COLUMN IF NOT EXISTS address text,
+  ADD COLUMN IF NOT EXISTS city text,
+  ADD COLUMN IF NOT EXISTS state text,
+  ADD COLUMN IF NOT EXISTS zip_code text,
+  ADD COLUMN IF NOT EXISTS country text,
+  ADD COLUMN IF NOT EXISTS theme text DEFAULT 'system',
+  ADD COLUMN IF NOT EXISTS order_history jsonb DEFAULT '[]'::jsonb,
+  ADD COLUMN IF NOT EXISTS loyalty_points_balance integer DEFAULT 0,
+  ADD COLUMN IF NOT EXISTS tier_status text DEFAULT 'Bronze',
+  ADD COLUMN IF NOT EXISTS rewards_available jsonb DEFAULT '[]'::jsonb,
+  ADD COLUMN IF NOT EXISTS yellowemption_history jsonb DEFAULT '[]'::jsonb,
+  ADD COLUMN IF NOT EXISTS personalized_promotions jsonb DEFAULT '[]'::jsonb,
+  ADD COLUMN IF NOT EXISTS referral_code text,
+  ADD COLUMN IF NOT EXISTS car_wash_count integer DEFAULT 0,
+  ADD COLUMN IF NOT EXISTS preferences jsonb DEFAULT '{}'::jsonb,
+  ADD COLUMN IF NOT EXISTS saved_payment_methods jsonb DEFAULT '[]'::jsonb,
+  ADD COLUMN IF NOT EXISTS updated_at timestamptz DEFAULT now(),
+  ADD COLUMN IF NOT EXISTS last_login timestamptz DEFAULT now();
 
 -- Enable Row Level Security
-ALTER TABLE profiles ENABLE ROW LEVEL SECURITY;
+ALTER TABLE IF EXISTS public.profiles ENABLE ROW LEVEL SECURITY;
 
--- Policy: Profiles are viewable by everyone (or just authenticated users)
--- User requested: "Profiles are viewable by everyone"
--- Policy: Profiles are viewable by everyone
-CREATE POLICY "Profiles are viewable by everyone"
-ON profiles FOR SELECT
-TO PUBLIC
-USING ( true );
+-- SELECT policy: make profiles readable by everyone (PUBLIC)
+DO $$
+BEGIN
+  IF NOT EXISTS (
+    SELECT 1 FROM pg_policies WHERE schemaname = 'public' AND tablename = 'profiles' AND policyname = 'profiles_insert_authenticated'
+  ) THEN
+    EXECUTE $sql$
+      CREATE POLICY profiles_insert_authenticated
+        ON public.profiles
+        FOR INSERT
+        TO authenticated
+        WITH CHECK (auth.uid() = id);
+    $sql$;
+  END IF;
+END;
+$$ LANGUAGE plpgsql;
 
--- Policy: Users can insert their own profile
-CREATE POLICY "Users can insert their own profile"
-ON profiles FOR INSERT
-TO authenticated
-WITH CHECK ( auth.uid() = id );
+-- UPDATE policy: authenticated users can update only their own profile and the updated row must still belong to them
+DO $$
+BEGIN
+  IF NOT EXISTS (
+    SELECT 1 FROM pg_policies WHERE schemaname = 'public' AND tablename = 'profiles' AND policyname = 'profiles_update_authenticated'
+  ) THEN
+    EXECUTE $sql$
+      CREATE POLICY profiles_update_authenticated
+        ON public.profiles
+        FOR UPDATE
+        TO authenticated
+        USING (auth.uid() = id)
+        WITH CHECK (auth.uid() = id);
+    $sql$;
+  END IF;
+END;
+$$ LANGUAGE plpgsql;
 
--- Policy: Users can update their own profile
-CREATE POLICY "Users can update their own profile"
-ON profiles FOR UPDATE
-TO authenticated
-USING ( auth.uid() = id );
+-- Useful indexes (no-op if already exist)
+CREATE UNIQUE INDEX IF NOT EXISTS idx_profiles_email ON public.profiles(email);
+CREATE UNIQUE INDEX IF NOT EXISTS idx_profiles_uid ON public.profiles(uid);

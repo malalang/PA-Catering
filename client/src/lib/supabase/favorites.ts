@@ -1,8 +1,7 @@
 import { createClient } from './client';
 
-const supabaseBrowser = createClient();
-
 export const getUserFavorites = async (userId: string) => {
+  const supabaseBrowser = createClient();
   const { data, error } = await supabaseBrowser
     .from('user_favorites')
     .select('product_id')
@@ -12,11 +11,11 @@ export const getUserFavorites = async (userId: string) => {
 };
 
 export const toggleFavorite = async (userId: string, productId: string) => {
+  const supabaseBrowser = createClient();
   // Try insert; if conflict, delete
   const { error: insertErr } = await supabaseBrowser
     .from('user_favorites')
-    // @ts-ignore - Supabase type inference issue with Database types
-    .insert([{ user_id: userId, product_id: productId }]);
+    .insert([{ user_id: userId, product_id: productId }] as any);
   if (!insertErr) return { added: true };
   // If insert failed because exists, remove
   const { data, error } = await supabaseBrowser

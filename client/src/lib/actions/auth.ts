@@ -101,55 +101,7 @@ export async function signUpAction(
 
     user = authData.user;
 
-    // Create user profile in public.profiles table
-    if (user) {
-      const { error: profileError } = await (supabase
-        .from("profiles") as any).insert({
-          id: user.id,
-          email: user.email,
-          display_name: displayName,
-          phone: phoneNumber || "",
-          role: "customer",
-          uid: user.id,
-          email_verified: false,
-          photo_url: null,
-          address: "",
-          city: "",
-          state: "",
-          zip_code: "",
-          country: "",
-          theme: "system",
-          order_history: [],
-          loyalty_points_balance: 0,
-          tier_status: "Bronze",
-          rewards_available: [],
-          yellowemption_history: [],
-          personalized_promotions: [],
-          referral_code: "",
-          car_wash_count: 0,
-          preferences: {
-            dietaryRestrictions: [],
-            favoriteItems: [],
-            preferyellowCarWashServices: [],
-            preferyellowPaymentMethod: "credit_card",
-            communicationPreferences: {
-              email: true,
-              sms: false,
-              promotions: true,
-            },
-          },
-          saved_payment_methods: [],
-          created_at: new Date().toISOString(),
-          updated_at: new Date().toISOString(),
-          last_login: new Date().toISOString(),
-        } as any);
-
-      if (profileError) {
-        console.error("Error creating user profile:", profileError);
-        // We might want to return an error here, but for now we'll proceed
-        // return { success: false, error: "Failed to create profile: " + profileError.message };
-      }
-    }
+    // Profile creation is handled by Postgres trigger on auth.users insert
   } catch (error) {
     return {
       success: false,

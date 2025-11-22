@@ -1,11 +1,11 @@
-This file is a merged representation of the entire codebase, combined into a single document by Repomix.
+This file is a merged representation of a subset of the codebase, containing specifically included files, combined into a single document by Repomix.
 The content has been processed where security check has been disabled.
 
 <file_summary>
 This section contains a summary of this file.
 
 <purpose>
-This file contains a packed representation of the entire repository's contents.
+This file contains a packed representation of a subset of the repository's contents that is considered the most important context.
 It is designed to be easily consumable by AI systems for analysis, code review,
 or other automated processes.
 </purpose>
@@ -33,6 +33,7 @@ The content is organized as follows:
 <notes>
 - Some files may have been excluded based on .gitignore rules and Repomix's configuration
 - Binary files are not included in this packed representation. Please refer to the Repository Structure section for a complete list of file paths, including binary files
+- Only files matching these patterns are included: client/src/app/globals.css, client/src/app/photo/page.tsx, client/src/lib/forms/UserAddressForm.tsx, client/src/app/menu/page.tsx, client/src/lib/forms/EditProfileForm.tsx, client/src/lib/database.types.ts, client/src/lib/forms/ContactForm.tsx, client/src/app/menu/[Products]/[product]/page.tsx, client/src/app/privacy/page.tsx, admin/src/components/orders/OrdersBoard.tsx, client/src/app/terms/page.tsx, client/src/app/photo/placeholder-images.json, client/src/app/menu/[Products]/components/FilterSortBar.tsx, admin/public/next.svg, client/public/next.svg, admin/src/components/menu/ProductBoard.tsx, client/src/app/gallery/components/ImageGallery.tsx, client/src/app/contact/page.tsx, admin/src/components/menu/AddProductForm.tsx, client/src/app/api/seed/route.ts, client/src/lib/actions/auth.ts, client/supabase_migrations/seed_products.sql, client/src/app/menu/[Products]/[product]/components/ProductInfo.tsx, client/src/app/menu/[Products]/page.tsx, admin/src/lib/database.types.ts, client/src/app/menu/[Products]/components/LikesButton.tsx, client/src/lib/context/CartContext.tsx, client/src/lib/actions/profile.ts, client/src/app/menu/components/PromotionsBanner.tsx, client/src/app/profile/page.tsx, admin/src/lib/data/products-actions.ts, admin/src/lib/data/dashboard.ts, admin/public/globe.svg, client/public/globe.svg, client/src/app/menu/cart/components/CartFooter.tsx, admin/src/components/dashboard/RecentOrdersCard.tsx, client/src/app/terms/components/TermsContent.tsx, admin/src/components/auth/RegisterForm.tsx, admin/src/components/menu/QuickEditForm.tsx, client/src/lib/forms/CommentsForm.tsx, client/src/app/home-components/Testimonials.tsx, client/src/app/menu/[Products]/[product]/components/FavoriteButton.tsx, client/src/lib/forms/CartProductForm.tsx, client/src/app/menu/components/ProductCard.tsx, admin/src/lib/auth/actions.ts, client/src/app/menu/[Products]/components/CommentModal.tsx, client/src/app/menu/components/MenuSections.tsx, client/src/app/profile/components/Preferences.server.tsx, client/src/components/Navbar/ProfileMenu.tsx, client/src/app/menu/[Products]/[product]/components/comments.tsx, client/supabase_migrations/create_tables.sql, client/src/components/Navbar/DesktopNavbar.tsx, client/src/app/home-components/FeaturedItemsServices.tsx, client/src/app/menu/[Products]/components/CommentsButton.tsx, client/src/lib/supabase/orders/orders.ts, admin/src/components/dashboard/StatsGrid.tsx, client/src/components/ui/TextInput.tsx, admin/src/components/layout/AdminTopbar.tsx, client/src/components/Navbar/MobileMenu.tsx, client/src/app/gallery/components/ImageModal.tsx, admin/src/components/auth/LoginForm.tsx, client/src/components/ui/AddOnSelector.tsx, client/src/app/about/components/WhatMakesUsSpecial.tsx, client/src/app/home-components/TargetMarketCallout.tsx, client/src/app/menu/[Products]/[product]/components/RelatedProducts.tsx, client/src/lib/forms/RegisterForm.tsx, admin/src/components/orders/UpdateOrderStatusForm.tsx, client/supabase_migrations/update_profiles_schema.sql, client/src/app/about/components/KeyLeadership.tsx, client/src/components/ui/Button.tsx, client/src/app/orders/[State]/page.tsx, admin/src/lib/auth/session.ts, client/src/app/profile/components/AccountManagement.server.tsx, client/package.json, client/src/app/profile/components/PersonalInformation.tsx, client/src/proxy.ts, client/src/components/ui/Icon.tsx, client/src/app/about/components/MilestonesAndVision.tsx, client/src/app/about/components/CompanyDescription.tsx, admin/src/lib/data/orders-actions.ts, client/src/components/ui/TimeSlotPicker.tsx, client/src/app/menu/components/SpecialOffers.tsx, client/src/app/home-components/KeyDifferentiators.tsx, client/src/components/Navbar/MobileNavbar.tsx, client/src/components/ui/Avatar.tsx, client/src/app/about/components/KeyHighlights.tsx, client/src/app/menu/components/ProductDetails.tsx, client/src/app/contact/components/MapEmbed.tsx, client/src/app/menu/components/CategoryCard.tsx, client/README.md, client/src/components/ui/layout/FormField.tsx, client/src/lib/forms/LoginForm.tsx, client/src/app/menu/components/SearchBar.tsx, client/src/app/orders/layout.tsx, admin/src/lib/types/users.ts, client/src/app/menu/[Products]/components/SocialButtons.tsx, admin/proxy.ts, client/src/app/home-components/HeroSection.tsx, client/src/app/about/components/StrengthsAndOpportunities.tsx, admin/src/components/dashboard/LowInventoryCard.tsx, client/src/app/blog/components/BlogPostList.tsx, client/src/components/ui/layout/Section.tsx, client/src/lib/types/UserTypes.d.ts, admin/src/components/dashboard/RevenueTrendCard.tsx, client/src/app/contact/components/OperatingHours.tsx, client/src/lib/supabase/likes.ts, client/src/app/contact/components/ContactInfo.tsx, client/src/app/menu/[Products]/utils/likesUtils.ts, client/src/lib/supabase/products/products.ts, client/src/app/orders/page.tsx, client/src/components/Navbar/NavbarClient.tsx, admin/src/app/(dashboard)/settings/page.tsx, client/src/components/ui/Alert.tsx, admin/src/components/layout/SidebarNav.tsx, client/src/app/about/components/CoreValues.tsx, client/src/app/about/page.tsx, admin/src/app/(auth)/login/page.tsx, client/src/components/ui/Link.tsx, client/src/app/about/components/WeaknessesAndThreats.tsx, admin/public/file.svg, client/public/file.svg, admin/public/window.svg, client/public/window.svg, client/src/app/home-components/KeyHighlights.tsx, admin/src/components/layout/AdminSidebar.tsx, client/src/app/profile/components/ReferralCodeCopier.tsx, admin/src/lib/types/orders.ts, client/src/lib/supabase/favorites.ts, admin/README.md, admin/src/app/(dashboard)/dashboard/page.tsx, admin/package.json, client/src/app/menu/[Products]/[product]/components/AddtoCart.tsx, client/src/app/profile/components/LoyaltyProgramInfo.server.tsx, client/src/components/ui/Loading.tsx, client/src/app/layout.css, client/src/app/orders/components/OrderItem.tsx, admin/src/components/layout/nav-items.tsx, admin/src/components/layout/DashboardShell.tsx, client/src/app/profile/components/PaymentInformation.tsx, client/src/lib/utils/dateUtils.ts, client/tsconfig.json, client/src/lib/hooks/Cookies/setCookie.ts, client/src/lib/supabase/auth/useAuth.ts, admin/biome.json, client/biome.json, client/src/lib/supabase/orders.ts, client/src/components/ui/layout/Main.tsx, admin/tsconfig.json, client/src/app/menu/cart/page.tsx, client/src/lib/supabase/comments.ts, admin/src/lib/types/products.ts, client/src/lib/supabase/server.ts, admin/src/components/auth/AuthShell.tsx, client/src/components/Navbar/AuthButton.tsx, client/src/app/about/components/OurJourney.tsx, client/src/app/home-components/AboutUsSnippet.tsx, admin/src/lib/supabase/server.ts, admin/src/app/layout.tsx, client/src/app/menu/components/NoResults.tsx, client/src/app/about/components/OurCommitment.tsx, client/src/lib/types/CarWashTypes.d.ts, admin/src/app/(dashboard)/menu/page.tsx, admin/src/lib/data/orders.ts, client/src/lib/types/OrderTypes.d.ts, admin/src/app/(dashboard)/layout.tsx, client/src/app/page.tsx, admin/src/app/(auth)/register/page.tsx, admin/src/app/(dashboard)/support/page.tsx, admin/src/app/(auth)/layout.tsx, client/src/app/home-components/FinancialSnapshotTeaser.tsx, client/src/app/profile/components/AccountManagement.delete.client.tsx, admin/src/components/forms/SubmitButton.tsx, client/src/app/about/components/OurVision.tsx, client/src/components/Navbar/useMenubarToggle.ts, client/src/lib/types/ProductTypes.d.ts, admin/src/app/globals.css, admin/.gitignore, client/src/app/home-components/ContactSection.tsx, client/.gitignore, admin/src/lib/data/products.ts, client/src/app/menu/[Products]/[product]/comments/page.tsx, client/next.config.ts, client/src/app/layout.tsx, client/src/app/blog/page.tsx, admin/src/app/(dashboard)/products/page.tsx, admin/src/app/(dashboard)/orders/page.tsx, client/src/app/menu/layout.tsx, admin/src/components/menu/AddProductPanel.tsx, client/src/components/components.css, client/src/lib/hooks/Cookies/getdelete.ts, admin/src/lib/supabase/config.ts, client/src/app/privacy/components/PrivacyContent.tsx, client/src/lib/hooks/Cookies/setdelete.ts, client/public/robots.txt, client/src/app/gallery/page.tsx, admin/src/lib/supabase/client.ts, client/src/app/profile/components/LoyaltyProgramInfo.client.tsx, admin/src/lib/types/base.ts, client/src/components/Navbar/Navbar.tsx, client/src/lib/supabase/client.ts, client/src/app/profile/edit/page.tsx, client/src/app/profile/components/Preferences.client.tsx, admin/public/vercel.svg, client/public/vercel.svg, client/src/lib/supabase/auth/logout.ts, client/src/app/(auth)/register/page.tsx, client/src/app/(auth)/login/page.tsx, client/src/app/photo/placeholderImages.ts, client/src/lib/types/index.ts, client/src/lib/utils.ts, admin/src/lib/auth/index.ts, client/src/app/privacy/loading.tsx, admin/next.config.ts, client/src/app/about/loading.tsx, client/src/app/(auth)/login/loading.tsx, client/src/app/(auth)/register/loading.tsx, client/src/app/blog/loading.tsx, client/src/app/contact/loading.tsx, client/src/app/menu/[Products]/[product]/comments/loading.tsx, client/src/app/menu/[Products]/[product]/loading.tsx, client/src/app/profile/components/AccountManagement.tsx, client/src/app/loading.tsx, client/src/app/gallery/loading.tsx, client/src/app/menu/[Products]/loading.tsx, client/src/app/menu/cart/loading.tsx, client/src/app/menu/loading.tsx, client/src/app/profile/components/LoyaltyProgramInfo.tsx, client/src/app/profile/loading.tsx, client/src/app/terms/loading.tsx, admin/src/lib/types/index.ts, admin/postcss.config.mjs, client/postcss.config.mjs, client/src/app/profile/components/Preferences.tsx, admin/src/app/page.tsx, admin/src/lib/auth/types.ts, admin/src/lib/supabase/index.ts
 - Files matching patterns in .gitignore are excluded
 - Files matching default ignore patterns are excluded
 - Security check has been disabled - content may contain sensitive information
@@ -142,6 +143,13 @@ client/
     window.svg
   src/
     app/
+      (auth)/
+        login/
+          loading.tsx
+          page.tsx
+        register/
+          loading.tsx
+          page.tsx
       about/
         components/
           CompanyDescription.tsx
@@ -158,15 +166,8 @@ client/
         loading.tsx
         page.tsx
       api/
-        user/
+        seed/
           route.ts
-      Authentication/
-        login/
-          loading.tsx
-          page.tsx
-        register/
-          loading.tsx
-          page.tsx
       blog/
         components/
           BlogPostList.tsx
@@ -306,6 +307,9 @@ client/
         TimeSlotPicker.tsx
       components.css
     lib/
+      actions/
+        auth.ts
+        profile.ts
       context/
         CartContext.tsx
       forms/
@@ -324,8 +328,6 @@ client/
       supabase/
         auth/
           logout.ts
-          signIn.ts
-          signUp.ts
           useAuth.ts
         orders/
           orders.ts
@@ -351,6 +353,7 @@ client/
   supabase_migrations/
     create_tables.sql
     seed_products.sql
+    update_profiles_schema.sql
   .gitignore
   biome.json
   next.config.ts
@@ -358,7 +361,6 @@ client/
   postcss.config.mjs
   README.md
   tsconfig.json
-prompt.md
 </directory_structure>
 
 <files>
@@ -3264,6 +3266,54 @@ Allow: /public/
 <svg fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path fill-rule="evenodd" clip-rule="evenodd" d="M1.5 2.5h13v10a1 1 0 0 1-1 1h-11a1 1 0 0 1-1-1zM0 1h16v11.5a2.5 2.5 0 0 1-2.5 2.5h-11A2.5 2.5 0 0 1 0 12.5zm3.75 4.5a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5M7 4.75a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0m1.75.75a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5" fill="#666"/></svg>
 </file>
 
+<file path="client/src/app/(auth)/login/loading.tsx">
+import Loading from '@/components/ui/Loading';
+
+export default function LoadingPage() {
+	return <Loading message='Loading Login Page...' />;
+}
+</file>
+
+<file path="client/src/app/(auth)/login/page.tsx">
+import Main from "@/components/ui/layout/Main";
+import LoginForm from "@/lib/forms/LoginForm";
+
+
+export default function LoginPage() {
+	
+
+	return (
+		<Main tittle="Log In">
+			<LoginForm />
+		</Main>
+	);
+}
+</file>
+
+<file path="client/src/app/(auth)/register/loading.tsx">
+import Loading from '@/components/ui/Loading';
+
+export default function LoadingPage() {
+	return <Loading message='Loading Registration Page...' />;
+}
+</file>
+
+<file path="client/src/app/(auth)/register/page.tsx">
+import Main from '@/components/ui/layout/Main';
+import RegisterForm from '@/lib/forms/RegisterForm';
+
+const RegisterPage = () => {
+
+	return (
+		<Main tittle='Register'>
+			<RegisterForm />
+		</Main>
+	);
+};
+
+export default RegisterPage;
+</file>
+
 <file path="client/src/app/about/components/CompanyDescription.tsx">
 import React from 'react';
 import Icon from '@/components/ui/Icon';
@@ -3772,85 +3822,136 @@ const AboutPage = () => {
 export default AboutPage;
 </file>
 
-<file path="client/src/app/api/user/route.ts">
+<file path="client/src/app/api/seed/route.ts">
 import { NextResponse } from 'next/server';
 import { createClient } from '@/lib/supabase/server';
+import { readFileSync } from 'fs';
+import { join } from 'path';
 
-export async function GET() {
+export async function POST() {
   try {
     const supabase = await createClient();
+    
+    // Check if user is authenticated (optional - you can remove this if you want public seeding)
     const { data: { user }, error: authError } = await supabase.auth.getUser();
+    
+    // Optional: Only allow seeding if user is authenticated
+    // if (authError || !user) {
+    //   return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+    // }
 
-    if (authError || !user) {
-      return NextResponse.json({ error: 'User not authenticated' }, { status: 401 });
+    // Read the SQL file
+    const sqlPath = join(process.cwd(), 'supabase_migrations', 'seed_products.sql');
+    const sqlContent = readFileSync(sqlPath, 'utf-8');
+
+    // Execute the SQL
+    // Note: Supabase client doesn't have a direct execute method for raw SQL
+    // We'll need to use the REST API or RPC function, or parse and insert row by row
+    // For now, let's parse the INSERT statements and execute them
+    
+    const insertStatements = sqlContent
+      .split(';')
+      .map(s => s.trim())
+      .filter(s => s.length > 0 && s.toUpperCase().startsWith('INSERT'));
+
+    if (insertStatements.length === 0) {
+      return NextResponse.json({ error: 'No INSERT statements found' }, { status: 400 });
     }
 
-    // Optionally fetch user profile from users table
-    const { data: profile, error: profileError } = await supabase
-      .from('profiles')
-      .select('*')
-      .eq('id', user.id)
-      .single();
-
-    if (profileError) {
-      console.error('Profile fetch error:', profileError);
-      return NextResponse.json(user, { status: 200 });
+    // Parse the first INSERT statement to extract values
+    const mainInsert = insertStatements[0];
+    const valuesMatch = mainInsert.match(/VALUES\s*([\s\S]+)/i);
+    
+    if (!valuesMatch) {
+      return NextResponse.json({ error: 'Could not parse INSERT statement' }, { status: 400 });
     }
 
-    return NextResponse.json({ ...user, profile }, { status: 200 });
+    // Parse values - this is a simplified parser
+    const valuesString = valuesMatch[1];
+    const rows: Array<{
+      name: string;
+      category: string;
+      description: string | null;
+      price: number;
+      image_url: string | null;
+      badge: string | null;
+      stock: number;
+    }> = [];
+
+    // Split by rows (each row is in parentheses)
+    const rowMatches = valuesString.matchAll(/\(([^)]+)\)/g);
+    
+    for (const match of rowMatches) {
+      const rowValues = match[1].split(',').map(v => v.trim());
+      
+      if (rowValues.length >= 7) {
+        const name = rowValues[0].replace(/^'|'$/g, '');
+        const category = rowValues[1].replace(/^'|'$/g, '');
+        const description = rowValues[2] === 'NULL' ? null : rowValues[2].replace(/^'|'$/g, '');
+        const price = parseFloat(rowValues[3]);
+        const image_url = rowValues[4] === 'NULL' ? null : rowValues[4].replace(/^'|'$/g, '');
+        const badge = rowValues[5] === 'NULL' ? null : rowValues[5].replace(/^'|'$/g, '');
+        const stock = parseInt(rowValues[6], 10);
+
+        rows.push({
+          name,
+          category,
+          description,
+          price,
+          image_url,
+          badge,
+          stock,
+        });
+      }
+    }
+
+    // Insert products in batches
+    const batchSize = 10;
+    let inserted = 0;
+    let errors: string[] = [];
+
+    for (let i = 0; i < rows.length; i += batchSize) {
+      const batch = rows.slice(i, i + batchSize);
+      
+      // @ts-ignore - Supabase type inference issue with Database types
+      const { error } = await supabase.from('products').insert(batch);
+      
+      if (error) {
+        errors.push(`Batch ${Math.floor(i / batchSize) + 1}: ${error.message}`);
+      } else {
+        inserted += batch.length;
+      }
+    }
+
+    if (errors.length > 0) {
+      return NextResponse.json(
+        { 
+          success: false, 
+          message: `Inserted ${inserted} products, but encountered errors`,
+          errors 
+        },
+        { status: 207 } // Multi-Status
+      );
+    }
+
+    return NextResponse.json(
+      { 
+        success: true, 
+        message: `Successfully seeded ${inserted} products` 
+      },
+      { status: 200 }
+    );
   } catch (error) {
-    console.error('API Error:', error);
-    return NextResponse.json({ error: 'Internal Server Error' }, { status: 500 });
+    console.error('Seed error:', error);
+    return NextResponse.json(
+      { 
+        success: false, 
+        error: error instanceof Error ? error.message : 'Unknown error occurred' 
+      },
+      { status: 500 }
+    );
   }
 }
-</file>
-
-<file path="client/src/app/Authentication/login/loading.tsx">
-import Loading from '@/components/ui/Loading';
-
-export default function LoadingPage() {
-	return <Loading message='Loading Login Page...' />;
-}
-</file>
-
-<file path="client/src/app/Authentication/login/page.tsx">
-import Main from "@/components/ui/layout/Main";
-import LoginForm from "@/lib/forms/LoginForm";
-
-
-export default function LoginPage() {
-	
-
-	return (
-		<Main tittle="Log In">
-			<LoginForm />
-		</Main>
-	);
-}
-</file>
-
-<file path="client/src/app/Authentication/register/loading.tsx">
-import Loading from '@/components/ui/Loading';
-
-export default function LoadingPage() {
-	return <Loading message='Loading Registration Page...' />;
-}
-</file>
-
-<file path="client/src/app/Authentication/register/page.tsx">
-import Main from '@/components/ui/layout/Main';
-import RegisterForm from '@/lib/forms/RegisterForm';
-
-const RegisterPage = () => {
-
-	return (
-		<Main tittle='Register'>
-			<RegisterForm />
-		</Main>
-	);
-};
-
-export default RegisterPage;
 </file>
 
 <file path="client/src/app/blog/components/BlogPostList.tsx">
@@ -4843,7 +4944,7 @@ const Comments:React.FC<CommentsProps> = async ({ params }) => {
 		const supabase = await createClient();
 		const { data: { user }, error } = await supabase.auth.getUser();
 	if (error || !user?.id) {
-		return redirect('/Authentication/login');
+		return redirect('/login');
 	}
 	const ProductName = (await params).product;
 	return (
@@ -5280,7 +5381,7 @@ async function ProductPage({ params }: { params: Promise<{ product: string; Prod
 			.from('products')
 			.select('*')
 			.ilike('name', productNameSlug)
-			.single();
+		.single();
 
 		if (exactMatch && !exactError) {
 			productData = exactMatch as ProductRow;
@@ -5989,7 +6090,7 @@ export default async function Page({
 				<FilterSortBar />
 			</Suspense>
 			<Main>
-				<div className='grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 content-stretch gap-2'>
+				<div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 content-stretch gap-2'>
 					<Suspense fallback={<Loading message='Loading Products...' />}>
 						{uiProducts.length > 0 ? (
 							uiProducts.map((product) => (
@@ -6219,7 +6320,7 @@ const MenuSections: React.FC<MenuSectionsProps> = ({ categories, matchingProduct
 									<h2 className='text-2xl font-bold text-white border-b border-yellow-500 pb-2'>
 										Matching Categories
 									</h2>
-									<div className='grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4'>
+									<div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4'>
 										{categories.map((category) => (
 											<CategoryCard
 												key={category.Name}
@@ -6236,7 +6337,7 @@ const MenuSections: React.FC<MenuSectionsProps> = ({ categories, matchingProduct
 									<h2 className='text-2xl font-bold text-white border-b border-yellow-500 pb-2'>
 										Matching Products
 									</h2>
-									<div className='grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4'>
+									<div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4'>
 										{matchingProducts.map((product) => {
 											// Get category slug from map, fallback to 'menu' if not found
 											const categorySlug = productCategoryMap?.get(product.ProductID) || 'menu';
@@ -6258,7 +6359,7 @@ const MenuSections: React.FC<MenuSectionsProps> = ({ categories, matchingProduct
 				</div>
 			) : (
 				// Default: show all categories
-				<ul className='grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4'>
+				<ul className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4'>
 					{categories.map((group: ProductsType[number]) => {
 						return (
 							<CategoryCard
@@ -6311,7 +6412,7 @@ interface ProductCardProps {
 }
 
 const ProductCard: React.FC<ProductCardProps> = ({ product, categoryName }) => (
-	<article className='m-0 group flex flex-col h-full bg-black/50 border border-yellow-500 rounded-md p-4 transition-shadow duration-300 hover:shadow-lg hover:shadow-yellow-500/20'>
+	<article className='m-0 group flex flex-col h-full bg-white/10 backdrop-blur-md border border-yellow-500 rounded-md p-4 transition-shadow duration-300 hover:shadow-lg hover:shadow-yellow-500/20'>
 		<span className='flex items-center justify-between gap-2'>
 			{product.badge && (
 				<span className='px-2 py-1 rounded-full text-xs font-bold z-10 shadow-lg bg-yellow-700 text-white'>
@@ -6801,7 +6902,7 @@ const StateOrderPage = async () => {
 	const { data: { user }, error } = await supabase.auth.getUser();
 
 	if (error || !user?.id) {
-		return redirect('/Authentication/login');
+		return redirect('/login');
 	}
 
 	const orders = await getOrdersByUser(user.id);
@@ -6940,7 +7041,7 @@ const OrderHistory: React.FC = async () => {
 	const { data: { user }, error } = await supabase.auth.getUser();
 
 	if (error || !user?.id) {
-		return redirect('/Authentication/login');
+		return redirect('/login');
 	}
 
 	const orders = await getOrdersByUser(user.id);
@@ -7626,8 +7727,6 @@ import Icon from '@/components/ui/Icon';
 import { FaUserCircle } from 'react-icons/fa';
 import UserAddress from '../../../lib/forms/UserAddressForm';
 import AppLink from '@/components/ui/Link';
-import { useRouter } from 'next/navigation';
-import { useAuth } from '@/lib/supabase/auth/useAuth';
 import Section from '@/components/ui/layout/Section';
 
 interface PersonalInformationProps {
@@ -7644,45 +7743,39 @@ const InfoRow: React.FC<{ label: string; value: string | null | undefined }> = (
 	</div>
 );
 
-const PersonalInformation: React.FC = () => {
-       const { user } = useAuth();
-       const route = useRouter();
-       if (!user) {
-	       route.replace('/Authentication/login');
-	       return null;
-       }
-       return (
-	       <Section
-		       Icon={FaUserCircle}
-		       tittle='Personal Information'>
-		       <article className='mt-6 border-t border-white/20'>
-			       <dl className='divide-y divide-white/20'>
-				       <InfoRow
-					       label='Full Name'
-					       value={user.user_metadata?.displayName || user.user_metadata?.fullName || user.email || 'Not set'}
-				       />
-				       <InfoRow
-					       label='Email address'
-					       value={user.email}
-				       />
-				       <InfoRow
-					       label='Phone number'
-					       value={user.user_metadata?.phoneNumber || 'Not set'}
-				       />
-				       <InfoRow
-					       label='Role'
-					       value={user.user_metadata?.role || 'User'}
-				       />
-			       </dl>
-		       </article>
-		       <UserAddress />
-		       <AppLink
-			       href='/profile/edit'
-			       className='underline'>
-			       Edit Profile
-		       </AppLink>
-	       </Section>
-       );
+const PersonalInformation: React.FC<PersonalInformationProps> = ({ user }) => {
+	return (
+		<Section
+			Icon={FaUserCircle}
+			tittle='Personal Information'>
+			<article className='mt-6 border-t border-white/20'>
+				<dl className='divide-y divide-white/20'>
+					<InfoRow
+						label='Full Name'
+						value={user.displayName || user.email || 'Not set'}
+					/>
+					<InfoRow
+						label='Email address'
+						value={user.email}
+					/>
+					<InfoRow
+						label='Phone number'
+						value={user.phoneNumber || 'Not set'}
+					/>
+					<InfoRow
+						label='Role'
+						value={user.role || 'User'}
+					/>
+				</dl>
+			</article>
+			<UserAddress />
+			<AppLink
+				href='/profile/edit'
+				className='underline'>
+				Edit Profile
+			</AppLink>
+		</Section>
+	);
 };
 
 export default PersonalInformation;
@@ -7891,7 +7984,66 @@ import AccountManagement from './components/AccountManagement';
 import { FaUserCircle } from 'react-icons/fa';
 import Main from '@/components/ui/layout/Main';
 
+import { createClient } from "@/lib/supabase/server";
+import { redirect } from "next/navigation";
+
 const CustomerProfilePage: React.FC = async () => {
+	const supabase = await createClient();
+	const { data: { user } } = await supabase.auth.getUser();
+
+	if (!user) {
+		redirect("/login");
+	}
+
+	const { data: profileData } = await supabase
+		.from("profiles")
+		.select("*")
+		.eq("id", user.id)
+		.single();
+
+	if (!profileData) {
+		// Handle case where profile doesn't exist (shouldn't happen if auth works)
+		return <div>Profile not found</div>;
+	}
+
+	const profile = profileData as any;
+
+	// Map DB profile (snake_case) to UserProfile (camelCase)
+	const userProfile: UserProfile = {
+		uid: profile.uid || profile.id,
+		displayName: profile.display_name,
+		email: profile.email,
+		emailVerified: profile.email_verified || false,
+		photoURL: profile.photo_url,
+		phoneNumber: profile.phone,
+		role: (profile.role as UserRole) || 'Customer',
+		address: profile.address || '',
+		city: profile.city || '',
+		state: profile.state || '',
+		zipCode: profile.zip_code || '',
+		country: profile.country || '',
+		theme: (profile.theme as 'system' | 'light' | 'dark') || 'system',
+		orderHistory: (profile.order_history as any) || [],
+		loyaltyPointsBalance: profile.loyalty_points_balance || 0,
+		tierStatus: profile.tier_status || 'Bronze',
+		rewardsAvailable: (profile.rewards_available as any) || [],
+		yellowemptionHistory: (profile.yellowemption_history as any) || [],
+		personalizedPromotions: (profile.personalized_promotions as any) || [],
+		referralCode: profile.referral_code || '',
+		carWashCount: profile.car_wash_count || 0,
+		preferences: (profile.preferences as any) || {
+			dietaryRestrictions: [],
+			favoriteItems: [],
+			preferyellowCarWashServices: [],
+			preferyellowPaymentMethod: 'credit_card',
+			communicationPreferences: { email: true, sms: false, promotions: true }
+		},
+		savedPaymentMethods: (profile.saved_payment_methods as any) || [],
+		createdAt: new Date(profile.created_at),
+		updatedAt: profile.updated_at ? new Date(profile.updated_at) : new Date(),
+		lastLogin: profile.last_login ? new Date(profile.last_login) : undefined,
+	};
+
 	return (
 		<Main
 			tittle='Profile'
@@ -7899,7 +8051,7 @@ const CustomerProfilePage: React.FC = async () => {
 			heading='Manage your personal information, preferences, and account security.'>
 			<div className='grid grid-cols-1  gap-8'>
 				<div className='lg:col-span-2 space-y-8'>
-					<PersonalInformation />
+					<PersonalInformation user={userProfile} />
 					<PaymentInformation />
 				</div>
 
@@ -8412,7 +8564,7 @@ const AuthButton: React.FC<{ setMenubar: (path: 'mobile' | 'profile') => void; u
 		<AppLink
 			variant='button'
 			className='my-1'
-			href='/Authentication/login'>
+			href='/login'>
 			<FaSignInAlt /> Log in
 		</AppLink>
 	);
@@ -8640,7 +8792,7 @@ const NavbarClient: React.FC<NavbarClientProps> = ({ user }) => {
     const { profileOpen, mobileOpen, setMenubar } = useMenubarToggle();
 
     return (
-        <header className='sticky bg-black/50 blur-[0.1px] backdrop-blur-md  top-0 left-0 m-0 p-0  w-full px-2 z-50'>
+        <header className='sticky bg-white/10 backdrop-blur-md top-0 left-0 m-0 p-0 w-full px-2 z-50 border-b border-yellow-500/20'>
             <div className='flex justify-between w-full'>
                 <MobileNavbar
                     setMenubar={setMenubar}
@@ -8836,7 +8988,7 @@ export default function Main({ children, Icon, heading, tittle, className }: Mai
 			className={
 				className
 					? className
-					: 'relative flex flex-col items-center justify-start w-full min-h-screen p-2 md:px-4 bg-white/10'
+					: 'relative flex flex-col items-center justify-start w-full min-h-screen p-2 md:px-4 bg-white/10 backdrop-blur-md'
 			}>
 			<header>
 				<span className='flex items-center justify-center gap-3'>
@@ -8874,7 +9026,7 @@ export default function Section({
 		<section
 			{...props}
 			className={
-				className ? className : ' bg-black/30 border border-yellow-500/20 rounded-md p-2 my-4'
+				className ? className : 'bg-white/10 backdrop-blur-md border border-yellow-500/20 rounded-md p-2 my-4'
 			}>
 			<header>
 				{Icon ? (
@@ -9367,6 +9519,319 @@ export default TimeSlotPicker;
 }
 </file>
 
+<file path="client/src/lib/actions/auth.ts">
+"use server";
+
+import { createClient } from "@/lib/supabase/server";
+import { redirect } from "next/navigation";
+import type { User, SupabaseClient } from "@supabase/supabase-js";
+import { Database } from "@/lib/database.types";
+
+export type AuthActionState = {
+  success: boolean;
+  error?: string;
+  user?: User | null;
+};
+
+export async function signInAction(
+  _prevState: AuthActionState | null,
+  formData: FormData
+): Promise<AuthActionState> {
+  const email = String(formData.get("email") ?? "").trim();
+  const password = String(formData.get("password") ?? "").trim();
+
+  if (!email || !password) {
+    return {
+      success: false,
+      error: "Email and password are required.",
+    };
+  }
+
+  let user = null;
+
+  try {
+    const supabase: SupabaseClient<Database> = await createClient();
+    const { data, error } = await supabase.auth.signInWithPassword({
+      email,
+      password,
+    });
+
+    if (error) {
+      return {
+        success: false,
+        error: error.message,
+      };
+    }
+
+    user = data.user;
+  } catch (error) {
+    return {
+      success: false,
+      error: error instanceof Error ? error.message : "An unexpected error occurred during sign in.",
+    };
+  }
+
+  if (user) {
+    redirect("/profile");
+  }
+
+  return {
+    success: false,
+    error: "Sign in failed. Please check your credentials.",
+  };
+}
+
+export async function signUpAction(
+  _prevState: AuthActionState | null,
+  formData: FormData
+): Promise<AuthActionState> {
+  const email = String(formData.get("email") ?? "").trim();
+  const password = String(formData.get("password") ?? "").trim();
+  const displayName = String(formData.get("displayName") ?? "").trim();
+  const phoneNumber = String(formData.get("phoneNumber") ?? "").trim() || undefined;
+
+  if (!email || !password || !displayName) {
+    return {
+      success: false,
+      error: "Email, password, and display name are required.",
+    };
+  }
+
+  let user = null;
+
+  try {
+    const supabase: SupabaseClient<Database> = await createClient();
+
+    // Sign up user
+    const { data: authData, error: authError } = await supabase.auth.signUp({
+      email,
+      password,
+      options: {
+        data: {
+          display_name: displayName,
+          phone_number: phoneNumber || "",
+        },
+      },
+    });
+
+    if (authError) {
+      return {
+        success: false,
+        error: authError.message,
+      };
+    }
+
+    user = authData.user;
+
+    // Create user profile in public.profiles table
+    if (user) {
+      const { error: profileError } = await (supabase
+        .from("profiles") as any).insert({
+          id: user.id,
+          email: user.email,
+          display_name: displayName,
+          phone: phoneNumber || "",
+          role: "customer",
+          uid: user.id,
+          email_verified: false,
+          photo_url: null,
+          address: "",
+          city: "",
+          state: "",
+          zip_code: "",
+          country: "",
+          theme: "system",
+          order_history: [],
+          loyalty_points_balance: 0,
+          tier_status: "Bronze",
+          rewards_available: [],
+          yellowemption_history: [],
+          personalized_promotions: [],
+          referral_code: "",
+          car_wash_count: 0,
+          preferences: {
+            dietaryRestrictions: [],
+            favoriteItems: [],
+            preferyellowCarWashServices: [],
+            preferyellowPaymentMethod: "credit_card",
+            communicationPreferences: {
+              email: true,
+              sms: false,
+              promotions: true,
+            },
+          },
+          saved_payment_methods: [],
+          created_at: new Date().toISOString(),
+          updated_at: new Date().toISOString(),
+          last_login: new Date().toISOString(),
+        } as any);
+
+      if (profileError) {
+        console.error("Error creating user profile:", profileError);
+        // We might want to return an error here, but for now we'll proceed
+        // return { success: false, error: "Failed to create profile: " + profileError.message };
+      }
+    }
+  } catch (error) {
+    return {
+      success: false,
+      error: error instanceof Error ? error.message : "An unexpected error occurred during registration.",
+    };
+  }
+
+  if (user) {
+    redirect("/profile");
+  }
+
+  return {
+    success: false,
+    error: "Registration failed. Please try again.",
+  };
+}
+</file>
+
+<file path="client/src/lib/actions/profile.ts">
+"use server";
+
+import { createClient } from "@/lib/supabase/server";
+
+export type ProfileActionState = {
+  success: boolean;
+  error?: string;
+};
+
+export async function updateProfileAction(
+  _prevState: ProfileActionState | null,
+  formData: FormData
+): Promise<ProfileActionState> {
+  const displayName = String(formData.get("displayName") ?? "").trim();
+  const phoneNumber = String(formData.get("phoneNumber") ?? "").trim() || null;
+  const photoURL = String(formData.get("photoURL") ?? "").trim() || null;
+
+  if (!displayName) {
+    return {
+      success: false,
+      error: "Display name is required.",
+    };
+  }
+
+  try {
+    const supabase = await createClient();
+    const {
+      data: { user },
+      error: authError,
+    } = await supabase.auth.getUser();
+
+    if (authError || !user) {
+      return {
+        success: false,
+        error: "User not authenticated.",
+      };
+    }
+
+    // Update user metadata
+    const { error: updateError } = await supabase.auth.updateUser({
+      data: {
+        display_name: displayName,
+        phone_number: phoneNumber,
+        photoURL: photoURL,
+      },
+    });
+
+    if (updateError) {
+      return {
+        success: false,
+        error: updateError.message,
+      };
+    }
+
+    // Also update the profiles table
+    const { error: profileError } = await supabase
+      .from("profiles")
+      // @ts-ignore - Supabase type inference issue with Database types
+      .update({
+        display_name: displayName,
+        phone: phoneNumber,
+      })
+      .eq("id", user.id);
+
+    if (profileError) {
+      console.error("Error updating profile:", profileError);
+      // Don't fail if profile update fails, but log it
+    }
+
+    return {
+      success: true,
+    };
+  } catch (error) {
+    return {
+      success: false,
+      error: error instanceof Error ? error.message : "An unexpected error occurred while updating profile.",
+    };
+  }
+}
+
+export async function updateAddressAction(
+  _prevState: ProfileActionState | null,
+  formData: FormData
+): Promise<ProfileActionState> {
+  const address = String(formData.get("address") ?? "").trim();
+  const city = String(formData.get("city") ?? "").trim();
+  const state = String(formData.get("state") ?? "").trim();
+  const zipCode = String(formData.get("zipCode") ?? "").trim();
+  const country = String(formData.get("country") ?? "").trim();
+
+  if (!address || !city || !state || !zipCode || !country) {
+    return {
+      success: false,
+      error: "All address fields are required.",
+    };
+  }
+
+  try {
+    const supabase = await createClient();
+    const {
+      data: { user },
+      error: authError,
+    } = await supabase.auth.getUser();
+
+    if (authError || !user) {
+      return {
+        success: false,
+        error: "User not authenticated.",
+      };
+    }
+
+    // Update user metadata with address information
+    const { error: updateError } = await supabase.auth.updateUser({
+      data: {
+        address: address,
+        city: city,
+        state: state,
+        zipCode: zipCode,
+        country: country,
+      },
+    });
+
+    if (updateError) {
+      return {
+        success: false,
+        error: updateError.message,
+      };
+    }
+
+    return {
+      success: true,
+    };
+  } catch (error) {
+    return {
+      success: false,
+      error: error instanceof Error ? error.message : "An unexpected error occurred while updating address.",
+    };
+  }
+}
+</file>
+
 <file path="client/src/lib/context/CartContext.tsx">
 'use client';
 
@@ -9578,7 +10043,7 @@ const CommentsForm: React.FC<CommentsProps> = async ({ ProductName }) => {
 	const user: any = null; // TODO: Get authenticated user from Supabase session
 
        if (!user) {
-	       return redirect('/Authentication/login');
+	       return redirect('/login');
        }
 
        let comments: Array<{ id: string; user_name: string | null; created_at: string; body: string }> = [];
@@ -9788,25 +10253,26 @@ export default function ContactForm() {
 
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-import { FaSave, FaTimes } from 'react-icons/fa'; // Added FaImage for photo URL
+import { useActionState } from 'react';
+import { FaSave, FaTimes } from 'react-icons/fa';
 import TextInput from '@/components/ui/TextInput';
 import Button from '@/components/ui/Button';
 import Avatar from '@/components/ui/Avatar';
-import Loading from '@/components/ui/Loading'; // Assuming you have a Loading component
+import Loading from '@/components/ui/Loading';
 import { useAuth } from '@/lib/supabase/auth/useAuth';
+import { updateProfileAction } from '@/lib/actions/profile';
 
 import Section from '@/components/ui/layout/Section';
 
 const EditProfileForm: React.FC = () => {
     const { user, loading } = useAuth();
     const router = useRouter();
+    const [state, formAction, isPending] = useActionState(updateProfileAction, null);
 
     // State for form fields
     const [displayName, setDisplayName] = useState('');
     const [phoneNumber, setPhoneNumber] = useState('');
     const [photoURL, setPhotoURL] = useState('');
-    const [isSaving, setIsSaving] = useState(false);
-    const [saveSuccess, setSaveSuccess] = useState<boolean | null>(null); // null, true, or false
 
     // Validation states
     const [displayNameError, setDisplayNameError] = useState(false);
@@ -9824,9 +10290,16 @@ const EditProfileForm: React.FC = () => {
     // Handle redirection if user is not logged in after loading
     useEffect(() => {
         if (!loading && !user) {
-            router.replace('/Authentication/login');
+            router.replace('/login');
         }
     }, [user, loading, router]);
+
+    // Redirect on success
+    useEffect(() => {
+        if (state?.success) {
+            router.push('/profile');
+        }
+    }, [state?.success, router]);
 
     // Show loading state while user data is being fetched by context
     if (loading) {
@@ -9848,8 +10321,7 @@ const EditProfileForm: React.FC = () => {
             setDisplayNameError(false);
         }
 
-        // Basic phone number validation (e.g., if it's not empty, check format)
-        // You might want a more robust regex for real phone numbers
+        // Basic phone number validation
         if (phoneNumber.trim() && !/^\+?[0-9\s-()]{7,20}$/.test(phoneNumber.trim())) {
             setPhoneNumberError(true);
             isValid = false;
@@ -9860,44 +10332,19 @@ const EditProfileForm: React.FC = () => {
         return isValid;
     };
 
-    const handleSave = async (e: React.FormEvent) => {
-        e.preventDefault(); // Prevent default form submission
-
+    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         if (!validateForm()) {
-            return; // Stop if validation fails
-        }
-
-        setIsSaving(true);
-        setSaveSuccess(null); // Reset feedback
-
-        // Update user metadata in Supabase
-        try {
-            const { error } = await fetch('/api/user', {
-                method: 'PATCH',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({
-                    displayName: displayName.trim(),
-                    phoneNumber: phoneNumber.trim() || null,
-                    photoURL: photoURL.trim() || null,
-                }),
-            }).then(res => res.json());
-            if (error) throw error;
-            setSaveSuccess(true);
-            router.push('/profile');
-        } catch (error) {
-            console.error('Error saving profile:', error);
-            setSaveSuccess(false);
-        } finally {
-            setIsSaving(false);
+            e.preventDefault();
+            return;
         }
     };
 
     const handleCancel = () => {
-        router.back(); // Go back to the previous page (e.g., PersonalInformation)
+        router.back();
     };
 
     return (
-        <Section>
+        <Section className="bg-white/10 backdrop-blur-md">
             <div className='flex flex-col items-center mb-8'>
                 <Avatar
                     src={photoURL || user.user_metadata?.photoURL || ''}
@@ -9909,14 +10356,23 @@ const EditProfileForm: React.FC = () => {
                 <p className='text-yellow-500 text-lg'>Update your profile details below.</p>
             </div>
 
+            {state?.error && (
+                <div className='text-yellow-500 mb-4 bg-yellow-900/20 p-3 rounded-md'>{state.error}</div>
+            )}
+            {state?.success && (
+                <div className='text-white mb-4 bg-green-900/20 p-3 rounded-md'>Profile updated successfully!</div>
+            )}
+
             <form
-                onSubmit={handleSave}
+                action={formAction}
+                onSubmit={handleSubmit}
                 className='space-y-6'>
                 {/* Display Name */}
                 <div>
                     <TextInput
                         type='text'
                         label='Display Name'
+                        name='displayName'
                         placeholder='Your Name'
                         value={displayName}
                         onChange={(e) => {
@@ -9948,8 +10404,9 @@ const EditProfileForm: React.FC = () => {
                 {/* Phone Number */}
                 <div>
                     <TextInput
-                        type='tel' // Use 'tel' for phone numbers
+                        type='tel'
                         label='Phone Number'
+                        name='phoneNumber'
                         placeholder='e.g., +27 12 345 6789'
                         value={phoneNumber}
                         onChange={(e) => {
@@ -9968,30 +10425,20 @@ const EditProfileForm: React.FC = () => {
                 {/* Photo URL */}
                 <div>
                     <TextInput
-                        type='url' // Use 'url' for photo URLs
+                        type='url'
                         label='Profile Photo URL'
+                        name='photoURL'
                         placeholder='https://example.com/your-photo.jpg'
                         value={photoURL}
                         onChange={(e) => setPhotoURL(e.target.value)}
-                        // No specific error state for URL unless you want to validate it's a valid image URL
                     />
                     <p className='text-sm mt-1'>Enter a direct link to your profile picture.</p>
                 </div>
 
-                {/* Feedback Messages */}
-                {saveSuccess === true && (
-                    <p className='text-white font-semibold text-center'>Profile updated successfully!</p>
-                )}
-                {saveSuccess === false && (
-                    <p className='text-yellow-600 font-semibold text-center'>
-                        Failed to update profile. Please try again.
-                    </p>
-                )}
-
                 {/* Action Buttons */}
                 <div className='flex flex-col sm:flex-row gap-4 justify-end pt-4'>
                     <Button
-                        type='button' // Important for non-submit buttons inside a form
+                        type='button'
                         onClick={handleCancel}
                         variant='secondary'
                         size='md'
@@ -10002,10 +10449,10 @@ const EditProfileForm: React.FC = () => {
                         type='submit'
                         variant='primary'
                         size='md'
-                        loading={isSaving}
-                        disabled={isSaving}
+                        loading={isPending}
+                        disabled={isPending}
                         className='w-full sm:w-auto'>
-                        <FaSave className='mr-2' /> {isSaving ? 'Saving...' : 'Save Changes'}
+                        <FaSave className='mr-2' /> {isPending ? 'Saving...' : 'Save Changes'}
                     </Button>
                 </div>
             </form>
@@ -10019,67 +10466,35 @@ export default EditProfileForm;
 <file path="client/src/lib/forms/LoginForm.tsx">
 'use client';
 
-import { useState } from 'react';
-import { signIn } from '@/lib/supabase/auth/signIn';
+import { useActionState } from 'react';
+import { signInAction } from '@/lib/actions/auth';
 import Loading from '@/components/ui/Loading';
-import { useRouter } from 'next/navigation';
 
 import Button from '@/components/ui/Button';
 import TextInput from '@/components/ui/TextInput';
 import AppLink from '@/components/ui/Link';
-import { FaSignInAlt } from 'react-icons/fa';
-import Main from '@/components/ui/layout/Main';
 import Section from '@/components/ui/layout/Section';
 
 export default function LoginForm() {
-    const router = useRouter();
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-    const [error, setError] = useState<string | null>(null);
-    const [loading, setLoading] = useState<string | null>(null);
+    const [state, formAction, isPending] = useActionState(signInAction, null);
 
-    const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
-        event.preventDefault();
-        setLoading('Signing in...');
-        setError(null);
-
-        try {
-            const user = await signIn(email, password);
-            if (user) {
-                router.push('/profile');
-            } else {
-                setError('Sign in failed. Please check your credentials.');
-            }
-        } catch (err: unknown) {
-            if (err instanceof Error) {
-                setError(err.message);
-            } else {
-                setError('An unexpected error occurred during sign in.');
-            }
-        } finally {
-            setLoading(null);
-        }
-    };
-
-    if (loading) {
-        return <Loading message={loading} />;
+    if (isPending) {
+        return <Loading message="Signing in..." />;
     }
 
     return (
-        <Section>
-            {error && (
-                <div className='text-yellow-500 mb-4 mt-4 bg-yellow-900/20 p-3 rounded-md'>{error}</div>
+        <Section className="bg-white/10 backdrop-blur-md">
+            {state?.error && (
+                <div className='text-yellow-500 mb-4 mt-4 bg-yellow-900/20 p-3 rounded-md'>{state.error}</div>
             )}
             <form
-                onSubmit={handleSubmit}
+                action={formAction}
                 className='space-y-6 mt-6'>
                 <TextInput
                     label='Email:'
                     type='email'
                     id='email'
                     name='email'
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
                     required
                 />
                 <TextInput
@@ -10087,8 +10502,6 @@ export default function LoginForm() {
                     type='password'
                     id='password'
                     name='password'
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
                     required
                 />
                 <Button
@@ -10096,12 +10509,12 @@ export default function LoginForm() {
                     variant='primary'
                     className='w-full'
                     size='lg'
-                    loading={!!loading}>
+                    loading={isPending}>
                     Sign In
                 </Button>
             </form>
             <p className='mt-6 text-white/70'>
-                Don&apos;t have an account? <AppLink href='/Authentication/register'>Sign Up</AppLink>
+                Don&apos;t have an account? <AppLink href='/register'>Sign Up</AppLink>
             </p>
         </Section>
     );
@@ -10111,102 +10524,74 @@ export default function LoginForm() {
 <file path="client/src/lib/forms/RegisterForm.tsx">
 'use client';
 
-import { useState } from 'react';
-import { useRouter } from 'next/navigation';
+import { useActionState } from 'react';
+import { signUpAction } from '@/lib/actions/auth';
+import Loading from '@/components/ui/Loading';
 import Button from '@/components/ui/Button';
 import TextInput from '@/components/ui/TextInput';
 import AppLink from '@/components/ui/Link';
 import Section from '@/components/ui/layout/Section';
 
 const RegisterForm = () => {
-    const [email, setEmail] = useState('');
-    const [displayName, setDisplayName] = useState('');
-    const [phoneNumber, setPhoneNumber] = useState('');
-    const [password, setPassword] = useState('');
-    const [error, setError] = useState<string | null>(null);
-    const router = useRouter();
+    const [state, formAction, isPending] = useActionState(signUpAction, null);
 
-    const handleSubmit = async (e: React.FormEvent) => {
-        e.preventDefault();
-        setError(null); // Clear previous errors
-
-        try {
-            const res = await fetch('/api/user', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ email, password, displayName, phoneNumber }),
-            });
-            if (!res.ok) throw new Error('Registration failed');
-            router.push('/profile');
-        } catch (err: unknown) {
-            if (typeof err === 'object' && err !== null && 'message' in err) {
-                console.error('Registration error:', err);
-                setError((err.message as string) || 'An unexpected error occurred during registration.');
-            } else {
-                console.error('Registration error:', err);
-                setError('An unexpected error occurred during registration.');
-            }
-        }
-    };
+    if (isPending) {
+        return <Loading message="Registering..." />;
+    }
 
     return (
-      
-            <Section>
-                {error && (
-                    <div className='text-yellow-500 mb-4 mt-4 bg-yellow-900/20 p-3 rounded-md'>{error}</div>
-                )}
-                <form
-                    onSubmit={handleSubmit}
-                    className='space-y-6 mt-6'>
-                    <TextInput
-                        label='Email'
-                        id='email'
-                        type='email'
-                        placeholder='Email'
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                        required
-                    />
-                    <TextInput
-                        label='Display Name'
-                        id='displayName'
-                        type='text'
-                        placeholder='Display Name'
-                        value={displayName}
-                        onChange={(e) => setDisplayName(e.target.value)}
-                        required
-                    />
-                    <TextInput
-                        label='Phone Number'
-                        id='phoneNumber'
-                        type='tel'
-                        placeholder='Phone Number'
-                        value={phoneNumber}
-                        onChange={(e) => setPhoneNumber(e.target.value)}
-                        required
-                    />
-                    <TextInput
-                        label='Password'
-                        id='password'
-                        type='password'
-                        placeholder='******************'
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                        required
-                    />
-                    <Button
-                        type='submit'
-                        variant='primary'
-                        className='w-full'
-                        size='lg'>
-                        Register
-                    </Button>
-                </form>
-                <p className='text-center text-sm mt-6 text-white/70'>
-                    Already have an account? <AppLink href='/Authentication/login'>Login</AppLink>
-                </p>
-            </Section>
-      
+        <Section className="bg-white/10 backdrop-blur-md">
+            {state?.error && (
+                <div className='text-yellow-500 mb-4 mt-4 bg-yellow-900/20 p-3 rounded-md'>{state.error}</div>
+            )}
+            <form
+                action={formAction}
+                className='space-y-6 mt-6'>
+                <TextInput
+                    label='Email'
+                    id='email'
+                    name='email'
+                    type='email'
+                    placeholder='Email'
+                    required
+                />
+                <TextInput
+                    label='Display Name'
+                    id='displayName'
+                    name='displayName'
+                    type='text'
+                    placeholder='Display Name'
+                    required
+                />
+                <TextInput
+                    label='Phone Number'
+                    id='phoneNumber'
+                    name='phoneNumber'
+                    type='tel'
+                    placeholder='Phone Number'
+                    required
+                />
+                <TextInput
+                    label='Password'
+                    id='password'
+                    name='password'
+                    type='password'
+                    placeholder='******************'
+                    required
+                />
+                <Button
+                    type='submit'
+                    variant='primary'
+                    className='w-full'
+                    size='lg'
+                    loading={isPending}>
+                    Register
+                </Button>
+            </form>
+            <p className='text-center text-sm mt-6 text-white/70'>
+                Already have an account? <AppLink href='/login'>Login</AppLink>
+            </p>
+        </Section>
     );
 };
 
@@ -10217,17 +10602,19 @@ export default RegisterForm;
 'use client';
 
 import React, { useState, useEffect } from 'react';
+import { useActionState } from 'react';
 import TextInput from '@/components/ui/TextInput';
 import Button from '@/components/ui/Button';
 import { FaMapMarkerAlt, FaSave } from 'react-icons/fa';
 import { TbAccessPoint } from 'react-icons/tb';
 import Loading from '@/components/ui/Loading';
-import Alert from '@/components/ui/Alert';
 import { useAuth } from '@/lib/supabase/auth/useAuth';
+import { updateAddressAction } from '@/lib/actions/profile';
 
 const UserAddressForm: React.FC = () => {
 	const { user, loading } = useAuth();
 	const [showAddressInput, setShowAddressInput] = useState(false);
+	const [state, formAction, isPending] = useActionState(updateAddressAction, null);
 
 	const [addressData, setAddressData] = useState({
 		address: '',
@@ -10245,17 +10632,24 @@ const UserAddressForm: React.FC = () => {
 		country: false,
 	});
 
-	       useEffect(() => {
-		       if (user) {
-			       setAddressData({
-				       address: user.user_metadata?.address || '',
-				       city: user.user_metadata?.city || 'Phalaborwa',
-				       state: user.user_metadata?.state || 'Limpopo',
-				       zipCode: user.user_metadata?.zipCode || '1392',
-				       country: user.user_metadata?.country || 'South Africa',
-			       });
-		       }
-	       }, [user]);
+	useEffect(() => {
+		if (user) {
+			setAddressData({
+				address: user.user_metadata?.address || '',
+				city: user.user_metadata?.city || 'Phalaborwa',
+				state: user.user_metadata?.state || 'Limpopo',
+				zipCode: user.user_metadata?.zipCode || '1392',
+				country: user.user_metadata?.country || 'South Africa',
+			});
+		}
+	}, [user]);
+
+	// Close form on successful save
+	useEffect(() => {
+		if (state?.success) {
+			setShowAddressInput(false);
+		}
+	}, [state?.success]);
 
 	const validateFields = () => {
 		const newErrors = {
@@ -10269,24 +10663,12 @@ const UserAddressForm: React.FC = () => {
 		return !Object.values(newErrors).some(Boolean);
 	};
 
-	       const handleSave = async () => {
-		       if (!validateFields() || !user?.id) {
-			       console.error('Validation failed or user not logged in.');
-			       return;
-		       }
-
-		       try {
-			       const { error } = await fetch('/api/user', {
-				       method: 'PATCH',
-				       headers: { 'Content-Type': 'application/json' },
-				       body: JSON.stringify(addressData),
-			       }).then(res => res.json());
-			       if (error) throw error;
-			       setShowAddressInput(false);
-		       } catch (error) {
-			       console.error('Failed to save address:', error);
-		       }
-	       };
+	const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+		if (!validateFields() || !user?.id) {
+			e.preventDefault();
+			return;
+		}
+	};
 
 	const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 		const { name, value } = e.target;
@@ -10307,79 +10689,89 @@ const UserAddressForm: React.FC = () => {
 
 			       {user.user_metadata?.address && !showAddressInput ? <p className='text-white'>{fullAddress}</p> : null}
 
-			       {showAddressInput ? (
-				       <div className='mt-4 flex flex-col gap-3'>
-					<TextInput
-						type='text'
-						name='address'
-						placeholder='e.g., 123 Main St, Apt 4B'
-						label='Street Address'
-						value={addressData.address}
-						onChange={handleInputChange}
-						className={errors.address ? 'border-yellow-500 ring-yellow-500' : ''}
-						required
-					/>
-					{errors.address && <p className='text-white text-sm mt-1'>Street address is required.</p>}
-
-					<TextInput
-						type='text'
-						name='city'
-						placeholder='e.g., Phalaborwa'
-						label='City'
-						value={addressData.city}
-						onChange={handleInputChange}
-						className={errors.city ? 'border-yellow-500 ring-yellow-500' : ''}
-						required
-					/>
-					{errors.city && <p className='text-white text-sm mt-1'>City is required.</p>}
-
-					<TextInput
-						type='text'
-						name='state'
-						placeholder='e.g., Limpopo'
-						label='State'
-						value={addressData.state}
-						onChange={handleInputChange}
-						className={errors.state ? 'border-yellow-500 ring-yellow-500' : ''}
-						required
-					/>
-					{errors.state && <p className='text-white text-sm mt-1'>State is required.</p>}
-
-					<div className='flex gap-2'>
-						<TextInput
-							type='text'
-							name='zipCode'
-							placeholder='e.g., 1390'
-							label='Zip Code'
-							value={addressData.zipCode}
-							onChange={handleInputChange}
-							className={`flex-grow ${errors.zipCode ? 'border-yellow-500 ring-yellow-500' : ''}`}
-							required
-						/>
-						<TextInput
-							type='text'
-							name='country'
-							placeholder='e.g., South Africa'
-							label='Country'
-							value={addressData.country}
-							onChange={handleInputChange}
-							className={`flex-grow ${errors.country ? 'border-yellow-500 ring-yellow-500' : ''}`}
-							required
-						/>
-					</div>
-					{(errors.zipCode || errors.country) && (
-						<p className='text-white text-sm mt-1'>
-							{errors.zipCode && 'Zip code is required.'}
-							{errors.zipCode && errors.country && ' '}
-							{errors.country && 'Country is required.'}
-						</p>
+			{showAddressInput ? (
+				<div className='mt-4 flex flex-col gap-3'>
+					{state?.error && (
+						<div className='text-yellow-500 mb-2 bg-yellow-900/20 p-2 rounded-md text-sm'>{state.error}</div>
 					)}
+					{state?.success && (
+						<div className='text-white mb-2 bg-green-900/20 p-2 rounded-md text-sm'>Address saved successfully!</div>
+					)}
+					<form action={formAction} onSubmit={handleSubmit} className='flex flex-col gap-3'>
+						<TextInput
+							type='text'
+							name='address'
+							placeholder='e.g., 123 Main St, Apt 4B'
+							label='Street Address'
+							value={addressData.address}
+							onChange={handleInputChange}
+							className={errors.address ? 'border-yellow-500 ring-yellow-500' : ''}
+							required
+						/>
+						{errors.address && <p className='text-white text-sm mt-1'>Street address is required.</p>}
 
-					<Button
-						onClick={handleSave}
-						className='h-10 px-4 py-2 inline-flex items-center justify-center gap-2 bg-yellow-600 text-white rounded-md hover:bg-yellow-700 focus:outline-none focus:ring-2 focus:ring-white transition duration-200 mt-2'>
-						<FaSave /> Save Address
-					</Button>
+						<TextInput
+							type='text'
+							name='city'
+							placeholder='e.g., Phalaborwa'
+							label='City'
+							value={addressData.city}
+							onChange={handleInputChange}
+							className={errors.city ? 'border-yellow-500 ring-yellow-500' : ''}
+							required
+						/>
+						{errors.city && <p className='text-white text-sm mt-1'>City is required.</p>}
+
+						<TextInput
+							type='text'
+							name='state'
+							placeholder='e.g., Limpopo'
+							label='State'
+							value={addressData.state}
+							onChange={handleInputChange}
+							className={errors.state ? 'border-yellow-500 ring-yellow-500' : ''}
+							required
+						/>
+						{errors.state && <p className='text-white text-sm mt-1'>State is required.</p>}
+
+						<div className='flex gap-2'>
+							<TextInput
+								type='text'
+								name='zipCode'
+								placeholder='e.g., 1390'
+								label='Zip Code'
+								value={addressData.zipCode}
+								onChange={handleInputChange}
+								className={`flex-grow ${errors.zipCode ? 'border-yellow-500 ring-yellow-500' : ''}`}
+								required
+							/>
+							<TextInput
+								type='text'
+								name='country'
+								placeholder='e.g., South Africa'
+								label='Country'
+								value={addressData.country}
+								onChange={handleInputChange}
+								className={`flex-grow ${errors.country ? 'border-yellow-500 ring-yellow-500' : ''}`}
+								required
+							/>
+						</div>
+						{(errors.zipCode || errors.country) && (
+							<p className='text-white text-sm mt-1'>
+								{errors.zipCode && 'Zip code is required.'}
+								{errors.zipCode && errors.country && ' '}
+								{errors.country && 'Country is required.'}
+							</p>
+						)}
+
+						<Button
+							type='submit'
+							loading={isPending}
+							disabled={isPending}
+							className='h-10 px-4 py-2 inline-flex items-center justify-center gap-2 bg-yellow-600 text-white rounded-md hover:bg-yellow-700 focus:outline-none focus:ring-2 focus:ring-white transition duration-200 mt-2'>
+							<FaSave /> Save Address
+						</Button>
+					</form>
 				</div>
 			) : (
 				       <button
@@ -10471,73 +10863,6 @@ export const logout = async () => {
   if (error) {
     throw new Error(error.message);
   }
-};
-</file>
-
-<file path="client/src/lib/supabase/auth/signIn.ts">
-import { createClient } from '@/lib/supabase/client';
-
-export const signIn = async (email: string, password: string) => {
-  const supabase = createClient();
-
-  const { data, error } = await supabase.auth.signInWithPassword({
-    email,
-    password,
-  });
-
-  if (error) {
-    throw new Error(error.message);
-  }
-
-  return data.user;
-};
-</file>
-
-<file path="client/src/lib/supabase/auth/signUp.ts">
-import { createClient } from '@/lib/supabase/client';
-
-export const signUp = async (
-  email: string,
-  password: string,
-  displayName: string,
-  phoneNumber?: string
-) => {
-  const supabase = createClient();
-
-  // Sign up user
-  const { data: authData, error: authError } = await supabase.auth.signUp({
-    email,
-    password,
-    options: {
-      data: {
-        display_name: displayName,
-        phone_number: phoneNumber || '',
-      },
-    },
-  });
-
-  if (authError) {
-    throw new Error(authError.message);
-  }
-
-  // Create user profile in public.profiles table
-  if (authData.user) {
-    const { error: profileError } = await supabase
-      .from('profiles')
-      // @ts-ignore - Supabase type inference issue with Database types
-      .insert({
-        id: authData.user.id,
-        email: authData.user.email,
-        display_name: displayName,
-        phone: phoneNumber || '',
-      });
-
-    if (profileError) {
-      console.error('Error creating user profile:', profileError);
-    }
-  }
-
-  return authData.user;
 };
 </file>
 
@@ -10882,7 +11207,9 @@ import { createServerClient } from '@supabase/ssr';
 import { cookies } from 'next/headers';
 import { Database } from '@/lib/database.types';
 
-export async function createClient() {
+import { SupabaseClient } from '@supabase/supabase-js';
+
+export async function createClient(): Promise<SupabaseClient<Database>> {
   const cookieStore = await cookies();
 
   return createServerClient<Database>(
@@ -11117,15 +11444,9 @@ export const isDateInPast = (date: Date | string): boolean => {
 </file>
 
 <file path="client/src/lib/database.types.ts">
-export type Json =
-  | string
-  | number
-  | boolean
-  | null
-  | { [key: string]: Json | undefined }
-  | Json[]
+export type Json = any
 
-export interface Database {
+export type Database = {
   public: {
     Tables: {
       profiles: {
@@ -11138,6 +11459,27 @@ export interface Database {
           role: string | null
           metadata: Json | null
           created_at: string
+          uid: string | null
+          email_verified: boolean | null
+          photo_url: string | null
+          address: string | null
+          city: string | null
+          state: string | null
+          zip_code: string | null
+          country: string | null
+          theme: string | null
+          order_history: Json | null
+          loyalty_points_balance: number | null
+          tier_status: string | null
+          rewards_available: Json | null
+          yellowemption_history: Json | null
+          personalized_promotions: Json | null
+          referral_code: string | null
+          car_wash_count: number | null
+          preferences: Json | null
+          saved_payment_methods: Json | null
+          updated_at: string | null
+          last_login: string | null
         }
         Insert: {
           id?: string
@@ -11148,6 +11490,27 @@ export interface Database {
           role?: string | null
           metadata?: Json | null
           created_at?: string
+          uid?: string | null
+          email_verified?: boolean | null
+          photo_url?: string | null
+          address?: string | null
+          city?: string | null
+          state?: string | null
+          zip_code?: string | null
+          country?: string | null
+          theme?: string | null
+          order_history?: Json | null
+          loyalty_points_balance?: number | null
+          tier_status?: string | null
+          rewards_available?: Json | null
+          yellowemption_history?: Json | null
+          personalized_promotions?: Json | null
+          referral_code?: string | null
+          car_wash_count?: number | null
+          preferences?: Json | null
+          saved_payment_methods?: Json | null
+          updated_at?: string | null
+          last_login?: string | null
         }
         Update: {
           id?: string
@@ -11158,7 +11521,29 @@ export interface Database {
           role?: string | null
           metadata?: Json | null
           created_at?: string
+          uid?: string | null
+          email_verified?: boolean | null
+          photo_url?: string | null
+          address?: string | null
+          city?: string | null
+          state?: string | null
+          zip_code?: string | null
+          country?: string | null
+          theme?: string | null
+          order_history?: Json | null
+          loyalty_points_balance?: number | null
+          tier_status?: string | null
+          rewards_available?: Json | null
+          yellowemption_history?: Json | null
+          personalized_promotions?: Json | null
+          referral_code?: string | null
+          car_wash_count?: number | null
+          preferences?: Json | null
+          saved_payment_methods?: Json | null
+          updated_at?: string | null
+          last_login?: string | null
         }
+        Relationships: []
       }
       products: {
         Row: {
@@ -11289,6 +11674,9 @@ export interface Database {
     Enums: {
       [_ in never]: never
     }
+    CompositeTypes: {
+      [_ in never]: never
+    }
   }
 }
 </file>
@@ -11342,7 +11730,7 @@ export async function proxy(request: NextRequest) {
 
     if (isProtected && !user) {
         const redirectUrl = request.nextUrl.clone();
-        redirectUrl.pathname = '/Authentication/login';
+        redirectUrl.pathname = '/login';
         redirectUrl.searchParams.set('redirectTo', request.nextUrl.pathname);
         return NextResponse.redirect(redirectUrl);
     }
@@ -11471,6 +11859,56 @@ INSERT INTO products (name, category, description, price, image_url, badge, stoc
 ('Sweet Chilli Sausage Pizza', 'Pizza', 'A perfect blend of sweet and spicy with sausage toppings.', 90, '/Menus/mexicanChilli.png', NULL, 100),
 ('Pineapple Pizza', 'Pizza', 'A tropical delight with juicy pineapple chunks.', 80, '/Menus/Pineapply.png', NULL, 100),
 ('Mexican Chilli Pizza', 'Pizza', 'Spicy and flavorful, with authentic Mexican chilli.', 95, '/Menus/mexicanChilli.png', 'Spicy', 100);
+</file>
+
+<file path="client/supabase_migrations/update_profiles_schema.sql">
+-- Add missing columns to profiles table
+ALTER TABLE profiles
+ADD COLUMN IF NOT EXISTS role text DEFAULT 'customer',
+ADD COLUMN IF NOT EXISTS uid text,
+ADD COLUMN IF NOT EXISTS email_verified boolean DEFAULT false,
+ADD COLUMN IF NOT EXISTS photo_url text,
+ADD COLUMN IF NOT EXISTS address text,
+ADD COLUMN IF NOT EXISTS city text,
+ADD COLUMN IF NOT EXISTS state text,
+ADD COLUMN IF NOT EXISTS zip_code text,
+ADD COLUMN IF NOT EXISTS country text,
+ADD COLUMN IF NOT EXISTS theme text DEFAULT 'system',
+ADD COLUMN IF NOT EXISTS order_history jsonb DEFAULT '[]'::jsonb,
+ADD COLUMN IF NOT EXISTS loyalty_points_balance integer DEFAULT 0,
+ADD COLUMN IF NOT EXISTS tier_status text DEFAULT 'Bronze',
+ADD COLUMN IF NOT EXISTS rewards_available jsonb DEFAULT '[]'::jsonb,
+ADD COLUMN IF NOT EXISTS yellowemption_history jsonb DEFAULT '[]'::jsonb,
+ADD COLUMN IF NOT EXISTS personalized_promotions jsonb DEFAULT '[]'::jsonb,
+ADD COLUMN IF NOT EXISTS referral_code text,
+ADD COLUMN IF NOT EXISTS car_wash_count integer DEFAULT 0,
+ADD COLUMN IF NOT EXISTS preferences jsonb DEFAULT '{}'::jsonb,
+ADD COLUMN IF NOT EXISTS saved_payment_methods jsonb DEFAULT '[]'::jsonb,
+ADD COLUMN IF NOT EXISTS updated_at timestamp with time zone DEFAULT now(),
+ADD COLUMN IF NOT EXISTS last_login timestamp with time zone DEFAULT now();
+
+-- Enable Row Level Security
+ALTER TABLE profiles ENABLE ROW LEVEL SECURITY;
+
+-- Policy: Profiles are viewable by everyone (or just authenticated users)
+-- User requested: "Profiles are viewable by everyone"
+-- Policy: Profiles are viewable by everyone
+CREATE POLICY "Profiles are viewable by everyone"
+ON profiles FOR SELECT
+TO PUBLIC
+USING ( true );
+
+-- Policy: Users can insert their own profile
+CREATE POLICY "Users can insert their own profile"
+ON profiles FOR INSERT
+TO authenticated
+WITH CHECK ( auth.uid() = id );
+
+-- Policy: Users can update their own profile
+CREATE POLICY "Users can update their own profile"
+ON profiles FOR UPDATE
+TO authenticated
+USING ( auth.uid() = id );
 </file>
 
 <file path="client/.gitignore">
@@ -11685,8 +12123,12 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/bui
 <file path="client/tsconfig.json">
 {
   "compilerOptions": {
-    "target": "ES2017",
-    "lib": ["dom", "dom.iterable", "esnext"],
+    "target": "ES2018",
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
@@ -11704,86 +12146,24 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/bui
       }
     ],
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": [
+        "./src/*"
+      ]
     }
   },
   "include": [
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
+    "**/*.mts",
     ".next/types/**/*.ts",
-    ".next/dev/types/**/*.ts",
-    "**/*.mts"
+    ".next/dev/types/**/*.ts"
   ],
-  "exclude": ["node_modules"]
+  "exclude": [
+    "node_modules",
+    ".next"
+  ]
 }
-</file>
-
-<file path="prompt.md">
-**Role:** Senior Full-Stack Engineer & Next.js Architect
-**Task:** Comprehensive Refactor, Supabase Integration, and Production Optimization
-**Context:** @context.xml  (Contains @admin  and @client  Next.js repositories)
-
-**Objective:**
-Analyze the provided @context.xml  to understand the current codebase. Refactor both the @admin  and @client  applications to strictly follow **Next.js 16** best practices. The goal is to eliminate client-side data fetching and routing logic in favor of **React Server Components (RSC)**, **Server Actions**, and **Middleware**, ensuring the applications are production-ready, responsive, and fully integrated with Supabase.
-
----
-
-### **1. Architectural Standards (Next.js 16)**
-* **Default to Server Components:** Convert all `page.tsx` and `layout.tsx` files to `async` Server Components.
-* **Client Component Boundary:** Move all interactivity (clicks, form inputs, state hooks like `useState`, `useEffect`) to isolated leaf components (e.g., `<AddToCartButton />`, `<SearchBar />`). Add `'use client'` directives *only* to these specific files.
-* **Remove Legacy Routing:** **Delete `RouteGuardContext.tsx`**. Replace its functionality (protecting routes based on auth) entirely with `middleware.ts` and server-side session checks in layouts/pages the @client must not have user roles.
-* **Data Fetching:** Remove all client-side `useEffect` data fetching. Fetch data directly in Server Components using the Supabase Server Client.
-
-### **2. Supabase Integration & Data Layer**
-* **Utilize Supabase MCP:** Use available tools to inspect the schema and ensure queries match the `create_tables.sql` definitions. use the MCP to add all the proctucts from @products.ts 
-* **Single Source of Truth:**
-    * **Delete** @products.ts  and @Stock.ts . we don't us the @Stock.ts on the @client 
-    * Refactor the Client app to fetch **products**, **images**, and **prices** dynamically from the Supabase `products` table.
-    * Ensure images served from Supabase Storage are optimized using `next/image`.
-* **Server Actions:** Convert all form submissions (Login, Register, Add to Cart, Contact Form) to **Server Actions** (`"use server"`), handling validation and DB mutations on the server.
-
-### **3. Client Application Refactor @client  **
-* **Pages:** Convert @page.tsx  , @page.tsx  , etc., to Server Components. They should fetch data and pass it as props to client-side interactive islands if necessary.
-* **Search & Filtering:** Move the search/filter logic from @CartContext.tsx  to **URL Search Params**.
-    * Example: Filtering by category should update the URL to `?category=meals`. The Server Page reads `searchParams` and queries Supabase accordingly.
-* **Cart Context:** Keep @CartContext.tsx  *only* for managing the temporary state of the shopping cart (local storage). Remove any data-fetching logic from it.
-
-### **4. UI/UX & Theming**
-* **Design System:** Enforce the existing **Yellow/Black/Dark** aesthetic. Ensure the design is fully responsive (Mobile First) using Tailwind CSS.
-* **Accessibility:** Ensure all inputs and buttons have proper labels and focus states.
-
-### **5. Execution Plan**
-
-**Step 1: Configuration & Middleware**
-* Review `middleware.ts`. Ensure it correctly protects `/profile`, `/orders`, and `/admin` routes by validating Supabase sessions before rendering.
-* Set up strict types for Supabase tables based on `create_tables.sql`.
-
-**Step 2: Admin Refactor**
-* Ensure Admin pages are Server Components.
-* Verify Admin mutations (Add Product, Update Order) use Server Actions with `revalidatePath`.
-
-**Step 3: Client Refactor (The Core Task)**
-* Remove @RouteGuardContext.tsx 
-* Rewrite @page.tsx  :
-    1.  Accept `searchParams`.
-    2.  Fetch filtered products from Supabase (Server-side).
-    3.  Render the list.
-* Refactor @ProductCard.tsx  and @page.tsx  to use dynamic data.
-* Refactor @Navbar  : Use a Server Component to check the session and render "Login" or "Profile" buttons accordingly.
-
-**Step 4: Clean Up**
-* Delete unused files (placeholder JSONs, hardcoded TS data files).
-* Ensure no secrets are exposed in client bundles.
-
-**Step 5: Verification**
-* Run `npx tsc --noEmit` to ensure strict type safety across the new architecture.
-* Run `npm run build` to verify that static generation and server builds succeed without errors.
-
----
-
-**Immediate Action:**
-Start by analyzing `middleware.ts` and `client/src/lib/supabase/server.ts` to ensure the authentication foundation is solid, then proceed to convert the Client Menu page to a Server Component fetching from Supabase.
 </file>
 
 </files>
