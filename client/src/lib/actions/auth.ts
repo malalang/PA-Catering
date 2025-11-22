@@ -100,7 +100,10 @@ export async function signUpAction(
     }
 
     user = authData.user;
-
+    if (!user) {
+      console.log("no user", user)
+    }
+    console.log("user = ", user)
     // Create user profile in public.profiles table
     // Note: This serves as a fallback if the Postgres trigger doesn't work
     if (user) {
