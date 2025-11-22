@@ -40,7 +40,7 @@ export const updateOrderStatusAction = async (
   };
   const { error } = await supabase
     .from("orders")
-    .update(updateData)
+    .update(updateData as never)
     .eq("id", orderId);
 
   if (error) {

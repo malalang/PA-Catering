@@ -42,7 +42,7 @@ export const createProductAction = async (
     price,
     stock: Number.isNaN(stock) ? 0 : stock,
   };
-  const { error } = await supabase.from("products").insert(productData);
+  const { error } = await supabase.from("products").insert(productData as never);
 
   if (error) {
     console.error("Failed to create product", error);
@@ -90,7 +90,7 @@ export const updateProductAction = async (
   };
   const { error } = await supabase
     .from("products")
-    .update(updateData)
+    .update(updateData as never)
     .eq("id", id);
 
   if (error) {

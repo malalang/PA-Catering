@@ -82,7 +82,7 @@ export async function registerAction(
       display_name: fullName,
       role: "admin",
     };
-    await supabase.from("profiles").upsert(profileData);
+    await supabase.from("profiles").upsert(profileData as never);
   }
 
   redirect("/login?registered=1");
