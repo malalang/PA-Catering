@@ -17,37 +17,53 @@ const CustomerProfilePage: React.FC = async () => {
 		redirect("/login");
 	}
 
-	const { data: profile } = await supabase
+	const { data: profileData } = await supabase
 		.from("profiles")
 		.select("*")
 		.eq("id", user.id)
 		.single();
 
-	if (!profile) {
+	if (!profileData) {
 		// Handle case where profile doesn't exist (shouldn't happen if auth works)
 		return <div>Profile not found</div>;
 	}
 
+	const profile = profileData as any;
+
 	// Map DB profile (snake_case) to UserProfile (camelCase)
-	const userProfile: any = {
-		...profile,
+	const userProfile: UserProfile = {
+		uid: profile.uid || profile.id,
 		displayName: profile.display_name,
-		emailVerified: profile.email_verified,
+		email: profile.email,
+		emailVerified: profile.email_verified || false,
 		photoURL: profile.photo_url,
 		phoneNumber: profile.phone,
-		zipCode: profile.zip_code,
-		orderHistory: profile.order_history,
-		loyaltyPointsBalance: profile.loyalty_points_balance,
-		tierStatus: profile.tier_status,
-		rewardsAvailable: profile.rewards_available,
-		yellowemptionHistory: profile.yellowemption_history,
-		personalizedPromotions: profile.personalized_promotions,
-		referralCode: profile.referral_code,
-		carWashCount: profile.car_wash_count,
-		savedPaymentMethods: profile.saved_payment_methods,
-		updatedAt: profile.updated_at,
-		lastLogin: profile.last_login,
-		createdAt: profile.created_at,
+		role: (profile.role as UserRole) || 'Customer',
+		address: profile.address || '',
+		city: profile.city || '',
+		state: profile.state || '',
+		zipCode: profile.zip_code || '',
+		country: profile.country || '',
+		theme: (profile.theme as 'system' | 'light' | 'dark') || 'system',
+		orderHistory: (profile.order_history as any) || [],
+		loyaltyPointsBalance: profile.loyalty_points_balance || 0,
+		tierStatus: profile.tier_status || 'Bronze',
+		rewardsAvailable: (profile.rewards_available as any) || [],
+		yellowemptionHistory: (profile.yellowemption_history as any) || [],
+		personalizedPromotions: (profile.personalized_promotions as any) || [],
+		referralCode: profile.referral_code || '',
+		carWashCount: profile.car_wash_count || 0,
+		preferences: (profile.preferences as any) || {
+			dietaryRestrictions: [],
+			favoriteItems: [],
+			preferyellowCarWashServices: [],
+			preferyellowPaymentMethod: 'credit_card',
+			communicationPreferences: { email: true, sms: false, promotions: true }
+		},
+		savedPaymentMethods: (profile.saved_payment_methods as any) || [],
+		createdAt: new Date(profile.created_at),
+		updatedAt: profile.updated_at ? new Date(profile.updated_at) : new Date(),
+		lastLogin: profile.last_login ? new Date(profile.last_login) : undefined,
 	};
 
 	return (

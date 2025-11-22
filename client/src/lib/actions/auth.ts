@@ -2,7 +2,8 @@
 
 import { createClient } from "@/lib/supabase/server";
 import { redirect } from "next/navigation";
-import type { User } from "@supabase/supabase-js";
+import type { User, SupabaseClient } from "@supabase/supabase-js";
+import { Database } from "@/lib/database.types";
 
 export type AuthActionState = {
   success: boolean;
@@ -25,7 +26,7 @@ export async function signInAction(
   }
 
   try {
-    const supabase = await createClient();
+    const supabase: SupabaseClient<Database> = await createClient();
     const { data, error } = await supabase.auth.signInWithPassword({
       email,
       password,
@@ -71,7 +72,7 @@ export async function signUpAction(
   }
 
   try {
-    const supabase = await createClient();
+    const supabase: SupabaseClient<Database> = await createClient();
 
     // Sign up user
     const { data: authData, error: authError } = await supabase.auth.signUp({
@@ -94,8 +95,8 @@ export async function signUpAction(
 
     // Create user profile in public.profiles table
     if (authData.user) {
-      const { error: profileError } = await supabase
-        .from("profiles").insert({
+      const { error: profileError } = await (supabase
+        .from("profiles") as any).insert({
           id: authData.user.id,
           email: authData.user.email,
           display_name: displayName,

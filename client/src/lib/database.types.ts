@@ -1,12 +1,6 @@
-export type Json =
-  | string
-  | number
-  | boolean
-  | null
-  | { [key: string]: Json | undefined }
-  | Json[]
+export type Json = any
 
-export interface Database {
+export type Database = {
   public: {
     Tables: {
       profiles: {
@@ -19,6 +13,27 @@ export interface Database {
           role: string | null
           metadata: Json | null
           created_at: string
+          uid: string | null
+          email_verified: boolean | null
+          photo_url: string | null
+          address: string | null
+          city: string | null
+          state: string | null
+          zip_code: string | null
+          country: string | null
+          theme: string | null
+          order_history: Json | null
+          loyalty_points_balance: number | null
+          tier_status: string | null
+          rewards_available: Json | null
+          yellowemption_history: Json | null
+          personalized_promotions: Json | null
+          referral_code: string | null
+          car_wash_count: number | null
+          preferences: Json | null
+          saved_payment_methods: Json | null
+          updated_at: string | null
+          last_login: string | null
         }
         Insert: {
           id?: string
@@ -29,6 +44,27 @@ export interface Database {
           role?: string | null
           metadata?: Json | null
           created_at?: string
+          uid?: string | null
+          email_verified?: boolean | null
+          photo_url?: string | null
+          address?: string | null
+          city?: string | null
+          state?: string | null
+          zip_code?: string | null
+          country?: string | null
+          theme?: string | null
+          order_history?: Json | null
+          loyalty_points_balance?: number | null
+          tier_status?: string | null
+          rewards_available?: Json | null
+          yellowemption_history?: Json | null
+          personalized_promotions?: Json | null
+          referral_code?: string | null
+          car_wash_count?: number | null
+          preferences?: Json | null
+          saved_payment_methods?: Json | null
+          updated_at?: string | null
+          last_login?: string | null
         }
         Update: {
           id?: string
@@ -39,7 +75,29 @@ export interface Database {
           role?: string | null
           metadata?: Json | null
           created_at?: string
+          uid?: string | null
+          email_verified?: boolean | null
+          photo_url?: string | null
+          address?: string | null
+          city?: string | null
+          state?: string | null
+          zip_code?: string | null
+          country?: string | null
+          theme?: string | null
+          order_history?: Json | null
+          loyalty_points_balance?: number | null
+          tier_status?: string | null
+          rewards_available?: Json | null
+          yellowemption_history?: Json | null
+          personalized_promotions?: Json | null
+          referral_code?: string | null
+          car_wash_count?: number | null
+          preferences?: Json | null
+          saved_payment_methods?: Json | null
+          updated_at?: string | null
+          last_login?: string | null
         }
+        Relationships: []
       }
       products: {
         Row: {
@@ -168,6 +226,9 @@ export interface Database {
       [_ in never]: never
     }
     Enums: {
+      [_ in never]: never
+    }
+    CompositeTypes: {
       [_ in never]: never
     }
   }
