@@ -34,6 +34,24 @@ ALTER TABLE IF EXISTS public.profiles
 ALTER TABLE IF EXISTS public.profiles ENABLE ROW LEVEL SECURITY;
 
 -- SELECT policy: make profiles readable by everyone (PUBLIC)
+-- If you want only authenticated users to read, change TO PUBLIC -> TO authenticated
+DO $$
+BEGIN
+  IF NOT EXISTS (
+    SELECT 1 FROM pg_policies WHERE schemaname = 'public' AND tablename = 'profiles' AND policyname = 'profiles_select_public'
+  ) THEN
+    EXECUTE $sql$
+      CREATE POLICY profiles_select_public
+        ON public.profiles
+        FOR SELECT
+        TO PUBLIC
+        USING (true);
+    $sql$;
+  END IF;
+END;
+$$ LANGUAGE plpgsql;
+
+-- INSERT policy: authenticated users may insert a profile only for their own id
 DO $$
 BEGIN
   IF NOT EXISTS (
