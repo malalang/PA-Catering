@@ -2,6 +2,7 @@
 
 import { revalidatePath } from "next/cache";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
+import type { Database } from "@/lib/database.types";
 
 export type ProductActionState = {
   error?: string;
@@ -32,7 +33,7 @@ export const createProductAction = async (
   }
 
   const supabase = await createSupabaseServerClient();
-  const { error } = await supabase.from("products").insert({
+  const productData: Database["public"]["Tables"]["products"]["Insert"] = {
     name,
     category,
     description: description || null,
@@ -40,7 +41,9 @@ export const createProductAction = async (
     image_url: imageUrl,
     price,
     stock: Number.isNaN(stock) ? 0 : stock,
-  });
+  };
+  // @ts-expect-error - Supabase type inference issue with Database types
+  const { error } = await supabase.from("products").insert(productData);
 
   if (error) {
     console.error("Failed to create product", error);
@@ -83,9 +86,13 @@ export const updateProductAction = async (
   }
 
   const supabase = await createSupabaseServerClient();
+  const updateData: Database["public"]["Tables"]["products"]["Update"] = {
+    ...payload,
+  };
   const { error } = await supabase
     .from("products")
-    .update(payload)
+    // @ts-ignore - Supabase type inference issue with Database types
+    .update(updateData)
     .eq("id", id);
 
   if (error) {

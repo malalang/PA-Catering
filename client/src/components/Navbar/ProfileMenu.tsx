@@ -3,15 +3,17 @@ import AppLink from '../ui/Link';
 import { FaCar, FaClipboardList, FaSignOutAlt, FaUserCircle, FaUtensils } from 'react-icons/fa';
 import Button from '../ui/Button';
 import { useEffect, useRef } from 'react';
-import { useAuth } from '@/lib/supabase/auth/useAuth';
 
-const ProfileMenu: React.FC<{ setMenubar: (path: 'mobile' | 'profile') => void }> = ({
+
+import { User } from '@supabase/supabase-js';
+
+const ProfileMenu: React.FC<{ setMenubar: (path: 'mobile' | 'profile') => void; user: User | null }> = ({
 	setMenubar,
+	user,
 }) => {
-	const { user } = useAuth();
 	const navRef = useRef<HTMLUListElement>(null);
 	if (!user) return null;
-	
+
 	// useEffect(() => {
 	// 	const handleClickOutside = (event: MouseEvent) => {
 	// 		if (navRef.current && !navRef.current.contains(event.target as Node)) {
@@ -48,12 +50,12 @@ const ProfileMenu: React.FC<{ setMenubar: (path: 'mobile' | 'profile') => void }
 
 			<Button
 				variant='primary'
-				       onClick={async () => {
-					       const { createClient } = await import('@/lib/supabase/client');
-					       const supabase = createClient();
-					       await supabase.auth.signOut();
-					       setMenubar('profile');
-				       }}
+				onClick={async () => {
+					const { createClient } = await import('@/lib/supabase/client');
+					const supabase = createClient();
+					await supabase.auth.signOut();
+					setMenubar('profile');
+				}}
 				className='flex items-center justify-between gap-2 px-4 py-2 w-full text-left'>
 				<span className='flex items-center gap-2'>
 					<FaSignOutAlt /> Log Out

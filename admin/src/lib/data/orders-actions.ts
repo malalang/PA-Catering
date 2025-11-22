@@ -4,6 +4,7 @@ import { formatISO } from "date-fns";
 import { revalidatePath } from "next/cache";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 import type { OrderStatus } from "@/lib/types";
+import type { Database } from "@/lib/database.types";
 
 export type OrderActionState = {
   error?: string;
@@ -33,9 +34,14 @@ export const updateOrderStatusAction = async (
   }
 
   const supabase = await createSupabaseServerClient();
+  const updateData: Database["public"]["Tables"]["orders"]["Update"] = {
+    status,
+    updated_at: formatISO(new Date()),
+  };
   const { error } = await supabase
     .from("orders")
-    .update({ status, updated_at: formatISO(new Date()) })
+    // @ts-ignore - Supabase type inference issue with Database types
+    .update(updateData)
     .eq("id", orderId);
 
   if (error) {

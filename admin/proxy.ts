@@ -4,7 +4,7 @@ import { getSupabaseConfig } from "@/lib/supabase/config";
 
 const AUTH_ROUTES = ["/login", "/register"];
 
-export async function middleware(req: NextRequest) {
+export async function proxy(req: NextRequest) {
   const res = NextResponse.next({
     request: {
       headers: req.headers,
@@ -49,3 +49,4 @@ export async function middleware(req: NextRequest) {
 export const config = {
   matcher: ["/((?!_next/static|_next/image|favicon.ico).*)"],
 };
+

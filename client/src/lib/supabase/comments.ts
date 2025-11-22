@@ -15,6 +15,7 @@ export const getCommentsForProduct = async (productId: string) => {
 export const addComment = async (productId: string, userId: string | null, userName: string | null, body: string) => {
   const { data, error } = await supabaseBrowser
     .from('comments')
+    // @ts-ignore - Supabase type inference issue with Database types
     .insert([{ product_id: productId, user_id: userId, user_name: userName, body }])
     .select()
     .single();

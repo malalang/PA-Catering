@@ -1,16 +1,10 @@
 'use client';
 
 import { createContext, useContext, useState, ReactNode, SetStateAction, Dispatch } from 'react';
-import Products from '@/lib/constant/Products';
+
 
 
 interface CartContextType {
-	products: ProductsType;
-	setProducts: Dispatch<SetStateAction<ProductsType>>;
-	setSearch: Dispatch<SetStateAction<string>>;
-	search: string;
-	matchingProductsByCategory: ProductType[];
-	matchingCategories: ProductsType[number][];
 	cartItems: CartItem[];
 	addItem: (item: ProductType) => void;
 	removeFromCart: (ProductID: ProductType['ProductID']) => void;
@@ -20,22 +14,18 @@ interface CartContextType {
 	totalQuantity: number;
 }
 
+export const useCart = () => {
+	const context = useContext(CartContext);
+	if (context === undefined) {
+		throw new Error('useCart must be used within a CartProvider');
+	}
+	return context;
+};
+
 const CartContext = createContext<CartContextType | undefined>(undefined);
 
 export const CartProvider = ({ children }: { children: ReactNode }) => {
 	const [cartItems, setCartItems] = useState<CartItem[]>([]);
-	const [products, setProducts] = useState<ProductsType>(Products);
-	const [search, setSearch] = useState('');
-	const searchTerm = search.trim().toLowerCase();
-
-	// Find categories that match the search
-	const matchingCategories = products.filter((group: ProductsType[number]) =>
-		group.Name.toLowerCase().includes(searchTerm)
-	);
-	// Find products that match the search, grouped by category
-	const matchingProductsByCategory = products.flatMap((group: ProductsType[number]) =>
-		group.Products.filter((product: ProductType) => product.Name.toLowerCase().includes(searchTerm))
-	);
 
 	const addItem = (item: ProductType) => {
 		setCartItems((prevItems) => {
@@ -51,8 +41,8 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
 				return [...prevItems, newItem];
 			}
 		});
-		// router.push('/menu/cart'); // Removed automatic redirect
 	};
+
 	const removeFromCart = (ProductID: ProductType['ProductID']) => {
 		const updatedItems = cartItems.filter((item) => item.ProductID !== ProductID);
 		setCartItems(updatedItems);
@@ -83,24 +73,10 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
 				removeFromCart,
 				minisItemQuantity,
 				clearCart,
-				products,
-				setProducts,
-				matchingCategories,
-				matchingProductsByCategory,
-				search,
-				setSearch,
 			}}>
 			{children}
 		</CartContext.Provider>
 	);
-};
-
-export const useCart = () => {
-	const context = useContext(CartContext);
-	if (context === undefined) {
-		throw new Error('useCart must be used within a CartProvider');
-	}
-	return context;
 };
 
 // Ensure CartItem has ProductID, Name, Price, quantity, and Image properties

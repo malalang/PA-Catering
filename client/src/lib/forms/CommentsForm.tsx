@@ -16,7 +16,7 @@ const CommentsForm: React.FC<CommentsProps> = async ({ ProductName }) => {
 	       return redirect('/Authentication/login');
        }
 
-       let comments = [];
+       let comments: Array<{ id: string; user_name: string | null; created_at: string; body: string }> = [];
        try {
 	       comments = (await getCommentsForProduct(ProductName)) || [];
        } catch (err) {

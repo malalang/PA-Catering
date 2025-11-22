@@ -30,7 +30,7 @@ async function fetchProfile(
     return null;
   }
 
-  if (!data || data.role !== "admin") {
+  if (!data || (data as { role: string | null }).role !== "admin") {
     return null;
   }
 

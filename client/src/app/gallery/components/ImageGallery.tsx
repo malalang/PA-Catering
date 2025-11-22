@@ -1,6 +1,6 @@
 'use client';
 import React, { useState, useRef, useEffect } from 'react';
-import Products from '@/lib/constant/Products';
+import { createClient } from '@/lib/supabase/client';
 
 import Image from 'next/image';
 import { FaImages } from 'react-icons/fa';
@@ -9,10 +9,52 @@ import dynamic from 'next/dynamic';
 const ImageModal = dynamic(() => import('./ImageModal'), { ssr: false, loading: () => null });
 import Section from '@/components/ui/layout/Section';
 
+type ProductRow = {
+	id: string;
+	name: string;
+	description: string | null;
+	price: number | null;
+	image_url: string | null;
+	badge: string | null;
+	likes: number | null;
+};
+
 const ImageGallery: React.FC = () => {
 	const [modalOpen, setModalOpen] = useState(false);
 	const [product, setproduct] = useState<ProductType | null>(null);
+	const [allProducts, setAllProducts] = useState<ProductType[]>([]);
+	const [loading, setLoading] = useState(true);
 	const modalRef = useRef<HTMLDivElement>(null);
+
+	useEffect(() => {
+		const fetchProducts = async () => {
+			const supabase = createClient();
+			const { data, error } = await supabase
+				.from('products')
+				.select('*');
+
+			if (error) {
+				console.error('Error fetching products:', error);
+				setLoading(false);
+				return;
+			}
+
+			const products: ProductType[] = ((data as ProductRow[]) || []).map((p) => ({
+				ProductID: p.id,
+				Name: p.name,
+				Description: [p.description || ''],
+				Price: p.price || 0,
+				Image: p.image_url || '/Menus/placeholder.png',
+				badge: p.badge || undefined,
+				rating: p.likes ? 5 : undefined,
+			}));
+
+			setAllProducts(products);
+			setLoading(false);
+		};
+
+		fetchProducts();
+	}, []);
 
 	useEffect(() => {
 		if (!modalOpen) return;
@@ -47,7 +89,13 @@ const ImageGallery: React.FC = () => {
 		setModalOpen(true);
 	};
 
-	const allProducts = Products.map((p) => p.Products).flat();
+	if (loading) {
+		return (
+			<Section Icon={FaImages} tittle='Gallery'>
+				<div className='text-center py-10 text-white'>Loading gallery...</div>
+			</Section>
+		);
+	}
 
 	return (
 		<Section

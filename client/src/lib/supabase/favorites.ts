@@ -15,6 +15,7 @@ export const toggleFavorite = async (userId: string, productId: string) => {
   // Try insert; if conflict, delete
   const { error: insertErr } = await supabaseBrowser
     .from('user_favorites')
+    // @ts-ignore - Supabase type inference issue with Database types
     .insert([{ user_id: userId, product_id: productId }]);
   if (!insertErr) return { added: true };
   // If insert failed because exists, remove

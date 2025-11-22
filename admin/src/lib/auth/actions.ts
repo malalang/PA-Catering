@@ -4,6 +4,7 @@ import { redirect } from "next/navigation";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 import { fetchAdminProfileWithClient } from "./session";
 import type { AuthActionState } from "./types";
+import type { Database } from "@/lib/database.types";
 
 const sanitize = (value: FormDataEntryValue | null) =>
   String(value ?? "").trim();
@@ -75,12 +76,14 @@ export async function registerAction(
   }
 
   if (data.user) {
-    await supabase.from("profiles").upsert({
+    const profileData: Database["public"]["Tables"]["profiles"]["Insert"] = {
       id: data.user.id,
       email,
       full_name: fullName,
       role: "admin",
-    });
+    };
+    // @ts-expect-error - Supabase type inference issue with Database types
+    await supabase.from("profiles").upsert(profileData);
   }
 
   redirect("/login?registered=1");

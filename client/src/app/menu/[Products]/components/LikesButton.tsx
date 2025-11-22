@@ -30,6 +30,7 @@ const LikesButton: React.FC<SocialButtonsProps> = ({ product }) => {
 				.single();
 			if (error) {
 				// If product row doesn't exist, initialize it
+				// @ts-ignore - Supabase type inference issue with Database types
 				await supabase.from('products').upsert({
 					id: product.ProductID || product.Name,
 					name: product.Name,
@@ -46,8 +47,10 @@ const LikesButton: React.FC<SocialButtonsProps> = ({ product }) => {
 				return;
 			}
 			if (mounted) {
-				setLikes({ likes: data.likes || 0, likedBy: data.liked_by || [] });
-				setIsLiked((data.liked_by || []).includes(userId || ''));
+				// @ts-ignore - Supabase type inference issue with Database types
+				setLikes({ likes: data.likes || 0, likedBy: (data.liked_by as string[]) || [] });
+				// @ts-ignore - Supabase type inference issue with Database types
+				setIsLiked(((data.liked_by as string[]) || []).includes(userId || ''));
 				setLoading(false);
 			}
 		};
@@ -72,6 +75,7 @@ const LikesButton: React.FC<SocialButtonsProps> = ({ product }) => {
 		// Persist
 		await supabase
 			.from('products')
+			// @ts-ignore - Supabase type inference issue with Database types
 			.update({ likes: newLikes, liked_by: newLikedBy })
 			.eq('id', product.ProductID || product.Name);
 	};

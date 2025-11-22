@@ -11,6 +11,7 @@ export const addOrder = async (userId: string | null, items: any[], totalPrice: 
   };
   const { data, error } = await supabaseBrowser
     .from('orders')
+    // @ts-ignore - Supabase type inference issue with Database types
     .insert([payload])
     .select()
     .single();

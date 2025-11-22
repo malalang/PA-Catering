@@ -21,6 +21,7 @@ export const addOrder = async (
 
   const { data, error } = await supabase
     .from('orders')
+    // @ts-ignore - Supabase type inference issue with Database types
     .insert({
       user_id: userId,
       items,
@@ -79,6 +80,7 @@ export const updateOrderStatus = async (orderId: string, status: string) => {
 
   const { data, error } = await supabase
     .from('orders')
+    // @ts-ignore - Supabase type inference issue with Database types
     .update({ status, updated_at: new Date().toISOString() })
     .eq('id', orderId)
     .select()

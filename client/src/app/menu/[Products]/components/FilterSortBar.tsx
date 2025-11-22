@@ -3,22 +3,17 @@
 import React, { useState, useEffect } from 'react';
 import { FaSort, FaFilter } from 'react-icons/fa';
 import Button from '@/components/ui/Button';
+import { useRouter, useSearchParams, usePathname } from 'next/navigation';
 
-interface FilterSortBarProps {
-	onSortChange: (sortType: string) => void;
-	onPriceFilterChange: (minPrice: number, maxPrice: number) => void;
-	currentSort: string;
-	currentMinPrice: number;
-	currentMaxPrice: number;
-}
+const FilterSortBar: React.FC = () => {
+	const router = useRouter();
+	const searchParams = useSearchParams();
+	const pathname = usePathname();
 
-const FilterSortBar: React.FC<FilterSortBarProps> = ({
-	onSortChange,
-	onPriceFilterChange,
-	currentSort,
-	currentMinPrice,
-	currentMaxPrice,
-}) => {
+	const currentSort = searchParams.get('sort') || 'default';
+	const currentMinPrice = Number(searchParams.get('minPrice')) || 0;
+	const currentMaxPrice = Number(searchParams.get('maxPrice')) || 1000;
+
 	const [showFilters, setShowFilters] = useState(false);
 	const [localMinPrice, setLocalMinPrice] = useState(currentMinPrice);
 	const [localMaxPrice, setLocalMaxPrice] = useState(currentMaxPrice);
@@ -28,16 +23,38 @@ const FilterSortBar: React.FC<FilterSortBarProps> = ({
 		setLocalMaxPrice(currentMaxPrice);
 	}, [currentMinPrice, currentMaxPrice]);
 
+	const updateParams = (updates: Record<string, string | number | null>) => {
+		const params = new URLSearchParams(searchParams.toString());
+		Object.entries(updates).forEach(([key, value]) => {
+			if (value === null) {
+				params.delete(key);
+			} else {
+				params.set(key, String(value));
+			}
+		});
+		router.replace(`${pathname}?${params.toString()}`, { scroll: false });
+	};
+
+	const handleSortChange = (sortType: string) => {
+		updateParams({ sort: sortType });
+	};
+
 	const handleApplyFilters = () => {
-		onPriceFilterChange(localMinPrice, localMaxPrice);
+		updateParams({
+			minPrice: localMinPrice,
+			maxPrice: localMaxPrice,
+		});
 		setShowFilters(false);
 	};
 
 	const handleResetFilters = () => {
 		setLocalMinPrice(0);
 		setLocalMaxPrice(1000);
-		onPriceFilterChange(0, 1000);
-		onSortChange('default');
+		updateParams({
+			minPrice: null,
+			maxPrice: null,
+			sort: null,
+		});
 		setShowFilters(false);
 	};
 
@@ -58,7 +75,7 @@ const FilterSortBar: React.FC<FilterSortBarProps> = ({
 					<select
 						id='sort-select'
 						value={currentSort}
-						onChange={(e) => onSortChange(e.target.value)}
+						onChange={(e) => handleSortChange(e.target.value)}
 						className='bg-black/20 text-white border border-white/50 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-yellow-500 transition-all duration-200'>
 						<option value='default'>Default</option>
 						<option value='price-low'>Price: Low to High</option>

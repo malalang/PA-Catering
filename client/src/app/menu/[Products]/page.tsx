@@ -1,136 +1,111 @@
-'use client';
-
-import { useState, useEffect } from 'react';
-import Products from '@/lib/constant/Products';
-
 import { Suspense } from 'react';
 import Loading from '@/components/ui/Loading';
-
 import FilterSortBar from '@/app/menu/[Products]/components/FilterSortBar';
 import Main from '@/components/ui/layout/Main';
-import { fetchAllProductLikes, ProductLikes } from './utils/likesUtils';
 import ProductCard from '../components/ProductCard';
+import { createClient } from '@/lib/supabase/server';
 
-export default function Page({ params }: { params: Promise<{ Products: string }> }) {
-	const [FilterGroup, setFilterGroup] = useState('');
-	const [products, setProducts] = useState<ProductType[]>([]);
-	const [filteyellowProducts, setFilteyellowProducts] = useState<ProductType[]>([]);
-	const [currentSort, setCurrentSort] = useState('default');
-	const [currentMinPrice, setCurrentMinPrice] = useState(0);
-	const [currentMaxPrice, setCurrentMaxPrice] = useState(1000);
-	const [productLikes, setProductLikes] = useState<ProductLikes>({});
+export default async function Page({
+	params,
+	searchParams,
+}: {
+	params: Promise<{ Products: string }>;
+	searchParams: Promise<{ sort?: string; minPrice?: string; maxPrice?: string }>;
+}) {
+	const { Products: categorySlug } = await params;
+	const { sort = 'default', minPrice = '0', maxPrice = '1000' } = await searchParams;
+	const supabase = await createClient();
 
-	useEffect(() => {
-		const loadProducts = async () => {
-			const groupParam = (await params).Products;
-			setFilterGroup(groupParam);
+	// Reconstruct category name from slug (e.g., "kota-meals" -> "kota meals")
+	// This is a simple heuristic. For robust matching, we might need a slug column in DB.
+	const categoryName = categorySlug.replace(/-/g, ' ');
 
-			const productsGroup = Products.filter(
-				(p) => p.Name.toLowerCase().replace(/\s+/g, '-') === groupParam
-			);
-			const productsList = productsGroup.flatMap((p) => p.Products);
-			setProducts(productsList);
-			setFilteyellowProducts(productsList);
+	// Fetch products matching the category (case-insensitive)
+	const { data: productsData, error } = await supabase
+		.from('products')
+		.select('*')
+		.ilike('category', categoryName);
 
-			// Fetch likes data for all products
-			const productNames = productsList.map((product) => product.Name);
-			const likesData = await fetchAllProductLikes(productNames);
-			setProductLikes(likesData);
-		};
+	if (error) {
+		console.error('Error fetching products:', error);
+	}
 
-		loadProducts();
-	}, [params]);
-
-	const handleSortChange = (sortType: string) => {
-		setCurrentSort(sortType);
-		const sortedProducts = [...products]; // Use original products array
-
-		switch (sortType) {
-			case 'price-low':
-				sortedProducts.sort((a, b) => a.Price - b.Price);
-				break;
-			case 'price-high':
-				sortedProducts.sort((a, b) => b.Price - a.Price);
-				break;
-			case 'popularity':
-				   // Sort by likes count
-				sortedProducts.sort((a, b) => {
-					const likesA = productLikes[a.Name]?.likes || 0;
-					const likesB = productLikes[b.Name]?.likes || 0;
-					return likesB - likesA; // Most popular first
-				});
-				break;
-			case 'name':
-				sortedProducts.sort((a, b) => a.Name.localeCompare(b.Name));
-				break;
-			default:
-				// Keep original order - no sorting needed
-				break;
-		}
-
-		// Apply price filtering to the sorted products
-		const filteyellow = sortedProducts.filter(
-			(product) => product.Price >= currentMinPrice && product.Price <= currentMaxPrice
-		);
-		setFilteyellowProducts(filteyellow);
+	type ProductRow = {
+		id: string;
+		name: string;
+		description: string | null;
+		price: number | null;
+		image_url: string | null;
+		badge: string | null;
+		likes: number | null;
 	};
 
-	const handlePriceFilterChange = (minPrice: number, maxPrice: number) => {
-		setCurrentMinPrice(minPrice);
-		setCurrentMaxPrice(maxPrice);
+	let products: ProductRow[] = (productsData as ProductRow[]) || [];
 
-		// Start with original products and apply current sorting
-		const sortedProducts = [...products];
+	// Map to UI ProductType
+	let uiProducts: ProductType[] = products.map((p) => ({
+		ProductID: p.id,
+		Name: p.name,
+		Description: [p.description || ''],
+		Price: p.price || 0,
+		Image: p.image_url || '/Menus/placeholder.png',
+		badge: p.badge || undefined,
+		rating: p.likes ? 5 : undefined,
+	}));
 
-		switch (currentSort) {
-			case 'price-low':
-				sortedProducts.sort((a, b) => a.Price - b.Price);
-				break;
-			case 'price-high':
-				sortedProducts.sort((a, b) => b.Price - a.Price);
-				break;
-			case 'popularity':
-				   // Sort by likes count
-				sortedProducts.sort((a, b) => {
-					const likesA = productLikes[a.Name]?.likes || 0;
-					const likesB = productLikes[b.Name]?.likes || 0;
-					return likesB - likesA; // Most popular first
-				});
-				break;
-			case 'name':
-				sortedProducts.sort((a, b) => a.Name.localeCompare(b.Name));
-				break;
-			default:
-				// Keep original order
-				break;
-		}
+	// Filter by price
+	const min = Number(minPrice);
+	const max = Number(maxPrice);
+	uiProducts = uiProducts.filter((p) => p.Price >= min && p.Price <= max);
 
-		// Apply price filtering
-		const filteyellow = sortedProducts.filter(
-			(product) => product.Price >= minPrice && product.Price <= maxPrice
-		);
-		setFilteyellowProducts(filteyellow);
-	};
+	// Sort products
+	switch (sort) {
+		case 'price-low':
+			uiProducts.sort((a, b) => a.Price - b.Price);
+			break;
+		case 'price-high':
+			uiProducts.sort((a, b) => b.Price - a.Price);
+			break;
+		case 'popularity':
+			// Ideally fetch likes count from DB and sort there, or sort here if we have the data
+			// For now, we can't easily sort by popularity without likes data joined.
+			// Assuming 'likes' column in products table is the count.
+			// If we mapped it to rating, we can use that, or fetch likes separately.
+			// Let's assume p.likes is the count.
+			uiProducts.sort((a, b) => {
+				const likesA = products.find((p: ProductRow) => p.id === a.ProductID)?.likes || 0;
+				const likesB = products.find((p: ProductRow) => p.id === b.ProductID)?.likes || 0;
+				return likesB - likesA;
+			});
+			break;
+		case 'name':
+			uiProducts.sort((a, b) => a.Name.localeCompare(b.Name));
+			break;
+		default:
+			break;
+	}
 
 	return (
 		<>
-			<FilterSortBar
-				onSortChange={handleSortChange}
-				onPriceFilterChange={handlePriceFilterChange}
-				currentSort={currentSort}
-				currentMinPrice={currentMinPrice}
-				currentMaxPrice={currentMaxPrice}
-			/>
+			<Suspense fallback={<div className="h-12" />}>
+				<FilterSortBar />
+			</Suspense>
 			<Main>
 				<div className='grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 content-stretch gap-2'>
 					<Suspense fallback={<Loading message='Loading Products...' />}>
-						{filteyellowProducts.map((product) => (
-							<ProductCard
-								product={product}
-								categoryName={FilterGroup}
-								key={product.ProductID}
-							/>
-						))}
+						{uiProducts.length > 0 ? (
+							uiProducts.map((product) => (
+								<ProductCard
+									product={product}
+									categoryName={categorySlug} // Use slug for links
+									key={product.ProductID}
+								/>
+							))
+						) : (
+							<div className="col-span-full text-center py-10 text-white">
+								<p>No products found in this category.</p>
+							</div>
+						)}
 					</Suspense>
 				</div>
 			</Main>

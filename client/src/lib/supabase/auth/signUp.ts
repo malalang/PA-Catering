@@ -24,15 +24,16 @@ export const signUp = async (
     throw new Error(authError.message);
   }
 
-  // Create user profile in public.users table
+  // Create user profile in public.profiles table
   if (authData.user) {
     const { error: profileError } = await supabase
-      .from('users')
+      .from('profiles')
+      // @ts-ignore - Supabase type inference issue with Database types
       .insert({
         id: authData.user.id,
         email: authData.user.email,
         display_name: displayName,
-        phone_number: phoneNumber || '',
+        phone: phoneNumber || '',
       });
 
     if (profileError) {

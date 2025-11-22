@@ -1,12 +1,14 @@
 'use client';
 import AppLink from '@/components/ui/Link';
 import Button from '@/components/ui/Button';
-import { useAuth } from '@/lib/supabase/auth/useAuth';
+
 import { FaSignInAlt, FaUserCircle } from 'react-icons/fa';
-const AuthButton: React.FC<{ setMenubar: (path: 'mobile' | 'profile') => void }> = ({
+import { User } from '@supabase/supabase-js';
+
+const AuthButton: React.FC<{ setMenubar: (path: 'mobile' | 'profile') => void; user: User | null }> = ({
 	setMenubar,
+	user,
 }) => {
-	const { user } = useAuth();
 	if (user)
 		return (
 			<Button

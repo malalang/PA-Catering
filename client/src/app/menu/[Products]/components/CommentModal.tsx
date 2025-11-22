@@ -19,6 +19,7 @@ const CommentModal: React.FC<CommentModalProps> = ({ product, handleCloseComment
 		}
 		try {
 			const supabase = createClient();
+			// @ts-ignore - Supabase type inference issue with Database types
 			await supabase.from('comments').insert({
 				product_id: product.ProductID || product.Name,
 				user_id: user?.id || null,

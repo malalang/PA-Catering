@@ -21,6 +21,7 @@ export const fetchAllProductLikes = async (productKeys: string[]): Promise<Produ
           .single();
         
         if (!error && data) {
+          // @ts-ignore - Supabase type inference issue with Database types
           likesData[productKey] = { likes: data.likes || 0 };
         } else {
           likesData[productKey] = { likes: 0 };

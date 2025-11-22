@@ -1,40 +1,28 @@
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import Products from '@/lib/constant/Products';
+
 
 import Section from '@/components/ui/layout/Section';
 
 interface RelatedProductsProps {
 	currentProduct: ProductType;
 	categoryName: string;
+	products: ProductType[];
 }
 
-const RelatedProducts: React.FC<RelatedProductsProps> = ({ currentProduct, categoryName }) => {
-	// Find the category and then filter products from it
-	const category = Products.find(
-		(group) => group.Name.toLowerCase() === categoryName.toLowerCase()
-	);
-	const relatedProducts = category
-		? category.Products.filter((product) => product.ProductID !== currentProduct.ProductID).slice(
-				0,
-				4
-		  ) // Show max 4 related products
-		: [];
-
-	if (relatedProducts.length === 0) {
+const RelatedProducts: React.FC<RelatedProductsProps> = ({ currentProduct, categoryName, products }) => {
+	if (products.length === 0) {
 		return null;
 	}
 
 	return (
 		<Section tittle='You Might Also Like'>
 			<div className='grid grid-cols-3 sm:grid-cols-2 md:grid-cols-4 gap-2'>
-				{relatedProducts.map((product) => (
+				{products.map((product) => (
 					<Link
 						key={product.ProductID}
-						href={`/menu/${categoryName
-							.toLowerCase()
-							.replace(/\s+/g, '-')}/${product.Name.toLowerCase().replace(/\s+/g, '-')}`}
+						href={`/menu/${categoryName}/${product.Name.toLowerCase().replace(/\s+/g, '-')}`}
 						className='group relative bg-yellow-700  rounded-md p-2 pt-6  flex flex-col transition-transform duration-300 hover:scale-105 hover:border-white'>
 						{product.Image && (
 							<div className='relative w-full aspect-square  overflow-hidden rounded-md'>
