@@ -28,6 +28,28 @@ const CustomerProfilePage: React.FC = async () => {
 		return <div>Profile not found</div>;
 	}
 
+	// Map DB profile (snake_case) to UserProfile (camelCase)
+	const userProfile: any = {
+		...profile,
+		displayName: profile.display_name,
+		emailVerified: profile.email_verified,
+		photoURL: profile.photo_url,
+		phoneNumber: profile.phone,
+		zipCode: profile.zip_code,
+		orderHistory: profile.order_history,
+		loyaltyPointsBalance: profile.loyalty_points_balance,
+		tierStatus: profile.tier_status,
+		rewardsAvailable: profile.rewards_available,
+		yellowemptionHistory: profile.yellowemption_history,
+		personalizedPromotions: profile.personalized_promotions,
+		referralCode: profile.referral_code,
+		carWashCount: profile.car_wash_count,
+		savedPaymentMethods: profile.saved_payment_methods,
+		updatedAt: profile.updated_at,
+		lastLogin: profile.last_login,
+		createdAt: profile.created_at,
+	};
+
 	return (
 		<Main
 			tittle='Profile'
@@ -35,7 +57,7 @@ const CustomerProfilePage: React.FC = async () => {
 			heading='Manage your personal information, preferences, and account security.'>
 			<div className='grid grid-cols-1  gap-8'>
 				<div className='lg:col-span-2 space-y-8'>
-					<PersonalInformation user={profile as any} />
+					<PersonalInformation user={userProfile} />
 					<PaymentInformation />
 				</div>
 
