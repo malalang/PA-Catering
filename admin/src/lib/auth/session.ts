@@ -30,7 +30,19 @@ async function fetchProfile(
     return null;
   }
 
-  if (!data || (data as { role: string | null }).role !== "admin") {
+  console.log("Profile data:", data);
+
+  if (!data) {
+    console.log("No profile data found");
+    return null;
+  }
+
+  const userRole = (data as { role: string | null }).role;
+  console.log("User role:", userRole);
+
+  // Case-insensitive check for admin role
+  if (!userRole || userRole.toLowerCase() !== "admin") {
+    console.log("Role check failed. Expected 'admin', got:", userRole);
     return null;
   }
 
