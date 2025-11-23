@@ -1,7 +1,7 @@
 import { Suspense } from 'react';
 import ImageGallery from '@/app/gallery/components/ImageGallery';
 import Loading from '@/components/ui/Loading';
-import PromotionsBanner from '@/app/menu/components/PromotionsBanner';
+// import PromotionsBanner from '@/app/menu/components/PromotionsBanner';
 import MenuSections from '@/app/menu/components/MenuSections';
 import Main from '@/components/ui/layout/Main';
 import { CgMenuCheese } from 'react-icons/cg';
@@ -94,7 +94,7 @@ export default async function HomePage({
 
 	categoriesToShow.forEach((categoryName) => {
 		const products = categoriesMap.get(categoryName) || [];
-		
+
 		// When searching, only show categories that have matching products or match by name
 		if (search && products.length === 0 && !matchingCategoryNames.includes(categoryName)) {
 			return;
@@ -158,7 +158,7 @@ export default async function HomePage({
 					<ImageGallery />
 				</Suspense>
 			</Main>
-			<PromotionsBanner />
+			{/* <PromotionsBanner /> */}
 		</>
 	);
 }

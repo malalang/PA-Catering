@@ -11,7 +11,7 @@ export default function Main({ children, Icon, heading, tittle, className }: Mai
 			className={
 				className
 					? className
-					: 'relative flex flex-col items-center justify-start w-full min-h-screen p-2 md:px-4 bg-white/10 backdrop-blur-md'
+					: 'flex flex-col items-center justify-start w-full min-h-screen p-2 md:px-4 '
 			}>
 			<header>
 				<span className='flex items-center justify-center gap-3'>

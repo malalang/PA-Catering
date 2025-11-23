@@ -46,7 +46,7 @@ function CartFooter() {
 	};
 
 	return (
-		<div className='fixed bottom-0 left-0 right-0 z-50 backdrop-blur-xl bg-gradient-to-t from-black/90 via-black/80 to-black/60 border-t border-white/10 shadow-2xl'>
+		<footer className='fixed bottom-0 left-0 right-0 z-50 backdrop-blur-xl bg-gradient-to-t from-black/90 via-black/80 to-black/60 border-t border-white/10 shadow-2xl'>
 			<div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4'>
 				<div className='flex flex-col lg:flex-row items-center justify-between gap-4'>
 					{/* Order Summary with improved visual hierarchy */}
@@ -115,7 +115,7 @@ function CartFooter() {
 					</nav>
 				</div>
 			</div>
-		</div>
+		</footer>
 	);
 }
 

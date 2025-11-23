@@ -1,7 +1,6 @@
 import AboutUsSnippet from '@/app/home-components/AboutUsSnippet';
 import ContactSection from '@/app/home-components/ContactSection';
 import FeaturedItemsServices from '@/app/home-components/FeaturedItemsServices';
-
 import HeroSection from '@/app/home-components/HeroSection';
 import KeyDifferentiators from '@/app/home-components/KeyDifferentiators';
 import TargetMarketCallout from '@/app/home-components/TargetMarketCallout';
