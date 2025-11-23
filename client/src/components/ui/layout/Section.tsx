@@ -20,7 +20,7 @@ export default function Section({
 		<section
 			{...props}
 			className={
-				className ? className : 'bg-white/10 backdrop-blur-md border border-yellow-500/20 rounded-md p-2 my-4'
+				className ? className : 'bg-gradient-to-br from-yellow-900/20 to-amber-900/20 backdrop-blur-md border border-yellow-500/30 rounded-xl p-6 hover:border-yellow-400/50 transition-all duration-300'
 			}>
 			<header>
 				{Icon ? (

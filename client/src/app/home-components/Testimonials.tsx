@@ -80,7 +80,7 @@ const Testimonials: React.FC = () => {
 				{testimonials.map((testimonial) => (
 					<article
 						key={testimonial.id}
-						className='rounded-xl border border-yellow-500/30 bg-gradient-to-br from-yellow-900/20 to-amber-900/20 backdrop-blur-md hover:border-yellow-400/50 transition-all duration-300 shadow-lg p-6 flex flex-col'>
+						className=' rounded-xl border border-yellow-500/30 bg-gradient-to-br from-yellow-900/20 to-amber-900/20 backdrop-blur-md hover:border-yellow-400/50 transition-all duration-300 shadow-lg p-6 flex flex-col'>
 						<div className='flex-grow'>
 							<FaQuoteLeft className='text-2xl text-amber-400/50 mb-4' />
 							<p className='italic text-slate-300 mb-4'>{testimonial.text}</p>

@@ -85,7 +85,7 @@ const FeaturedItemsServices: React.FC = () => {
 				{featuredItems.map((item) => (
 					<article
 						key={item.id}
-						className='overflow-hidden flex flex-col rounded-xl border border-yellow-500/30 bg-gradient-to-br from-yellow-900/20 to-amber-900/20 backdrop-blur-md hover:border-yellow-400/50 transition-all duration-300 shadow-lg'>
+						className='overflow-hidden flex flex-col rounded-xl border border-yellow-500/30 bg-gradient-to-br from-yellow-900/20 to-amber-900/20 backdrop-blur-md hover:border-yellow-400/50  transition-all duration-300 shadow-lg'>
 						{item.image && (
 							<Image
 								src={item.image}
@@ -99,7 +99,7 @@ const FeaturedItemsServices: React.FC = () => {
 							<h3 className='text-xl font-bold text-white'>{item.name}</h3>
 							<p className='mt-2 text-slate-300'>{item.description}</p>
 						</div>
-						<div className='flex justify-around items-center border-t border-white/20 pt-4 bg-white/5 -mx-0 px-0 pb-4 mt-auto'>
+						<div className='flex justify-around items-center border-t border-white/20 pt-4 bg-white/5 -mx-6 px-6 pb-6 -mb-6 mt-auto rounded-b-xl'>
 							<Button
 								variant='icon'
 								onClick={() => handleLike(item.id)}

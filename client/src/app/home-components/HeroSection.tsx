@@ -13,10 +13,9 @@ const HeroSection: React.FC = () => {
 				alt='PA Luxe Creation Logo'
 				width={200}
 				height={200}
-				className='mb-6'
 				priority
 			/>
-			<p className='mt-4 text-lg max-w-2xl'>
+			<p className='mt-4 text-lg text-shadow-sm text-shadow-black/50 font-bold max-w-2xl'>
 				Experience the unique convenience of delicious food and a state-of-the-art Photo boot, all in
 				one place in Evander.
 			</p>

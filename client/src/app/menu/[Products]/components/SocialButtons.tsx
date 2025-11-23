@@ -27,7 +27,7 @@ const SocialButtons: React.FC<SocialButtonsProps> = ({ product }) => {
 	};
 
 	return (
-		<div className=' grid grid-cols-3 w-full border-t-2 py-1 border-yellow-500 bg-black/50 hover:bg-yellow-500 gap-2'>
+		<div className='grid grid-cols-3 w-full border-t border-white/20 pt-4 bg-white/5 -mx-6 px-6 pb-6 -mb-6 rounded-b-xl gap-2'>
 			<LikesButton product={product} />
 			<CommentsButton product={product} />
 			{/* Share Button */}
