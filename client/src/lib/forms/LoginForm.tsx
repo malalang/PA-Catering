@@ -17,7 +17,7 @@ export default function LoginForm() {
     }
 
     return (
-        <Section className="bg-gradient-to-br from-slate-900/90 to-slate-800/90 backdrop-blur-xl border border-amber-400/20 shadow-2xl">
+        <Section >
             {state?.error && (
                 <div className='text-red-300 mb-4 mt-4 bg-red-500/10 border border-red-500/30 p-3 rounded-lg'>{state.error}</div>
             )}

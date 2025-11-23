@@ -29,9 +29,12 @@ export async function proxy(request: NextRequest) {
     const {
         data: { user },
     } = await supabase.auth.getUser();
-
-    const protectedPaths = ['/profile', '/orders', '/carwash/booking'];
+    const authPaths = ['/login', '/register']
+    const protectedPaths = ['/profile', '/orders', '/photo/booking'];
     const isProtected = protectedPaths.some((path) =>
+        request.nextUrl.pathname.startsWith(path)
+    );
+    const isAuthPage = authPaths.some((path) =>
         request.nextUrl.pathname.startsWith(path)
     );
 
@@ -39,6 +42,21 @@ export async function proxy(request: NextRequest) {
         const url = request.nextUrl.clone();
         url.pathname = '/login';
         url.searchParams.set('redirectTo', request.nextUrl.pathname);
+
+        // Create a redirect response
+        const redirectResponse = NextResponse.redirect(url);
+
+        // Copy cookies from the original response (which might have refreshed tokens)
+        // to the redirect response
+        response.cookies.getAll().forEach((cookie) => {
+            redirectResponse.cookies.set(cookie.name, cookie.value, cookie);
+        });
+
+        return redirectResponse;
+    }
+    if (isAuthPage && user) {
+        const url = request.nextUrl.clone();
+        url.pathname = '/profile';
 
         // Create a redirect response
         const redirectResponse = NextResponse.redirect(url);
