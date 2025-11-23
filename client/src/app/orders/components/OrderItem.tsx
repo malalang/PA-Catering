@@ -1,6 +1,4 @@
 import React from 'react';
-import ProductDetails from '@/app/menu/components/ProductDetails';
-import Section from '@/components/ui/layout/Section';
 import { HiClock, HiCurrencyDollar, HiShoppingBag, HiCheckCircle } from 'react-icons/hi2';
 
 const OrderItem: React.FC<{ order: any }> = ({ order }) => {
@@ -27,6 +25,9 @@ const OrderItem: React.FC<{ order: any }> = ({ order }) => {
 				return <HiClock className="text-blue-400" size={20} />;
 		}
 	};
+
+	// Parse items from JSON
+	const items = Array.isArray(order.items) ? order.items : (typeof order.items === 'string' ? JSON.parse(order.items) : []);
 
 	return (
 		<div className='rounded-xl border border-white/10 bg-gradient-to-br from-slate-900/80 to-slate-800/80 backdrop-blur-sm hover:border-amber-400/30 transition-all duration-300 hover:shadow-lg hover:shadow-amber-500/10 overflow-hidden'>
@@ -67,6 +68,26 @@ const OrderItem: React.FC<{ order: any }> = ({ order }) => {
 					<p className='text-xs text-slate-400 uppercase tracking-wider mb-1'>Order ID</p>
 					<p className='text-white font-mono text-sm break-all'>{order.id}</p>
 				</div>
+
+				{/* Products List */}
+				{items && items.length > 0 && (
+					<div className='bg-white/5 px-4 py-3 rounded-lg border border-white/10'>
+						<p className='text-xs text-slate-400 uppercase tracking-wider mb-3'>Items Ordered</p>
+						<div className='space-y-2'>
+							{items.map((item: any, index: number) => (
+								<div key={index} className='flex justify-between items-center py-2 border-b border-white/5 last:border-0'>
+									<div className='flex-1'>
+										<p className='text-white font-medium'>{item.name || item.Name}</p>
+										<p className='text-xs text-slate-400'>Qty: {item.quantity}</p>
+									</div>
+									<p className='text-amber-400 font-semibold'>
+										R{((item.price || item.Price) * item.quantity).toFixed(2)}
+									</p>
+								</div>
+							))}
+						</div>
+					</div>
+				)}
 
 				{/* Order Summary */}
 				<div className='grid grid-cols-2 gap-3'>

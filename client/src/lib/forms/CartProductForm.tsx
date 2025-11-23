@@ -4,7 +4,6 @@ import ProductDetails from '@/app/menu/components/ProductDetails';
 import Button from '@/components/ui/Button';
 import Section from '@/components/ui/layout/Section';
 import { useCart } from '@/lib/context/CartContext';
-import React from 'react';
 import { HiMinusSm, HiPlusSm, HiTrash, HiShoppingCart } from 'react-icons/hi';
 
 function CartProductForm() {
@@ -32,10 +31,10 @@ function CartProductForm() {
 		<Section
 			tittle='Your Items'
 			className='p-4 max-h-[70vh] overflow-y-auto custom-scrollbar'>
-			<ul className='space-y-3'>
+			<ul className='space-y-3 px-2'>
 				{cartItems.map((item) => (
 					<li
-						className='group rounded-xl border border-white/10 bg-gradient-to-br from-slate-900/80 to-slate-800/80 backdrop-blur-sm hover:border-amber-400/30 transition-all duration-300 hover:shadow-lg hover:shadow-amber-500/10'
+						className=' group rounded-xl border border-white/10 bg-gradient-to-br from-slate-900/80 to-slate-800/80 backdrop-blur-sm hover:border-amber-400/30 transition-all duration-300 hover:shadow-lg hover:shadow-amber-500/10'
 						key={item.ProductID}>
 						<article className='p-4 flex flex-col md:flex-row items-center justify-between gap-4'>
 							<ProductDetails item={item} />

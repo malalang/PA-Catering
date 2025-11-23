@@ -1,40 +1,89 @@
-import React from 'react';
+'use client';
+import React, { useState } from 'react';
 import { BiSolidLike, BiSolidComment, BiSolidShare } from 'react-icons/bi';
 import { FaQuoteLeft } from 'react-icons/fa';
 import Button from '@/components/ui/Button';
-
-import Icon from '@/components/ui/Icon';
 import Section from '@/components/ui/layout/Section';
+import { useAuth } from '@/lib/supabase/auth/useAuth';
+import { useRouter } from 'next/navigation';
 
 const Testimonials: React.FC = () => {
-	const testimonials = [
+	const { user } = useAuth();
+	const router = useRouter();
+
+	const [testimonials, setTestimonials] = useState([
 		{
 			id: 1,
-			text: "PA Luxe Creation offers the best Kota's in town and their Photo boot service is super convenient!",
+			text: "PA Luxe Creation offers the best Kota's in town and their Photo booth service is super convenient!",
 			author: 'Happy Customer A',
+			likes: 56,
+			comments: 12,
+			shares: 5,
 		},
 		{
 			id: 2,
-			text: 'I love being able to get my Photo booted while grabbing a quick, delicious meal. Great concept!',
+			text: 'I love being able to get my Photo booth while grabbing a quick, delicious meal. Great concept!',
 			author: 'Satisfied Client B',
+			likes: 48,
+			comments: 9,
+			shares: 7,
 		},
 		{
 			id: 3,
 			text: 'The team at PA Luxe Creation is always friendly and the service is top-notch. Highly recommended!',
 			author: 'Regular Visitor C',
+			likes: 73,
+			comments: 18,
+			shares: 11,
 		},
-	];
+	]);
+
+	const handleLike = (testimonialId: number) => {
+		if (!user) {
+			router.push('/login');
+			return;
+		}
+		setTestimonials(prev => prev.map(t =>
+			t.id === testimonialId ? { ...t, likes: t.likes + 1 } : t
+		));
+	};
+
+	const handleComment = (testimonialId: number) => {
+		if (!user) {
+			router.push('/login');
+			return;
+		}
+		alert('Comment functionality - would open a modal or navigate to comments');
+	};
+
+	const handleShare = (testimonialId: number) => {
+		if (!user) {
+			router.push('/login');
+			return;
+		}
+		if (navigator.share) {
+			navigator.share({
+				title: 'PA Luxe Creation Testimonial',
+				text: 'Check out this customer review!',
+				url: window.location.href,
+			});
+		} else {
+			alert('Share functionality - URL copied to clipboard');
+		}
+	};
 
 	return (
 		<Section
 			Icon={FaQuoteLeft}
 			tittle='What Our Customers Say'>
-			<div className='grid grid-cols-1 md:grid-cols-2  gap-2 '>
+			<div className='grid grid-cols-1 md:grid-cols-2 gap-2'>
 				{testimonials.map((testimonial) => (
-					<article key={testimonial.id}>
+					<article
+						key={testimonial.id}
+						className='rounded-xl border border-white/10 bg-gradient-to-br from-slate-900/80 to-slate-800/80 hover:border-amber-400/30 transition-all duration-300 p-6 flex flex-col'>
 						<div className='flex-grow'>
-							<FaQuoteLeft className='text-2xl text-white/50 mb-4' />
-							<p className='italic text-white mb-4'>{testimonial.text}</p>
+							<FaQuoteLeft className='text-2xl text-amber-400/50 mb-4' />
+							<p className='italic text-slate-300 mb-4'>{testimonial.text}</p>
 						</div>
 						<div className='mt-auto'>
 							<div className='flex items-center mb-4'>
@@ -43,30 +92,39 @@ const Testimonials: React.FC = () => {
 								</span>
 								<p className='font-semibold text-white ml-3'>{testimonial.author}</p>
 							</div>
-							<div className='flex justify-around items-center border-t border-white/20 pt-4'>
+							<div className='flex justify-around items-center border-t border-white/20 pt-4 bg-white/5 -mx-6 px-6 -mb-6 pb-6 rounded-b-xl'>
 								<Button
 									variant='icon'
+									onClick={() => handleLike(testimonial.id)}
+									className='flex flex-col items-center gap-1'
 									aria-label={`Like testimonial by ${testimonial.author}`}>
 									<BiSolidLike
 										size={20}
 										className='text-white/70 hover:text-amber-400 transition-colors'
 									/>
+									<span className='text-xs text-slate-400'>{testimonial.likes}</span>
 								</Button>
 								<Button
 									variant='icon'
+									onClick={() => handleComment(testimonial.id)}
+									className='flex flex-col items-center gap-1'
 									aria-label={`Comment on testimonial by ${testimonial.author}`}>
 									<BiSolidComment
 										size={20}
 										className='text-white/70 hover:text-amber-400 transition-colors'
 									/>
+									<span className='text-xs text-slate-400'>{testimonial.comments}</span>
 								</Button>
 								<Button
 									variant='icon'
+									onClick={() => handleShare(testimonial.id)}
+									className='flex flex-col items-center gap-1'
 									aria-label={`Share testimonial by ${testimonial.author}`}>
 									<BiSolidShare
 										size={20}
 										className='text-white/70 hover:text-amber-400 transition-colors'
 									/>
+									<span className='text-xs text-slate-400'>{testimonial.shares}</span>
 								</Button>
 							</div>
 						</div>

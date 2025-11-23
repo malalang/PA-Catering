@@ -10,18 +10,17 @@ import Main from '@/components/ui/layout/Main';
 const CartPage: React.FC = () => {
 	return (
 		<Main >
-			<AppLink className="mb-2" href="/menu" >
+			<AppLink className="mb-2 bg-red-500/10 backdrop-blur-sm border border-red-500/30 hover:border-red-500/50 transition-all duration-200 hover:shadow-red-500/20 rounded-xl" href="/menu" >
 				<IoClose /> Close Cart
 			</AppLink>
 			<Suspense fallback={<Loading message="Loading Cart..." />}>
 				<CartProductForm />
 			</Suspense>
 			<Suspense fallback={<Loading message="Loading Cart footer..." />}>
-				{/* Fixed footer section for total summary and action buttons */}
 				<CartFooter />
 			</Suspense>
-			</Main>
-	
+		</Main>
+
 	);
 };
 
