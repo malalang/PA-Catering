@@ -1,6 +1,6 @@
 'use client';
 import AppLink from '../ui/Link';
-import { HiUser, HiClipboardList, HiShoppingBag, HiLogout } from 'react-icons/hi';
+import { HiUser, HiClipboardList, HiShoppingBag, HiLogout, HiCamera } from 'react-icons/hi';
 import Button from '../ui/Button';
 import { User } from '@supabase/supabase-js';
 import { usePathname } from 'next/navigation';
@@ -9,6 +9,7 @@ const protectedPaths = [
 	{ path: '/profile', icon: HiUser, label: 'Profile' },
 	{ path: '/orders', icon: HiClipboardList, label: 'Orders' },
 	{ path: '/menu', icon: HiShoppingBag, label: 'Menu' },
+	{ path: '/photo/booking', icon: HiCamera, label: '360 Booth Booking' },
 ];
 
 const ProfileMenu: React.FC<{ setMenubar: (path: 'mobile' | 'profile') => void; user: User | null }> = ({
@@ -37,8 +38,8 @@ const ProfileMenu: React.FC<{ setMenubar: (path: 'mobile' | 'profile') => void; 
 								href={path}
 								onClick={() => setMenubar('profile')}
 								className={`flex items-center gap-3 px-4 py-2.5 rounded-lg font-medium transition-all duration-200 w-full ${isActive
-										? 'bg-gradient-to-r from-amber-600/20 to-yellow-600/20 border border-amber-400/30 text-amber-400'
-										: 'text-slate-300 hover:text-white hover:bg-white/5 border border-transparent hover:border-white/10'
+									? 'bg-gradient-to-r from-amber-600/20 to-yellow-600/20 border border-amber-400/30 text-amber-400'
+									: 'text-slate-300 hover:text-white hover:bg-white/5 border border-transparent hover:border-white/10'
 									}`}>
 								<Icon className={`text-lg ${isActive ? 'text-amber-400' : ''}`} />
 								<span>{label}</span>

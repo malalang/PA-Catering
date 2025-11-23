@@ -1,232 +1,96 @@
-import Image from 'next/image';
-import Link from '@/components/ui/Link';
-import Section from '@/components/ui/layout/Section';
 import Main from '@/components/ui/layout/Main';
-import Button from '@/components/ui/Button';
-import { BiCamera, BiCheckCircle } from 'react-icons/bi';
-import { FiFilm } from 'react-icons/fi';
-import { PlaceHolderImages } from './placeholderImages';
+import { HiCamera } from 'react-icons/hi2';
+import Image from 'next/image';
+import AppLink from '@/components/ui/Link';
 
-const getImage = (id: string) => PlaceHolderImages.find(img => img.id === id);
-
-interface PricingPackage {
-	hours: number | string;
-	price: number | string;
-	features: string[];
-}
-
-interface EventType {
-	name: string;
-	imageId: string;
-	description: string;
-}
-
-const PhotoBoothPage = () => {
-	const heroImage = getImage('hero');
-	const service360Image = getImage('service-360-booth');
-	const serviceRedCarpetImage = getImage('service-red-carpet');
-
-	const eventTypes: EventType[] = [
-		{
-			name: 'Graduations',
-			imageId: 'event-graduations',
-			description: 'Graduates celebrating at a party.',
-		},
-		{
-			name: 'Weddings',
-			imageId: 'event-weddings',
-			description: 'A wedding reception with guests dancing.',
-		},
-		{
-			name: 'Baby Showers',
-			imageId: 'event-baby-showers',
-			description: 'Decorations at a baby shower.',
-		},
-		{
-			name: 'School Events',
-			imageId: 'event-school-events',
-			description: 'Students at a school dance.',
-		},
-		{
-			name: 'Birthdays',
-			imageId: 'event-birthdays',
-			description: 'A lively birthday party.',
-		},
-	];
-
-	const pricingPackages: PricingPackage[] = [
-		{
-			hours: 2,
-			price: 2500,
-			features: [
-				'2 Hours rental',
-				'Unlimited videos',
-				'Online gallery',
-				'On-site attendant',
-			],
-		},
-		{
-			hours: 3,
-			price: 3500,
-			features: ['3 Hours rental', 'Everything in 2hr', 'Custom overlay', 'Fun props'],
-		},
-		{
-			hours: 4,
-			price: 4500,
-			features: [
-				'4 Hours rental',
-				'Everything in 3hr',
-				'VIP red carpet',
-				'Stanchions',
-			],
-		},
-		{
-			hours: '8+',
-			price: 'Custom',
-			features: ['Full day coverage', 'All features included', 'Custom branding', 'Priority support'],
-		},
-	];
-
+export default function PhotoBoothPage() {
 	return (
-		<Main>
+		<Main
+			tittle='360 Photo Booth'
+			Icon={HiCamera}
+			heading='Capture Your Moments in 360°'>
 			{/* Hero Section */}
-			<Section tittle='Capture Every Angle in Style' className='flex flex-col items-center text-center'>
-				{heroImage && (
-					<div className='relative w-full h-64 md:h-80 mb-6 rounded-lg overflow-hidden'>
-						<Image
-							src={heroImage.imageUrl}
-							alt={heroImage.description}
-							fill
-							className='object-cover'
-							priority
-							data-ai-hint={heroImage.imageHint}
-						/>
-					</div>
-				)}
-				<p className='mt-4 text-lg max-w-2xl text-white/80'>
-					The ultimate 360° photo booth and red carpet experience for unforgettable events.
-				</p>
-				<Link variant='button' href='#services' className='mt-6 flex items-center gap-2'>
-					<BiCamera />
-					<span>Explore Our Services</span>
-				</Link>
-			</Section>
+			<div className='grid md:grid-cols-2 gap-8 mb-12'>
+				<div className='flex flex-col justify-center'>
+					<h2 className='text-3xl font-bold text-white mb-4'>Premium 360° Photo Booth Experience</h2>
+					<p className='text-slate-300 mb-6'>
+						Step into the spotlight with our state-of-the-art 360° photo booth! Create stunning, shareable content that captures every angle of your special moments. Perfect for events, celebrations, and creating unforgettable memories.
+					</p>
+					<AppLink
+						href='/photo/booking'
+						className='inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-amber-600 to-yellow-600 hover:from-amber-500 hover:to-yellow-500 rounded-xl shadow-lg hover:shadow-amber-500/50 transition-all duration-200 font-semibold text-white w-fit'>
+						<HiCamera size={20} />
+						<span>Book Your Session</span>
+					</AppLink>
+				</div>
+				<div className='relative h-64 md:h-auto rounded-xl overflow-hidden border border-yellow-500/30 shadow-xl'>
+					<Image
+						src='/PhotoBoot.jpg'
+						alt='360 Photo Booth'
+						fill
+						className='object-cover'
+					/>
+				</div>
+			</div>
 
-			{/* Services Section */}
-			<Section tittle='Our Premium Services' heading='Professional rental services to make your event unforgettable'>
-				<div className='grid gap-6 md:grid-cols-2 mt-8'>
-					<div className='bg-black/30 border border-yellow-500/20 rounded-md overflow-hidden hover:shadow-lg hover:shadow-yellow-500/10 transition-all duration-300'>
-						{service360Image && (
-							<div className='relative w-full h-48 md:h-64'>
-								<Image
-									src={service360Image.imageUrl}
-									alt={service360Image.description}
-									fill
-									className='object-cover'
-									data-ai-hint={service360Image.imageHint}
-								/>
-							</div>
-						)}
-						<div className='p-6'>
-							<h3 className='flex items-center gap-3 text-2xl font-semibold text-yellow-500'>
-								<BiCamera className='text-white' /> 360 Photo Booth
-							</h3>
-							<p className='mt-3 text-white/80'>
-								Our state-of-the-art 360 photo booth captures slow-motion videos from every angle. Guests
-								stand on a platform while a revolving camera spins around them, creating stunning, shareable
-								content.
-							</p>
-						</div>
+			{/* Features Grid */}
+			<div className='grid md:grid-cols-3 gap-6 mb-12'>
+				<div className='bg-gradient-to-br from-yellow-900/20 to-amber-900/20 backdrop-blur-md border border-yellow-500/30 rounded-xl p-6 hover:border-yellow-400/50 transition-all duration-300'>
+					<div className='bg-gradient-to-br from-amber-500/20 to-yellow-500/20 p-3 rounded-lg border border-amber-400/30 w-fit mb-4'>
+						<HiCamera className='text-amber-400 text-3xl' />
 					</div>
+					<h3 className='text-xl font-bold text-white mb-2'>360° Coverage</h3>
+					<p className='text-slate-300'>
+						Capture every angle with our rotating camera system that creates stunning slow-motion videos.
+					</p>
+				</div>
 
-					<div className='bg-black/30 border border-yellow-500/20 rounded-md overflow-hidden hover:shadow-lg hover:shadow-yellow-500/10 transition-all duration-300'>
-						{serviceRedCarpetImage && (
-							<div className='relative w-full h-48 md:h-64'>
-								<Image
-									src={serviceRedCarpetImage.imageUrl}
-									alt={serviceRedCarpetImage.description}
-									fill
-									className='object-cover'
-									data-ai-hint={serviceRedCarpetImage.imageHint}
-								/>
-							</div>
-						)}
-						<div className='p-6'>
-							<h3 className='flex items-center gap-3 text-2xl font-semibold text-yellow-500'>
-								<FiFilm className='text-white' /> Red Carpet & Stanchions
-							</h3>
-							<p className='mt-3 text-white/80'>
-								Give your guests the full VIP treatment. Our red carpet and stanchion rentals create a
-								glamorous entrance for any event, making everyone feel like a star.
-							</p>
-						</div>
+				<div className='bg-gradient-to-br from-yellow-900/20 to-amber-900/20 backdrop-blur-md border border-yellow-500/30 rounded-xl p-6 hover:border-yellow-400/50 transition-all duration-300'>
+					<div className='bg-gradient-to-br from-amber-500/20 to-yellow-500/20 p-3 rounded-lg border border-amber-400/30 w-fit mb-4'>
+						<HiCamera className='text-amber-400 text-3xl' />
+					</div>
+					<h3 className='text-xl font-bold text-white mb-2'>Instant Sharing</h3>
+					<p className='text-slate-300'>
+						Get your videos instantly via email or QR code. Share directly to social media!
+					</p>
+				</div>
+
+				<div className='bg-gradient-to-br from-yellow-900/20 to-amber-900/20 backdrop-blur-md border border-yellow-500/30 rounded-xl p-6 hover:border-yellow-400/50 transition-all duration-300'>
+					<div className='bg-gradient-to-br from-amber-500/20 to-yellow-500/20 p-3 rounded-lg border border-amber-400/30 w-fit mb-4'>
+						<HiCamera className='text-amber-400 text-3xl' />
+					</div>
+					<h3 className='text-xl font-bold text-white mb-2'>Professional Quality</h3>
+					<p className='text-slate-300'>
+						High-definition cameras and professional lighting ensure stunning results every time.
+					</p>
+				</div>
+			</div>
+
+			{/* Pricing Info */}
+			<div className='bg-gradient-to-br from-yellow-900/20 to-amber-900/20 backdrop-blur-md border border-yellow-500/30 rounded-xl p-8'>
+				<h2 className='text-2xl font-bold text-white mb-6 text-center'>Simple Pricing</h2>
+				<div className='grid md:grid-cols-2 gap-6'>
+					<div className='bg-white/5 rounded-lg p-6 border border-white/10'>
+						<h3 className='text-xl font-bold text-amber-400 mb-2'>Individual Session</h3>
+						<p className='text-3xl font-bold text-white mb-4'>R50 <span className='text-lg text-slate-400'>/ person</span></p>
+						<ul className='text-slate-300 space-y-2'>
+							<li>✓ 1x 360° video</li>
+							<li>✓ Instant digital delivery</li>
+							<li>✓ Social media ready</li>
+						</ul>
+					</div>
+					<div className='bg-gradient-to-br from-amber-600/20 to-yellow-600/20 rounded-lg p-6 border border-amber-400/40'>
+						<h3 className='text-xl font-bold text-amber-400 mb-2'>Event Package</h3>
+						<p className='text-3xl font-bold text-white mb-4'>Contact <span className='text-lg text-slate-400'>/ event</span></p>
+						<ul className='text-slate-300 space-y-2'>
+							<li>✓ Unlimited sessions</li>
+							<li>✓ Custom branding options</li>
+							<li>✓ Dedicated attendant</li>
+							<li>✓ Props included</li>
+						</ul>
 					</div>
 				</div>
-			</Section>
-
-			{/* Event Types Section */}
-			<Section tittle='Perfect for Any Occasion' heading='From elegant weddings to hype birthday bashes, we bring the fun'>
-				<div className='grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3 md:gap-4 mt-8'>
-					{eventTypes.map(event => {
-						const image = getImage(event.imageId);
-						return (
-							<div
-								key={event.name}
-								className='relative group overflow-hidden rounded-lg shadow-md h-32 md:h-40'>
-								{image && (
-									<Image
-										src={image.imageUrl}
-										alt={event.description}
-										fill
-										className='object-cover w-full h-full transform transition-transform duration-300 group-hover:scale-110'
-										data-ai-hint={image.imageHint}
-									/>
-								)}
-								<div className='absolute inset-0 bg-black/50 group-hover:bg-black/70 transition-colors duration-300 flex items-center justify-center p-2'>
-									<h3 className='text-white text-sm md:text-base font-bold text-center'>{event.name}</h3>
-								</div>
-							</div>
-						);
-					})}
-				</div>
-			</Section>
-
-			{/* Pricing Section */}
-			<Section tittle='Packages & Pricing' heading='Choose the perfect package for your event. All prices in South African Rand (R)'>
-				<div className='grid gap-4 sm:grid-cols-2 lg:grid-cols-4 mt-8'>
-					{pricingPackages.map((pkg, index) => (
-						<div
-							key={index}
-							className={`flex flex-col bg-black/30 border rounded-md p-6 transform transition-transform hover:-translate-y-2 ${
-								index === 2
-									? 'border-yellow-500 shadow-lg shadow-yellow-500/20'
-									: 'border-yellow-500/20'
-							}`}>
-							<div className='text-center mb-6'>
-								<h3 className='text-xl font-semibold text-white'>{pkg.hours} Hours</h3>
-								<p className='text-3xl font-bold text-yellow-500 pt-2'>
-									{typeof pkg.price === 'number' ? `R${pkg.price.toLocaleString()}` : pkg.price}
-								</p>
-							</div>
-							<ul className='space-y-3 text-white/80 flex-grow mb-6'>
-								{pkg.features.map(feature => (
-									<li key={feature} className='flex items-start gap-3'>
-										<BiCheckCircle className='h-5 w-5 text-yellow-500 mt-0.5 shrink-0' />
-										<span className='text-sm'>{feature}</span>
-									</li>
-								))}
-							</ul>
-							<Button
-								className='w-full'
-								variant={index === 2 ? 'primary' : 'secondary'}>
-								<a href='#contact'>Book Now</a>
-							</Button>
-						</div>
-					))}
-				</div>
-			</Section>
+			</div>
 		</Main>
 	);
-};
-
-export default PhotoBoothPage;
+}

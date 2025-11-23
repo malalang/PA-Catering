@@ -6,7 +6,7 @@ import {
 	HiInformationCircle,
 	HiEnvelope,
 	HiPhoto,
-	HiNewspaper,
+	HiCamera,
 	HiDocumentText,
 } from 'react-icons/hi2';
 import React, { useState, useRef, useEffect } from 'react';
@@ -19,7 +19,7 @@ const publicPaths = [
 	{ path: '/about', icon: HiInformationCircle, label: 'About' },
 	{ path: '/gallery', icon: HiPhoto, label: 'Gallery' },
 	{ path: '/contact', icon: HiEnvelope, label: 'Contact' },
-	{ path: '/blog', icon: HiNewspaper, label: 'Blog' },
+	{ path: '/photo', icon: HiCamera, label: '360 Booth' },
 	{ path: '/terms', icon: HiDocumentText, label: 'Terms' },
 ];
 
