@@ -95,7 +95,7 @@ const FeaturedItemsServices: React.FC = () => {
 								className='w-full h-auto'
 							/>
 						)}
-						<div className='p-6 flex-grow text-left'>
+						<div className='p-6 flex-grow text-center'>
 							<h3 className='text-xl font-bold text-white'>{item.name}</h3>
 							<p className='mt-2 text-slate-300'>{item.description}</p>
 						</div>

@@ -12,11 +12,9 @@ export default function RootLayout({
 }>) {
 	return (
 		<html lang='en'>
-			<body className={` antialiased min-h-screen`}>
-				       <Navbar />
-		
-					       {children}
-				     
+			<body className={`antialiased min-h-screen`}>
+				<Navbar />
+				{children}
 				<Analytics />
 			</body>
 		</html>
