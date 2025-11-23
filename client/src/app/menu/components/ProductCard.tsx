@@ -2,8 +2,7 @@ import React from 'react';
 import Image from 'next/image';
 import AppLink from '@/components/ui/Link';
 import LikesButton from '@/app/menu/[Products]/components/LikesButton';
-import { FaStar } from 'react-icons/fa';
-
+import { HiStar } from 'react-icons/hi2';
 import AddtoCart from '@/app/menu/[Products]/[product]/components/AddtoCart';
 
 interface ProductCardProps {
@@ -12,10 +11,10 @@ interface ProductCardProps {
 }
 
 const ProductCard: React.FC<ProductCardProps> = ({ product, categoryName }) => (
-	<article className='m-0 group flex flex-col h-full bg-white/10 backdrop-blur-md border border-yellow-500 rounded-md p-4 transition-shadow duration-300 hover:shadow-lg hover:shadow-yellow-500/20'>
-		<span className='flex items-center justify-between gap-2'>
+	<article className='m-0 group flex flex-col h-full bg-gradient-to-br from-slate-900/80 to-slate-800/80 backdrop-blur-md border border-white/10 rounded-xl p-4 transition-all duration-300 hover:border-amber-400/40 hover:shadow-xl hover:shadow-amber-500/20'>
+		<span className='flex items-center justify-between gap-2 mb-3'>
 			{product.badge && (
-				<span className='px-2 py-1 rounded-full text-xs font-bold z-10 shadow-lg bg-yellow-700 text-white'>
+				<span className='px-3 py-1.5 rounded-full text-xs font-bold z-10 shadow-lg bg-gradient-to-r from-amber-600 to-yellow-600 text-white uppercase tracking-wider'>
 					{product.badge}
 				</span>
 			)}
@@ -25,28 +24,30 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, categoryName }) => (
 		<div className='flex flex-col flex-grow'>
 			<AppLink
 				href={`/menu/${categoryName}/${product.Name.toLowerCase().replace(/\s+/g, '-')}`}
-				className='flex flex-col items-center text-center flex-grow rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-black/50 focus:ring-yellow-500'>
+				className='flex flex-col items-center text-center flex-grow rounded-lg focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-black/50 focus:ring-amber-500 transition-all duration-200'>
 				{product.Image && (
-					<div className='relative w-full aspect-[4/3] mb-4 bg-black/20 rounded-md overflow-hidden'>
+					<div className='relative w-full aspect-[4/3] mb-4 bg-black/30 rounded-lg overflow-hidden border border-white/5'>
 						<Image
 							src={product.Image}
 							alt={product.Name}
 							fill
-							className='object-contain rounded-md transition-transform duration-300 group-hover:scale-110'
+							className='object-contain rounded-lg transition-transform duration-300 group-hover:scale-110'
 						/>
 					</div>
 				)}
 				<h2 className='text-base font-bold text-white mb-2 line-clamp-2 flex-grow'>
 					{product.Name}
 				</h2>
-				<p className='text-xl font-extrabold text-white mb-2'>R{product.Price.toFixed(2)}</p>
+				<p className='text-2xl font-extrabold text-transparent bg-gradient-to-r from-amber-400 to-yellow-400 bg-clip-text mb-3'>
+					R{product.Price.toFixed(2)}
+				</p>
 				<div className='flex items-center justify-center gap-1 mb-4'>
-					<FaStar className='text-yellow-500' />
-					<FaStar className='text-yellow-500' />
-					<FaStar className='text-yellow-500' />
-					<FaStar className='text-yellow-500' />
-					<FaStar className='text-white/50' />
-					<span className='text-xs text-white font-semibold ml-2'>(4.5)</span>
+					<HiStar className='text-amber-500' size={18} />
+					<HiStar className='text-amber-500' size={18} />
+					<HiStar className='text-amber-500' size={18} />
+					<HiStar className='text-amber-500' size={18} />
+					<HiStar className='text-white/30' size={18} />
+					<span className='text-xs text-slate-400 font-semibold ml-2'>(4.5)</span>
 				</div>
 			</AppLink>
 		</div>

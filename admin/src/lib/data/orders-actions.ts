@@ -17,6 +17,7 @@ const normalizeStatus = (value: string): OrderStatus | null => {
     "processing",
     "completed",
     "cancelled",
+
   ];
   return candidates.find((candidate) => candidate === value) ?? null;
 };

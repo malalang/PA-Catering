@@ -38,7 +38,7 @@ const Testimonials: React.FC = () => {
 						</div>
 						<div className='mt-auto'>
 							<div className='flex items-center mb-4'>
-								<span className='flex-shrink-0 w-10 h-10 rounded-full bg-yellow-500 flex items-center justify-center text-white font-bold text-lg'>
+								<span className='flex-shrink-0 w-10 h-10 rounded-full bg-gradient-to-br from-amber-500 to-yellow-500 flex items-center justify-center text-white font-bold text-lg shadow-md'>
 									{testimonial.author.charAt(0).toUpperCase()}
 								</span>
 								<p className='font-semibold text-white ml-3'>{testimonial.author}</p>
@@ -49,7 +49,7 @@ const Testimonials: React.FC = () => {
 									aria-label={`Like testimonial by ${testimonial.author}`}>
 									<BiSolidLike
 										size={20}
-										className='text-white hover:text-yellow-500 transition-colors'
+										className='text-white/70 hover:text-amber-400 transition-colors'
 									/>
 								</Button>
 								<Button
@@ -57,7 +57,7 @@ const Testimonials: React.FC = () => {
 									aria-label={`Comment on testimonial by ${testimonial.author}`}>
 									<BiSolidComment
 										size={20}
-										className='text-white hover:text-yellow-500 transition-colors'
+										className='text-white/70 hover:text-amber-400 transition-colors'
 									/>
 								</Button>
 								<Button
@@ -65,7 +65,7 @@ const Testimonials: React.FC = () => {
 									aria-label={`Share testimonial by ${testimonial.author}`}>
 									<BiSolidShare
 										size={20}
-										className='text-white hover:text-yellow-500 transition-colors'
+										className='text-white/70 hover:text-amber-400 transition-colors'
 									/>
 								</Button>
 							</div>

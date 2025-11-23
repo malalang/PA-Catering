@@ -49,7 +49,7 @@ const FeaturedItemsServices: React.FC = () => {
 								aria-label='Like item'>
 								<BiSolidHeart
 									size={24}
-									className='text-white hover:text-yellow-500 transition-colors'
+									className='text-white/70 hover:text-amber-400 transition-colors'
 								/>
 							</Button>
 							<Button
@@ -57,7 +57,7 @@ const FeaturedItemsServices: React.FC = () => {
 								aria-label='Comment on item'>
 								<BiSolidComment
 									size={24}
-									className='text-white hover:text-yellow-500 transition-colors'
+									className='text-white/70 hover:text-amber-400 transition-colors'
 								/>
 							</Button>
 							<Button
@@ -65,7 +65,7 @@ const FeaturedItemsServices: React.FC = () => {
 								aria-label='Share item'>
 								<BiSolidShare
 									size={24}
-									className='text-white hover:text-yellow-500 transition-colors'
+									className='text-white/70 hover:text-amber-400 transition-colors'
 								/>
 							</Button>
 						</div>

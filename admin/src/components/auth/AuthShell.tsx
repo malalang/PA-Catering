@@ -21,4 +21,3 @@ export const AuthShell = ({ title, description, children, footer }: Props) => (
     ) : null}
   </div>
 );
-

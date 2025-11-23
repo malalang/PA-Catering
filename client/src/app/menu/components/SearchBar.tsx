@@ -1,9 +1,8 @@
 'use client';
 import React, { useState } from 'react';
-import { FaSearch } from 'react-icons/fa';
+import { HiSearch } from 'react-icons/hi';
 import TextInput from '@/components/ui/TextInput';
 import { useRouter, useSearchParams, usePathname } from 'next/navigation';
-
 
 const SearchBar: React.FC = () => {
 	const searchParams = useSearchParams();
@@ -23,11 +22,11 @@ const SearchBar: React.FC = () => {
 	};
 
 	return (
-		<article className='sticky bg-black/50 blur-[0.1px] backdrop-blur-md top-9 m-0 shadow-none p-4 rounded-none z-20'>
-			<div className='relative w-full'>
+		<article className='sticky top-[73px] bg-gradient-to-r from-slate-900/98 to-slate-800/98 backdrop-blur-xl border-b border-amber-400/10 shadow-lg z-40 m-0 p-4'>
+			<div className='max-w-7xl mx-auto relative w-full'>
 				<TextInput
 					id='menu-search'
-					className='bg-yellow-700/20'
+					className='bg-slate-900/60 border-amber-400/20 focus:border-amber-400 pl-12'
 					type='text'
 					placeholder='Search for food or categories...'
 					value={term}
@@ -35,8 +34,9 @@ const SearchBar: React.FC = () => {
 					aria-label='Search for food or categories'
 					autoComplete='off'
 					icon={
-						<FaSearch
-							className='text-white/70'
+						<HiSearch
+							className='text-amber-400'
+							size={20}
 							aria-hidden='true'
 						/>
 					}

@@ -2,25 +2,30 @@
 import AppLink from '@/components/ui/Link';
 import Image from 'next/image';
 import {
-	FaUserCircle,
-	FaShoppingCart,
-	FaClipboardList,
-	FaSignOutAlt,
-	FaHome,
-	FaInfoCircle,
-	FaCar,
-	FaEnvelope,
-	FaUtensils,
-	FaImages,
-} from 'react-icons/fa';
+	HiHome,
+	HiInformationCircle,
+	HiEnvelope,
+	HiPhoto,
+	HiNewspaper,
+	HiDocumentText,
+} from 'react-icons/hi2';
 import React, { useState, useRef, useEffect } from 'react';
 import Button from '@/components/ui/Button';
-const publicPaths = ['/', '/contact', '/about', '/gallery', '/terms', '/blog','/photo'];
 import { useAuth } from '@/lib/supabase/auth/useAuth';
-import { FaBlog } from 'react-icons/fa6';
+import { usePathname } from 'next/navigation';
+
+const publicPaths = [
+	{ path: '/', icon: HiHome, label: 'Home' },
+	{ path: '/about', icon: HiInformationCircle, label: 'About' },
+	{ path: '/gallery', icon: HiPhoto, label: 'Gallery' },
+	{ path: '/contact', icon: HiEnvelope, label: 'Contact' },
+	{ path: '/blog', icon: HiNewspaper, label: 'Blog' },
+	{ path: '/terms', icon: HiDocumentText, label: 'Terms' },
+];
 
 const DesktopNavbar: React.FC = () => {
 	const { user } = useAuth();
+	const pathname = usePathname();
 	const [profileOpen, setProfileOpen] = useState(false);
 	const profileRef = useRef<HTMLLIElement>(null);
 
@@ -37,37 +42,35 @@ const DesktopNavbar: React.FC = () => {
 	}, []);
 
 	return (
-		<nav className='md:flex gap-2 hidden justify-between items-center p-0 m-0 w-full'>
-			<Image
-				src='/PA_Logo.png'
-				alt='Logo'
-				width={64}
-				height={64}
-				className='h-16'
-				priority
-			/>
-			<ul className='flex space-x-4 items-center'>
-				{publicPaths.map((path) => (
-					<li key={path}>
-						<AppLink
-							href={path}
-							variant='secondary'>
-							<span className='flex items-center gap-2'>
-								{path === '/' && (
-									<span className='flex items-center gap-2'>
-										<FaHome /> Home
-									</span>
-								)}
-								{path === '/about' && <FaInfoCircle />}
-								{path === '/gallery' && <FaImages />}
-								{path === '/carwash' && <FaCar />}
-								{path === '/contact' && <FaEnvelope />}
-								{path === '/blog' && <FaBlog />}
-								{path.replace('/', '').charAt(0).toUpperCase() + path.replace('/', '').slice(1)}
-							</span>
-						</AppLink>
-					</li>
-				))}
+		<nav className='hidden md:flex gap-4 justify-between items-center p-0 m-0 w-full'>
+			<AppLink href='/' className='shrink-0'>
+				<Image
+					src='/PA_Logo.png'
+					alt='PA Catering Logo'
+					width={64}
+					height={64}
+					className='h-16 w-auto'
+					priority
+				/>
+			</AppLink>
+
+			<ul className='flex space-x-2 items-center'>
+				{publicPaths.map(({ path, icon: Icon, label }) => {
+					const isActive = pathname === path;
+					return (
+						<li key={path}>
+							<AppLink
+								href={path}
+								className={`flex items-center gap-2 px-4 py-2 rounded-lg font-medium transition-all duration-200 ${isActive
+									? 'bg-gradient-to-r from-amber-600/20 to-yellow-600/20 border border-amber-400/30 text-amber-400 shadow-md shadow-amber-500/10'
+									: 'text-slate-300 hover:text-white hover:bg-white/5 border border-transparent hover:border-white/10'
+									}`}>
+								<Icon className={`text-lg ${isActive ? 'text-amber-400' : ''}`} />
+								<span>{label}</span>
+							</AppLink>
+						</li>
+					);
+				})}
 			</ul>
 		</nav>
 	);

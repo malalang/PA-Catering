@@ -57,9 +57,10 @@ const FavoriteButton: React.FC<FavoriteButtonProps> = ({ product }) => {
 		<Button
 			onClick={handleToggleFavorite}
 			disabled={isLoading || !userId}
-			className={`flex items-center justify-center gap-2 px-4 py-2 rounded-md border border-transparent font-semibold text-white transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-black/50 focus:ring-white ${
-				isLoading || !userId ? 'bg-yellow-900/50 cursor-not-allowed' : 'bg-yellow-600 hover:bg-yellow-700'
-			}`}
+			className={`flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl border font-semibold text-white transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-black/50 focus:ring-amber-500 shadow-md ${isLoading || !userId
+					? 'bg-slate-700/50 border-white/10 cursor-not-allowed opacity-50'
+					: 'bg-gradient-to-r from-amber-600 to-yellow-600 hover:from-amber-500 hover:to-yellow-500 border-0 hover:shadow-amber-500/50'
+				}`}
 			aria-live='polite'>
 			{isLoading ? (
 				<>
