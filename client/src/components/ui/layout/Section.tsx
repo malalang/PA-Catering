@@ -25,8 +25,8 @@ export default function Section({
 			<header>
 				{Icon ? (
 					<div className='flex flex-col items-center text-center'>
-						<span className='flex items-center justify-center w-12 h-12 bg-yellow-500 mx-auto text-white rounded-full shadow-sm shadow-black/50 '>
-							<Icon className='text-3xl' />
+						<span className='bg-gradient-to-br from-amber-500/20 to-yellow-500/20 p-3 rounded-lg border border-amber-400/30 w-fit mb-4'>
+							<Icon className='text-amber-400 text-3xl' />
 						</span>
 						{tittle && <h3 className='mt-4 text-shadow-sm text-shadow-black/50'>{tittle}</h3>}
 					</div>
