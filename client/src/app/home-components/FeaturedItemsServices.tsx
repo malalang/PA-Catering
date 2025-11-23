@@ -85,7 +85,7 @@ const FeaturedItemsServices: React.FC = () => {
 				{featuredItems.map((item) => (
 					<article
 						key={item.id}
-						className='overflow-hidden flex flex-col rounded-xl border border-white/10 bg-gradient-to-br from-slate-900/80 to-slate-800/80 hover:border-amber-400/30 transition-all duration-300'>
+						className='overflow-hidden flex flex-col rounded-xl border border-yellow-500/30 bg-gradient-to-br from-yellow-900/20 to-amber-900/20 backdrop-blur-md hover:border-yellow-400/50 transition-all duration-300 shadow-lg'>
 						{item.image && (
 							<Image
 								src={item.image}
@@ -99,7 +99,7 @@ const FeaturedItemsServices: React.FC = () => {
 							<h3 className='text-xl font-bold text-white'>{item.name}</h3>
 							<p className='mt-2 text-slate-300'>{item.description}</p>
 						</div>
-						<div className='flex justify-around items-center p-4 border-t border-white/20 mt-auto bg-white/5'>
+						<div className='flex justify-around items-center border-t border-white/20 pt-4 bg-white/5 -mx-0 px-0 pb-4 mt-auto'>
 							<Button
 								variant='icon'
 								onClick={() => handleLike(item.id)}
@@ -107,7 +107,7 @@ const FeaturedItemsServices: React.FC = () => {
 								aria-label='Like item'>
 								<BiSolidHeart
 									size={24}
-									className='text-white/70 hover:text-amber-400 transition-colors'
+									className='text-white hover:text-yellow-500 transition-colors'
 								/>
 								<span className='text-xs text-slate-400'>{item.likes}</span>
 							</Button>
@@ -118,7 +118,7 @@ const FeaturedItemsServices: React.FC = () => {
 								aria-label='Comment on item'>
 								<BiSolidComment
 									size={24}
-									className='text-white/70 hover:text-amber-400 transition-colors'
+									className='text-white hover:text-yellow-500 transition-colors'
 								/>
 								<span className='text-xs text-slate-400'>{item.comments}</span>
 							</Button>
@@ -129,7 +129,7 @@ const FeaturedItemsServices: React.FC = () => {
 								aria-label='Share item'>
 								<BiSolidShare
 									size={24}
-									className='text-white/70 hover:text-amber-400 transition-colors'
+									className='text-white hover:text-yellow-500 transition-colors'
 								/>
 								<span className='text-xs text-slate-400'>{item.shares}</span>
 							</Button>
