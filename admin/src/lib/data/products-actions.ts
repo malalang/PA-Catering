@@ -59,10 +59,13 @@ export const updateProductAction = async (
   formData: FormData,
 ): Promise<ProductActionState> => {
   const id = sanitize(formData.get("id"));
+  const name = sanitize(formData.get("name")) || undefined;
+  const category = sanitize(formData.get("category")) || undefined;
   const priceValue = formData.get("price");
   const stockValue = formData.get("stock");
   const badge = sanitize(formData.get("badge")) || null;
   const description = sanitize(formData.get("description")) || null;
+  const imageUrl = sanitize(formData.get("image_url")) || null;
 
   if (!id) {
     return { error: "Missing product identifier." };
@@ -74,7 +77,16 @@ export const updateProductAction = async (
   const payload: Record<string, unknown> = {
     badge,
     description,
+    image_url: imageUrl,
   };
+
+  if (name) {
+    payload.name = name;
+  }
+
+  if (category) {
+    payload.category_name = category;
+  }
 
   if (price !== undefined && !Number.isNaN(price)) {
     payload.price = price;
@@ -101,5 +113,25 @@ export const updateProductAction = async (
   revalidatePath("/menu");
   revalidatePath("/products");
   return { success: "Product updated." };
+};
+
+export const deleteProductAction = async (
+  productId: string,
+): Promise<ProductActionState> => {
+  if (!productId) {
+    return { error: "Product ID is required." };
+  }
+
+  const supabase = await createSupabaseServerClient();
+  const { error } = await supabase.from("products").delete().eq("id", productId);
+
+  if (error) {
+    console.error("Failed to delete product", error);
+    return { error: error.message };
+  }
+
+  revalidatePath("/menu");
+  revalidatePath("/products");
+  return { success: "Product deleted successfully." };
 };
 

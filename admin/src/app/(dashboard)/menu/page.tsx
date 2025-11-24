@@ -6,7 +6,7 @@ import { fetchProductCatalog } from "@/lib/data/products";
 export default async function MenuPage() {
   const products = await fetchProductCatalog();
   const categories = Array.from(
-    new Set(products.map((product) => product.category).filter(Boolean)),
+    new Set(products.map((product) => product.category_name).filter(Boolean)),
   ) as string[];
 
   return (

@@ -19,6 +19,7 @@ const STATUSES: OrderStatus[] = [
   "processing",
   "completed",
   "cancelled",
+  "deleted",
 ];
 
 export const UpdateOrderStatusForm = ({ orderId, currentStatus }: Props) => {

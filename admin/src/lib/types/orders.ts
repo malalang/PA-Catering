@@ -18,7 +18,7 @@ export interface OrderDetails {
   paymentMethod: PaymentMethod;
 }
 
-export type OrderStatus = "pending" | "processing" | "completed" | "cancelled";
+export type OrderStatus = "pending" | "processing" | "completed" | "cancelled" | "deleted";
 export type OrderType = "Takeaway" | "Photo boot" | "Laundry";
 
 export interface Order {

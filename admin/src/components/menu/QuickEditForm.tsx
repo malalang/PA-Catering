@@ -20,6 +20,27 @@ export const QuickEditForm = ({ product }: Props) => {
   return (
     <form action={formAction} className="space-y-3 text-sm text-slate-200">
       <input type="hidden" name="id" value={product.id} />
+
+      <label className="space-y-2 block">
+        <span>Product Name</span>
+        <input
+          name="name"
+          type="text"
+          defaultValue={product.name}
+          className="w-full rounded-lg border border-white/10 bg-slate-900/60 px-3 py-2 text-white outline-none focus:border-indigo-400 focus:ring-2 focus:ring-indigo-400/40"
+        />
+      </label>
+
+      <label className="space-y-2 block">
+        <span>Category</span>
+        <input
+          name="category"
+          type="text"
+          defaultValue={product.category_name ?? ""}
+          className="w-full rounded-lg border border-white/10 bg-slate-900/60 px-3 py-2 text-white outline-none focus:border-indigo-400 focus:ring-2 focus:ring-indigo-400/40"
+        />
+      </label>
+
       <div className="grid gap-3 md:grid-cols-2">
         <label className="space-y-2">
           <span>Price (ZAR)</span>
@@ -43,6 +64,17 @@ export const QuickEditForm = ({ product }: Props) => {
           />
         </label>
       </div>
+
+      <label className="space-y-2 block">
+        <span>Image URL</span>
+        <input
+          name="image_url"
+          type="url"
+          defaultValue={product.image_url ?? ""}
+          placeholder="https://example.com/image.jpg"
+          className="w-full rounded-lg border border-white/10 bg-slate-900/60 px-3 py-2 text-white outline-none focus:border-indigo-400 focus:ring-2 focus:ring-indigo-400/40"
+        />
+      </label>
 
       <label className="space-y-2 block">
         <span>Badge</span>

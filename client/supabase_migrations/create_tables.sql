@@ -21,6 +21,16 @@ CREATE TABLE public.contact (
   created_at timestamp with time zone DEFAULT now(),
   CONSTRAINT contact_pkey PRIMARY KEY (id)
 );
+CREATE TABLE public.featured_items (
+  id uuid NOT NULL DEFAULT gen_random_uuid(),
+  name text NOT NULL,
+  description text NOT NULL,
+  image_url text,
+  likes ARRAY DEFAULT '{}'::uuid[],
+  comments jsonb DEFAULT '[]'::jsonb,
+  created_at timestamp with time zone DEFAULT now(),
+  CONSTRAINT featured_items_pkey PRIMARY KEY (id)
+);
 CREATE TABLE public.orders (
   id uuid NOT NULL DEFAULT gen_random_uuid(),
   user_id uuid,
@@ -99,6 +109,16 @@ CREATE TABLE public.profiles (
   updated_at timestamp with time zone DEFAULT now(),
   last_login timestamp with time zone DEFAULT now(),
   CONSTRAINT profiles_pkey PRIMARY KEY (id)
+);
+CREATE TABLE public.testimonials (
+  id uuid NOT NULL DEFAULT gen_random_uuid(),
+  text text NOT NULL,
+  author text NOT NULL,
+  rating integer DEFAULT 5,
+  likes ARRAY DEFAULT '{}'::uuid[],
+  comments jsonb DEFAULT '[]'::jsonb,
+  created_at timestamp with time zone DEFAULT now(),
+  CONSTRAINT testimonials_pkey PRIMARY KEY (id)
 );
 CREATE TABLE public.user_favorites (
   user_id uuid NOT NULL,
