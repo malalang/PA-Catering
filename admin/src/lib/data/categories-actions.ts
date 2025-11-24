@@ -2,7 +2,6 @@
 
 import { revalidatePath } from "next/cache";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
-import type { Database } from "@/lib/database.types";
 
 export type CategoryActionState = {
     error?: string;
@@ -25,7 +24,7 @@ export const createCategoryAction = async (
     }
 
     const supabase = await createSupabaseServerClient();
-    const categoryData: Database["public"]["Tables"]["products_category"]["Insert"] = {
+    const categoryData = {
         category_name: categoryName,
         image,
         description,
@@ -59,7 +58,7 @@ export const updateCategoryAction = async (
     }
 
     const supabase = await createSupabaseServerClient();
-    const updateData: Database["public"]["Tables"]["products_category"]["Update"] = {
+    const updateData = {
         category_name: categoryName,
         image,
         description,
