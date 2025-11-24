@@ -35,9 +35,9 @@ export const ProfilesBoard = ({ profiles }: Props) => {
                     type="search"
                     placeholder="Search profiles..."
                     value={search}
-                    onChange=(e) => setSearch(e.target.value)}
-                className="w-full max-w-md rounded-full border border-white/10 bg-slate-900/60 px-4 py-3 text-white outline-none focus:border-indigo-400 focus:ring-2 focus:ring-indigo-400/40"
-        />
+                    onChange={(e) => setSearch(e.target.value)}
+                    className="w-full max-w-md rounded-full border border-white/10 bg-slate-900/60 px-4 py-3 text-white outline-none focus:border-indigo-400 focus:ring-2 focus:ring-indigo-400/40"
+                />
                 <p className="text-xs uppercase tracking-[0.3em] text-slate-500">
                     {filtered.length} profiles
                 </p>
