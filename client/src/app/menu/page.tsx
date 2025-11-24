@@ -33,7 +33,7 @@ export default async function HomePage({
 	const { data: productsData, error } = await supabase
 		.from('products')
 		.select('*')
-		.order('category', { ascending: true });
+		.order('category_name', { ascending: true });
 
 	if (error) {
 		console.error('Error fetching products:', error);
@@ -46,19 +46,19 @@ export default async function HomePage({
 	const filteredProducts = search
 		? allProducts.filter((p) =>
 			p.name.toLowerCase().includes(search.toLowerCase()) ||
-			p.category?.toLowerCase().includes(search.toLowerCase())
+			p.category_name?.toLowerCase().includes(search.toLowerCase())
 		)
 		: allProducts;
 
 	// Get unique category names from all products (for metadata lookup)
-	const allCategories = new Set(allProducts.map(p => p.category || 'Other'));
+	const allCategories = new Set(allProducts.map(p => p.category_name || 'Other'));
 
 	// Group products by category
 	const groupedProducts: ProductsType = [];
 	const categoriesMap = new Map<string, ProductType[]>();
 
 	filteredProducts.forEach((product) => {
-		const category = product.category || 'Other';
+		const category = product.category_name || 'Other';
 		if (!categoriesMap.has(category)) {
 			categoriesMap.set(category, []);
 		}
@@ -122,7 +122,7 @@ export default async function HomePage({
 	const productCategoryMap = new Map<string, string>();
 	if (search) {
 		filteredProducts.forEach((product) => {
-			const category = product.category || 'Other';
+			const category = product.category_name || 'Other';
 			// Convert category name to slug (e.g., "Kota Meals" -> "kota-meals")
 			const categorySlug = category.toLowerCase().replace(/\s+/g, '-');
 			productCategoryMap.set(product.id, categorySlug);

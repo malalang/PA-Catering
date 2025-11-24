@@ -18,7 +18,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, categoryName }) => (
 					{product.badge}
 				</span>
 			)}
-			<LikesButton product={product} />
+			<LikesButton itemId={product.ProductID} table="products" />
 		</span>
 
 		<div className='flex flex-col flex-grow'>

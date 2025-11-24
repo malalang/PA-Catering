@@ -3,6 +3,8 @@
 import { useForm } from 'react-hook-form';
 import { useState } from 'react';
 import { FaWhatsapp, FaEnvelope, FaPhone } from 'react-icons/fa';
+import { createClient } from '@/lib/supabase/client';
+import { Database } from '@/lib/database.types';
 
 type FormData = {
   name: string;
@@ -21,11 +23,16 @@ export default function ContactForm() {
   const onSubmit = async (data: FormData) => {
     setIsSubmitting(true);
     try {
-      // Here you would typically send the form data to your API
-      console.log('Form submitted:', data);
+      const supabase = createClient();
+      const insertData: Database['public']['Tables']['contact']['Insert'] = {
+        name: data.name,
+        email: data.email,
+        phone: data.phone,
+        message: data.message
+      };
+      const { error } = await supabase.from('contact').insert(insertData as any);
 
-      // For demo, we'll simulate an API call
-      await new Promise(resolve => setTimeout(resolve, 1000));
+      if (error) throw error;
 
       setSubmitStatus({
         success: true,
@@ -33,6 +40,7 @@ export default function ContactForm() {
       });
       reset();
     } catch (error) {
+      console.error('Error submitting contact form:', error);
       setSubmitStatus({
         success: false,
         message: 'Failed to send message. Please try again later.'

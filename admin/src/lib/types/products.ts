@@ -33,7 +33,7 @@ export interface ProductRecord {
   id: string;
   name: string;
   description?: string;
-  category?: string;
+  category_name?: string;
   price: number;
   stock?: number;
   image_url?: string;

@@ -59,7 +59,7 @@ export const fetchDashboardData = async (): Promise<DashboardData> => {
       .limit(50),
     supabase
       .from("products")
-      .select("id,name,category,price,stock,image_url,badge", {
+      .select("id,name,category_name,price,stock,image_url,badge", {
         count: "exact",
       }),
   ]);

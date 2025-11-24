@@ -35,7 +35,7 @@ export const createProductAction = async (
   const supabase = await createSupabaseServerClient();
   const productData: Database["public"]["Tables"]["products"]["Insert"] = {
     name,
-    category,
+    category_name: category,
     description: description || null,
     badge,
     image_url: imageUrl,

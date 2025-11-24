@@ -16,7 +16,7 @@ export const ProductBoard = ({ products }: Props) => {
 
   const categories = useMemo(() => {
     const unique = Array.from(
-      new Set(products.map((product) => product.category ?? "")),
+      new Set(products.map((product) => product.category_name ?? "")),
     ).filter(Boolean) as string[];
     return ["all", ...unique];
   }, [products]);
@@ -29,7 +29,7 @@ export const ProductBoard = ({ products }: Props) => {
         normalize(product.description).includes(search.toLowerCase());
       const matchesCategory =
         category === "all" ||
-        normalize(product.category) === category.toLowerCase();
+        normalize(product.category_name) === category.toLowerCase();
       return matchesSearch && matchesCategory;
     });
   }, [category, products, search]);
@@ -37,7 +37,7 @@ export const ProductBoard = ({ products }: Props) => {
   const avgPrice =
     filtered.length > 0
       ? filtered.reduce((sum, product) => sum + (product.price ?? 0), 0) /
-        filtered.length
+      filtered.length
       : 0;
   const lowStock = filtered.filter(
     (product) => (product.stock ?? 0) <= 10,
@@ -100,7 +100,7 @@ export const ProductBoard = ({ products }: Props) => {
               <div className="flex items-start justify-between gap-4">
                 <div>
                   <p className="text-xs uppercase tracking-[0.3em] text-slate-500">
-                    {product.category ?? "Uncategorised"}
+                    {product.category_name ?? "Uncategorised"}
                   </p>
                   <h3 className="text-lg font-semibold text-white">
                     {product.name}

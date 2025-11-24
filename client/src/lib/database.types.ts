@@ -106,11 +106,10 @@ export type Database = {
           slug: string | null
           description: string | null
           price: number | null
-          category: string | null
+          category_name: string | null
           image_url: string | null
           stock: number | null
-          likes: number | null
-          liked_by: Json | null
+          likes: string[] | null
           badge: string | null
           created_at: string
         }
@@ -120,11 +119,10 @@ export type Database = {
           slug?: string | null
           description?: string | null
           price?: number | null
-          category?: string | null
+          category_name?: string | null
           image_url?: string | null
           stock?: number | null
-          likes?: number | null
-          liked_by?: Json | null
+          likes?: string[] | null
           badge?: string | null
           created_at?: string
         }
@@ -134,12 +132,34 @@ export type Database = {
           slug?: string | null
           description?: string | null
           price?: number | null
-          category?: string | null
+          category_name?: string | null
           image_url?: string | null
           stock?: number | null
-          likes?: number | null
-          liked_by?: Json | null
+          likes?: string[] | null
           badge?: string | null
+          created_at?: string
+        }
+      }
+      products_category: {
+        Row: {
+          id: string
+          category_name: string
+          image: string | null
+          description: string | null
+          created_at: string
+        }
+        Insert: {
+          id?: string
+          category_name: string
+          image?: string | null
+          description?: string | null
+          created_at?: string
+        }
+        Update: {
+          id?: string
+          category_name?: string
+          image?: string | null
+          description?: string | null
           created_at?: string
         }
       }
@@ -166,6 +186,128 @@ export type Database = {
           user_id?: string | null
           user_name?: string | null
           body?: string
+          created_at?: string
+        }
+      }
+      testimonials: {
+        Row: {
+          id: string
+          text: string
+          author: string
+          rating: number
+          likes: string[] | null
+          comments: Json | null
+          created_at: string
+        }
+        Insert: {
+          id?: string
+          text: string
+          author: string
+          rating?: number
+          likes?: string[] | null
+          comments?: Json | null
+          created_at?: string
+        }
+        Update: {
+          id?: string
+          text?: string
+          author?: string
+          rating?: number
+          likes?: string[] | null
+          comments?: Json | null
+          created_at?: string
+        }
+      }
+      featured_items: {
+        Row: {
+          id: string
+          name: string
+          description: string
+          image_url: string | null
+          likes: string[] | null
+          comments: Json | null
+          created_at: string
+        }
+        Insert: {
+          id?: string
+          name: string
+          description: string
+          image_url?: string | null
+          likes?: string[] | null
+          comments?: Json | null
+          created_at?: string
+        }
+        Update: {
+          id?: string
+          name?: string
+          description?: string
+          image_url?: string | null
+          likes?: string[] | null
+          comments?: Json | null
+          created_at?: string
+        }
+      }
+      contact: {
+        Row: {
+          id: string
+          name: string
+          email: string
+          phone: string | null
+          message: string
+          created_at: string
+        }
+        Insert: {
+          id?: string
+          name: string
+          email: string
+          phone?: string | null
+          message: string
+          created_at?: string
+        }
+        Update: {
+          id?: string
+          name?: string
+          email?: string
+          phone?: string | null
+          message?: string
+          created_at?: string
+        }
+      }
+      photo_boot_bookings: {
+        Row: {
+          id: string
+          name: string
+          email: string
+          phone: string | null
+          date: string
+          time: string
+          package: string
+          people: number
+          message: string | null
+          created_at: string
+        }
+        Insert: {
+          id?: string
+          name: string
+          email: string
+          phone?: string | null
+          date: string
+          time: string
+          package: string
+          people: number
+          message?: string | null
+          created_at?: string
+        }
+        Update: {
+          id?: string
+          name?: string
+          email?: string
+          phone?: string | null
+          date?: string
+          time?: string
+          package?: string
+          people?: number
+          message?: string | null
           created_at?: string
         }
       }

@@ -24,7 +24,7 @@ export default async function Page({
 	const { data: productsData, error } = await supabase
 		.from('products')
 		.select('*')
-		.ilike('category', categoryName);
+		.ilike('category_name', categoryName);
 
 	if (error) {
 		console.error('Error fetching products:', error);

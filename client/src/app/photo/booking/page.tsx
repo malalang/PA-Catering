@@ -1,4 +1,5 @@
 'use client';
+import { createClient } from '@/lib/supabase/client';
 
 import Main from '@/components/ui/layout/Main';
 import { HiCamera } from 'react-icons/hi2';
@@ -25,11 +26,19 @@ export default function PhotoBoothBookingPage() {
     const onSubmit = async (data: FormData) => {
         setIsSubmitting(true);
         try {
-            // Here you would typically send the form data to your API
-            console.log('Form submitted:', data);
+            const supabase = createClient();
+            const { error } = await supabase.from('photo_boot_bookings').insert({
+                name: data.name,
+                email: data.email,
+                phone: data.phone,
+                date: data.date,
+                time: data.time,
+                package: data.package,
+                people: data.people,
+                message: data.message
+            } as any);
 
-            // For demo, we'll simulate an API call
-            await new Promise(resolve => setTimeout(resolve, 1000));
+            if (error) throw error;
 
             setSubmitStatus({
                 success: true,
@@ -37,6 +46,7 @@ export default function PhotoBoothBookingPage() {
             });
             reset();
         } catch (error) {
+            console.error('Error submitting booking:', error);
             setSubmitStatus({
                 success: false,
                 message: 'Failed to submit booking request. Please try again later.'

@@ -1,33 +1,45 @@
 import { createClient } from './client';
 
-export const getLikeCount = async (productId: string) => {
+export const getLikeCount = async (table: string, id: string) => {
   const supabaseBrowser = createClient();
   const { data, error } = await supabaseBrowser
-    .from('products')
+    .from(table)
     .select('likes')
-    .eq('id', productId)
+    .eq('id', id)
     .single();
   if (error) throw error;
-  return (data as any)?.likes ?? 0;
+  return (data as any)?.likes?.length ?? 0;
 };
 
-export const toggleLike = async (productId: string, increment: number = 1) => {
+export const toggleLike = async (table: string, id: string, userId: string) => {
   const supabaseBrowser = createClient();
-  // increment is +1 or -1. Read current likes then update atomically via a transaction-like approach.
+
+  // Fetch current likes
   const { data: current, error: fetchErr } = await supabaseBrowser
-    .from('products')
+    .from(table)
     .select('likes')
-    .eq('id', productId)
+    .eq('id', id)
     .single();
+
   if (fetchErr) throw fetchErr;
 
-  const currentLikes = ((current as any)?.likes ?? 0) + increment;
+  const currentLikes = (current as any)?.likes ?? [];
+  const hasLiked = currentLikes.includes(userId);
+
+  let newLikes;
+  if (hasLiked) {
+    newLikes = currentLikes.filter((uid: string) => uid !== userId);
+  } else {
+    newLikes = [...currentLikes, userId];
+  }
+
   const { data, error } = await supabaseBrowser
-    .from('products')
-    .update({ likes: currentLikes } as never)
-    .eq('id', productId)
+    .from(table)
+    .update({ likes: newLikes } as never)
+    .eq('id', id)
     .select()
     .single();
+
   if (error) throw error;
   return data;
 };
