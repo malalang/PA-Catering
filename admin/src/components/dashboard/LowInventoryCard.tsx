@@ -25,7 +25,7 @@ export const LowInventoryCard = ({ items }: Props) => (
             <div>
               <p className="font-semibold text-white">{item.name}</p>
               <p className="text-xs uppercase tracking-[0.3em] text-rose-300">
-                {item.category ?? "Uncategorised"}
+                {item.category_name ?? "Uncategorised"}
               </p>
             </div>
             <div className="flex items-center gap-1 text-rose-300">
