@@ -1,76 +1,110 @@
--- Supabase SQL migration for PA-Catering
--- Run this in Supabase SQL editor or psql connected to your Supabase Postgres
+-- WARNING: This schema is for context only and is not meant to be run.
+-- Table order and constraints may not be valid for execution.
 
--- Enable extensions if not present
-CREATE EXTENSION IF NOT EXISTS "pgcrypto";
-
--- users table (supabase auth handles auth, but we keep a profile table)
-CREATE TABLE IF NOT EXISTS profiles (
-  id uuid PRIMARY KEY DEFAULT auth.uid(),
+CREATE TABLE public.comments (
+  id uuid NOT NULL DEFAULT gen_random_uuid(),
+  product_id uuid,
+  user_id uuid,
+  user_name text,
+  body text NOT NULL,
+  created_at timestamp with time zone DEFAULT now(),
+  CONSTRAINT comments_pkey PRIMARY KEY (id),
+  CONSTRAINT comments_product_id_fkey FOREIGN KEY (product_id) REFERENCES public.products(id),
+  CONSTRAINT fk_comments_user_id_profiles FOREIGN KEY (user_id) REFERENCES public.profiles(id)
+);
+CREATE TABLE public.contact (
+  id uuid NOT NULL DEFAULT gen_random_uuid(),
+  name text NOT NULL,
+  email text NOT NULL,
+  phone text,
+  message text NOT NULL,
+  created_at timestamp with time zone DEFAULT now(),
+  CONSTRAINT contact_pkey PRIMARY KEY (id)
+);
+CREATE TABLE public.orders (
+  id uuid NOT NULL DEFAULT gen_random_uuid(),
+  user_id uuid,
+  items jsonb NOT NULL,
+  total_price numeric NOT NULL,
+  total_quantity integer NOT NULL,
+  status text DEFAULT 'pending'::text,
+  created_at timestamp with time zone DEFAULT now(),
+  updated_at timestamp with time zone DEFAULT now(),
+  CONSTRAINT orders_pkey PRIMARY KEY (id),
+  CONSTRAINT fk_orders_user_id_profiles FOREIGN KEY (user_id) REFERENCES public.profiles(id)
+);
+CREATE TABLE public.photo_boot_bookings (
+  id uuid NOT NULL DEFAULT gen_random_uuid(),
+  name text NOT NULL,
+  email text NOT NULL,
+  phone text,
+  date date NOT NULL,
+  time time without time zone NOT NULL,
+  package text NOT NULL,
+  people integer NOT NULL,
+  message text,
+  created_at timestamp with time zone DEFAULT now(),
+  CONSTRAINT photo_boot_bookings_pkey PRIMARY KEY (id)
+);
+CREATE TABLE public.products (
+  id uuid NOT NULL DEFAULT gen_random_uuid(),
+  name text NOT NULL,
+  slug text UNIQUE,
+  description text,
+  price numeric DEFAULT 0,
+  image_url text,
+  stock integer DEFAULT 0,
+  created_at timestamp with time zone DEFAULT now(),
+  badge text,
+  likes ARRAY DEFAULT '{}'::uuid[],
+  category_name text,
+  CONSTRAINT products_pkey PRIMARY KEY (id),
+  CONSTRAINT products_category_name_fkey FOREIGN KEY (category_name) REFERENCES public.products_category(category_name)
+);
+CREATE TABLE public.products_category (
+  id uuid NOT NULL DEFAULT gen_random_uuid(),
+  category_name text NOT NULL UNIQUE,
+  image text,
+  description text,
+  created_at timestamp with time zone DEFAULT now(),
+  CONSTRAINT products_category_pkey PRIMARY KEY (id)
+);
+CREATE TABLE public.profiles (
+  id uuid NOT NULL DEFAULT gen_random_uuid(),
   email text,
   display_name text,
   phone text,
   metadata jsonb,
-  created_at timestamp with time zone DEFAULT now()
-);
-
--- products table
-CREATE TABLE IF NOT EXISTS products (
-  id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
-  name text NOT NULL,
-  slug text UNIQUE,
-  description text,
-  price numeric(10,2) DEFAULT 0,
-  category text,
-  image_url text,
-  stock integer DEFAULT 0,
-  likes integer DEFAULT 0,
-  created_at timestamp with time zone DEFAULT now()
-);
-
--- comments table
-CREATE TABLE IF NOT EXISTS comments (
-  id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
-  product_id uuid REFERENCES products(id) ON DELETE CASCADE,
-  user_id uuid,
-  user_name text,
-  body text NOT NULL,
-  created_at timestamp with time zone DEFAULT now()
-);
-
--- orders table
-CREATE TABLE IF NOT EXISTS orders (
-  id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
-  user_id uuid,
-  items jsonb NOT NULL,
-  total_price numeric(10,2) NOT NULL,
-  total_quantity integer NOT NULL,
-  status text DEFAULT 'pending',
   created_at timestamp with time zone DEFAULT now(),
-  updated_at timestamp with time zone DEFAULT now()
+  role text DEFAULT 'customer'::text,
+  uid text,
+  email_verified boolean DEFAULT false,
+  photo_url text,
+  address text,
+  city text,
+  state text,
+  zip_code text,
+  country text,
+  theme text DEFAULT 'system'::text,
+  order_history jsonb DEFAULT '[]'::jsonb,
+  loyalty_points_balance integer DEFAULT 0,
+  tier_status text DEFAULT 'Bronze'::text,
+  rewards_available jsonb DEFAULT '[]'::jsonb,
+  redemption_history jsonb DEFAULT '[]'::jsonb,
+  personalized_promotions jsonb DEFAULT '[]'::jsonb,
+  referral_code text,
+  car_wash_count integer DEFAULT 0,
+  preferences jsonb DEFAULT '{}'::jsonb,
+  saved_payment_methods jsonb DEFAULT '[]'::jsonb,
+  updated_at timestamp with time zone DEFAULT now(),
+  last_login timestamp with time zone DEFAULT now(),
+  CONSTRAINT profiles_pkey PRIMARY KEY (id)
 );
-
--- user_favorites table (tracks favorites per user)
-CREATE TABLE IF NOT EXISTS user_favorites (
-  user_id uuid,
-  product_id uuid,
+CREATE TABLE public.user_favorites (
+  user_id uuid NOT NULL,
+  product_id uuid NOT NULL,
   created_at timestamp with time zone DEFAULT now(),
-  PRIMARY KEY (user_id, product_id),
-  FOREIGN KEY (product_id) REFERENCES products(id) ON DELETE CASCADE
+  CONSTRAINT user_favorites_pkey PRIMARY KEY (user_id, product_id),
+  CONSTRAINT user_favorites_product_id_fkey FOREIGN KEY (product_id) REFERENCES public.products(id),
+  CONSTRAINT fk_user_favorites_user_id_profiles FOREIGN KEY (user_id) REFERENCES public.profiles(id)
 );
-
--- Indexes for common queries
-CREATE INDEX IF NOT EXISTS idx_products_category ON products(category);
-CREATE INDEX IF NOT EXISTS idx_comments_product ON comments(product_id);
-CREATE INDEX IF NOT EXISTS idx_orders_user ON orders(user_id);
-
--- Optional seed: a couple of sample products
-INSERT INTO products (name, slug, description, price, category, image_url, stock)
-VALUES
-  ('Classic Beef Burger', 'classic-beef-burger', 'A juicy classic beef burger with cheese and lettuce.', 8.50, 'Burgers', '/Menus/burger1.jpg', 25)
-ON CONFLICT (slug) DO NOTHING;
-
-INSERT INTO products (name, slug, description, price, category, image_url, stock)
-VALUES
-  ('Vegan Salad Bowl', 'vegan-salad-bowl', 'Fresh greens with avocado, nuts, and lemon dressing.', 7.00, 'Salads', '/Menus/salad1.jpg', 40)
-ON CONFLICT (slug) DO NOTHING;
