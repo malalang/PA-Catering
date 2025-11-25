@@ -7,7 +7,7 @@ import type { AdminProfileSummary } from "@/lib/types";
 
 const PROFILE_COLUMNS = "id,email,display_name,role";
 
-async function fetchProfile(
+export async function fetchProfile(
   client: SupabaseServerClient,
 ): Promise<AdminProfileSummary | null> {
   const {
@@ -16,6 +16,7 @@ async function fetchProfile(
   } = await client.auth.getUser();
 
   if (authError || !user) {
+    console.error("Failed to load user:", authError);
     return null;
   }
 

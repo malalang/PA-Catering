@@ -2,7 +2,7 @@
 
 import { redirect } from "next/navigation";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
-import { fetchAdminProfileWithClient } from "./session";
+import { fetchAdminProfileWithClient, fetchProfile } from "./session";
 import type { AuthActionState } from "./types";
 import type { Database } from "@/lib/database.types";
 
@@ -31,7 +31,7 @@ export async function loginAction(
     return { error: error.message };
   }
 
-  const profile = await fetchAdminProfileWithClient(supabase);
+  const profile = await fetchProfile(supabase);
 
   if (!profile) {
     await supabase.auth.signOut();
