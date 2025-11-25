@@ -35,7 +35,7 @@ export const createProductAction = async (
   const supabase = await createSupabaseServerClient();
   const productData: Database["public"]["Tables"]["products"]["Insert"] = {
     name,
-    category_name: category,
+    category: category,
     description: description || null,
     badge,
     image_url: imageUrl,
@@ -85,7 +85,7 @@ export const updateProductAction = async (
   }
 
   if (category) {
-    payload.category_name = category;
+    payload.category = category;
   }
 
   if (price !== undefined && !Number.isNaN(price)) {

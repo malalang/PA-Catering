@@ -2,7 +2,6 @@
 
 import { revalidatePath } from "next/cache";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
-import type { Database } from "@/lib/database.types";
 
 export type PhotoBookingActionState = {
     error?: string;
@@ -34,7 +33,7 @@ export const createPhotoBookingAction = async (
     }
 
     const supabase = await createSupabaseServerClient();
-    const bookingData: Database["public"]["Tables"]["photo_boot_bookings"]["Insert"] = {
+    const bookingData = {
         name,
         email,
         phone,
@@ -77,7 +76,7 @@ export const updatePhotoBookingAction = async (
     }
 
     const supabase = await createSupabaseServerClient();
-    const updateData: Database["public"]["Tables"]["photo_boot_bookings"]["Update"] = {
+    const updateData = {
         name,
         email,
         phone,

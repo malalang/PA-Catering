@@ -2,7 +2,6 @@
 
 import { revalidatePath } from "next/cache";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
-import type { Database } from "@/lib/database.types";
 
 export type CommentActionState = {
     error?: string;
@@ -26,7 +25,7 @@ export const createCommentAction = async (
     }
 
     const supabase = await createSupabaseServerClient();
-    const commentData: Database["public"]["Tables"]["comments"]["Insert"] = {
+    const commentData = {
         product_id: productId || null,
         user_id: userId,
         user_name: userName,
@@ -57,7 +56,7 @@ export const updateCommentAction = async (
     }
 
     const supabase = await createSupabaseServerClient();
-    const updateData: Database["public"]["Tables"]["comments"]["Update"] = {
+    const updateData = {
         body,
         user_name: userName,
     };

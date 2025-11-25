@@ -2,7 +2,6 @@
 
 import { revalidatePath } from "next/cache";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
-import type { Database } from "@/lib/database.types";
 
 export type ProfileActionState = {
     error?: string;
@@ -31,7 +30,7 @@ export const updateProfileAction = async (
     }
 
     const supabase = await createSupabaseServerClient();
-    const updateData: Database["public"]["Tables"]["profiles"]["Update"] = {
+    const updateData = {
         display_name: displayName,
         phone,
         address,
