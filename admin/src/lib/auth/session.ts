@@ -20,25 +20,25 @@ export async function fetchProfile(
     return null;
   }
 
-  const { data, error } = await client
+  const { data: profile, error } = await client
     .from("profiles")
     .select(PROFILE_COLUMNS)
     .eq("id", user.id)
-    .maybeSingle();
+    .single();
 
   if (error) {
     console.error("Failed to load admin profile", error);
     return null;
   }
 
-  console.log("Profile data:", data);
+  console.log("Profile data:", profile);
 
-  if (!data) {
+  if (!profile) {
     console.log("No profile data found");
     return null;
   }
 
-  const userRole = (data as { role: string | null }).role;
+  const userRole = (profile as { role: string | null }).role;
   console.log("User role:", userRole);
 
   // Case-insensitive check for admin role
@@ -47,7 +47,7 @@ export async function fetchProfile(
     return null;
   }
 
-  return data as AdminProfileSummary;
+  return profile as AdminProfileSummary;
 }
 
 export const getSupabaseUser = cache(async (): Promise<User | null> => {
