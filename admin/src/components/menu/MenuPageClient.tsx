@@ -14,8 +14,8 @@ type Props = {
 };
 
 export const MenuPageClient = ({ products, categories, categoryNames }: Props) => {
-    const [showCategories, setShowCategories] = useState(true);
-    const [showProducts, setShowProducts] = useState(true);
+    const [showCategories, setShowCategories] = useState(false);
+    const [showProducts, setShowProducts] = useState(false);
 
     return (
         <div className="space-y-8">

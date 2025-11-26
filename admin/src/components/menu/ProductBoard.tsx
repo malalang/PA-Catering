@@ -54,7 +54,37 @@ export const ProductBoard = ({ products, showImages = false, onAddProduct }: Pro
 
   return (
     <div className="space-y-5">
-      <div className="grid gap-3 md:grid-cols-3">
+      {/* Insights - Full Width */}
+      <div className="rounded-xl border border-white/10 bg-slate-900/50 p-4">
+        <p className="mb-3 text-xs uppercase tracking-[0.3em] text-slate-500">
+          Insights
+        </p>
+        <div className="grid grid-cols-2 gap-4 md:grid-cols-5">
+          <div className="text-center">
+            <p className="text-xs text-slate-400">Avg Price</p>
+            <p className="mt-1 text-lg font-semibold text-white">R{avgPrice.toFixed(2)}</p>
+          </div>
+          <div className="text-center">
+            <p className="text-xs text-slate-400">Total Stock</p>
+            <p className="mt-1 text-lg font-semibold text-white">{totalStock}</p>
+          </div>
+          <div className="text-center">
+            <p className="text-xs text-slate-400">Low Stock</p>
+            <p className="mt-1 text-lg font-semibold text-yellow-400">{lowStock}</p>
+          </div>
+          <div className="text-center">
+            <p className="text-xs text-slate-400">Out of Stock</p>
+            <p className="mt-1 text-lg font-semibold text-rose-400">{outOfStock}</p>
+          </div>
+          <div className="text-center">
+            <p className="text-xs text-slate-400">Total Value</p>
+            <p className="mt-1 text-lg font-semibold text-emerald-400">R{totalValue.toFixed(2)}</p>
+          </div>
+        </div>
+      </div>
+
+      {/* Search and Category Filters */}
+      <div className="grid gap-3 md:grid-cols-2">
         <label className="space-y-2 text-sm text-slate-300">
           <span>Search</span>
           <input
@@ -80,34 +110,6 @@ export const ProductBoard = ({ products, showImages = false, onAddProduct }: Pro
             ))}
           </select>
         </label>
-
-        <div className="rounded-xl border border-white/10 bg-slate-900/50 p-3 text-sm text-slate-300">
-          <p className="text-xs uppercase tracking-[0.3em] text-slate-500">
-            Insights
-          </p>
-          <div className="mt-2 space-y-1">
-            <p className="flex justify-between text-xs">
-              <span className="text-slate-400">Avg Price:</span>
-              <span className="font-semibold text-white">R{avgPrice.toFixed(2)}</span>
-            </p>
-            <p className="flex justify-between text-xs">
-              <span className="text-slate-400">Total Stock:</span>
-              <span className="font-semibold text-white">{totalStock}</span>
-            </p>
-            <p className="flex justify-between text-xs">
-              <span className="text-slate-400">Low Stock:</span>
-              <span className="font-semibold text-yellow-400">{lowStock}</span>
-            </p>
-            <p className="flex justify-between text-xs">
-              <span className="text-slate-400">Out of Stock:</span>
-              <span className="font-semibold text-rose-400">{outOfStock}</span>
-            </p>
-            <p className="flex justify-between text-xs">
-              <span className="text-slate-400">Total Value:</span>
-              <span className="font-semibold text-emerald-400">R{totalValue.toFixed(2)}</span>
-            </p>
-          </div>
-        </div>
       </div>
 
       <div className="flex items-center justify-between">
@@ -208,7 +210,7 @@ export const ProductBoard = ({ products, showImages = false, onAddProduct }: Pro
 
               {editingId === product.id && (
                 <div className="mt-4 rounded-xl border border-white/10 bg-slate-950/40 p-3">
-                  <QuickEditForm product={product} />
+                  <QuickEditForm product={product} categories={categories} />
                 </div>
               )}
             </article>

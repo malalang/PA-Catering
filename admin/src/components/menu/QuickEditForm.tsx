@@ -10,11 +10,12 @@ import type { ProductRecord } from "@/lib/types";
 
 type Props = {
   product: ProductRecord;
+  categories?: string[];
 };
 
 const initialState: ProductActionState = {};
 
-export const QuickEditForm = ({ product }: Props) => {
+export const QuickEditForm = ({ product, categories = [] }: Props) => {
   const [state, formAction] = useFormState(updateProductAction, initialState);
 
   return (
@@ -33,12 +34,26 @@ export const QuickEditForm = ({ product }: Props) => {
 
       <label className="space-y-2 block">
         <span>Category</span>
-        <input
-          name="category"
-          type="text"
-          defaultValue={product.category_name ?? ""}
-          className="w-full rounded-lg border border-white/10 bg-slate-900/60 px-3 py-2 text-white outline-none focus:border-indigo-400 focus:ring-2 focus:ring-indigo-400/40"
-        />
+        {categories.length > 0 ? (
+          <select
+            name="category"
+            defaultValue={product.category_name ?? ""}
+            className="w-full rounded-lg border border-white/10 bg-slate-900/60 px-3 py-2 text-white outline-none focus:border-indigo-400 focus:ring-2 focus:ring-indigo-400/40"
+          >
+            {categories.filter(cat => cat !== "all").map((cat) => (
+              <option key={cat} value={cat}>
+                {cat}
+              </option>
+            ))}
+          </select>
+        ) : (
+          <input
+            name="category"
+            type="text"
+            defaultValue={product.category_name ?? ""}
+            className="w-full rounded-lg border border-white/10 bg-slate-900/60 px-3 py-2 text-white outline-none focus:border-indigo-400 focus:ring-2 focus:ring-indigo-400/40"
+          />
+        )}
       </label>
 
       <div className="grid gap-3 md:grid-cols-2">
