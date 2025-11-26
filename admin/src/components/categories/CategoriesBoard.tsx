@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { useFormState } from "react-dom";
+import Image from "next/image";
 import { HiOutlinePlus } from "react-icons/hi2";
 import { SubmitButton } from "@/components/forms/SubmitButton";
 import { DeleteConfirmDialog } from "@/components/shared/DeleteConfirmDialog";
@@ -227,11 +228,12 @@ const CategoryCard = ({
             ) : (
                 <>
                     {category.image && (
-                        <div className="mb-3">
-                            <img
+                        <div className="relative mb-3 aspect-[4/3] w-full overflow-hidden rounded-lg bg-black/20">
+                            <Image
                                 src={category.image}
                                 alt={category.category_name}
-                                className="h-48 w-full rounded-lg object-cover"
+                                fill
+                                className="rounded-lg object-contain transition-transform duration-300 hover:scale-110"
                             />
                         </div>
                     )}

@@ -30,11 +30,6 @@ export const NAV_ITEMS: NavItem[] = [
     icon: "HiOutlineSquares2X2",
   },
   {
-    label: "Categories",
-    href: "/categories",
-    icon: "HiOutlineTag",
-  },
-  {
     label: "Comments",
     href: "/comments",
     icon: "HiOutlineChatBubbleLeftRight",
@@ -75,5 +70,6 @@ export const NAV_ITEMS: NavItem[] = [
     icon: "HiOutlineCog",
   },
 ];
+
 
 
