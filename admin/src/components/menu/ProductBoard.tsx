@@ -1,20 +1,24 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import Image from "next/image";
+import { HiOutlinePlus, HiOutlinePencil } from "react-icons/hi2";
 import type { ProductRecord } from "@/lib/types";
 import { QuickEditForm } from "./QuickEditForm";
 
 type Props = {
   products: ProductRecord[];
   showImages?: boolean;
+  onAddProduct?: () => void;
 };
 
 const normalize = (value?: string | null) => value?.toLowerCase() ?? "";
 
-export const ProductBoard = ({ products, showImages = false }: Props) => {
+export const ProductBoard = ({ products, showImages = false, onAddProduct }: Props) => {
   const [search, setSearch] = useState("");
   const [category, setCategory] = useState("all");
-  const [viewMode, setViewMode] = useState<"list" | "grid">(showImages ? "grid" : "list");
+  const [viewMode, setViewMode] = useState<"list" | "grid">("list");
+  const [editingId, setEditingId] = useState<string | null>(null);
 
   const categories = useMemo(() => {
     const unique = Array.from(
@@ -44,6 +48,9 @@ export const ProductBoard = ({ products, showImages = false }: Props) => {
   const lowStock = filtered.filter(
     (product) => (product.stock ?? 0) <= 10,
   ).length;
+  const outOfStock = filtered.filter((product) => (product.stock ?? 0) === 0).length;
+  const totalStock = filtered.reduce((sum, product) => sum + (product.stock ?? 0), 0);
+  const totalValue = filtered.reduce((sum, product) => sum + (product.price ?? 0) * (product.stock ?? 0), 0);
 
   return (
     <div className="space-y-5">
@@ -78,18 +85,33 @@ export const ProductBoard = ({ products, showImages = false }: Props) => {
           <p className="text-xs uppercase tracking-[0.3em] text-slate-500">
             Insights
           </p>
-          <p className="mt-2 text-white">
-            Avg price:{" "}
-            <span className="font-semibold">R{avgPrice.toFixed(2)}</span>
-          </p>
-          <p>
-            Low stock items: <span className="font-semibold">{lowStock}</span>
-          </p>
+          <div className="mt-2 space-y-1">
+            <p className="flex justify-between text-xs">
+              <span className="text-slate-400">Avg Price:</span>
+              <span className="font-semibold text-white">R{avgPrice.toFixed(2)}</span>
+            </p>
+            <p className="flex justify-between text-xs">
+              <span className="text-slate-400">Total Stock:</span>
+              <span className="font-semibold text-white">{totalStock}</span>
+            </p>
+            <p className="flex justify-between text-xs">
+              <span className="text-slate-400">Low Stock:</span>
+              <span className="font-semibold text-yellow-400">{lowStock}</span>
+            </p>
+            <p className="flex justify-between text-xs">
+              <span className="text-slate-400">Out of Stock:</span>
+              <span className="font-semibold text-rose-400">{outOfStock}</span>
+            </p>
+            <p className="flex justify-between text-xs">
+              <span className="text-slate-400">Total Value:</span>
+              <span className="font-semibold text-emerald-400">R{totalValue.toFixed(2)}</span>
+            </p>
+          </div>
         </div>
       </div>
 
-      {showImages && (
-        <div className="flex justify-end gap-2">
+      <div className="flex items-center justify-between">
+        <div className="flex gap-2">
           <button
             type="button"
             onClick={() => setViewMode("list")}
@@ -100,18 +122,31 @@ export const ProductBoard = ({ products, showImages = false }: Props) => {
           >
             List
           </button>
+          {showImages && (
+            <button
+              type="button"
+              onClick={() => setViewMode("grid")}
+              className={`rounded-lg px-3 py-1.5 text-sm ${viewMode === "grid"
+                  ? "bg-indigo-600 text-white"
+                  : "bg-slate-800 text-slate-400 hover:text-white"
+                }`}
+            >
+              Grid
+            </button>
+          )}
+        </div>
+
+        {onAddProduct && (
           <button
             type="button"
-            onClick={() => setViewMode("grid")}
-            className={`rounded-lg px-3 py-1.5 text-sm ${viewMode === "grid"
-                ? "bg-indigo-600 text-white"
-                : "bg-slate-800 text-slate-400 hover:text-white"
-              }`}
+            onClick={onAddProduct}
+            className="flex items-center gap-2 rounded-full bg-indigo-600 px-4 py-2 text-sm font-medium text-white hover:bg-indigo-700"
           >
-            Grid
+            <HiOutlinePlus className="h-5 w-5" />
+            Add Product
           </button>
-        </div>
-      )}
+        )}
+      </div>
 
       <div className={viewMode === "grid" && showImages ? "grid gap-4 md:grid-cols-2 lg:grid-cols-3" : "grid gap-4 md:grid-cols-2"}>
         {filtered.length === 0 ? (
@@ -125,11 +160,14 @@ export const ProductBoard = ({ products, showImages = false }: Props) => {
               className="rounded-2xl border border-white/10 bg-slate-900/40 p-4 shadow-inner shadow-black/30"
             >
               {showImages && product.image_url && (
-                <img
-                  src={product.image_url}
-                  alt={product.name}
-                  className="mb-4 h-48 w-full rounded-xl object-cover"
-                />
+                <div className="relative mb-4 aspect-[4/3] w-full overflow-hidden rounded-md bg-black/20">
+                  <Image
+                    src={product.image_url}
+                    alt={product.name}
+                    fill
+                    className="rounded-md object-contain transition-transform duration-300 hover:scale-110"
+                  />
+                </div>
               )}
 
               <div className="flex items-start justify-between gap-4">
@@ -144,13 +182,21 @@ export const ProductBoard = ({ products, showImages = false }: Props) => {
                     {product.description ?? "No description yet."}
                   </p>
                 </div>
-                <div className="text-right text-white">
-                  <p className="text-2xl font-semibold">
+                <div className="text-right">
+                  <p className="text-2xl font-semibold text-white">
                     R{product.price?.toFixed(2) ?? "0.00"}
                   </p>
                   <p className="text-xs text-slate-500">
                     {product.stock ?? 0} in stock
                   </p>
+                  <button
+                    type="button"
+                    onClick={() => setEditingId(editingId === product.id ? null : product.id)}
+                    className="mt-2 flex items-center gap-1 rounded-lg bg-slate-800 px-3 py-1 text-xs text-white hover:bg-slate-700"
+                  >
+                    <HiOutlinePencil className="h-3 w-3" />
+                    {editingId === product.id ? "Cancel" : "Edit"}
+                  </button>
                 </div>
               </div>
 
@@ -160,9 +206,11 @@ export const ProductBoard = ({ products, showImages = false }: Props) => {
                 </span>
               ) : null}
 
-              <div className="mt-4 rounded-xl border border-white/10 bg-slate-950/40 p-3">
-                <QuickEditForm product={product} />
-              </div>
+              {editingId === product.id && (
+                <div className="mt-4 rounded-xl border border-white/10 bg-slate-950/40 p-3">
+                  <QuickEditForm product={product} />
+                </div>
+              )}
             </article>
           ))
         )}
