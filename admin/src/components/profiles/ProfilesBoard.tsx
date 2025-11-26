@@ -1,8 +1,10 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useTransition } from "react";
 import { useFormState } from "react-dom";
+import { HiOutlineEye } from "react-icons/hi2";
 import { SubmitButton } from "@/components/forms/SubmitButton";
+import { ProfileDetailModal } from "./ProfileDetailModal";
 import {
     type ProfileActionState,
     updateProfileAction,
@@ -12,13 +14,24 @@ import { formatDistanceToNow } from "date-fns";
 
 type Props = {
     profiles: ProfileRecord[];
+    onViewProfile: (profileId: string) => Promise<{
+        profile: ProfileRecord;
+        orders: any[];
+        favorites: any[];
+    }>;
 };
 
 const initialState: ProfileActionState = {};
 
-export const ProfilesBoard = ({ profiles }: Props) => {
+export const ProfilesBoard = ({ profiles, onViewProfile }: Props) => {
     const [search, setSearch] = useState("");
     const [editingId, setEditingId] = useState<string | null>(null);
+    const [viewingProfile, setViewingProfile] = useState<{
+        profile: ProfileRecord;
+        orders: any[];
+        favorites: any[];
+    } | null>(null);
+    const [isPending, startTransition] = useTransition();
 
     const filtered = profiles.filter(
         (profile) =>
@@ -27,6 +40,13 @@ export const ProfilesBoard = ({ profiles }: Props) => {
             profile.email?.toLowerCase().includes(search.toLowerCase()) ||
             profile.uid?.toLowerCase().includes(search.toLowerCase()),
     );
+
+    const handleViewProfile = (profileId: string) => {
+        startTransition(async () => {
+            const data = await onViewProfile(profileId);
+            setViewingProfile(data);
+        });
+    };
 
     return (
         <div className="space-y-4">
@@ -51,9 +71,20 @@ export const ProfilesBoard = ({ profiles }: Props) => {
                         isEditing={editingId === profile.id}
                         onEdit={() => setEditingId(profile.id)}
                         onCancelEdit={() => setEditingId(null)}
+                        onView={() => handleViewProfile(profile.id)}
+                        isLoading={isPending}
                     />
                 ))}
             </div>
+
+            {viewingProfile && (
+                <ProfileDetailModal
+                    profile={viewingProfile.profile}
+                    orders={viewingProfile.orders}
+                    favorites={viewingProfile.favorites}
+                    onClose={() => setViewingProfile(null)}
+                />
+            )}
         </div>
     );
 };
@@ -63,6 +94,8 @@ type ProfileCardProps = {
     isEditing: boolean;
     onEdit: () => void;
     onCancelEdit: () => void;
+    onView: () => void;
+    isLoading: boolean;
 };
 
 const ProfileCard = ({
@@ -70,6 +103,8 @@ const ProfileCard = ({
     isEditing,
     onEdit,
     onCancelEdit,
+    onView,
+    isLoading,
 }: ProfileCardProps) => {
     const [state, formAction] = useFormState(updateProfileAction, initialState);
 
@@ -155,6 +190,31 @@ const ProfileCard = ({
                         />
                     </label>
 
+                    {/* Show all profile info in edit mode */}
+                    <div className="rounded-lg border border-indigo-500/30 bg-indigo-500/5 p-3">
+                        <p className="mb-2 text-xs font-semibold uppercase tracking-wider text-indigo-300">
+                            Additional Info
+                        </p>
+                        <div className="grid gap-2 text-sm">
+                            <div className="flex justify-between">
+                                <span className="text-slate-400">Loyalty Points:</span>
+                                <span className="font-semibold text-white">
+                                    {profile.loyalty_points_balance}
+                                </span>
+                            </div>
+                            <div className="flex justify-between">
+                                <span className="text-slate-400">Tier Status:</span>
+                                <span className="font-semibold text-white">{profile.tier_status}</span>
+                            </div>
+                            <div className="flex justify-between">
+                                <span className="text-slate-400">User ID:</span>
+                                <span className="font-mono text-xs text-slate-300">
+                                    {profile.uid?.slice(0, 12)}...
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
                     {state.error && <p className="text-sm text-rose-400">{state.error}</p>}
                     {state.success && (
                         <p className="text-sm text-emerald-400">{state.success}</p>
@@ -200,13 +260,24 @@ const ProfileCard = ({
                                     : "Never"}
                             </p>
                         </div>
-                        <button
-                            type="button"
-                            onClick={onEdit}
-                            className="rounded-lg bg-slate-800 px-3 py-1 text-xs text-white hover:bg-slate-700"
-                        >
-                            Edit
-                        </button>
+                        <div className="flex gap-2">
+                            <button
+                                type="button"
+                                onClick={onView}
+                                disabled={isLoading}
+                                className="flex items-center gap-1 rounded-lg bg-indigo-600 px-3 py-1 text-xs text-white hover:bg-indigo-700 disabled:opacity-50"
+                            >
+                                <HiOutlineEye className="h-4 w-4" />
+                                View
+                            </button>
+                            <button
+                                type="button"
+                                onClick={onEdit}
+                                className="rounded-lg bg-slate-800 px-3 py-1 text-xs text-white hover:bg-slate-700"
+                            >
+                                Edit
+                            </button>
+                        </div>
                     </div>
 
                     {profile.address && (

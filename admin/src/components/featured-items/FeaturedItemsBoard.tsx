@@ -2,10 +2,12 @@
 
 import { useState } from "react";
 import { useFormState } from "react-dom";
+import { HiOutlinePlus } from "react-icons/hi2";
 import { SubmitButton } from "@/components/forms/SubmitButton";
 import { DeleteConfirmDialog } from "@/components/shared/DeleteConfirmDialog";
 import {
     type FeaturedItemActionState,
+    createFeaturedItemAction,
     updateFeaturedItemAction,
     deleteFeaturedItemAction,
 } from "@/lib/data/testimonials-actions";
@@ -22,6 +24,7 @@ export const FeaturedItemsBoard = ({ items }: Props) => {
     const [search, setSearch] = useState("");
     const [editingId, setEditingId] = useState<string | null>(null);
     const [deleteId, setDeleteId] = useState<string | null>(null);
+    const [showCreateForm, setShowCreateForm] = useState(false);
 
     const filtered = items.filter(
         (item) =>
@@ -47,10 +50,19 @@ export const FeaturedItemsBoard = ({ items }: Props) => {
                     onChange={(e) => setSearch(e.target.value)}
                     className="w-full max-w-md rounded-full border border-white/10 bg-slate-900/60 px-4 py-3 text-white outline-none focus:border-indigo-400 focus:ring-2 focus:ring-indigo-400/40"
                 />
-                <p className="text-xs uppercase tracking-[0.3em] text-slate-500">
-                    {filtered.length} items
-                </p>
+                <button
+                    type="button"
+                    onClick={() => setShowCreateForm(true)}
+                    className="flex items-center gap-2 rounded-full bg-indigo-600 px-4 py-3 text-sm font-medium text-white hover:bg-indigo-700"
+                >
+                    <HiOutlinePlus className="h-5 w-5" />
+                    <span className="whitespace-nowrap">Add Featured Item</span>
+                </button>
             </div>
+
+            {showCreateForm && (
+                <CreateFeaturedItemForm onCancel={() => setShowCreateForm(false)} />
+            )}
 
             <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
                 {filtered.map((item) => (
@@ -72,6 +84,70 @@ export const FeaturedItemsBoard = ({ items }: Props) => {
                 title="Delete Featured Item"
                 message="Are you sure you want to delete this featured item? This action cannot be undone."
             />
+        </div>
+    );
+};
+
+type CreateFeaturedItemFormProps = {
+    onCancel: () => void;
+};
+
+const CreateFeaturedItemForm = ({ onCancel }: CreateFeaturedItemFormProps) => {
+    const [state, formAction] = useFormState(createFeaturedItemAction, initialState);
+
+    return (
+        <div className="rounded-2xl border border-indigo-500/30 bg-indigo-500/5 p-4">
+            <h3 className="mb-3 text-sm font-semibold text-white">Create New Featured Item</h3>
+            <form action={formAction} className="space-y-3">
+                <label className="block space-y-2 text-sm">
+                    <span className="text-slate-300">Name *</span>
+                    <input
+                        name="name"
+                        required
+                        className="w-full rounded-lg border border-white/10 bg-slate-900/60 px-3 py-2 text-white outline-none focus:border-indigo-400 focus:ring-2 focus:ring-indigo-400/40"
+                    />
+                </label>
+
+                <label className="block space-y-2 text-sm">
+                    <span className="text-slate-300">Image URL</span>
+                    <input
+                        name="image_url"
+                        type="url"
+                        placeholder="https://example.com/image.jpg"
+                        className="w-full rounded-lg border border-white/10 bg-slate-900/60 px-3 py-2 text-white outline-none focus:border-indigo-400 focus:ring-2 focus:ring-indigo-400/40"
+                    />
+                </label>
+
+                <label className="block space-y-2 text-sm">
+                    <span className="text-slate-300">Description *</span>
+                    <textarea
+                        name="description"
+                        rows={4}
+                        required
+                        className="w-full rounded-lg border border-white/10 bg-slate-900/60 px-3 py-2 text-white outline-none focus:border-indigo-400 focus:ring-2 focus:ring-indigo-400/40"
+                    />
+                </label>
+
+                {state.error && <p className="text-sm text-rose-400">{state.error}</p>}
+                {state.success && (
+                    <p className="text-sm text-emerald-400">{state.success}</p>
+                )}
+
+                <div className="flex gap-2">
+                    <SubmitButton
+                        label="Create Featured Item"
+                        loadingLabel="Creating..."
+                        className="bg-indigo-600 px-4 py-2 text-sm"
+                    />
+                    <button
+                        type="button"
+                        onClick={onCancel}
+                        className="rounded-lg bg-slate-800 px-4 py-2 text-sm text-white hover:bg-slate-700"
+                    >
+                        Cancel
+                    </button>
+                </div>
+            </form>
         </div>
     );
 };
@@ -156,8 +232,18 @@ const FeaturedItemCard = ({
                 </form>
             ) : (
                 <>
+                    {item.image_url && (
+                        <div className="mb-3">
+                            <img
+                                src={item.image_url}
+                                alt={item.name}
+                                className="h-48 w-full rounded-lg object-cover"
+                            />
+                        </div>
+                    )}
+
                     <div className="flex items-start justify-between">
-                        <h3 className="text-lg font-semibold text-white">{item.name}</h3>
+                        <h3 className="flex-1 text-lg font-semibold text-white">{item.name}</h3>
                         <div className="flex gap-2">
                             <button
                                 type="button"
@@ -175,16 +261,6 @@ const FeaturedItemCard = ({
                             </button>
                         </div>
                     </div>
-
-                    {item.image_url && (
-                        <div className="mt-3">
-                            <img
-                                src={item.image_url}
-                                alt={item.name}
-                                className="h-40 w-full rounded-lg object-cover"
-                            />
-                        </div>
-                    )}
 
                     <p className="mt-3 text-sm text-slate-300">{item.description}</p>
 

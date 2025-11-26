@@ -11,6 +11,42 @@ export type TestimonialActionState = {
 const sanitize = (value: FormDataEntryValue | null) =>
     String(value ?? "").trim();
 
+export const createTestimonialAction = async (
+    _prev: TestimonialActionState,
+    formData: FormData,
+): Promise<TestimonialActionState> => {
+    const text = sanitize(formData.get("text"));
+    const author = sanitize(formData.get("author"));
+    const rating = Number(formData.get("rating") ?? 5);
+
+    if (!text || !author) {
+        return { error: "Text and author are required." };
+    }
+
+    if (Number.isNaN(rating) || rating < 1 || rating > 5) {
+        return { error: "Rating must be between 1 and 5." };
+    }
+
+    const supabase = await createSupabaseServerClient();
+    const testimonialData = {
+        text,
+        author,
+        rating,
+    };
+
+    const { error } = await supabase
+        .from("testimonials")
+        .insert(testimonialData as never);
+
+    if (error) {
+        console.error("Failed to create testimonial", error);
+        return { error: error.message };
+    }
+
+    revalidatePath("/testimonials");
+    return { success: "Testimonial created successfully." };
+};
+
 export const updateTestimonialAction = async (
     _prev: TestimonialActionState,
     formData: FormData,
@@ -74,6 +110,38 @@ export const deleteTestimonialAction = async (
 export type FeaturedItemActionState = {
     error?: string;
     success?: string;
+};
+
+export const createFeaturedItemAction = async (
+    _prev: FeaturedItemActionState,
+    formData: FormData,
+): Promise<FeaturedItemActionState> => {
+    const name = sanitize(formData.get("name"));
+    const description = sanitize(formData.get("description"));
+    const imageUrl = sanitize(formData.get("image_url")) || null;
+
+    if (!name || !description) {
+        return { error: "Name and description are required." };
+    }
+
+    const supabase = await createSupabaseServerClient();
+    const itemData = {
+        name,
+        description,
+        image_url: imageUrl,
+    };
+
+    const { error } = await supabase
+        .from("featured_items")
+        .insert(itemData as never);
+
+    if (error) {
+        console.error("Failed to create featured item", error);
+        return { error: error.message };
+    }
+
+    revalidatePath("/featured-items");
+    return { success: "Featured item created successfully." };
 };
 
 export const updateFeaturedItemAction = async (

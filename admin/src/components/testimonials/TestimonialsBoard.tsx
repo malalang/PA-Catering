@@ -2,10 +2,12 @@
 
 import { useState } from "react";
 import { useFormState } from "react-dom";
+import { HiOutlinePlus } from "react-icons/hi2";
 import { SubmitButton } from "@/components/forms/SubmitButton";
 import { DeleteConfirmDialog } from "@/components/shared/DeleteConfirmDialog";
 import {
     type TestimonialActionState,
+    createTestimonialAction,
     updateTestimonialAction,
     deleteTestimonialAction,
 } from "@/lib/data/testimonials-actions";
@@ -22,6 +24,7 @@ export const TestimonialsBoard = ({ testimonials }: Props) => {
     const [search, setSearch] = useState("");
     const [editingId, setEditingId] = useState<string | null>(null);
     const [deleteId, setDeleteId] = useState<string | null>(null);
+    const [showCreateForm, setShowCreateForm] = useState(false);
 
     const filtered = testimonials.filter(
         (testimonial) =>
@@ -47,10 +50,19 @@ export const TestimonialsBoard = ({ testimonials }: Props) => {
                     onChange={(e) => setSearch(e.target.value)}
                     className="w-full max-w-md rounded-full border border-white/10 bg-slate-900/60 px-4 py-3 text-white outline-none focus:border-indigo-400 focus:ring-2 focus:ring-indigo-400/40"
                 />
-                <p className="text-xs uppercase tracking-[0.3em] text-slate-500">
-                    {filtered.length} testimonials
-                </p>
+                <button
+                    type="button"
+                    onClick={() => setShowCreateForm(true)}
+                    className="flex items-center gap-2 rounded-full bg-indigo-600 px-4 py-3 text-sm font-medium text-white hover:bg-indigo-700"
+                >
+                    <HiOutlinePlus className="h-5 w-5" />
+                    <span className="whitespace-nowrap">Add Testimonial</span>
+                </button>
             </div>
+
+            {showCreateForm && (
+                <CreateTestimonialForm onCancel={() => setShowCreateForm(false)} />
+            )}
 
             <div className="grid gap-4 md:grid-cols-2">
                 {filtered.map((testimonial) => (
@@ -72,6 +84,75 @@ export const TestimonialsBoard = ({ testimonials }: Props) => {
                 title="Delete Testimonial"
                 message="Are you sure you want to delete this testimonial? This action cannot be undone."
             />
+        </div>
+    );
+};
+
+type CreateTestimonialFormProps = {
+    onCancel: () => void;
+};
+
+const CreateTestimonialForm = ({ onCancel }: CreateTestimonialFormProps) => {
+    const [state, formAction] = useFormState(createTestimonialAction, initialState);
+
+    return (
+        <div className="rounded-2xl border border-indigo-500/30 bg-indigo-500/5 p-4">
+            <h3 className="mb-3 text-sm font-semibold text-white">Create New Testimonial</h3>
+            <form action={formAction} className="space-y-3">
+                <label className="block space-y-2 text-sm">
+                    <span className="text-slate-300">Author *</span>
+                    <input
+                        name="author"
+                        required
+                        className="w-full rounded-lg border border-white/10 bg-slate-900/60 px-3 py-2 text-white outline-none focus:border-indigo-400 focus:ring-2 focus:ring-indigo-400/40"
+                    />
+                </label>
+
+                <label className="block space-y-2 text-sm">
+                    <span className="text-slate-300">Rating</span>
+                    <select
+                        name="rating"
+                        defaultValue="5"
+                        className="w-full rounded-lg border border-white/10 bg-slate-900/60 px-3 py-2 text-white outline-none focus:border-indigo-400 focus:ring-2 focus:ring-indigo-400/40"
+                    >
+                        <option value="1">1 Star</option>
+                        <option value="2">2 Stars</option>
+                        <option value="3">3 Stars</option>
+                        <option value="4">4 Stars</option>
+                        <option value="5">5 Stars</option>
+                    </select>
+                </label>
+
+                <label className="block space-y-2 text-sm">
+                    <span className="text-slate-300">Testimonial Text *</span>
+                    <textarea
+                        name="text"
+                        rows={4}
+                        required
+                        className="w-full rounded-lg border border-white/10 bg-slate-900/60 px-3 py-2 text-white outline-none focus:border-indigo-400 focus:ring-2 focus:ring-indigo-400/40"
+                    />
+                </label>
+
+                {state.error && <p className="text-sm text-rose-400">{state.error}</p>}
+                {state.success && (
+                    <p className="text-sm text-emerald-400">{state.success}</p>
+                )}
+
+                <div className="flex gap-2">
+                    <SubmitButton
+                        label="Create Testimonial"
+                        loadingLabel="Creating..."
+                        className="bg-indigo-600 px-4 py-2 text-sm"
+                    />
+                    <button
+                        type="button"
+                        onClick={onCancel}
+                        className="rounded-lg bg-slate-800 px-4 py-2 text-sm text-white hover:bg-slate-700"
+                    >
+                        Cancel
+                    </button>
+                </div>
+            </form>
         </div>
     );
 };
