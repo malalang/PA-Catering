@@ -6,13 +6,15 @@ import { QuickEditForm } from "./QuickEditForm";
 
 type Props = {
   products: ProductRecord[];
+  showImages?: boolean;
 };
 
 const normalize = (value?: string | null) => value?.toLowerCase() ?? "";
 
-export const ProductBoard = ({ products }: Props) => {
+export const ProductBoard = ({ products, showImages = false }: Props) => {
   const [search, setSearch] = useState("");
   const [category, setCategory] = useState("all");
+  const [viewMode, setViewMode] = useState<"list" | "grid">(showImages ? "grid" : "list");
 
   const categories = useMemo(() => {
     const unique = Array.from(
@@ -86,7 +88,32 @@ export const ProductBoard = ({ products }: Props) => {
         </div>
       </div>
 
-      <div className="grid gap-4 md:grid-cols-2">
+      {showImages && (
+        <div className="flex justify-end gap-2">
+          <button
+            type="button"
+            onClick={() => setViewMode("list")}
+            className={`rounded-lg px-3 py-1.5 text-sm ${viewMode === "list"
+                ? "bg-indigo-600 text-white"
+                : "bg-slate-800 text-slate-400 hover:text-white"
+              }`}
+          >
+            List
+          </button>
+          <button
+            type="button"
+            onClick={() => setViewMode("grid")}
+            className={`rounded-lg px-3 py-1.5 text-sm ${viewMode === "grid"
+                ? "bg-indigo-600 text-white"
+                : "bg-slate-800 text-slate-400 hover:text-white"
+              }`}
+          >
+            Grid
+          </button>
+        </div>
+      )}
+
+      <div className={viewMode === "grid" && showImages ? "grid gap-4 md:grid-cols-2 lg:grid-cols-3" : "grid gap-4 md:grid-cols-2"}>
         {filtered.length === 0 ? (
           <div className="col-span-full rounded-2xl border border-white/10 bg-slate-900/40 p-8 text-center text-slate-500">
             No menu items match your filters.
@@ -97,8 +124,16 @@ export const ProductBoard = ({ products }: Props) => {
               key={product.id}
               className="rounded-2xl border border-white/10 bg-slate-900/40 p-4 shadow-inner shadow-black/30"
             >
+              {showImages && product.image_url && (
+                <img
+                  src={product.image_url}
+                  alt={product.name}
+                  className="mb-4 h-48 w-full rounded-xl object-cover"
+                />
+              )}
+
               <div className="flex items-start justify-between gap-4">
-                <div>
+                <div className="flex-1">
                   <p className="text-xs uppercase tracking-[0.3em] text-slate-500">
                     {product.category_name ?? "Uncategorised"}
                   </p>
