@@ -1,13 +1,13 @@
 "use client";
 
 import { useState } from "react";
-import { HiOutlineX, HiOutlineShoppingBag, HiOutlineHeart } from "react-icons/hi2";
-import type { ProfileRecord, OrderRecord } from "@/lib/types";
+import { HiXMark, HiOutlineShoppingBag, HiOutlineHeart } from "react-icons/hi2";
+import type { ProfileRecord, SupabaseOrderRecord } from "@/lib/types";
 import { formatDistanceToNow } from "date-fns";
 
 type Props = {
     profile: ProfileRecord;
-    orders: OrderRecord[];
+    orders: SupabaseOrderRecord[];
     favorites: any[];
     onClose: () => void;
 };
@@ -39,7 +39,7 @@ export const ProfileDetailModal = ({ profile, orders, favorites, onClose }: Prop
                         onClick={onClose}
                         className="rounded-lg bg-slate-800 p-2 text-white hover:bg-slate-700"
                     >
-                        <HiOutlineX className="h-5 w-5" />
+                        <HiXMark className="h-5 w-5" />
                     </button>
                 </div>
 
@@ -49,8 +49,8 @@ export const ProfileDetailModal = ({ profile, orders, favorites, onClose }: Prop
                         type="button"
                         onClick={() => setActiveTab("info")}
                         className={`px-4 py-2 text-sm font-medium transition-colors ${activeTab === "info"
-                                ? "border-b-2 border-indigo-500 text-indigo-400"
-                                : "text-slate-400 hover:text-white"
+                            ? "border-b-2 border-indigo-500 text-indigo-400"
+                            : "text-slate-400 hover:text-white"
                             }`}
                     >
                         Profile Info
@@ -59,8 +59,8 @@ export const ProfileDetailModal = ({ profile, orders, favorites, onClose }: Prop
                         type="button"
                         onClick={() => setActiveTab("orders")}
                         className={`flex items-center gap-2 px-4 py-2 text-sm font-medium transition-colors ${activeTab === "orders"
-                                ? "border-b-2 border-indigo-500 text-indigo-400"
-                                : "text-slate-400 hover:text-white"
+                            ? "border-b-2 border-indigo-500 text-indigo-400"
+                            : "text-slate-400 hover:text-white"
                             }`}
                     >
                         <HiOutlineShoppingBag className="h-4 w-4" />
@@ -70,8 +70,8 @@ export const ProfileDetailModal = ({ profile, orders, favorites, onClose }: Prop
                         type="button"
                         onClick={() => setActiveTab("favorites")}
                         className={`flex items-center gap-2 px-4 py-2 text-sm font-medium transition-colors ${activeTab === "favorites"
-                                ? "border-b-2 border-indigo-500 text-indigo-400"
-                                : "text-slate-400 hover:text-white"
+                            ? "border-b-2 border-indigo-500 text-indigo-400"
+                            : "text-slate-400 hover:text-white"
                             }`}
                     >
                         <HiOutlineHeart className="h-4 w-4" />

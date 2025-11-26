@@ -1,7 +1,7 @@
 import { createSupabaseServerClient } from "@/lib/supabase/server";
-import type { OrderRecord } from "@/lib/types";
+import type { SupabaseOrderRecord } from "@/lib/types";
 
-export const fetchProfileOrders = async (profileId: string): Promise<OrderRecord[]> => {
+export const fetchProfileOrders = async (profileId: string): Promise<SupabaseOrderRecord[]> => {
     const supabase = await createSupabaseServerClient();
     const { data, error } = await supabase
         .from("orders")
@@ -14,7 +14,7 @@ export const fetchProfileOrders = async (profileId: string): Promise<OrderRecord
         return [];
     }
 
-    return (data ?? []) as OrderRecord[];
+    return (data ?? []) as SupabaseOrderRecord[];
 };
 
 export const fetchProfileFavorites = async (profileId: string) => {
