@@ -14,7 +14,7 @@ export const fetchProfileOrders = async (profileId: string): Promise<SupabaseOrd
         return [];
     }
 
-    return (data ?? []) as SupabaseOrderRecord[];
+    return (data ?? []) as unknown as SupabaseOrderRecord[];
 };
 
 export const fetchProfileFavorites = async (profileId: string) => {

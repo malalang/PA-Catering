@@ -57,7 +57,6 @@ export interface ProfileRecord {
     zip_code: string | null;
     country: string | null;
     theme: string;
-    theme: string;
     tier_status: string;
     referral_code: string | null;
     preferences: Record<string, unknown>;

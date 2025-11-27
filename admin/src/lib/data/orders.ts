@@ -22,7 +22,7 @@ export const fetchOrdersBoard = async (): Promise<OrdersBoardData> => {
   }
 
   return {
-    orders: (data ?? []) as SupabaseOrderRecord[],
+    orders: (data ?? []) as unknown as SupabaseOrderRecord[],
   };
 };
 
