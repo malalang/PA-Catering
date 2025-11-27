@@ -1,13 +1,18 @@
-const getEnv = (key: string) => {
-  const value = process.env[key];
-  if (!value) {
-    throw new Error(`Missing required environment variable: ${key}`);
+export const getSupabaseConfig = () => {
+  const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
+  const anonKey = process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY;
+
+  if (!url) {
+    throw new Error(
+      "Missing NEXT_PUBLIC_SUPABASE_URL environment variable. Please add it to your .env.local file."
+    );
   }
-  return value;
+
+  if (!anonKey) {
+    throw new Error(
+      "Missing NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY environment variable. Please add it to your .env.local file."
+    );
+  }
+
+  return { url, anonKey };
 };
-
-export const getSupabaseConfig = () => ({
-  url: getEnv("NEXT_PUBLIC_SUPABASE_URL"),
-  anonKey: getEnv("NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY"),
-});
-
