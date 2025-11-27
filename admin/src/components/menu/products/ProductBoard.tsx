@@ -47,9 +47,8 @@ export const ProductBoard = ({ products, comments, favorites, onAddProduct }: Pr
     return filtered.map((product) => ({
       ...product,
       comments: comments.filter((c) => c.product_id === product.id),
-      favoritesCount: favorites.filter((f) => f.product_id === product.id).length,
     }));
-  }, [filtered, comments, favorites]);
+  }, [filtered, comments]);
 
   const avgPrice =
     filtered.length > 0
@@ -209,8 +208,8 @@ export const ProductBoard = ({ products, comments, favorites, onAddProduct }: Pr
                 type="button"
                 onClick={() => setViewMode("list")}
                 className={`rounded-lg px-3 py-1.5 text-sm ${viewMode === "list"
-                    ? "bg-indigo-600 text-white"
-                    : "bg-slate-800 text-slate-400 hover:text-white"
+                  ? "bg-indigo-600 text-white"
+                  : "bg-slate-800 text-slate-400 hover:text-white"
                   }`}
               >
                 List
@@ -219,8 +218,8 @@ export const ProductBoard = ({ products, comments, favorites, onAddProduct }: Pr
                 type="button"
                 onClick={() => setViewMode("grid")}
                 className={`rounded-lg px-3 py-1.5 text-sm ${viewMode === "grid"
-                    ? "bg-indigo-600 text-white"
-                    : "bg-slate-800 text-slate-400 hover:text-white"
+                  ? "bg-indigo-600 text-white"
+                  : "bg-slate-800 text-slate-400 hover:text-white"
                   }`}
               >
                 Grid
@@ -298,7 +297,7 @@ export const ProductBoard = ({ products, comments, favorites, onAddProduct }: Pr
 
                   {/* Product Stats */}
                   <div className="mt-3 flex items-center gap-4 text-xs text-slate-500">
-                    <span>{product.favoritesCount} favorites</span>
+                    <span>{product.likes ?? 0} likes</span>
                     <button
                       type="button"
                       onClick={() => toggleComments(product.id)}

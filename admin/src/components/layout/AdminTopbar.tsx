@@ -20,17 +20,7 @@ export const AdminTopbar = ({ profile }: Props) => (
     </div>
 
     <div className="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
-      <div className="flex flex-wrap gap-2 lg:hidden">
-        {NAV_ITEMS.map((item) => (
-          <Link
-            key={item.href}
-            href={item.href}
-            className="rounded-full border border-white/10 px-3 py-1 text-xs uppercase tracking-[0.2em] text-slate-300 transition hover:border-indigo-400 hover:text-white"
-          >
-            {item.label}
-          </Link>
-        ))}
-      </div>
+
 
       <div className="flex items-center gap-3">
         <Link

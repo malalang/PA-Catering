@@ -40,4 +40,5 @@ export interface ProductRecord {
   badge?: string;
   created_at?: string;
   is_featured?: boolean;
+  likes?: number;
 }

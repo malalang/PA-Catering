@@ -11,19 +11,32 @@ export const AdminSidebar = () => {
 
   return (
     <>
-      {/* Mobile burger menu button */}
-      <button
-        type="button"
-        onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-        className="fixed left-4 top-4 z-50 rounded-lg bg-slate-900/90 p-2 text-white backdrop-blur-sm lg:hidden"
-        aria-label="Toggle menu"
-      >
-        {mobileMenuOpen ? (
-          <HiOutlineX className="h-6 w-6" />
-        ) : (
-          <HiOutlineMenu className="h-6 w-6" />
-        )}
-      </button>
+      {/* Mobile header with burger menu */}
+      <header className="fixed left-0 right-0 top-0 z-50 border-b border-white/10 bg-slate-950/95 backdrop-blur-sm lg:hidden">
+        <div className="flex items-center justify-between px-4 py-3">
+          <button
+            type="button"
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            className="rounded-lg bg-slate-900/90 p-2 text-white hover:bg-slate-800"
+            aria-label="Toggle menu"
+          >
+            {mobileMenuOpen ? (
+              <HiOutlineX className="h-6 w-6" />
+            ) : (
+              <HiOutlineMenu className="h-6 w-6" />
+            )}
+          </button>
+
+          <div className="text-center">
+            <div className="text-xs uppercase tracking-[0.3em] text-indigo-400">
+              PA Catering
+            </div>
+            <p className="text-sm font-semibold text-white">Admin</p>
+          </div>
+
+          <div className="w-10" /> {/* Spacer for centering */}
+        </div>
+      </header>
 
       {/* Mobile overlay */}
       {mobileMenuOpen && (
