@@ -4,7 +4,7 @@ import { useState } from "react";
 import { HiChevronDown, HiChevronUp } from "react-icons/hi2";
 import { AddProductPanel } from "@/components/menu/AddProductPanel";
 import { ProductBoard } from "@/components/menu/ProductBoard";
-import { CategoriesBoard } from "@/components/categories/CategoriesBoard";
+import { CategoriesBoard } from "@/components/menu/CategoriesBoard";
 import type { ProductRecord, CategoryRecord } from "@/lib/types";
 
 type Props = {

@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { useFormState } from "react-dom";
 import Image from "next/image";
-import { HiOutlinePlus } from "react-icons/hi2";
+import { HiOutlinePlus, HiChevronDown, HiChevronUp } from "react-icons/hi2";
 import { SubmitButton } from "@/components/forms/SubmitButton";
 import { DeleteConfirmDialog } from "@/components/shared/DeleteConfirmDialog";
 import {
@@ -25,6 +25,7 @@ export const CategoriesBoard = ({ categories }: Props) => {
     const [editingId, setEditingId] = useState<string | null>(null);
     const [deleteId, setDeleteId] = useState<string | null>(null);
     const [showCreateForm, setShowCreateForm] = useState(false);
+    const [isExpanded, setIsExpanded] = useState(false);
 
     const filtered = categories.filter(
         (cat) =>
@@ -41,49 +42,80 @@ export const CategoriesBoard = ({ categories }: Props) => {
     };
 
     return (
-        <div className="space-y-4">
-            <div className="flex items-center justify-between gap-3">
-                <input
-                    type="search"
-                    placeholder="Search categories..."
-                    value={search}
-                    onChange={(e) => setSearch(e.target.value)}
-                    className="w-full max-w-md rounded-full border border-white/10 bg-slate-900/60 px-4 py-3 text-white outline-none focus:border-indigo-400 focus:ring-2 focus:ring-indigo-400/40"
-                />
+        <div className="rounded-2xl border border-white/10 bg-slate-950/40 p-6">
+            <div className="mb-4 flex items-center justify-between">
+                <div className="flex-1">
+                    <h2 className="text-xl font-semibold text-white">Categories</h2>
+                    <p className="mt-1 text-sm text-slate-400">
+                        Manage menu categories and organize your products
+                        {!isExpanded && ` • ${categories.length} categories`}
+                    </p>
+                </div>
                 <button
                     type="button"
-                    onClick={() => setShowCreateForm(true)}
-                    className="flex items-center gap-2 rounded-full bg-indigo-600 px-4 py-3 text-sm font-medium text-white hover:bg-indigo-700"
+                    onClick={() => setIsExpanded(!isExpanded)}
+                    className="flex items-center gap-2 rounded-lg bg-slate-800 px-4 py-2 text-sm text-white hover:bg-slate-700"
                 >
-                    <HiOutlinePlus className="h-5 w-5" />
-                    <span className="whitespace-nowrap">Add Category</span>
+                    {isExpanded ? (
+                        <>
+                            <HiChevronUp className="h-4 w-4" />
+                            Hide
+                        </>
+                    ) : (
+                        <>
+                            <HiChevronDown className="h-4 w-4" />
+                            Show
+                        </>
+                    )}
                 </button>
             </div>
 
-            {showCreateForm && (
-                <CreateCategoryForm onCancel={() => setShowCreateForm(false)} />
-            )}
+            {isExpanded && (
+                <div className="space-y-4">
+                    <div className="flex items-center justify-between gap-3">
+                        <input
+                            type="search"
+                            placeholder="Search categories..."
+                            value={search}
+                            onChange={(e) => setSearch(e.target.value)}
+                            className="w-full max-w-md rounded-full border border-white/10 bg-slate-900/60 px-4 py-3 text-white outline-none focus:border-indigo-400 focus:ring-2 focus:ring-indigo-400/40"
+                        />
+                        <button
+                            type="button"
+                            onClick={() => setShowCreateForm(true)}
+                            className="flex items-center gap-2 rounded-full bg-indigo-600 px-4 py-3 text-sm font-medium text-white hover:bg-indigo-700"
+                        >
+                            <HiOutlinePlus className="h-5 w-5" />
+                            <span className="whitespace-nowrap">Add Category</span>
+                        </button>
+                    </div>
 
-            <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-                {filtered.map((category) => (
-                    <CategoryCard
-                        key={category.id}
-                        category={category}
-                        isEditing={editingId === category.id}
-                        onEdit={() => setEditingId(category.id)}
-                        onCancelEdit={() => setEditingId(null)}
-                        onDelete={() => setDeleteId(category.id)}
+                    {showCreateForm && (
+                        <CreateCategoryForm onCancel={() => setShowCreateForm(false)} />
+                    )}
+
+                    <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+                        {filtered.map((category) => (
+                            <CategoryCard
+                                key={category.id}
+                                category={category}
+                                isEditing={editingId === category.id}
+                                onEdit={() => setEditingId(category.id)}
+                                onCancelEdit={() => setEditingId(null)}
+                                onDelete={() => setDeleteId(category.id)}
+                            />
+                        ))}
+                    </div>
+
+                    <DeleteConfirmDialog
+                        isOpen={deleteId !== null}
+                        onClose={() => setDeleteId(null)}
+                        onConfirm={handleDelete}
+                        title="Delete Category"
+                        message="Are you sure you want to delete this category? This will fail if any products are using this category."
                     />
-                ))}
-            </div>
-
-            <DeleteConfirmDialog
-                isOpen={deleteId !== null}
-                onClose={() => setDeleteId(null)}
-                onConfirm={handleDelete}
-                title="Delete Category"
-                message="Are you sure you want to delete this category? This will fail if any products are using this category."
-            />
+                </div>
+            )}
         </div>
     );
 };
