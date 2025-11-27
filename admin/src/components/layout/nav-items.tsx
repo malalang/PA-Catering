@@ -25,11 +25,6 @@ export const NAV_ITEMS: NavItem[] = [
     badge: "Live",
   },
   {
-    label: "Products",
-    href: "/products",
-    icon: "HiOutlineSquares2X2",
-  },
-  {
     label: "Comments",
     href: "/comments",
     icon: "HiOutlineChatBubbleLeftRight",
