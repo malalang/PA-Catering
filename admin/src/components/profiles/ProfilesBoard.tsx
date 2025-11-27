@@ -196,22 +196,18 @@ const ProfileCard = ({
                             Additional Info
                         </p>
                         <div className="grid gap-2 text-sm">
-                            <div className="flex justify-between">
-                                <span className="text-slate-400">Loyalty Points:</span>
-                                <span className="font-semibold text-white">
-                                    {profile.loyalty_points_balance}
-                                </span>
-                            </div>
-                            <div className="flex justify-between">
-                                <span className="text-slate-400">Tier Status:</span>
-                                <span className="font-semibold text-white">{profile.tier_status}</span>
-                            </div>
+
                             <div className="flex justify-between">
                                 <span className="text-slate-400">User ID:</span>
                                 <span className="font-mono text-xs text-slate-300">
                                     {profile.uid?.slice(0, 12)}...
                                 </span>
                             </div>
+                            <div className="flex justify-between">
+                                <span className="text-slate-400">Tier Status:</span>
+                                <span className="font-semibold text-white">{profile.tier_status}</span>
+                            </div>
+
                         </div>
                     </div>
 
@@ -292,13 +288,8 @@ const ProfileCard = ({
                         </div>
                     )}
 
+
                     <div className="mt-3 grid grid-cols-2 gap-2 text-sm">
-                        <div>
-                            <p className="text-xs text-slate-500">Loyalty Points</p>
-                            <p className="font-semibold text-white">
-                                {profile.loyalty_points_balance}
-                            </p>
-                        </div>
                         <div>
                             <p className="text-xs text-slate-500">Tier Status</p>
                             <p className="font-semibold text-white">{profile.tier_status}</p>
@@ -306,6 +297,8 @@ const ProfileCard = ({
                     </div>
                 </>
             )}
+
+
         </div>
     );
 };

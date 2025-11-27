@@ -35,6 +35,7 @@ declare global {
     zipCode: string;
     country: string;
     theme: 'system' | 'light' | 'dark';
+    tierStatus: string;
     referralCode: string;
     preferences: UserPreferences;
     savedPaymentMethods?: PaymentMethod[];

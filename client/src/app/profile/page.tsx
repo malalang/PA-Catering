@@ -45,6 +45,7 @@ const CustomerProfilePage: React.FC = async () => {
 		zipCode: profile.zip_code || '',
 		country: profile.country || '',
 		theme: (profile.theme as 'system' | 'light' | 'dark') || 'system',
+		tierStatus: profile.tier_status || 'Bronze',
 		referralCode: profile.referral_code || '',
 		preferences: (profile.preferences as any) || {
 			dietaryRestrictions: [],

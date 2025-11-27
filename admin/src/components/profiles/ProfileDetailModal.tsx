@@ -32,6 +32,7 @@ export const ProfileDetailModal = ({ profile, orders, favorites, onClose }: Prop
                             <span className="rounded-full bg-purple-500/20 px-2 py-0.5 text-xs font-medium uppercase text-purple-300">
                                 {profile.tier_status}
                             </span>
+
                         </div>
                     </div>
                     <button
@@ -91,9 +92,10 @@ export const ProfileDetailModal = ({ profile, orders, favorites, onClose }: Prop
                             <InfoField label="Zip Code" value={profile.zip_code || "-"} />
                             <InfoField label="Country" value={profile.country || "-"} />
                             <InfoField
-                                label="Loyalty Points"
-                                value={profile.loyalty_points_balance?.toString() || "0"}
+                                label="Tier Status"
+                                value={profile.tier_status || "Bronze"}
                             />
+
                             <InfoField
                                 label="Last Login"
                                 value={profile.last_login

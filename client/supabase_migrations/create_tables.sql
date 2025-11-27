@@ -103,6 +103,7 @@ CREATE TABLE public.profiles (
   zip_code text,
   country text,
   theme text DEFAULT 'system'::text,
+  tier_status text DEFAULT 'Bronze'::text,
   referral_code text,
   preferences jsonb DEFAULT '{}'::jsonb,
   saved_payment_methods jsonb DEFAULT '[]'::jsonb,

@@ -273,7 +273,6 @@ export type Database = {
           zip_code?: string | null
           country?: string | null
           theme?: string | null
-          tier_status?: string | null
           referral_code?: string | null
           preferences?: Json | null
           saved_payment_methods?: Json | null
@@ -297,7 +296,6 @@ export type Database = {
           zip_code?: string | null
           country?: string | null
           theme?: string | null
-          tier_status?: string | null
           referral_code?: string | null
           preferences?: Json | null
           saved_payment_methods?: Json | null
