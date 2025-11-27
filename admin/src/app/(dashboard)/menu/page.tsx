@@ -13,10 +13,8 @@ export default async function MenuPage() {
     fetchComments(),
     fetchUserFavorites(),
   ]);
-  
-  const categoryNames = Array.from(
-    new Set(products.map((product) => product.category_name).filter(Boolean)),
-  ) as string[];
+
+  const categoryNames = categories.map((category) => category.category_name);
 
   return (
     <div className="space-y-8">
@@ -25,8 +23,8 @@ export default async function MenuPage() {
 
       {/* Products Section */}
       <div className="grid gap-6 lg:grid-cols-[2fr,1fr]">
-        <ProductBoard 
-          products={products} 
+        <ProductBoard
+          products={products}
           comments={comments}
           favorites={favorites}
         />
