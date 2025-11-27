@@ -8,6 +8,7 @@ import TextInput from '@/components/ui/TextInput';
 import Button from '@/components/ui/Button';
 import Avatar from '@/components/ui/Avatar';
 import Loading from '@/components/ui/Loading';
+import { ImageUpload } from '@/components/ui/ImageUpload';
 import { useAuth } from '@/lib/supabase/auth/useAuth';
 import { updateProfileAction } from '@/lib/actions/profile';
 
@@ -171,17 +172,16 @@ const EditProfileForm: React.FC = () => {
                     )}
                 </div>
 
-                {/* Photo URL */}
+                {/* Profile Photo */}
                 <div>
-                    <TextInput
-                        type='url'
-                        label='Profile Photo URL'
-                        name='photoURL'
-                        placeholder='https://example.com/your-photo.jpg'
-                        value={photoURL}
-                        onChange={(e) => setPhotoURL(e.target.value)}
+                    <label className='block text-sm font-medium mb-2 text-yellow-500'>Profile Photo</label>
+                    <ImageUpload
+                        defaultValue={photoURL}
+                        onChange={(url) => setPhotoURL(url)}
+                        folder='profiles'
+                        label='Upload Profile Photo'
                     />
-                    <p className='text-sm mt-1'>Enter a direct link to your profile picture.</p>
+                    <p className='text-sm mt-2 text-white/70'>Upload a new profile picture</p>
                 </div>
 
                 {/* Action Buttons */}

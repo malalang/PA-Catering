@@ -6,6 +6,7 @@ import {
   createProductAction,
   type ProductActionState,
 } from "@/lib/data/products-actions";
+import { ImageUpload } from "@/components/forms/ImageUpload";
 
 type Props = {
   categories: string[];
@@ -84,14 +85,8 @@ export const AddProductForm = ({ categories }: Props) => {
       </div>
 
       <div className="space-y-2">
-        <label htmlFor="image_url">Image URL</label>
-        <input
-          id="image_url"
-          name="image_url"
-          type="url"
-          placeholder="https://cdn.pacatering.co.za/menu/mogodu.jpg"
-          className="w-full rounded-lg border border-white/10 bg-slate-900/60 px-3 py-2 text-white outline-none focus:border-indigo-400 focus:ring-2 focus:ring-indigo-400/40"
-        />
+        <label htmlFor="image_url">Product Image</label>
+        <ImageUpload onChange={() => { }} folder="products" />
       </div>
 
       <div className="space-y-2">

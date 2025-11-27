@@ -11,6 +11,7 @@ import {
 import type { ProductRecord } from "@/lib/types";
 import { useState } from "react";
 import { DeleteConfirmDialog } from "@/components/shared/DeleteConfirmDialog";
+import { ImageUpload } from "@/components/forms/ImageUpload";
 
 type Props = {
     product: ProductRecord;
@@ -91,13 +92,11 @@ export const ProductEditForm = ({ product, categories }: Props) => {
                 </div>
 
                 <label className="block space-y-2 text-sm">
-                    <span className="text-slate-300">Image URL</span>
-                    <input
-                        name="image_url"
-                        type="url"
-                        defaultValue={product.image_url ?? ""}
-                        placeholder="https://example.com/image.jpg"
-                        className="w-full rounded-lg border border-white/10 bg-slate-900/60 px-3 py-2 text-white outline-none focus:border-indigo-400 focus:ring-2 focus:ring-indigo-400/40"
+                    <span className="text-slate-300">Product Image</span>
+                    <ImageUpload
+                        defaultValue={product.image_url}
+                        onChange={() => { }}
+                        folder="products"
                     />
                 </label>
 

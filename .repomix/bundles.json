@@ -1,0 +1,14 @@
+{
+  "bundles": {
+    "context-532": {
+      "name": "context",
+      "created": "2025-11-27T16:24:56.957Z",
+      "lastUsed": "2025-11-27T16:38:43.872Z",
+      "tags": [],
+      "files": [
+        "admin",
+        "client"
+      ]
+    }
+  }
+}

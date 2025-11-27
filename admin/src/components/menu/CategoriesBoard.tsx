@@ -6,6 +6,7 @@ import Image from "next/image";
 import { HiOutlinePlus, HiChevronDown, HiChevronUp } from "react-icons/hi2";
 import { SubmitButton } from "@/components/forms/SubmitButton";
 import { DeleteConfirmDialog } from "@/components/shared/DeleteConfirmDialog";
+import { ImageUpload } from "@/components/forms/ImageUpload";
 import {
     type CategoryActionState,
     createCategoryAction,
@@ -141,13 +142,8 @@ const CreateCategoryForm = ({ onCancel }: CreateCategoryFormProps) => {
                 </label>
 
                 <label className="block space-y-2 text-sm">
-                    <span className="text-slate-300">Image URL</span>
-                    <input
-                        name="image"
-                        type="url"
-                        placeholder="https://example.com/image.jpg"
-                        className="w-full rounded-lg border border-white/10 bg-slate-900/60 px-3 py-2 text-white outline-none focus:border-indigo-400 focus:ring-2 focus:ring-indigo-400/40"
-                    />
+                    <span className="text-slate-300">Category Image</span>
+                    <ImageUpload onChange={() => { }} folder="categories" />
                 </label>
 
                 <label className="block space-y-2 text-sm">
@@ -226,13 +222,11 @@ const CategoryCard = ({
                     </label>
 
                     <label className="block space-y-2 text-sm">
-                        <span className="text-slate-300">Image URL</span>
-                        <input
-                            name="image"
-                            type="url"
-                            defaultValue={category.image || ""}
-                            placeholder="https://example.com/image.jpg"
-                            className="w-full rounded-lg border border-white/10 bg-slate-900/60 px-3 py-2 text-white outline-none focus:border-indigo-400 focus:ring-2 focus:ring-indigo-400/40"
+                        <span className="text-slate-300">Category Image</span>
+                        <ImageUpload
+                            defaultValue={category.image}
+                            onChange={() => { }}
+                            folder="categories"
                         />
                     </label>
 
