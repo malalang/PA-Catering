@@ -72,7 +72,7 @@ export const fetchDashboardData = async (): Promise<DashboardData> => {
     console.error("Failed to fetch products for dashboard", productsError);
   }
 
-  const orders = (ordersRaw ?? []) as SupabaseOrderRecord[];
+  const orders = (ordersRaw ?? []) as unknown as SupabaseOrderRecord[];
   const products = (productsRaw ?? []) as ProductRecord[];
 
   const totalOrders = orders.length;
