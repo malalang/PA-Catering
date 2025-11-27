@@ -18,6 +18,7 @@ export const createCategoryAction = async (
     const categoryName = sanitize(formData.get("category_name"));
     const image = sanitize(formData.get("image")) || null;
     const description = sanitize(formData.get("description")) || null;
+    const isHidden = formData.get("is_hidden") === "on";
 
     if (!categoryName) {
         return { error: "Category name is required." };
@@ -28,6 +29,7 @@ export const createCategoryAction = async (
         category_name: categoryName,
         image,
         description,
+        is_hidden: isHidden,
     };
 
     const { error } = await supabase
@@ -52,6 +54,7 @@ export const updateCategoryAction = async (
     const categoryName = sanitize(formData.get("category_name"));
     const image = sanitize(formData.get("image")) || null;
     const description = sanitize(formData.get("description")) || null;
+    const isHidden = formData.get("is_hidden") === "on";
 
     if (!id || !categoryName) {
         return { error: "Category ID and name are required." };
@@ -62,6 +65,7 @@ export const updateCategoryAction = async (
         category_name: categoryName,
         image,
         description,
+        is_hidden: isHidden,
     };
 
     const { error } = await supabase

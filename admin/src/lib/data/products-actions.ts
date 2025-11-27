@@ -35,7 +35,7 @@ export const createProductAction = async (
   const supabase = await createSupabaseServerClient();
   const productData: Database["public"]["Tables"]["products"]["Insert"] = {
     name,
-    category: category,
+    category_name: category,
     description: description || null,
     badge,
     image_url: imageUrl,
@@ -66,6 +66,7 @@ export const updateProductAction = async (
   const badge = sanitize(formData.get("badge")) || null;
   const description = sanitize(formData.get("description")) || null;
   const imageUrl = sanitize(formData.get("image_url")) || null;
+  const isHidden = formData.get("is_hidden") === "on";
 
   if (!id) {
     return { error: "Missing product identifier." };
@@ -78,6 +79,7 @@ export const updateProductAction = async (
     badge,
     description,
     image_url: imageUrl,
+    is_hidden: isHidden,
   };
 
   if (name) {
@@ -85,7 +87,7 @@ export const updateProductAction = async (
   }
 
   if (category) {
-    payload.category = category;
+    payload.category_name = category;
   }
 
   if (price !== undefined && !Number.isNaN(price)) {
@@ -134,4 +136,3 @@ export const deleteProductAction = async (
   revalidatePath("/products");
   return { success: "Product deleted successfully." };
 };
-

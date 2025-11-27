@@ -121,6 +121,16 @@ export const ProductEditForm = ({ product, categories }: Props) => {
                     />
                 </label>
 
+                <label className="flex items-center gap-2 text-sm">
+                    <input
+                        name="is_hidden"
+                        type="checkbox"
+                        defaultChecked={product.is_hidden ?? false}
+                        className="h-4 w-4 rounded border-white/10 bg-slate-900/60 text-indigo-600 focus:ring-2 focus:ring-indigo-400/40"
+                    />
+                    <span className="text-slate-300">Hide this product from public view</span>
+                </label>
+
                 {state.error && <p className="text-sm text-rose-400">{state.error}</p>}
                 {state.success && (
                     <p className="text-sm text-emerald-400">{state.success}</p>

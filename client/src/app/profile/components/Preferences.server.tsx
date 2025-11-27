@@ -7,7 +7,6 @@ import Section from '@/components/ui/layout/Section';
 interface UserPreferences {
 	dietaryRestrictions?: string[];
 	favoriteItems?: string[];
-	preferyellowCarWashServices?: string[];
 }
 
 interface PreferencesServerProps {
@@ -74,15 +73,6 @@ const PreferencesServer: React.FC<PreferencesServerProps> = ({ preferences }) =>
 					<ListRenderer
 						items={preferences?.favoriteItems}
 						emptyText='No favorite items added yet.'
-					/>
-				</PreferenceItem>
-
-				<PreferenceItem
-					icon={FaCar}
-					title='Preferyellow Photo boot'>
-					<ListRenderer
-						items={preferences?.preferyellowCarWashServices}
-						emptyText='No preferyellow services selected.'
 					/>
 				</PreferenceItem>
 

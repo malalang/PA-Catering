@@ -297,7 +297,7 @@ export const ProductBoard = ({ products, comments, favorites, onAddProduct }: Pr
 
                   {/* Product Stats */}
                   <div className="mt-3 flex items-center gap-4 text-xs text-slate-500">
-                    <span>{product.likes ?? 0} likes</span>
+                    <span>{product.likes?.length ?? 0} likes</span>
                     <button
                       type="button"
                       onClick={() => toggleComments(product.id)}

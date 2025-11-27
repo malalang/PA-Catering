@@ -3,7 +3,7 @@
 import { createClient } from "@/lib/supabase/server";
 import { redirect } from "next/navigation";
 import type { User, SupabaseClient } from "@supabase/supabase-js";
-import { Database } from "@/lib/database.types";
+import { Database } from "@/lib/types/database.types";
 
 export type AuthActionState = {
   success: boolean;

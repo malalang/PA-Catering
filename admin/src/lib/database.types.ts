@@ -1,148 +1,8 @@
-export type Json = any
+export type Json = string | number | boolean | null | { [key: string]: Json | undefined } | Json[]
 
 export type Database = {
   public: {
     Tables: {
-      profiles: {
-        Row: {
-          id: string
-          email: string | null
-          display_name: string | null
-          full_name: string | null
-          phone: string | null
-          role: string | null
-          metadata: Json | null
-          created_at: string
-          uid: string | null
-          email_verified: boolean | null
-          photo_url: string | null
-          address: string | null
-          city: string | null
-          state: string | null
-          zip_code: string | null
-          country: string | null
-          theme: string | null
-          order_history: Json | null
-          loyalty_points_balance: number | null
-          tier_status: string | null
-          rewards_available: Json | null
-          yellowemption_history: Json | null
-          personalized_promotions: Json | null
-          referral_code: string | null
-          car_wash_count: number | null
-          preferences: Json | null
-          saved_payment_methods: Json | null
-          updated_at: string | null
-          last_login: string | null
-        }
-        Insert: {
-          id?: string
-          email?: string | null
-          display_name?: string | null
-          full_name?: string | null
-          phone?: string | null
-          role?: string | null
-          metadata?: Json | null
-          created_at?: string
-          uid?: string | null
-          email_verified?: boolean | null
-          photo_url?: string | null
-          address?: string | null
-          city?: string | null
-          state?: string | null
-          zip_code?: string | null
-          country?: string | null
-          theme?: string | null
-          order_history?: Json | null
-          loyalty_points_balance?: number | null
-          tier_status?: string | null
-          rewards_available?: Json | null
-          yellowemption_history?: Json | null
-          personalized_promotions?: Json | null
-          referral_code?: string | null
-          car_wash_count?: number | null
-          preferences?: Json | null
-          saved_payment_methods?: Json | null
-          updated_at?: string | null
-          last_login?: string | null
-        }
-        Update: {
-          id?: string
-          email?: string | null
-          display_name?: string | null
-          full_name?: string | null
-          phone?: string | null
-          role?: string | null
-          metadata?: Json | null
-          created_at?: string
-          uid?: string | null
-          email_verified?: boolean | null
-          photo_url?: string | null
-          address?: string | null
-          city?: string | null
-          state?: string | null
-          zip_code?: string | null
-          country?: string | null
-          theme?: string | null
-          order_history?: Json | null
-          loyalty_points_balance?: number | null
-          tier_status?: string | null
-          rewards_available?: Json | null
-          yellowemption_history?: Json | null
-          personalized_promotions?: Json | null
-          referral_code?: string | null
-          car_wash_count?: number | null
-          preferences?: Json | null
-          saved_payment_methods?: Json | null
-          updated_at?: string | null
-          last_login?: string | null
-        }
-        Relationships: []
-      }
-      products: {
-        Row: {
-          id: string
-          name: string
-          slug: string | null
-          description: string | null
-          price: number | null
-          category: string | null
-          image_url: string | null
-          stock: number | null
-          likes: number | null
-          liked_by: Json | null
-          badge: string | null
-          created_at: string
-        }
-        Insert: {
-          id?: string
-          name: string
-          slug?: string | null
-          description?: string | null
-          price?: number | null
-          category?: string | null
-          image_url?: string | null
-          stock?: number | null
-          likes?: number | null
-          liked_by?: Json | null
-          badge?: string | null
-          created_at?: string
-        }
-        Update: {
-          id?: string
-          name?: string
-          slug?: string | null
-          description?: string | null
-          price?: number | null
-          category?: string | null
-          image_url?: string | null
-          stock?: number | null
-          likes?: number | null
-          liked_by?: Json | null
-          badge?: string | null
-          created_at?: string
-        }
-      }
       comments: {
         Row: {
           id: string
@@ -168,6 +28,64 @@ export type Database = {
           body?: string
           created_at?: string
         }
+        Relationships: []
+      }
+      contact: {
+        Row: {
+          id: string
+          name: string
+          email: string
+          phone: string | null
+          message: string
+          created_at: string
+        }
+        Insert: {
+          id?: string
+          name: string
+          email: string
+          phone?: string | null
+          message: string
+          created_at?: string
+        }
+        Update: {
+          id?: string
+          name?: string
+          email?: string
+          phone?: string | null
+          message?: string
+          created_at?: string
+        }
+        Relationships: []
+      }
+      featured_items: {
+        Row: {
+          id: string
+          name: string
+          description: string
+          image_url: string | null
+          likes: string[] | null
+          comments: Json | null
+          created_at: string
+        }
+        Insert: {
+          id?: string
+          name: string
+          description: string
+          image_url?: string | null
+          likes?: string[] | null
+          comments?: Json | null
+          created_at?: string
+        }
+        Update: {
+          id?: string
+          name?: string
+          description?: string
+          image_url?: string | null
+          likes?: string[] | null
+          comments?: Json | null
+          created_at?: string
+        }
+        Relationships: []
       }
       orders: {
         Row: {
@@ -200,6 +118,223 @@ export type Database = {
           created_at?: string
           updated_at?: string | null
         }
+        Relationships: []
+      }
+      photo_boot_bookings: {
+        Row: {
+          id: string
+          name: string
+          email: string
+          phone: string | null
+          date: string
+          time: string
+          package: string
+          people: number
+          message: string | null
+          created_at: string
+        }
+        Insert: {
+          id?: string
+          name: string
+          email: string
+          phone?: string | null
+          date: string
+          time: string
+          package: string
+          people: number
+          message?: string | null
+          created_at?: string
+        }
+        Update: {
+          id?: string
+          name?: string
+          email?: string
+          phone?: string | null
+          date?: string
+          time?: string
+          package?: string
+          people?: number
+          message?: string | null
+          created_at?: string
+        }
+        Relationships: []
+      }
+      products: {
+        Row: {
+          id: string
+          name: string
+          slug: string | null
+          description: string | null
+          price: number | null
+          category_name: string | null
+          image_url: string | null
+          stock: number | null
+          likes: string[] | null
+          badge: string | null
+          created_at: string
+          is_hidden: boolean | null
+        }
+        Insert: {
+          id?: string
+          name: string
+          slug?: string | null
+          description?: string | null
+          price?: number | null
+          category_name?: string | null
+          image_url?: string | null
+          stock?: number | null
+          likes?: string[] | null
+          badge?: string | null
+          created_at?: string
+          is_hidden?: boolean | null
+        }
+        Update: {
+          id?: string
+          name?: string
+          slug?: string | null
+          description?: string | null
+          price?: number | null
+          category_name?: string | null
+          image_url?: string | null
+          stock?: number | null
+          likes?: string[] | null
+          badge?: string | null
+          created_at?: string
+          is_hidden?: boolean | null
+        }
+        Relationships: []
+      }
+      products_category: {
+        Row: {
+          id: string
+          category_name: string
+          image: string | null
+          description: string | null
+          created_at: string
+          is_hidden: boolean | null
+        }
+        Insert: {
+          id?: string
+          category_name: string
+          image?: string | null
+          description?: string | null
+          created_at?: string
+          is_hidden?: boolean | null
+        }
+        Update: {
+          id?: string
+          category_name?: string
+          image?: string | null
+          description?: string | null
+          created_at?: string
+          is_hidden?: boolean | null
+        }
+        Relationships: []
+      }
+      profiles: {
+        Row: {
+          id: string
+          email: string | null
+          display_name: string | null
+          phone: string | null
+          metadata: Json | null
+          created_at: string
+          role: string | null
+          uid: string | null
+          email_verified: boolean | null
+          photo_url: string | null
+          address: string | null
+          city: string | null
+          state: string | null
+          zip_code: string | null
+          country: string | null
+          theme: string | null
+          tier_status: string | null
+          referral_code: string | null
+          preferences: Json | null
+          saved_payment_methods: Json | null
+          updated_at: string | null
+          last_login: string | null
+        }
+        Insert: {
+          id?: string
+          email?: string | null
+          display_name?: string | null
+          phone?: string | null
+          metadata?: Json | null
+          created_at?: string
+          role?: string | null
+          uid?: string | null
+          email_verified?: boolean | null
+          photo_url?: string | null
+          address?: string | null
+          city?: string | null
+          state?: string | null
+          zip_code?: string | null
+          country?: string | null
+          theme?: string | null
+          tier_status?: string | null
+          referral_code?: string | null
+          preferences?: Json | null
+          saved_payment_methods?: Json | null
+          updated_at?: string | null
+          last_login?: string | null
+        }
+        Update: {
+          id?: string
+          email?: string | null
+          display_name?: string | null
+          phone?: string | null
+          metadata?: Json | null
+          created_at?: string
+          role?: string | null
+          uid?: string | null
+          email_verified?: boolean | null
+          photo_url?: string | null
+          address?: string | null
+          city?: string | null
+          state?: string | null
+          zip_code?: string | null
+          country?: string | null
+          theme?: string | null
+          tier_status?: string | null
+          referral_code?: string | null
+          preferences?: Json | null
+          saved_payment_methods?: Json | null
+          updated_at?: string | null
+          last_login?: string | null
+        }
+        Relationships: []
+      }
+      testimonials: {
+        Row: {
+          id: string
+          text: string
+          author: string
+          rating: number | null
+          likes: string[] | null
+          comments: Json | null
+          created_at: string
+        }
+        Insert: {
+          id?: string
+          text: string
+          author: string
+          rating?: number | null
+          likes?: string[] | null
+          comments?: Json | null
+          created_at?: string
+        }
+        Update: {
+          id?: string
+          text?: string
+          author?: string
+          rating?: number | null
+          likes?: string[] | null
+          comments?: Json | null
+          created_at?: string
+        }
+        Relationships: []
       }
       user_favorites: {
         Row: {
@@ -217,6 +352,7 @@ export type Database = {
           product_id?: string
           created_at?: string | null
         }
+        Relationships: []
       }
     }
     Views: {

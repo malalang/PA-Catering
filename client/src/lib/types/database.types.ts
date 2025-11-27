@@ -1,4 +1,4 @@
-export type Json = any
+export type Json = string | number | boolean | null | { [key: string]: Json | undefined } | Json[]
 
 export type Database = {
   public: {
@@ -8,11 +8,10 @@ export type Database = {
           id: string
           email: string | null
           display_name: string | null
-          full_name: string | null
           phone: string | null
-          role: string | null
           metadata: Json | null
           created_at: string
+          role: string | null
           uid: string | null
           email_verified: boolean | null
           photo_url: string | null
@@ -22,14 +21,8 @@ export type Database = {
           zip_code: string | null
           country: string | null
           theme: string | null
-          order_history: Json | null
-          loyalty_points_balance: number | null
           tier_status: string | null
-          rewards_available: Json | null
-          yellowemption_history: Json | null
-          personalized_promotions: Json | null
           referral_code: string | null
-          car_wash_count: number | null
           preferences: Json | null
           saved_payment_methods: Json | null
           updated_at: string | null
@@ -39,11 +32,10 @@ export type Database = {
           id?: string
           email?: string | null
           display_name?: string | null
-          full_name?: string | null
           phone?: string | null
-          role?: string | null
           metadata?: Json | null
           created_at?: string
+          role?: string | null
           uid?: string | null
           email_verified?: boolean | null
           photo_url?: string | null
@@ -53,14 +45,8 @@ export type Database = {
           zip_code?: string | null
           country?: string | null
           theme?: string | null
-          order_history?: Json | null
-          loyalty_points_balance?: number | null
           tier_status?: string | null
-          rewards_available?: Json | null
-          yellowemption_history?: Json | null
-          personalized_promotions?: Json | null
           referral_code?: string | null
-          car_wash_count?: number | null
           preferences?: Json | null
           saved_payment_methods?: Json | null
           updated_at?: string | null
@@ -70,11 +56,10 @@ export type Database = {
           id?: string
           email?: string | null
           display_name?: string | null
-          full_name?: string | null
           phone?: string | null
-          role?: string | null
           metadata?: Json | null
           created_at?: string
+          role?: string | null
           uid?: string | null
           email_verified?: boolean | null
           photo_url?: string | null
@@ -84,14 +69,8 @@ export type Database = {
           zip_code?: string | null
           country?: string | null
           theme?: string | null
-          order_history?: Json | null
-          loyalty_points_balance?: number | null
           tier_status?: string | null
-          rewards_available?: Json | null
-          yellowemption_history?: Json | null
-          personalized_promotions?: Json | null
           referral_code?: string | null
-          car_wash_count?: number | null
           preferences?: Json | null
           saved_payment_methods?: Json | null
           updated_at?: string | null
@@ -112,6 +91,7 @@ export type Database = {
           likes: string[] | null
           badge: string | null
           created_at: string
+          is_hidden: boolean | null
         }
         Insert: {
           id?: string
@@ -125,6 +105,7 @@ export type Database = {
           likes?: string[] | null
           badge?: string | null
           created_at?: string
+          is_hidden?: boolean | null
         }
         Update: {
           id?: string
@@ -138,6 +119,7 @@ export type Database = {
           likes?: string[] | null
           badge?: string | null
           created_at?: string
+          is_hidden?: boolean | null
         }
       }
       products_category: {
@@ -147,6 +129,7 @@ export type Database = {
           image: string | null
           description: string | null
           created_at: string
+          is_hidden: boolean | null
         }
         Insert: {
           id?: string
@@ -154,6 +137,7 @@ export type Database = {
           image?: string | null
           description?: string | null
           created_at?: string
+          is_hidden?: boolean | null
         }
         Update: {
           id?: string
@@ -161,6 +145,7 @@ export type Database = {
           image?: string | null
           description?: string | null
           created_at?: string
+          is_hidden?: boolean | null
         }
       }
       comments: {

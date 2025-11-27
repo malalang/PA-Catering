@@ -45,18 +45,10 @@ const CustomerProfilePage: React.FC = async () => {
 		zipCode: profile.zip_code || '',
 		country: profile.country || '',
 		theme: (profile.theme as 'system' | 'light' | 'dark') || 'system',
-		orderHistory: (profile.order_history as any) || [],
-		loyaltyPointsBalance: profile.loyalty_points_balance || 0,
-		tierStatus: profile.tier_status || 'Bronze',
-		rewardsAvailable: (profile.rewards_available as any) || [],
-		yellowemptionHistory: (profile.redemption_history as any) || [],
-		personalizedPromotions: (profile.personalized_promotions as any) || [],
 		referralCode: profile.referral_code || '',
-		carWashCount: profile.car_wash_count || 0,
 		preferences: (profile.preferences as any) || {
 			dietaryRestrictions: [],
 			favoriteItems: [],
-			preferyellowCarWashServices: [],
 			preferyellowPaymentMethod: 'credit_card',
 			communicationPreferences: { email: true, sms: false, promotions: true }
 		},

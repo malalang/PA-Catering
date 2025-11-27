@@ -4,7 +4,7 @@ import { useForm } from 'react-hook-form';
 import { useState } from 'react';
 import { FaWhatsapp, FaEnvelope, FaPhone } from 'react-icons/fa';
 import { createClient } from '@/lib/supabase/client';
-import { Database } from '@/lib/database.types';
+import { Database } from '@/lib/types/database.types';
 
 type FormData = {
   name: string;

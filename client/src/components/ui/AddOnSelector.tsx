@@ -1,10 +1,10 @@
 import React from 'react';
 
-const carWashAddOns = [
-	{ id: 'interior-detailing', label: 'Interior Detailing', price: '150' },
-	{ id: 'wax-polish', label: 'Wax and Polish', price: '100' },
-	{ id: 'engine-wash', label: 'Engine Wash', price: '80' },
-	{ id: 'tire-shine', label: 'Tire Shine', price: '50' },
+const photoBoothAddOns = [
+	{ id: 'premium-backdrop', label: 'Premium Backdrop', price: '150' },
+	{ id: 'extra-prints', label: 'Extra Prints Package', price: '100' },
+	{ id: 'props-upgrade', label: 'Props Upgrade', price: '80' },
+	{ id: 'digital-album', label: 'Digital Album', price: '50' },
 ];
 
 interface AddOnSelectorProps {
@@ -24,7 +24,7 @@ const AddOnSelector: React.FC<AddOnSelectorProps> = ({ selectedAddOns, onChange 
 		<div className='space-y-4'>
 			<h3 className='text-lg font-semibold text-white'>Additional Services</h3>
 			<div className='grid grid-cols-1 md:grid-cols-2 gap-4'>
-				{carWashAddOns.map(({ id, label, price }) => (
+				{photoBoothAddOns.map(({ id, label, price }) => (
 					<div
 						key={id}
 						className='flex items-center space-x-3 p-3 rounded-md bg-black/30 border border-white/20'>

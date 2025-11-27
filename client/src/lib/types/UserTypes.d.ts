@@ -6,7 +6,6 @@ declare global {
     | 'Ceo'
     | 'Manager'
     | 'kitchenStaff'
-    | 'carWashStaff'
     | 'Cashier'
     | 'Customer'
     | 'admin';
@@ -14,7 +13,6 @@ declare global {
   interface UserPreferences {
     dietaryRestrictions: string[];
     favoriteItems: string[];
-    preferyellowCarWashServices: string[];
     preferyellowPaymentMethod: paymentMethod
     communicationPreferences: {
       email: boolean;
@@ -37,14 +35,7 @@ declare global {
     zipCode: string;
     country: string;
     theme: 'system' | 'light' | 'dark';
-    orderHistory: Order[];
-    loyaltyPointsBalance?: number;
-    tierStatus: string;
-    rewardsAvailable: Reward[];
-    yellowemptionHistory: yellowemption[];
-    personalizedPromotions: string[];
     referralCode: string;
-    carWashCount?: number;
     preferences: UserPreferences;
     savedPaymentMethods?: PaymentMethod[];
     createdAt: Date;

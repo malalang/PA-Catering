@@ -7,7 +7,7 @@ import Main from '@/components/ui/layout/Main';
 import { CgMenuCheese } from 'react-icons/cg';
 import SearchBar from './components/SearchBar';
 import { createClient } from '@/lib/supabase/server';
-import { Database } from '@/lib/database.types';
+import { Database } from '@/lib/types/database.types';
 
 // Category metadata mapping to preserve UI richness
 const CATEGORY_METADATA: Record<string, { Image: string; Description: string; id: number }> = {

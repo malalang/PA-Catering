@@ -37,6 +37,7 @@ export interface CategoryRecord {
     image: string | null;
     description: string | null;
     created_at: string;
+    is_hidden?: boolean;
 }
 
 export interface ProfileRecord {
@@ -56,14 +57,8 @@ export interface ProfileRecord {
     zip_code: string | null;
     country: string | null;
     theme: string;
-    order_history: unknown[];
-    loyalty_points_balance: number;
     tier_status: string;
-    rewards_available: unknown[];
-    redemption_history: unknown[];
-    personalized_promotions: unknown[];
     referral_code: string | null;
-    car_wash_count: number;
     preferences: Record<string, unknown>;
     saved_payment_methods: unknown[];
     updated_at: string;

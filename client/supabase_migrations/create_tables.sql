@@ -1,6 +1,11 @@
 -- WARNING: This schema is for context only and is not meant to be run.
 -- Table order and constraints may not be valid for execution.
 
+CREATE TABLE public.admins (
+  user_id uuid NOT NULL,
+  created_at timestamp with time zone DEFAULT now(),
+  CONSTRAINT admins_pkey PRIMARY KEY (user_id)
+);
 CREATE TABLE public.comments (
   id uuid NOT NULL DEFAULT gen_random_uuid(),
   product_id uuid,
@@ -68,6 +73,7 @@ CREATE TABLE public.products (
   badge text,
   likes ARRAY DEFAULT '{}'::uuid[],
   category_name text,
+  is_hidden boolean NOT NULL DEFAULT false,
   CONSTRAINT products_pkey PRIMARY KEY (id),
   CONSTRAINT products_category_name_fkey FOREIGN KEY (category_name) REFERENCES public.products_category(category_name)
 );
@@ -77,6 +83,7 @@ CREATE TABLE public.products_category (
   image text,
   description text,
   created_at timestamp with time zone DEFAULT now(),
+  is_hidden boolean NOT NULL DEFAULT false,
   CONSTRAINT products_category_pkey PRIMARY KEY (id)
 );
 CREATE TABLE public.profiles (
@@ -96,14 +103,7 @@ CREATE TABLE public.profiles (
   zip_code text,
   country text,
   theme text DEFAULT 'system'::text,
-  order_history jsonb DEFAULT '[]'::jsonb,
-  loyalty_points_balance integer DEFAULT 0,
-  tier_status text DEFAULT 'Bronze'::text,
-  rewards_available jsonb DEFAULT '[]'::jsonb,
-  redemption_history jsonb DEFAULT '[]'::jsonb,
-  personalized_promotions jsonb DEFAULT '[]'::jsonb,
   referral_code text,
-  car_wash_count integer DEFAULT 0,
   preferences jsonb DEFAULT '{}'::jsonb,
   saved_payment_methods jsonb DEFAULT '[]'::jsonb,
   updated_at timestamp with time zone DEFAULT now(),

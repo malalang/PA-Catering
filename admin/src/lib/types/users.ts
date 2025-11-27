@@ -6,7 +6,6 @@ export type UserRole =
   | "Ceo"
   | "Manager"
   | "kitchenStaff"
-  | "carWashStaff"
   | "Cashier"
   | "Customer"
   | "admin";
@@ -14,7 +13,6 @@ export type UserRole =
 export interface UserPreferences {
   dietaryRestrictions: string[];
   favoriteItems: string[];
-  preferyellowCarWashServices: string[];
   preferyellowPaymentMethod: PaymentMethod;
   communicationPreferences: {
     email: boolean;
@@ -37,14 +35,7 @@ export interface UserProfile {
   zipCode: string;
   country: string;
   theme: "system" | "light" | "dark";
-  orderHistory: Order[];
-  loyaltyPointsBalance?: number;
-  tierStatus: string;
-  rewardsAvailable: Reward[];
-  yellowemptionHistory: Yellowemption[];
-  personalizedPromotions: string[];
   referralCode: string;
-  carWashCount?: number;
   preferences: UserPreferences;
   savedPaymentMethods?: PaymentMethod[];
   createdAt: Date;

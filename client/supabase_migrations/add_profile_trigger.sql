@@ -1,4 +1,4 @@
--- Create or replace the function with existence check (using redemption_history)
+-- Create or replace the function with existence check
 CREATE OR REPLACE FUNCTION public.handle_new_user()
 RETURNS trigger
 LANGUAGE plpgsql
@@ -23,14 +23,7 @@ BEGIN
       zip_code,
       country,
       theme,
-      order_history,
-      loyalty_points_balance,
-      tier_status,
-      rewards_available,
-      redemption_history,
-      personalized_promotions,
       referral_code,
-      car_wash_count,
       preferences,
       saved_payment_methods,
       metadata,
@@ -53,18 +46,10 @@ BEGIN
       NULL,
       NULL,
       'system',
-      '[]'::jsonb,
-      0,
-      'Bronze',
-      '[]'::jsonb,
-      '[]'::jsonb,
-      '[]'::jsonb,
       NULL,
-      0,
       jsonb_build_object(
         'dietaryRestrictions', '[]'::jsonb,
         'favoriteItems', '[]'::jsonb,
-        'preferyellowCarWashServices', '[]'::jsonb,
         'preferyellowPaymentMethod', 'credit_card',
         'communicationPreferences', jsonb_build_object(
           'email', true,
