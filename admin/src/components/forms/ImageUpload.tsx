@@ -31,6 +31,7 @@ export const ImageUpload = ({ defaultValue, onChange, folder = "uploads", fieldN
         try {
             const publicUrl = await uploadImage(file, folder);
             const filePath = publicUrl.split(`${folder}/`)[1] || "";
+            console.log("ImageUpload: Upload success, URL:", publicUrl);
             setValue(publicUrl);
             setUploadedPath(filePath);
             onChange(publicUrl, `${folder}/${filePath}`);
@@ -45,6 +46,7 @@ export const ImageUpload = ({ defaultValue, onChange, folder = "uploads", fieldN
     };
 
     const handleRemove = () => {
+        console.log("ImageUpload: Removing image");
         setPreview(null);
         setValue("");
         setUploadedPath("");
@@ -96,7 +98,7 @@ export const ImageUpload = ({ defaultValue, onChange, folder = "uploads", fieldN
                     className="hidden"
                 />
             </div>
-            <input type="hidden" name={fieldName} value={value} />
+            <input type="text" name={fieldName} value={value} readOnly className="w-full text-xs bg-slate-800 text-slate-400 p-2 rounded" />
         </div>
     );
 };
