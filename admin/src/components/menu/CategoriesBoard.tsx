@@ -14,6 +14,7 @@ import {
     deleteCategoryAction,
 } from "@/lib/data/categories-actions";
 import type { CategoryRecord } from "@/lib/types";
+import { deleteImage } from "@/lib/supabase/storage";
 
 type Props = {
     categories: CategoryRecord[];
@@ -127,6 +128,18 @@ type CreateCategoryFormProps = {
 
 const CreateCategoryForm = ({ onCancel }: CreateCategoryFormProps) => {
     const [state, formAction] = useFormState(createCategoryAction, initialState);
+    const [uploadedPath, setUploadedPath] = useState<string>("");
+
+    const handleCancel = async () => {
+        if (uploadedPath) {
+            try {
+                await deleteImage(uploadedPath);
+            } catch (error) {
+                console.error("Failed to delete uploaded image:", error);
+            }
+        }
+        onCancel();
+    };
 
     return (
         <div className="rounded-2xl border border-indigo-500/30 bg-indigo-500/5 p-4">
@@ -143,7 +156,11 @@ const CreateCategoryForm = ({ onCancel }: CreateCategoryFormProps) => {
 
                 <label className="block space-y-2 text-sm">
                     <span className="text-slate-300">Category Image</span>
-                    <ImageUpload onChange={() => { }} folder="categories" />
+                    <ImageUpload
+                        onChange={(url, path) => setUploadedPath(path || "")}
+                        folder="categories"
+                        fieldName="image"
+                    />
                 </label>
 
                 <label className="block space-y-2 text-sm">
@@ -177,7 +194,7 @@ const CreateCategoryForm = ({ onCancel }: CreateCategoryFormProps) => {
                     />
                     <button
                         type="button"
-                        onClick={onCancel}
+                        onClick={handleCancel}
                         className="rounded-lg bg-slate-800 px-4 py-2 text-sm text-white hover:bg-slate-700"
                     >
                         Cancel
@@ -204,6 +221,18 @@ const CategoryCard = ({
     onDelete,
 }: CategoryCardProps) => {
     const [state, formAction] = useFormState(updateCategoryAction, initialState);
+    const [uploadedPath, setUploadedPath] = useState<string>("");
+
+    const handleCancel = async () => {
+        if (uploadedPath) {
+            try {
+                await deleteImage(uploadedPath);
+            } catch (error) {
+                console.error("Failed to delete uploaded image:", error);
+            }
+        }
+        onCancelEdit();
+    };
 
     return (
         <div className="rounded-2xl border border-white/10 bg-slate-900/40 p-4">
@@ -225,8 +254,9 @@ const CategoryCard = ({
                         <span className="text-slate-300">Category Image</span>
                         <ImageUpload
                             defaultValue={category.image}
-                            onChange={() => { }}
+                            onChange={(url, path) => setUploadedPath(path || "")}
                             folder="categories"
+                            fieldName="image"
                         />
                     </label>
 
@@ -263,7 +293,7 @@ const CategoryCard = ({
                         />
                         <button
                             type="button"
-                            onClick={onCancelEdit}
+                            onClick={handleCancel}
                             className="rounded-lg bg-slate-800 px-4 py-2 text-sm text-white hover:bg-slate-700"
                         >
                             Cancel
