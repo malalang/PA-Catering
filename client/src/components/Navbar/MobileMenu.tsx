@@ -1,6 +1,6 @@
 'use client';
 import AppLink from '../ui/Link';
-import { HiHome, HiInformationCircle, HiEnvelope, HiPhoto, HiCamera, HiDocumentText } from 'react-icons/hi2';
+import { HiHome, HiInformationCircle, HiEnvelope, HiPhoto, HiCamera, HiDocumentText, HiShoppingBag } from 'react-icons/hi2';
 import { usePathname } from 'next/navigation';
 
 const publicPaths = [
@@ -9,7 +9,7 @@ const publicPaths = [
 	{ path: '/gallery', icon: HiPhoto, label: 'Gallery' },
 	{ path: '/contact', icon: HiEnvelope, label: 'Contact' },
 	{ path: '/photo', icon: HiCamera, label: '360 Booth' },
-	{ path: '/terms', icon: HiDocumentText, label: 'Terms' },
+	{ path: '/menu', icon: HiShoppingBag, label: 'Menu' },
 ];
 
 const MobileMenu: React.FC<{

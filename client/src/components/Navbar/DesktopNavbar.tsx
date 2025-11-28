@@ -8,6 +8,7 @@ import {
 	HiPhoto,
 	HiCamera,
 	HiDocumentText,
+	HiShoppingBag,
 } from 'react-icons/hi2';
 import React, { useState, useRef, useEffect } from 'react';
 import Button from '@/components/ui/Button';
@@ -20,7 +21,7 @@ const publicPaths = [
 	{ path: '/gallery', icon: HiPhoto, label: 'Gallery' },
 	{ path: '/contact', icon: HiEnvelope, label: 'Contact' },
 	{ path: '/photo', icon: HiCamera, label: '360 Booth' },
-	{ path: '/terms', icon: HiDocumentText, label: 'Terms' },
+	{ path: '/menu', icon: HiShoppingBag, label: 'Menu' },
 ];
 
 const DesktopNavbar: React.FC = () => {

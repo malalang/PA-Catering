@@ -8,7 +8,7 @@ import { usePathname } from 'next/navigation';
 const protectedPaths = [
 	{ path: '/profile', icon: HiUser, label: 'Profile' },
 	{ path: '/orders', icon: HiClipboardList, label: 'Orders' },
-	{ path: '/menu', icon: HiShoppingBag, label: 'Menu' },
+
 	{ path: '/photo/booking', icon: HiCamera, label: '360 Booth Booking' },
 ];
 

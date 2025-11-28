@@ -59,24 +59,28 @@ const FilterSortBar: React.FC = () => {
 	};
 
 	const inputStyles =
-		'w-24 p-2 border border-white/50 rounded-md bg-black/20 text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:border-yellow-500 transition-all duration-200';
+		'w-24 p-2 border border-amber-400/30 rounded-md bg-slate-900/50 text-amber-100 placeholder-amber-400/50 focus:outline-none focus:ring-2 focus:ring-amber-400/50 focus:border-amber-400 transition-all duration-200';
+
+	const buttonStyles = 'bg-gradient-to-r from-amber-600/20 to-yellow-600/20 border border-amber-400/30 text-amber-400 hover:bg-amber-600/30 hover:text-amber-300 transition-all duration-200';
 
 	return (
-		<div className='bg-black/50 blur-[0.1px] backdrop-blur-md p-2  sticky top-9 z-20 col-span-full mt-0'>
+		<div className='bg-slate-900/80 blur-[0.1px] backdrop-blur-md p-3 rounded-xl border border-amber-400/10 sticky top-20 z-20 col-span-full mt-0 shadow-xl shadow-black/20'>
 			<div className='flex flex-col md:flex-row gap-4 items-center justify-between'>
 				{/* Sort Options */}
 				<div className='flex items-center gap-3'>
-					<FaSort size={20} />
+					<div className='p-2 rounded-lg bg-amber-400/10 text-amber-400'>
+						<FaSort size={16} />
+					</div>
 					<label
 						htmlFor='sort-select'
-						className='font-semibold'>
+						className='font-semibold text-amber-100'>
 						Sort by:
 					</label>
 					<select
 						id='sort-select'
 						value={currentSort}
 						onChange={(e) => handleSortChange(e.target.value)}
-						className='bg-black/20 text-white border border-white/50 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-yellow-500 transition-all duration-200'>
+						className='bg-slate-900/50 text-amber-100 border border-amber-400/30 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-amber-400/50 cursor-pointer hover:border-amber-400/50 transition-all duration-200'>
 						<option value='default'>Default</option>
 						<option value='price-low'>Price: Low to High</option>
 						<option value='price-high'>Price: High to Low</option>
@@ -86,24 +90,23 @@ const FilterSortBar: React.FC = () => {
 				</div>
 
 				{/* Filter Toggle */}
-				<Button
-					variant='primary'
+				<button
 					onClick={() => setShowFilters(!showFilters)}
-					className='flex items-center gap-2'>
+					className={`flex items-center gap-2 px-4 py-2 rounded-lg font-medium transition-all duration-200 ${showFilters ? 'bg-amber-400 text-slate-900' : buttonStyles}`}>
 					<FaFilter />
 					<span>{showFilters ? 'Hide' : 'Show'} Filters</span>
-				</Button>
+				</button>
 			</div>
 
 			{/* Filter Panel */}
 			{showFilters && (
-				<article className=' p-4 space-y-4'>
-					<h3 className='text-lg font-semibold mb-2'>Price Range</h3>
+				<article className='mt-4 p-4 rounded-lg bg-slate-900/50 border border-amber-400/10 space-y-4 animate-in fade-in slide-in-from-top-2 duration-200'>
+					<h3 className='text-lg font-semibold mb-2 text-amber-400'>Price Range</h3>
 					<div className='flex flex-col md:flex-row flex-wrap gap-4 items-center'>
 						<div className='flex items-center gap-2'>
 							<label
 								htmlFor='min-price'
-								className='text-sm'>
+								className='text-sm text-amber-200'>
 								Min:
 							</label>
 							<input
@@ -118,7 +121,7 @@ const FilterSortBar: React.FC = () => {
 						<div className='flex items-center gap-2'>
 							<label
 								htmlFor='max-price'
-								className='text-sm'>
+								className='text-sm text-amber-200'>
 								Max:
 							</label>
 							<input
@@ -131,16 +134,16 @@ const FilterSortBar: React.FC = () => {
 							/>
 						</div>
 						<div className='flex gap-2 ml-auto'>
-							<Button
-								variant='primary'
-								onClick={handleResetFilters}>
+							<button
+								onClick={handleResetFilters}
+								className='px-4 py-2 rounded-lg text-sm font-medium text-slate-400 hover:text-white hover:bg-white/5 transition-colors'>
 								Reset
-							</Button>
-							<Button
-								variant='primary'
-								onClick={handleApplyFilters}>
-								Apply
-							</Button>
+							</button>
+							<button
+								onClick={handleApplyFilters}
+								className='px-6 py-2 rounded-lg text-sm font-bold bg-amber-400 text-slate-900 hover:bg-amber-300 shadow-lg shadow-amber-400/20 transition-all duration-200'>
+								Apply Filters
+							</button>
 						</div>
 					</div>
 				</article>
