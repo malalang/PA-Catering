@@ -7,14 +7,16 @@ import { uploadImage } from "@/lib/supabase/storage";
 
 type Props = {
     defaultValue?: string | null;
-    onChange: (url: string) => void;
+    onChange: (url: string, filePath?: string) => void;
     folder?: string;
+    fieldName?: string;
 };
 
-export const ImageUpload = ({ defaultValue, onChange, folder = "uploads" }: Props) => {
+export const ImageUpload = ({ defaultValue, onChange, folder = "uploads", fieldName = "image_url" }: Props) => {
     const [preview, setPreview] = useState<string | null>(defaultValue || null);
     const [uploading, setUploading] = useState(false);
     const [value, setValue] = useState<string>(defaultValue || "");
+    const [uploadedPath, setUploadedPath] = useState<string>(""); // Track for cleanup
     const fileInputRef = useRef<HTMLInputElement>(null);
 
     const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -28,8 +30,10 @@ export const ImageUpload = ({ defaultValue, onChange, folder = "uploads" }: Prop
 
         try {
             const publicUrl = await uploadImage(file, folder);
+            const filePath = publicUrl.split(`${folder}/`)[1] || "";
             setValue(publicUrl);
-            onChange(publicUrl);
+            setUploadedPath(filePath);
+            onChange(publicUrl, `${folder}/${filePath}`);
         } catch (error) {
             console.error("Upload failed:", error);
             alert("Failed to upload image. Please try again.");
@@ -43,6 +47,7 @@ export const ImageUpload = ({ defaultValue, onChange, folder = "uploads" }: Prop
     const handleRemove = () => {
         setPreview(null);
         setValue("");
+        setUploadedPath("");
         onChange("");
         if (fileInputRef.current) {
             fileInputRef.current.value = "";
@@ -91,7 +96,7 @@ export const ImageUpload = ({ defaultValue, onChange, folder = "uploads" }: Prop
                     className="hidden"
                 />
             </div>
-            <input type="hidden" name="image_url" value={value} />
+            <input type="hidden" name={fieldName} value={value} />
         </div>
     );
 };

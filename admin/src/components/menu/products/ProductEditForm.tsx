@@ -12,6 +12,7 @@ import type { ProductRecord } from "@/lib/types";
 import { useState } from "react";
 import { DeleteConfirmDialog } from "@/components/shared/DeleteConfirmDialog";
 import { ImageUpload } from "@/components/forms/ImageUpload";
+import { deleteImage } from "@/lib/supabase/storage";
 
 type Props = {
     product: ProductRecord;
@@ -24,10 +25,22 @@ export const ProductEditForm = ({ product, categories }: Props) => {
     const router = useRouter();
     const [state, formAction] = useFormState(updateProductAction, initialState);
     const [showDeleteDialog, setShowDeleteDialog] = useState(false);
+    const [uploadedPath, setUploadedPath] = useState<string>("");
 
     const handleDelete = async () => {
         await deleteProductAction(product.id);
         router.push("/menu");
+    };
+
+    const handleCancel = async () => {
+        if (uploadedPath) {
+            try {
+                await deleteImage(uploadedPath);
+            } catch (error) {
+                console.error("Failed to delete uploaded image:", error);
+            }
+        }
+        router.back();
     };
 
     return (
@@ -95,7 +108,7 @@ export const ProductEditForm = ({ product, categories }: Props) => {
                     <span className="text-slate-300">Product Image</span>
                     <ImageUpload
                         defaultValue={product.image_url}
-                        onChange={() => { }}
+                        onChange={(url, path) => setUploadedPath(path || "")}
                         folder="products"
                     />
                 </label>
@@ -143,7 +156,7 @@ export const ProductEditForm = ({ product, categories }: Props) => {
                     />
                     <button
                         type="button"
-                        onClick={() => router.back()}
+                        onClick={handleCancel}
                         className="rounded-lg bg-slate-800 px-4 py-2 text-sm text-white hover:bg-slate-700"
                     >
                         Cancel

@@ -20,3 +20,23 @@ export const uploadImage = async (file: File, path: string) => {
 
     return data.publicUrl;
 };
+
+export const deleteImage = async (urlOrPath: string) => {
+    const supabase = createSupabaseBrowserClient();
+
+    // Extract path from URL if a full URL was provided
+    let filePath = urlOrPath;
+    if (urlOrPath.includes(STORAGE_BUCKET)) {
+        const parts = urlOrPath.split(`${STORAGE_BUCKET}/`);
+        filePath = parts[parts.length - 1];
+    }
+
+    const { error } = await supabase.storage
+        .from(STORAGE_BUCKET)
+        .remove([filePath]);
+
+    if (error) {
+        console.error("Failed to delete image:", error);
+        throw error;
+    }
+};
