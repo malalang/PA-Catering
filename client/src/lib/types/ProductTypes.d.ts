@@ -23,7 +23,7 @@ declare global {
   }
 
   type ProductsType = {
-    id: number;
+    id: string | number;
     Name: string;
     Products: ProductType[];
     Image?: string;

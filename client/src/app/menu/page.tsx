@@ -9,18 +9,6 @@ import SearchBar from './components/SearchBar';
 import { createClient } from '@/lib/supabase/server';
 import { Database } from '@/lib/types/database.types';
 
-// Category metadata mapping to preserve UI richness
-const CATEGORY_METADATA: Record<string, { Image: string; Description: string; id: number }> = {
-	'Meals': { id: 1, Image: "/Menus/BurgerMeal.png", Description: "Wholesome combo meals including flavorful mains, crispy sides, and refreshing drinks." },
-	'Kota Meals': { id: 2, Image: "/Menus/KotaMeal.png", Description: "Our most loved Kota creations, packed with bold local flavor." },
-	'Kota': { id: 3, Image: "/Menus/Kota.png", Description: "Traditional South African bread rolls stuffed with savory toppings." },
-	'Chips': { id: 4, Image: "/Menus/Chips.png", Description: "Perfectly fried golden chips, available in three sizes." },
-	'Beverages': { id: 5, Image: "/Menus/Drinks.png", Description: "A curated selection of cold beverages to quench your thirst." },
-	'Pizza': { id: 6, Image: "/Menus/mexicanChilli.png", Description: "Oven-baked pizzas topped with rich sauces and generous layers of cheese." },
-	'Salads': { id: 7, Image: "/Menus/salad1.jpg", Description: "Fresh and healthy salads." },
-	'Burgers': { id: 8, Image: "/Menus/burger1.jpg", Description: "Juicy burgers with premium ingredients." },
-};
-
 export default async function HomePage({
 	searchParams,
 }: {
@@ -30,17 +18,34 @@ export default async function HomePage({
 	const search = params.search || '';
 	const supabase = await createClient();
 
-	const { data: productsData, error } = await supabase
-		.from('products')
-		.select('*')
-		.order('category_name', { ascending: true });
+	const [productsResult, categoriesResult] = await Promise.all([
+		supabase
+			.from('products')
+			.select('*')
+			.order('category_name', { ascending: true }),
+		supabase
+			.from('products_category')
+			.select('*')
+			.order('id', { ascending: true })
+	]);
 
-	if (error) {
-		console.error('Error fetching products:', error);
-		// Handle error appropriately, maybe show error message
+	const { data: productsData, error: productsError } = productsResult;
+	const { data: categoriesData, error: categoriesError } = categoriesResult;
+
+	if (productsError) {
+		console.error('Error fetching products:', productsError);
+	}
+
+	if (categoriesError) {
+		console.error('Error fetching categories:', categoriesError);
 	}
 
 	const allProducts: Database['public']['Tables']['products']['Row'][] = productsData || [];
+	const allCategoriesData: Database['public']['Tables']['products_category']['Row'][] = categoriesData || [];
+
+	// Filter out hidden categories
+	const visibleCategories = allCategoriesData.filter(cat => !cat.is_hidden);
+	const visibleCategoryNames = new Set(visibleCategories.map(c => c.category_name));
 
 	// Filter products based on search
 	const filteredProducts = search
@@ -50,28 +55,34 @@ export default async function HomePage({
 		)
 		: allProducts;
 
-	// Get unique category names from all products (for metadata lookup)
-	const allCategories = new Set(allProducts.map(p => p.category_name || 'Other'));
-
 	// Group products by category
 	const groupedProducts: ProductsType = [];
 	const categoriesMap = new Map<string, ProductType[]>();
 
 	filteredProducts.forEach((product) => {
 		const category = product.category_name || 'Other';
+
+		// Only include products in visible categories (or 'Other' if we want to keep it, but user asked to use table)
+		// Let's strictly follow the visible categories from DB for now, unless it's a search result that might be relevant?
+		// Actually, if a category is hidden, its products should probably be hidden too in this context.
+		if (!visibleCategoryNames.has(category) && category !== 'Other') {
+			// If strict mode is desired: return; 
+			// But for now, let's allow 'Other' or maybe just check if it exists in the map later.
+		}
+
 		if (!categoriesMap.has(category)) {
 			categoriesMap.set(category, []);
 		}
 
 		// Map Supabase product to UI ProductType
 		const uiProduct: ProductType = {
-			ProductID: product.id, // Assuming Supabase ID is UUID, but UI uses string
+			ProductID: product.id,
 			Name: product.name,
-			Description: [product.description || ''], // UI expects array of strings
+			Description: [product.description || ''],
 			Price: product.price || 0,
-			Image: product.image_url || '/Menus/placeholder.png', // Fallback image
-			badge: product.badge || undefined, // Add badge logic if needed
-			rating: product.likes ? 5 : undefined, // Placeholder rating logic
+			Image: product.image_url || '/Menus/placeholder.png',
+			badge: product.badge || undefined,
+			rating: product.likes ? 5 : undefined,
 		};
 
 		categoriesMap.get(category)?.push(uiProduct);
@@ -82,17 +93,14 @@ export default async function HomePage({
 	// 2. Have a category name that matches the search term
 	const searchLower = search.toLowerCase();
 	const matchingCategoryNames = search
-		? Array.from(allCategories).filter(catName =>
-			catName.toLowerCase().includes(searchLower)
-		)
+		? visibleCategories
+			.filter(cat => cat.category_name.toLowerCase().includes(searchLower))
+			.map(cat => cat.category_name)
 		: [];
 
-	// Construct ProductsType array - only include matching categories when searching
-	const categoriesToShow = search
-		? new Set([...categoriesMap.keys(), ...matchingCategoryNames])
-		: allCategories;
-
-	categoriesToShow.forEach((categoryName) => {
+	// Iterate over VISIBLE categories from DB to maintain order and metadata
+	visibleCategories.forEach((category) => {
+		const categoryName = category.category_name;
 		const products = categoriesMap.get(categoryName) || [];
 
 		// When searching, only show categories that have matching products or match by name
@@ -100,23 +108,37 @@ export default async function HomePage({
 			return;
 		}
 
-		const metadata = CATEGORY_METADATA[categoryName] || {
-			id: 99,
-			Image: '/Menus/placeholder.png',
-			Description: 'Delicious food category',
-		};
+		// If not searching, and no products, maybe skip? 
+		// Usually menus show empty categories if they exist, or hide them. 
+		// Let's hide empty categories if not searching, to be clean, unless user wants them.
+		// But the original code showed them if they were in the map. 
+		// Let's show if it has products OR if we are searching and it matched.
+		if (!search && products.length === 0) {
+			return;
+		}
 
 		groupedProducts.push({
-			id: metadata.id,
+			id: category.id,
 			Name: categoryName,
-			Image: metadata.Image,
-			Description: metadata.Description,
+			Image: category.image || '/Menus/placeholder.png',
+			Description: category.description || '',
 			Products: products,
 		});
 	});
 
-	// Sort categories by ID if available to maintain order
-	groupedProducts.sort((a, b) => a.id - b.id);
+	// Handle 'Other' category if it has products and isn't in DB
+	if (categoriesMap.has('Other')) {
+		const otherProducts = categoriesMap.get('Other') || [];
+		if (otherProducts.length > 0) {
+			groupedProducts.push({
+				id: 999,
+				Name: 'Other',
+				Image: '/Menus/placeholder.png',
+				Description: 'Other items',
+				Products: otherProducts,
+			});
+		}
+	}
 
 	// Create a map of product ID to category slug for search results
 	const productCategoryMap = new Map<string, string>();
