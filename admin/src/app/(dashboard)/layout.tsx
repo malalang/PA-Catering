@@ -11,11 +11,11 @@ export default async function DashboardLayout({
   const profile = await requireAdminProfile();
 
   return (
-    <div className="flex min-h-screen bg-slate-950 text-white">
+    <div className="flex min-h-screen bg-yellow-950 text-white">
       <AdminSidebar />
       <div className="flex flex-1 flex-col">
         <AdminTopbar profile={profile} />
-        <main className="flex-1 space-y-6 bg-slate-950 px-4 py-6 lg:px-8">
+        <main className="flex-1 space-y-6 bg-yellow-950 px-4 py-6 lg:px-8">
           {children}
         </main>
       </div>

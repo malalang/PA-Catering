@@ -54,7 +54,7 @@ function CartFooter() {
 						<div className='flex items-center gap-3 bg-white/5 px-4 py-2.5 rounded-xl border border-white/10'>
 							<HiShoppingCart className='text-amber-400 text-2xl' />
 							<div>
-								<p className='text-xs text-slate-400 uppercase tracking-wider'>Items</p>
+								<p className='text-xs text-yellow-400 uppercase tracking-wider'>Items</p>
 								<p className='text-xl font-bold text-white'>{totalQuantity}</p>
 							</div>
 						</div>

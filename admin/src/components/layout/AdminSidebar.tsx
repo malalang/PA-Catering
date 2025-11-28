@@ -12,12 +12,12 @@ export const AdminSidebar = () => {
   return (
     <>
       {/* Mobile header with burger menu */}
-      <header className="fixed left-0 right-0 top-0 z-50 border-b border-white/10 bg-slate-950/95 backdrop-blur-sm lg:hidden">
+      <header className="fixed left-0 right-0 top-0 z-50 border-b border-white/10 bg-yellow-950/95 backdrop-blur-sm lg:hidden">
         <div className="flex items-center justify-between px-4 py-3">
           <button
             type="button"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="rounded-lg bg-slate-900/90 p-2 text-white hover:bg-slate-800"
+            className="rounded-lg bg-yellow-900/90 p-2 text-white hover:bg-yellow-800"
             aria-label="Toggle menu"
           >
             {mobileMenuOpen ? (
@@ -48,7 +48,7 @@ export const AdminSidebar = () => {
 
       {/* Sidebar */}
       <aside
-        className={`fixed inset-y-0 left-0 z-40 w-72 flex-col border-r border-white/10 bg-slate-950/95 px-6 py-8 backdrop-blur-sm transition-transform duration-300 lg:static lg:flex ${mobileMenuOpen ? "flex translate-x-0" : "-translate-x-full lg:translate-x-0"
+        className={`fixed inset-y-0 left-0 z-40 w-72 flex-col border-r border-white/10 bg-yellow-950/95 px-6 py-8 backdrop-blur-sm transition-transform duration-300 lg:static lg:flex ${mobileMenuOpen ? "flex tranyellow-x-0" : "-tranyellow-x-full lg:tranyellow-x-0"
           }`}
       >
         <Link
@@ -66,9 +66,9 @@ export const AdminSidebar = () => {
           <SidebarNav items={NAV_ITEMS} />
         </div>
 
-        <div className="mt-auto rounded-xl border border-white/10 bg-slate-900/80 p-4 text-sm text-slate-300">
+        <div className="mt-auto rounded-xl border border-white/10 bg-yellow-900/80 p-4 text-sm text-yellow-300">
           <p className="font-semibold text-white">Daily Ops Checklist</p>
-          <ul className="mt-2 space-y-1 text-xs text-slate-400">
+          <ul className="mt-2 space-y-1 text-xs text-yellow-400">
             <li>• Confirm menu availability</li>
             <li>• Assign pending orders</li>
             <li>• Update stock counts</li>

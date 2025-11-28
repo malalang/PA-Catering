@@ -18,7 +18,7 @@ export const AddProductForm = ({ categories }: Props) => {
   const [state, formAction] = useFormState(createProductAction, initialState);
 
   return (
-    <form action={formAction} className="space-y-4 text-sm text-slate-200">
+    <form action={formAction} className="space-y-4 text-sm text-yellow-200">
       <div className="space-y-2">
         <label htmlFor="name">Product name</label>
         <input
@@ -26,7 +26,7 @@ export const AddProductForm = ({ categories }: Props) => {
           name="name"
           required
           placeholder="Mogodu Mondays"
-          className="w-full rounded-lg border border-white/10 bg-slate-900/60 px-3 py-2 text-white outline-none focus:border-indigo-400 focus:ring-2 focus:ring-indigo-400/40"
+          className="w-full rounded-lg border border-white/10 bg-yellow-900/60 px-3 py-2 text-white outline-none focus:border-indigo-400 focus:ring-2 focus:ring-indigo-400/40"
         />
       </div>
 
@@ -38,7 +38,7 @@ export const AddProductForm = ({ categories }: Props) => {
           list="menu-categories"
           required
           placeholder="Warm bowls"
-          className="w-full rounded-lg border border-white/10 bg-slate-900/60 px-3 py-2 text-white outline-none focus:border-indigo-400 focus:ring-2 focus:ring-indigo-400/40"
+          className="w-full rounded-lg border border-white/10 bg-yellow-900/60 px-3 py-2 text-white outline-none focus:border-indigo-400 focus:ring-2 focus:ring-indigo-400/40"
         />
         <datalist id="menu-categories">
           {categories.map((category) => (
@@ -58,7 +58,7 @@ export const AddProductForm = ({ categories }: Props) => {
             min="0"
             required
             placeholder="85"
-            className="w-full rounded-lg border border-white/10 bg-slate-900/60 px-3 py-2 text-white outline-none focus:border-indigo-400 focus:ring-2 focus:ring-indigo-400/40"
+            className="w-full rounded-lg border border-white/10 bg-yellow-900/60 px-3 py-2 text-white outline-none focus:border-indigo-400 focus:ring-2 focus:ring-indigo-400/40"
           />
         </div>
         <div className="space-y-2">
@@ -69,7 +69,7 @@ export const AddProductForm = ({ categories }: Props) => {
             type="number"
             min="0"
             placeholder="25"
-            className="w-full rounded-lg border border-white/10 bg-slate-900/60 px-3 py-2 text-white outline-none focus:border-indigo-400 focus:ring-2 focus:ring-indigo-400/40"
+            className="w-full rounded-lg border border-white/10 bg-yellow-900/60 px-3 py-2 text-white outline-none focus:border-indigo-400 focus:ring-2 focus:ring-indigo-400/40"
           />
         </div>
       </div>
@@ -80,7 +80,7 @@ export const AddProductForm = ({ categories }: Props) => {
           id="badge"
           name="badge"
           placeholder="New / Bestseller"
-          className="w-full rounded-lg border border-white/10 bg-slate-900/60 px-3 py-2 text-white outline-none focus:border-indigo-400 focus:ring-2 focus:ring-indigo-400/40"
+          className="w-full rounded-lg border border-white/10 bg-yellow-900/60 px-3 py-2 text-white outline-none focus:border-indigo-400 focus:ring-2 focus:ring-indigo-400/40"
         />
       </div>
 
@@ -96,7 +96,7 @@ export const AddProductForm = ({ categories }: Props) => {
           name="description"
           rows={4}
           placeholder="Slow-cooked tripe with creamy samp, toasted chakalaka crumbs, and herb oil."
-          className="w-full rounded-lg border border-white/10 bg-slate-900/60 px-3 py-2 text-white outline-none focus:border-indigo-400 focus:ring-2 focus:ring-indigo-400/40"
+          className="w-full rounded-lg border border-white/10 bg-yellow-900/60 px-3 py-2 text-white outline-none focus:border-indigo-400 focus:ring-2 focus:ring-indigo-400/40"
         />
       </div>
 

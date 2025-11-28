@@ -20,7 +20,7 @@ export const RegisterForm = ({ initialError }: Props) => {
   return (
     <form action={formAction} className="space-y-4">
       <div className="space-y-2">
-        <label className="text-sm text-slate-300" htmlFor="fullName">
+        <label className="text-sm text-yellow-300" htmlFor="fullName">
           Full name
         </label>
         <input
@@ -28,12 +28,12 @@ export const RegisterForm = ({ initialError }: Props) => {
           name="fullName"
           type="text"
           placeholder="Nomsa Nkosi"
-          className="w-full rounded-lg border border-white/10 bg-slate-900/60 px-4 py-2 text-white outline-none transition focus:border-indigo-400 focus:ring-2 focus:ring-indigo-400/40"
+          className="w-full rounded-lg border border-white/10 bg-yellow-900/60 px-4 py-2 text-white outline-none transition focus:border-indigo-400 focus:ring-2 focus:ring-indigo-400/40"
         />
       </div>
 
       <div className="space-y-2">
-        <label className="text-sm text-slate-300" htmlFor="email">
+        <label className="text-sm text-yellow-300" htmlFor="email">
           Work email
         </label>
         <input
@@ -42,12 +42,12 @@ export const RegisterForm = ({ initialError }: Props) => {
           type="email"
           required
           placeholder="you@pacatering.co.za"
-          className="w-full rounded-lg border border-white/10 bg-slate-900/60 px-4 py-2 text-white outline-none transition focus:border-indigo-400 focus:ring-2 focus:ring-indigo-400/40"
+          className="w-full rounded-lg border border-white/10 bg-yellow-900/60 px-4 py-2 text-white outline-none transition focus:border-indigo-400 focus:ring-2 focus:ring-indigo-400/40"
         />
       </div>
 
       <div className="space-y-2">
-        <label className="text-sm text-slate-300" htmlFor="password">
+        <label className="text-sm text-yellow-300" htmlFor="password">
           Password
         </label>
         <input
@@ -57,12 +57,12 @@ export const RegisterForm = ({ initialError }: Props) => {
           required
           minLength={6}
           placeholder="Create a strong password"
-          className="w-full rounded-lg border border-white/10 bg-slate-900/60 px-4 py-2 text-white outline-none transition focus:border-indigo-400 focus:ring-2 focus:ring-indigo-400/40"
+          className="w-full rounded-lg border border-white/10 bg-yellow-900/60 px-4 py-2 text-white outline-none transition focus:border-indigo-400 focus:ring-2 focus:ring-indigo-400/40"
         />
       </div>
 
       <div className="space-y-2">
-        <label className="text-sm text-slate-300" htmlFor="inviteCode">
+        <label className="text-sm text-yellow-300" htmlFor="inviteCode">
           Invite code
         </label>
         <input
@@ -70,7 +70,7 @@ export const RegisterForm = ({ initialError }: Props) => {
           name="inviteCode"
           type="password"
           placeholder="Required if set by Ops"
-          className="w-full rounded-lg border border-white/10 bg-slate-900/60 px-4 py-2 text-white outline-none transition focus:border-indigo-400 focus:ring-2 focus:ring-indigo-400/40"
+          className="w-full rounded-lg border border-white/10 bg-yellow-900/60 px-4 py-2 text-white outline-none transition focus:border-indigo-400 focus:ring-2 focus:ring-indigo-400/40"
         />
       </div>
 

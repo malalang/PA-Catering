@@ -78,7 +78,7 @@ const FeaturedItemsServices: React.FC = () => {
 						)}
 						<div className='p-6 flex-grow text-center'>
 							<h3 className='text-xl font-bold text-white'>{item.name}</h3>
-							<p className='mt-2 text-slate-300'>{item.description}</p>
+							<p className='mt-2 text-yellow-300'>{item.description}</p>
 						</div>
 						<div className='flex justify-around items-center border-t border-white/20 pt-4 bg-white/5 -mx-6 px-6 pb-6 -mb-6 mt-auto rounded-b-xl'>
 							<div className="flex flex-col items-center gap-1">
@@ -93,7 +93,7 @@ const FeaturedItemsServices: React.FC = () => {
 									size={24}
 									className='text-white hover:text-yellow-500 transition-colors'
 								/>
-								<span className='text-xs text-slate-400'>{(item.comments as any[])?.length || 0}</span>
+								<span className='text-xs text-yellow-400'>{(item.comments as any[])?.length || 0}</span>
 							</Button>
 							<Button
 								variant='icon'
@@ -104,7 +104,7 @@ const FeaturedItemsServices: React.FC = () => {
 									size={24}
 									className='text-white hover:text-yellow-500 transition-colors'
 								/>
-								<span className='text-xs text-slate-400'>Share</span>
+								<span className='text-xs text-yellow-400'>Share</span>
 							</Button>
 						</div>
 					</article>

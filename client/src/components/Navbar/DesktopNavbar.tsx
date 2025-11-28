@@ -64,7 +64,7 @@ const DesktopNavbar: React.FC = () => {
 								href={path}
 								className={`flex items-center gap-2 px-4 py-2 rounded-lg font-medium transition-all duration-200 ${isActive
 									? 'bg-gradient-to-r from-amber-600/20 to-yellow-600/20 border border-amber-400/30 text-amber-400 shadow-md shadow-amber-500/10'
-									: 'text-slate-300 hover:text-white hover:bg-white/5 border border-transparent hover:border-white/10'
+									: 'text-yellow-300 hover:text-white hover:bg-white/5 border border-transparent hover:border-white/10'
 									}`}>
 								<Icon className={`text-lg ${isActive ? 'text-amber-400' : ''}`} />
 								<span>{label}</span>

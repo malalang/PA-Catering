@@ -26,7 +26,7 @@ export const LoginForm = ({ redirectTo, initialMessage }: Props) => {
         value={redirectTo ?? "/dashboard"}
       />
       <div className="space-y-2">
-        <label className="text-sm text-slate-300" htmlFor="email">
+        <label className="text-sm text-yellow-300" htmlFor="email">
           Work email
         </label>
         <input
@@ -34,13 +34,13 @@ export const LoginForm = ({ redirectTo, initialMessage }: Props) => {
           name="email"
           type="email"
           required
-          className="w-full rounded-lg border border-white/10 bg-slate-900/60 px-4 py-2 text-white outline-none transition focus:border-indigo-400 focus:ring-2 focus:ring-indigo-400/40"
+          className="w-full rounded-lg border border-white/10 bg-yellow-900/60 px-4 py-2 text-white outline-none transition focus:border-indigo-400 focus:ring-2 focus:ring-indigo-400/40"
           placeholder="you@pacatering.co.za"
         />
       </div>
 
       <div className="space-y-2">
-        <label className="text-sm text-slate-300" htmlFor="password">
+        <label className="text-sm text-yellow-300" htmlFor="password">
           Password
         </label>
         <input
@@ -48,7 +48,7 @@ export const LoginForm = ({ redirectTo, initialMessage }: Props) => {
           name="password"
           type="password"
           required
-          className="w-full rounded-lg border border-white/10 bg-slate-900/60 px-4 py-2 text-white outline-none transition focus:border-indigo-400 focus:ring-2 focus:ring-indigo-400/40"
+          className="w-full rounded-lg border border-white/10 bg-yellow-900/60 px-4 py-2 text-white outline-none transition focus:border-indigo-400 focus:ring-2 focus:ring-indigo-400/40"
           placeholder="••••••••"
         />
       </div>

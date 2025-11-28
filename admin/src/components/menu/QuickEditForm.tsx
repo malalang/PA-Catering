@@ -19,7 +19,7 @@ export const QuickEditForm = ({ product, categories = [] }: Props) => {
   const [state, formAction] = useFormState(updateProductAction, initialState);
 
   return (
-    <form action={formAction} className="space-y-3 text-sm text-slate-200">
+    <form action={formAction} className="space-y-3 text-sm text-yellow-200">
       <input type="hidden" name="id" value={product.id} />
 
       <label className="space-y-2 block">
@@ -28,7 +28,7 @@ export const QuickEditForm = ({ product, categories = [] }: Props) => {
           name="name"
           type="text"
           defaultValue={product.name}
-          className="w-full rounded-lg border border-white/10 bg-slate-900/60 px-3 py-2 text-white outline-none focus:border-indigo-400 focus:ring-2 focus:ring-indigo-400/40"
+          className="w-full rounded-lg border border-white/10 bg-yellow-900/60 px-3 py-2 text-white outline-none focus:border-indigo-400 focus:ring-2 focus:ring-indigo-400/40"
         />
       </label>
 
@@ -38,7 +38,7 @@ export const QuickEditForm = ({ product, categories = [] }: Props) => {
           <select
             name="category"
             defaultValue={product.category_name ?? ""}
-            className="w-full rounded-lg border border-white/10 bg-slate-900/60 px-3 py-2 text-white outline-none focus:border-indigo-400 focus:ring-2 focus:ring-indigo-400/40"
+            className="w-full rounded-lg border border-white/10 bg-yellow-900/60 px-3 py-2 text-white outline-none focus:border-indigo-400 focus:ring-2 focus:ring-indigo-400/40"
           >
             {categories.filter(cat => cat !== "all").map((cat) => (
               <option key={cat} value={cat}>
@@ -51,7 +51,7 @@ export const QuickEditForm = ({ product, categories = [] }: Props) => {
             name="category"
             type="text"
             defaultValue={product.category_name ?? ""}
-            className="w-full rounded-lg border border-white/10 bg-slate-900/60 px-3 py-2 text-white outline-none focus:border-indigo-400 focus:ring-2 focus:ring-indigo-400/40"
+            className="w-full rounded-lg border border-white/10 bg-yellow-900/60 px-3 py-2 text-white outline-none focus:border-indigo-400 focus:ring-2 focus:ring-indigo-400/40"
           />
         )}
       </label>
@@ -65,7 +65,7 @@ export const QuickEditForm = ({ product, categories = [] }: Props) => {
             step="0.01"
             min="0"
             defaultValue={product.price ?? 0}
-            className="w-full rounded-lg border border-white/10 bg-slate-900/60 px-3 py-2 text-white outline-none focus:border-indigo-400 focus:ring-2 focus:ring-indigo-400/40"
+            className="w-full rounded-lg border border-white/10 bg-yellow-900/60 px-3 py-2 text-white outline-none focus:border-indigo-400 focus:ring-2 focus:ring-indigo-400/40"
           />
         </label>
         <label className="space-y-2">
@@ -75,7 +75,7 @@ export const QuickEditForm = ({ product, categories = [] }: Props) => {
             type="number"
             min="0"
             defaultValue={product.stock ?? 0}
-            className="w-full rounded-lg border border-white/10 bg-slate-900/60 px-3 py-2 text-white outline-none focus:border-indigo-400 focus:ring-2 focus:ring-indigo-400/40"
+            className="w-full rounded-lg border border-white/10 bg-yellow-900/60 px-3 py-2 text-white outline-none focus:border-indigo-400 focus:ring-2 focus:ring-indigo-400/40"
           />
         </label>
       </div>
@@ -87,7 +87,7 @@ export const QuickEditForm = ({ product, categories = [] }: Props) => {
           type="url"
           defaultValue={product.image_url ?? ""}
           placeholder="https://example.com/image.jpg"
-          className="w-full rounded-lg border border-white/10 bg-slate-900/60 px-3 py-2 text-white outline-none focus:border-indigo-400 focus:ring-2 focus:ring-indigo-400/40"
+          className="w-full rounded-lg border border-white/10 bg-yellow-900/60 px-3 py-2 text-white outline-none focus:border-indigo-400 focus:ring-2 focus:ring-indigo-400/40"
         />
       </label>
 
@@ -97,7 +97,7 @@ export const QuickEditForm = ({ product, categories = [] }: Props) => {
           name="badge"
           defaultValue={product.badge ?? ""}
           placeholder="Chef's pick"
-          className="w-full rounded-lg border border-white/10 bg-slate-900/60 px-3 py-2 text-white outline-none focus:border-indigo-400 focus:ring-2 focus:ring-indigo-400/40"
+          className="w-full rounded-lg border border-white/10 bg-yellow-900/60 px-3 py-2 text-white outline-none focus:border-indigo-400 focus:ring-2 focus:ring-indigo-400/40"
         />
       </label>
 
@@ -107,7 +107,7 @@ export const QuickEditForm = ({ product, categories = [] }: Props) => {
           name="description"
           rows={3}
           defaultValue={product.description ?? ""}
-          className="w-full rounded-lg border border-white/10 bg-slate-900/60 px-3 py-2 text-white outline-none focus:border-indigo-400 focus:ring-2 focus:ring-indigo-400/40"
+          className="w-full rounded-lg border border-white/10 bg-yellow-900/60 px-3 py-2 text-white outline-none focus:border-indigo-400 focus:ring-2 focus:ring-indigo-400/40"
         />
       </label>
 
@@ -121,7 +121,7 @@ export const QuickEditForm = ({ product, categories = [] }: Props) => {
       <SubmitButton
         label="Save changes"
         loadingLabel="Updating..."
-        className="bg-slate-800"
+        className="bg-yellow-800"
       />
     </form>
   );

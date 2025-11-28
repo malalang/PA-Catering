@@ -26,20 +26,20 @@ export const FavoritesBoard = ({ favorites }: Props) => {
                     placeholder="Search favorites..."
                     value={search}
                     onChange={(e) => setSearch(e.target.value)}
-                    className="w-full max-w-md rounded-full border border-white/10 bg-slate-900/60 px-4 py-3 text-white outline-none focus:border-indigo-400 focus:ring-2 focus:ring-indigo-400/40"
+                    className="w-full max-w-md rounded-full border border-white/10 bg-yellow-900/60 px-4 py-3 text-white outline-none focus:border-indigo-400 focus:ring-2 focus:ring-indigo-400/40"
                 />
-                <p className="text-xs uppercase tracking-[0.3em] text-slate-500">
+                <p className="text-xs uppercase tracking-[0.3em] text-yellow-500">
                     {filtered.length} favorites
                 </p>
             </div>
 
-            <div className="rounded-2xl border border-white/10 bg-slate-900/40">
+            <div className="rounded-2xl border border-white/10 bg-yellow-900/40">
                 <table className="w-full text-sm">
                     <thead>
                         <tr className="border-b border-white/10 text-left">
-                            <th className="p-4 font-medium text-slate-400">User ID</th>
-                            <th className="p-4 font-medium text-slate-400">Product ID</th>
-                            <th className="p-4 font-medium text-slate-400">Created</th>
+                            <th className="p-4 font-medium text-yellow-400">User ID</th>
+                            <th className="p-4 font-medium text-yellow-400">Product ID</th>
+                            <th className="p-4 font-medium text-yellow-400">Created</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -47,17 +47,17 @@ export const FavoritesBoard = ({ favorites }: Props) => {
                             <tr
                                 key={`${favorite.user_id}-${favorite.product_id}`}
                                 className={`${index !== filtered.length - 1
-                                        ? "border-b border-white/10"
-                                        : ""
+                                    ? "border-b border-white/10"
+                                    : ""
                                     }`}
                             >
-                                <td className="p-4 font-mono text-xs text-slate-300">
+                                <td className="p-4 font-mono text-xs text-yellow-300">
                                     {favorite.user_id.slice(0, 8)}...
                                 </td>
-                                <td className="p-4 font-mono text-xs text-slate-300">
+                                <td className="p-4 font-mono text-xs text-yellow-300">
                                     {favorite.product_id.slice(0, 8)}...
                                 </td>
-                                <td className="p-4 text-slate-400">
+                                <td className="p-4 text-yellow-400">
                                     {formatDistanceToNow(new Date(favorite.created_at), {
                                         addSuffix: true,
                                     })}

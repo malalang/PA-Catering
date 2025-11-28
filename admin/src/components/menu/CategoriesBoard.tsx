@@ -44,11 +44,11 @@ export const CategoriesBoard = ({ categories }: Props) => {
     };
 
     return (
-        <div className="rounded-2xl border border-white/10 bg-slate-950/40 p-6">
+        <div className="rounded-2xl border border-white/10 bg-yellow-950/40 p-6">
             <div className="mb-4 flex items-center justify-between">
                 <div className="flex-1">
                     <h2 className="text-xl font-semibold text-white">Categories</h2>
-                    <p className="mt-1 text-sm text-slate-400">
+                    <p className="mt-1 text-sm text-yellow-400">
                         Manage menu categories and organize your products
                         {!isExpanded && ` • ${categories.length} categories`}
                     </p>
@@ -56,7 +56,7 @@ export const CategoriesBoard = ({ categories }: Props) => {
                 <button
                     type="button"
                     onClick={() => setIsExpanded(!isExpanded)}
-                    className="flex items-center gap-2 rounded-lg bg-slate-800 px-4 py-2 text-sm text-white hover:bg-slate-700"
+                    className="flex items-center gap-2 rounded-lg bg-yellow-800 px-4 py-2 text-sm text-white hover:bg-yellow-700"
                 >
                     {isExpanded ? (
                         <>
@@ -80,7 +80,7 @@ export const CategoriesBoard = ({ categories }: Props) => {
                             placeholder="Search categories..."
                             value={search}
                             onChange={(e) => setSearch(e.target.value)}
-                            className="w-full max-w-md rounded-full border border-white/10 bg-slate-900/60 px-4 py-3 text-white outline-none focus:border-indigo-400 focus:ring-2 focus:ring-indigo-400/40"
+                            className="w-full max-w-md rounded-full border border-white/10 bg-yellow-900/60 px-4 py-3 text-white outline-none focus:border-indigo-400 focus:ring-2 focus:ring-indigo-400/40"
                         />
                         <button
                             type="button"
@@ -146,16 +146,16 @@ const CreateCategoryForm = ({ onCancel }: CreateCategoryFormProps) => {
             <h3 className="mb-3 text-sm font-semibold text-white">Create New Category</h3>
             <form action={formAction} className="space-y-3">
                 <label className="block space-y-2 text-sm">
-                    <span className="text-slate-300">Category Name *</span>
+                    <span className="text-yellow-300">Category Name *</span>
                     <input
                         name="category_name"
                         required
-                        className="w-full rounded-lg border border-white/10 bg-slate-900/60 px-3 py-2 text-white outline-none focus:border-indigo-400 focus:ring-2 focus:ring-indigo-400/40"
+                        className="w-full rounded-lg border border-white/10 bg-yellow-900/60 px-3 py-2 text-white outline-none focus:border-indigo-400 focus:ring-2 focus:ring-indigo-400/40"
                     />
                 </label>
 
                 <label className="block space-y-2 text-sm">
-                    <span className="text-slate-300">Category Image</span>
+                    <span className="text-yellow-300">Category Image</span>
                     <ImageUpload
                         onChange={(url, path) => setUploadedPath(path || "")}
                         folder="categories"
@@ -164,11 +164,11 @@ const CreateCategoryForm = ({ onCancel }: CreateCategoryFormProps) => {
                 </label>
 
                 <label className="block space-y-2 text-sm">
-                    <span className="text-slate-300">Description</span>
+                    <span className="text-yellow-300">Description</span>
                     <textarea
                         name="description"
                         rows={3}
-                        className="w-full rounded-lg border border-white/10 bg-slate-900/60 px-3 py-2 text-white outline-none focus:border-indigo-400 focus:ring-2 focus:ring-indigo-400/40"
+                        className="w-full rounded-lg border border-white/10 bg-yellow-900/60 px-3 py-2 text-white outline-none focus:border-indigo-400 focus:ring-2 focus:ring-indigo-400/40"
                     />
                 </label>
 
@@ -176,9 +176,9 @@ const CreateCategoryForm = ({ onCancel }: CreateCategoryFormProps) => {
                     <input
                         name="is_hidden"
                         type="checkbox"
-                        className="h-4 w-4 rounded border-white/10 bg-slate-900/60 text-indigo-600 focus:ring-2 focus:ring-indigo-400/40"
+                        className="h-4 w-4 rounded border-white/10 bg-yellow-900/60 text-indigo-600 focus:ring-2 focus:ring-indigo-400/40"
                     />
-                    <span className="text-slate-300">Hide this category from public view</span>
+                    <span className="text-yellow-300">Hide this category from public view</span>
                 </label>
 
                 {state.error && <p className="text-sm text-rose-400">{state.error}</p>}
@@ -195,7 +195,7 @@ const CreateCategoryForm = ({ onCancel }: CreateCategoryFormProps) => {
                     <button
                         type="button"
                         onClick={handleCancel}
-                        className="rounded-lg bg-slate-800 px-4 py-2 text-sm text-white hover:bg-slate-700"
+                        className="rounded-lg bg-yellow-800 px-4 py-2 text-sm text-white hover:bg-yellow-700"
                     >
                         Cancel
                     </button>
@@ -235,23 +235,23 @@ const CategoryCard = ({
     };
 
     return (
-        <div className="rounded-2xl border border-white/10 bg-slate-900/40 p-4">
+        <div className="rounded-2xl border border-white/10 bg-yellow-900/40 p-4">
             {isEditing ? (
                 <form action={formAction} className="space-y-3">
                     <input type="hidden" name="id" value={category.id} />
 
                     <label className="block space-y-2 text-sm">
-                        <span className="text-slate-300">Category Name</span>
+                        <span className="text-yellow-300">Category Name</span>
                         <input
                             name="category_name"
                             defaultValue={category.category_name}
                             required
-                            className="w-full rounded-lg border border-white/10 bg-slate-900/60 px-3 py-2 text-white outline-none focus:border-indigo-400 focus:ring-2 focus:ring-indigo-400/40"
+                            className="w-full rounded-lg border border-white/10 bg-yellow-900/60 px-3 py-2 text-white outline-none focus:border-indigo-400 focus:ring-2 focus:ring-indigo-400/40"
                         />
                     </label>
 
                     <label className="block space-y-2 text-sm">
-                        <span className="text-slate-300">Category Image</span>
+                        <span className="text-yellow-300">Category Image</span>
                         <ImageUpload
                             defaultValue={category.image}
                             onChange={(url, path) => setUploadedPath(path || "")}
@@ -261,12 +261,12 @@ const CategoryCard = ({
                     </label>
 
                     <label className="block space-y-2 text-sm">
-                        <span className="text-slate-300">Description</span>
+                        <span className="text-yellow-300">Description</span>
                         <textarea
                             name="description"
                             rows={3}
                             defaultValue={category.description || ""}
-                            className="w-full rounded-lg border border-white/10 bg-slate-900/60 px-3 py-2 text-white outline-none focus:border-indigo-400 focus:ring-2 focus:ring-indigo-400/40"
+                            className="w-full rounded-lg border border-white/10 bg-yellow-900/60 px-3 py-2 text-white outline-none focus:border-indigo-400 focus:ring-2 focus:ring-indigo-400/40"
                         />
                     </label>
 
@@ -275,9 +275,9 @@ const CategoryCard = ({
                             name="is_hidden"
                             type="checkbox"
                             defaultChecked={category.is_hidden ?? false}
-                            className="h-4 w-4 rounded border-white/10 bg-slate-900/60 text-indigo-600 focus:ring-2 focus:ring-indigo-400/40"
+                            className="h-4 w-4 rounded border-white/10 bg-yellow-900/60 text-indigo-600 focus:ring-2 focus:ring-indigo-400/40"
                         />
-                        <span className="text-slate-300">Hide this category from public view</span>
+                        <span className="text-yellow-300">Hide this category from public view</span>
                     </label>
 
                     {state.error && <p className="text-sm text-rose-400">{state.error}</p>}
@@ -294,7 +294,7 @@ const CategoryCard = ({
                         <button
                             type="button"
                             onClick={handleCancel}
-                            className="rounded-lg bg-slate-800 px-4 py-2 text-sm text-white hover:bg-slate-700"
+                            className="rounded-lg bg-yellow-800 px-4 py-2 text-sm text-white hover:bg-yellow-700"
                         >
                             Cancel
                         </button>
@@ -319,7 +319,7 @@ const CategoryCard = ({
                                 {category.category_name}
                             </h3>
                             {category.description && (
-                                <p className="mt-1 text-sm text-slate-400">
+                                <p className="mt-1 text-sm text-yellow-400">
                                     {category.description}
                                 </p>
                             )}
@@ -328,7 +328,7 @@ const CategoryCard = ({
                             <button
                                 type="button"
                                 onClick={onEdit}
-                                className="rounded-lg bg-slate-800 px-3 py-1 text-xs text-white hover:bg-slate-700"
+                                className="rounded-lg bg-yellow-800 px-3 py-1 text-xs text-white hover:bg-yellow-700"
                             >
                                 Edit
                             </button>

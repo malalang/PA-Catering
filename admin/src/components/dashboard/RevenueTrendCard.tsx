@@ -12,7 +12,7 @@ export const RevenueTrendCard = ({ series }: Props) => (
     description="Daily gross sales captured via Supabase orders API."
   >
     {series.length === 0 ? (
-      <div className="flex h-32 items-center justify-center text-sm text-slate-500">
+      <div className="flex h-32 items-center justify-center text-sm text-yellow-500">
         No orders to chart yet.
       </div>
     ) : (
@@ -20,10 +20,10 @@ export const RevenueTrendCard = ({ series }: Props) => (
         {series.map((point) => (
           <li
             key={point.date}
-            className="flex items-center justify-between rounded-xl border border-white/5 bg-slate-900/40 px-3 py-2 text-sm"
+            className="flex items-center justify-between rounded-xl border border-white/5 bg-yellow-900/40 px-3 py-2 text-sm"
           >
             <div>
-              <p className="text-xs uppercase tracking-[0.3em] text-slate-500">
+              <p className="text-xs uppercase tracking-[0.3em] text-yellow-500">
                 {point.date}
               </p>
               <p className="text-lg font-semibold text-white">

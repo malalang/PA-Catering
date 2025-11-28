@@ -11,7 +11,7 @@ interface ProductCardProps {
 }
 
 const ProductCard: React.FC<ProductCardProps> = ({ product, categoryName }) => (
-	<article className='m-0 group flex flex-col h-full bg-gradient-to-br from-slate-900/80 to-slate-800/80 backdrop-blur-md border border-white/10 rounded-xl p-4 transition-all duration-300 hover:border-amber-400/40 hover:shadow-xl hover:shadow-amber-500/20'>
+	<article className='m-0 group flex flex-col h-full bg-gradient-to-br from-yellow-900/80 to-yellow-800/80 backdrop-blur-md border border-white/10 rounded-xl p-4 transition-all duration-300 hover:border-amber-400/40 hover:shadow-xl hover:shadow-amber-500/20'>
 		<span className='flex items-center justify-between gap-2 mb-3'>
 			{product.badge && (
 				<span className='px-3 py-1.5 rounded-full text-xs font-bold z-10 shadow-lg bg-gradient-to-r from-amber-600 to-yellow-600 text-white uppercase tracking-wider'>
@@ -47,7 +47,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, categoryName }) => (
 					<HiStar className='text-amber-500' size={18} />
 					<HiStar className='text-amber-500' size={18} />
 					<HiStar className='text-white/30' size={18} />
-					<span className='text-xs text-slate-400 font-semibold ml-2'>(4.5)</span>
+					<span className='text-xs text-yellow-400 font-semibold ml-2'>(4.5)</span>
 				</div>
 			</AppLink>
 		</div>

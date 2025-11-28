@@ -13,7 +13,7 @@ export default function PhotoBoothPage() {
 			<div className='grid md:grid-cols-2 gap-8 mb-12'>
 				<div className='flex flex-col justify-center'>
 					<h2 className='text-3xl font-bold text-white mb-4'>Premium 360° Photo Booth Experience</h2>
-					<p className='text-slate-300 mb-6'>
+					<p className='text-yellow-300 mb-6'>
 						Step into the spotlight with our state-of-the-art 360° photo booth! Create stunning, shareable content that captures every angle of your special moments. Perfect for events, celebrations, and creating unforgettable memories.
 					</p>
 					<AppLink
@@ -40,7 +40,7 @@ export default function PhotoBoothPage() {
 						<HiCamera className='text-amber-400 text-3xl' />
 					</div>
 					<h3 className='text-xl font-bold text-white mb-2'>360° Coverage</h3>
-					<p className='text-slate-300'>
+					<p className='text-yellow-300'>
 						Capture every angle with our rotating camera system that creates stunning slow-motion videos.
 					</p>
 				</div>
@@ -50,7 +50,7 @@ export default function PhotoBoothPage() {
 						<HiCamera className='text-amber-400 text-3xl' />
 					</div>
 					<h3 className='text-xl font-bold text-white mb-2'>Instant Sharing</h3>
-					<p className='text-slate-300'>
+					<p className='text-yellow-300'>
 						Get your videos instantly via email or QR code. Share directly to social media!
 					</p>
 				</div>
@@ -60,7 +60,7 @@ export default function PhotoBoothPage() {
 						<HiCamera className='text-amber-400 text-3xl' />
 					</div>
 					<h3 className='text-xl font-bold text-white mb-2'>Professional Quality</h3>
-					<p className='text-slate-300'>
+					<p className='text-yellow-300'>
 						High-definition cameras and professional lighting ensure stunning results every time.
 					</p>
 				</div>
@@ -72,8 +72,8 @@ export default function PhotoBoothPage() {
 				<div className='grid md:grid-cols-2 gap-6'>
 					<div className='bg-white/5 rounded-lg p-6 border border-white/10'>
 						<h3 className='text-xl font-bold text-amber-400 mb-2'>Individual Session</h3>
-						<p className='text-3xl font-bold text-white mb-4'>R50 <span className='text-lg text-slate-400'>/ person</span></p>
-						<ul className='text-slate-300 space-y-2'>
+						<p className='text-3xl font-bold text-white mb-4'>R50 <span className='text-lg text-yellow-400'>/ person</span></p>
+						<ul className='text-yellow-300 space-y-2'>
 							<li>✓ 1x 360° video</li>
 							<li>✓ Instant digital delivery</li>
 							<li>✓ Social media ready</li>
@@ -81,8 +81,8 @@ export default function PhotoBoothPage() {
 					</div>
 					<div className='bg-gradient-to-br from-amber-600/20 to-yellow-600/20 rounded-lg p-6 border border-amber-400/40'>
 						<h3 className='text-xl font-bold text-amber-400 mb-2'>Event Package</h3>
-						<p className='text-3xl font-bold text-white mb-4'>Contact <span className='text-lg text-slate-400'>/ event</span></p>
-						<ul className='text-slate-300 space-y-2'>
+						<p className='text-3xl font-bold text-white mb-4'>Contact <span className='text-lg text-yellow-400'>/ event</span></p>
+						<ul className='text-yellow-300 space-y-2'>
 							<li>✓ Unlimited sessions</li>
 							<li>✓ Custom branding options</li>
 							<li>✓ Dedicated attendant</li>

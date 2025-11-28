@@ -30,7 +30,7 @@ const OrderItem: React.FC<{ order: any }> = ({ order }) => {
 	const items = Array.isArray(order.items) ? order.items : (typeof order.items === 'string' ? JSON.parse(order.items) : []);
 
 	return (
-		<div className='rounded-xl border border-white/10 bg-gradient-to-br from-slate-900/80 to-slate-800/80 backdrop-blur-sm hover:border-amber-400/30 transition-all duration-300 hover:shadow-lg hover:shadow-amber-500/10 overflow-hidden'>
+		<div className='rounded-xl border border-white/10 bg-gradient-to-br from-yellow-900/80 to-yellow-800/80 backdrop-blur-sm hover:border-amber-400/30 transition-all duration-300 hover:shadow-lg hover:shadow-amber-500/10 overflow-hidden'>
 			{/* Order Header */}
 			<div className='bg-gradient-to-r from-amber-500/10 to-yellow-500/10 border-b border-white/10 px-6 py-4'>
 				<div className='flex flex-wrap items-center justify-between gap-4'>
@@ -39,7 +39,7 @@ const OrderItem: React.FC<{ order: any }> = ({ order }) => {
 							<HiShoppingBag className='text-amber-400 text-xl' />
 						</div>
 						<div>
-							<p className='text-xs text-slate-400 uppercase tracking-wider'>Order Date</p>
+							<p className='text-xs text-yellow-400 uppercase tracking-wider'>Order Date</p>
 							<p className='text-white font-semibold'>
 								{new Date(order.created_at).toLocaleDateString('en-US', {
 									year: 'numeric',
@@ -65,20 +65,20 @@ const OrderItem: React.FC<{ order: any }> = ({ order }) => {
 			<div className='px-6 py-5 space-y-4'>
 				{/* Order ID */}
 				<div className='bg-white/5 px-4 py-3 rounded-lg border border-white/10'>
-					<p className='text-xs text-slate-400 uppercase tracking-wider mb-1'>Order ID</p>
+					<p className='text-xs text-yellow-400 uppercase tracking-wider mb-1'>Order ID</p>
 					<p className='text-white font-mono text-sm break-all'>{order.id}</p>
 				</div>
 
 				{/* Products List */}
 				{items && items.length > 0 && (
 					<div className='bg-white/5 px-4 py-3 rounded-lg border border-white/10'>
-						<p className='text-xs text-slate-400 uppercase tracking-wider mb-3'>Items Ordered</p>
+						<p className='text-xs text-yellow-400 uppercase tracking-wider mb-3'>Items Ordered</p>
 						<div className='space-y-2'>
 							{items.map((item: any, index: number) => (
 								<div key={index} className='flex justify-between items-center py-2 border-b border-white/5 last:border-0'>
 									<div className='flex-1'>
 										<p className='text-white font-medium'>{item.name || item.Name}</p>
-										<p className='text-xs text-slate-400'>Qty: {item.quantity}</p>
+										<p className='text-xs text-yellow-400'>Qty: {item.quantity}</p>
 									</div>
 									<p className='text-amber-400 font-semibold'>
 										R{((item.price || item.Price) * item.quantity).toFixed(2)}
@@ -94,7 +94,7 @@ const OrderItem: React.FC<{ order: any }> = ({ order }) => {
 					<div className='bg-white/5 px-4 py-3 rounded-lg border border-white/10'>
 						<div className='flex items-center gap-2 mb-1'>
 							<HiCurrencyDollar className='text-amber-400' size={16} />
-							<p className='text-xs text-slate-400 uppercase tracking-wider'>Total</p>
+							<p className='text-xs text-yellow-400 uppercase tracking-wider'>Total</p>
 						</div>
 						<p className='text-white font-bold text-lg'>
 							R{order.total_price?.toFixed(2) || '0.00'}
@@ -104,7 +104,7 @@ const OrderItem: React.FC<{ order: any }> = ({ order }) => {
 					<div className='bg-white/5 px-4 py-3 rounded-lg border border-white/10'>
 						<div className='flex items-center gap-2 mb-1'>
 							<HiShoppingBag className='text-amber-400' size={16} />
-							<p className='text-xs text-slate-400 uppercase tracking-wider'>Items</p>
+							<p className='text-xs text-yellow-400 uppercase tracking-wider'>Items</p>
 						</div>
 						<p className='text-white font-bold text-lg'>
 							{order.total_quantity || 0}

@@ -12,7 +12,7 @@ export const LowInventoryCard = ({ items }: Props) => (
     description="Keep signature menu items available during peak demand."
   >
     {items.length === 0 ? (
-      <p className="text-sm text-slate-500">
+      <p className="text-sm text-yellow-500">
         All tracked items are within healthy stock levels.
       </p>
     ) : (

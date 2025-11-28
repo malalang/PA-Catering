@@ -11,7 +11,7 @@ function CartProductForm() {
 
 	if (!cartItems || cartItems.length === 0) {
 		return (
-			<div className='text-center bg-gradient-to-br from-slate-900/90 to-slate-800/90 backdrop-blur-xl p-12 rounded-2xl border border-white/10 shadow-2xl'>
+			<div className='text-center bg-gradient-to-br from-yellow-900/90 to-yellow-800/90 backdrop-blur-xl p-12 rounded-2xl border border-white/10 shadow-2xl'>
 				<div className='flex flex-col items-center gap-4'>
 					<div className='bg-gradient-to-br from-amber-500/20 to-yellow-500/20 p-6 rounded-full border border-amber-400/30'>
 						<HiShoppingCart className='text-6xl text-amber-400' />
@@ -19,7 +19,7 @@ function CartProductForm() {
 					<h2 className='text-3xl font-bold text-white'>
 						Your Cart is Empty
 					</h2>
-					<p className='text-slate-400 max-w-md'>
+					<p className='text-yellow-400 max-w-md'>
 						Start adding delicious items to your cart and place your order!
 					</p>
 				</div>
@@ -34,7 +34,7 @@ function CartProductForm() {
 			<ul className='space-y-3 px-2'>
 				{cartItems.map((item) => (
 					<li
-						className=' group rounded-xl border border-white/10 bg-gradient-to-br from-slate-900/80 to-slate-800/80 backdrop-blur-sm hover:border-amber-400/30 transition-all duration-300 hover:shadow-lg hover:shadow-amber-500/10'
+						className=' group rounded-xl border border-white/10 bg-gradient-to-br from-yellow-900/80 to-yellow-800/80 backdrop-blur-sm hover:border-amber-400/30 transition-all duration-300 hover:shadow-lg hover:shadow-amber-500/10'
 						key={item.ProductID}>
 						<article className='p-4 flex flex-col md:flex-row items-center justify-between gap-4'>
 							<ProductDetails item={item} />

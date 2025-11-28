@@ -36,9 +36,9 @@ export const PhotoBookingsBoard = ({ bookings }: Props) => {
                     placeholder="Search bookings..."
                     value={search}
                     onChange={(e) => setSearch(e.target.value)}
-                    className="w-full max-w-md rounded-full border border-white/10 bg-slate-900/60 px-4 py-3 text-white outline-none focus:border-indigo-400 focus:ring-2 focus:ring-indigo-400/40"
+                    className="w-full max-w-md rounded-full border border-white/10 bg-yellow-900/60 px-4 py-3 text-white outline-none focus:border-indigo-400 focus:ring-2 focus:ring-indigo-400/40"
                 />
-                <p className="text-xs uppercase tracking-[0.3em] text-slate-500">
+                <p className="text-xs uppercase tracking-[0.3em] text-yellow-500">
                     {filtered.length} bookings
                 </p>
             </div>
@@ -77,94 +77,94 @@ const BookingCard = ({
     );
 
     return (
-        <div className="rounded-2xl border border-white/10 bg-slate-900/40 p-4">
+        <div className="rounded-2xl border border-white/10 bg-yellow-900/40 p-4">
             {isEditing ? (
                 <form action={formAction} className="space-y-3">
                     <input type="hidden" name="id" value={booking.id} />
 
                     <div className="grid gap-3 md:grid-cols-2">
                         <label className="space-y-2 text-sm">
-                            <span className="text-slate-300">Name</span>
+                            <span className="text-yellow-300">Name</span>
                             <input
                                 name="name"
                                 defaultValue={booking.name}
                                 required
-                                className="w-full rounded-lg border border-white/10 bg-slate-900/60 px-3 py-2 text-white outline-none focus:border-indigo-400 focus:ring-2 focus:ring-indigo-400/40"
+                                className="w-full rounded-lg border border-white/10 bg-yellow-900/60 px-3 py-2 text-white outline-none focus:border-indigo-400 focus:ring-2 focus:ring-indigo-400/40"
                             />
                         </label>
                         <label className="space-y-2 text-sm">
-                            <span className="text-slate-300">Email</span>
+                            <span className="text-yellow-300">Email</span>
                             <input
                                 name="email"
                                 type="email"
                                 defaultValue={booking.email}
                                 required
-                                className="w-full rounded-lg border border-white/10 bg-slate-900/60 px-3 py-2 text-white outline-none focus:border-indigo-400 focus:ring-2 focus:ring-indigo-400/40"
+                                className="w-full rounded-lg border border-white/10 bg-yellow-900/60 px-3 py-2 text-white outline-none focus:border-indigo-400 focus:ring-2 focus:ring-indigo-400/40"
                             />
                         </label>
                     </div>
 
                     <div className="grid gap-3 md:grid-cols-2">
                         <label className="space-y-2 text-sm">
-                            <span className="text-slate-300">Phone</span>
+                            <span className="text-yellow-300">Phone</span>
                             <input
                                 name="phone"
                                 defaultValue={booking.phone || ""}
-                                className="w-full rounded-lg border border-white/10 bg-slate-900/60 px-3 py-2 text-white outline-none focus:border-indigo-400 focus:ring-2 focus:ring-indigo-400/40"
+                                className="w-full rounded-lg border border-white/10 bg-yellow-900/60 px-3 py-2 text-white outline-none focus:border-indigo-400 focus:ring-2 focus:ring-indigo-400/40"
                             />
                         </label>
                         <label className="space-y-2 text-sm">
-                            <span className="text-slate-300">Package</span>
+                            <span className="text-yellow-300">Package</span>
                             <input
                                 name="package"
                                 defaultValue={booking.package}
                                 required
-                                className="w-full rounded-lg border border-white/10 bg-slate-900/60 px-3 py-2 text-white outline-none focus:border-indigo-400 focus:ring-2 focus:ring-indigo-400/40"
+                                className="w-full rounded-lg border border-white/10 bg-yellow-900/60 px-3 py-2 text-white outline-none focus:border-indigo-400 focus:ring-2 focus:ring-indigo-400/40"
                             />
                         </label>
                     </div>
 
                     <div className="grid gap-3 md:grid-cols-3">
                         <label className="space-y-2 text-sm">
-                            <span className="text-slate-300">Date</span>
+                            <span className="text-yellow-300">Date</span>
                             <input
                                 name="date"
                                 type="date"
                                 defaultValue={booking.date}
                                 required
-                                className="w-full rounded-lg border border-white/10 bg-slate-900/60 px-3 py-2 text-white outline-none focus:border-indigo-400 focus:ring-2 focus:ring-indigo-400/40"
+                                className="w-full rounded-lg border border-white/10 bg-yellow-900/60 px-3 py-2 text-white outline-none focus:border-indigo-400 focus:ring-2 focus:ring-indigo-400/40"
                             />
                         </label>
                         <label className="space-y-2 text-sm">
-                            <span className="text-slate-300">Time</span>
+                            <span className="text-yellow-300">Time</span>
                             <input
                                 name="time"
                                 type="time"
                                 defaultValue={booking.time}
                                 required
-                                className="w-full rounded-lg border border-white/10 bg-slate-900/60 px-3 py-2 text-white outline-none focus:border-indigo-400 focus:ring-2 focus:ring-indigo-400/40"
+                                className="w-full rounded-lg border border-white/10 bg-yellow-900/60 px-3 py-2 text-white outline-none focus:border-indigo-400 focus:ring-2 focus:ring-indigo-400/40"
                             />
                         </label>
                         <label className="space-y-2 text-sm">
-                            <span className="text-slate-300">People</span>
+                            <span className="text-yellow-300">People</span>
                             <input
                                 name="people"
                                 type="number"
                                 min="1"
                                 defaultValue={booking.people}
                                 required
-                                className="w-full rounded-lg border border-white/10 bg-slate-900/60 px-3 py-2 text-white outline-none focus:border-indigo-400 focus:ring-2 focus:ring-indigo-400/40"
+                                className="w-full rounded-lg border border-white/10 bg-yellow-900/60 px-3 py-2 text-white outline-none focus:border-indigo-400 focus:ring-2 focus:ring-indigo-400/40"
                             />
                         </label>
                     </div>
 
                     <label className="block space-y-2 text-sm">
-                        <span className="text-slate-300">Message</span>
+                        <span className="text-yellow-300">Message</span>
                         <textarea
                             name="message"
                             rows={2}
                             defaultValue={booking.message || ""}
-                            className="w-full rounded-lg border border-white/10 bg-slate-900/60 px-3 py-2 text-white outline-none focus:border-indigo-400 focus:ring-2 focus:ring-indigo-400/40"
+                            className="w-full rounded-lg border border-white/10 bg-yellow-900/60 px-3 py-2 text-white outline-none focus:border-indigo-400 focus:ring-2 focus:ring-indigo-400/40"
                         />
                     </label>
 
@@ -182,7 +182,7 @@ const BookingCard = ({
                         <button
                             type="button"
                             onClick={onCancelEdit}
-                            className="rounded-lg bg-slate-800 px-4 py-2 text-sm text-white hover:bg-slate-700"
+                            className="rounded-lg bg-yellow-800 px-4 py-2 text-sm text-white hover:bg-yellow-700"
                         >
                             Cancel
                         </button>
@@ -193,15 +193,15 @@ const BookingCard = ({
                     <div className="flex items-start justify-between">
                         <div>
                             <h3 className="font-semibold text-white">{booking.name}</h3>
-                            <p className="text-sm text-slate-400">{booking.email}</p>
+                            <p className="text-sm text-yellow-400">{booking.email}</p>
                             {booking.phone && (
-                                <p className="text-sm text-slate-500">{booking.phone}</p>
+                                <p className="text-sm text-yellow-500">{booking.phone}</p>
                             )}
                         </div>
                         <button
                             type="button"
                             onClick={onEdit}
-                            className="rounded-lg bg-slate-800 px-3 py-1 text-xs text-white hover:bg-slate-700"
+                            className="rounded-lg bg-yellow-800 px-3 py-1 text-xs text-white hover:bg-yellow-700"
                         >
                             Edit
                         </button>
@@ -209,31 +209,31 @@ const BookingCard = ({
 
                     <div className="mt-4 grid gap-2 text-sm">
                         <div className="flex justify-between">
-                            <span className="text-slate-500">Package:</span>
+                            <span className="text-yellow-500">Package:</span>
                             <span className="font-medium text-white">{booking.package}</span>
                         </div>
                         <div className="flex justify-between">
-                            <span className="text-slate-500">Date:</span>
+                            <span className="text-yellow-500">Date:</span>
                             <span className="text-white">
                                 {format(new Date(booking.date), "PPP")}
                             </span>
                         </div>
                         <div className="flex justify-between">
-                            <span className="text-slate-500">Time:</span>
+                            <span className="text-yellow-500">Time:</span>
                             <span className="text-white">{booking.time}</span>
                         </div>
                         <div className="flex justify-between">
-                            <span className="text-slate-500">People:</span>
+                            <span className="text-yellow-500">People:</span>
                             <span className="text-white">{booking.people}</span>
                         </div>
                     </div>
 
                     {booking.message && (
-                        <div className="mt-3 rounded-lg bg-slate-950/40 p-3">
-                            <p className="text-xs uppercase tracking-[0.3em] text-slate-500">
+                        <div className="mt-3 rounded-lg bg-yellow-950/40 p-3">
+                            <p className="text-xs uppercase tracking-[0.3em] text-yellow-500">
                                 Message
                             </p>
-                            <p className="mt-1 text-sm text-slate-300">{booking.message}</p>
+                            <p className="mt-1 text-sm text-yellow-300">{booking.message}</p>
                         </div>
                     )}
                 </>

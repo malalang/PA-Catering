@@ -56,9 +56,9 @@ export const ProfilesBoard = ({ profiles, onViewProfile }: Props) => {
                     placeholder="Search profiles..."
                     value={search}
                     onChange={(e) => setSearch(e.target.value)}
-                    className="w-full max-w-md rounded-full border border-white/10 bg-slate-900/60 px-4 py-3 text-white outline-none focus:border-indigo-400 focus:ring-2 focus:ring-indigo-400/40"
+                    className="w-full max-w-md rounded-full border border-white/10 bg-yellow-900/60 px-4 py-3 text-white outline-none focus:border-indigo-400 focus:ring-2 focus:ring-indigo-400/40"
                 />
-                <p className="text-xs uppercase tracking-[0.3em] text-slate-500">
+                <p className="text-xs uppercase tracking-[0.3em] text-yellow-500">
                     {filtered.length} profiles
                 </p>
             </div>
@@ -109,36 +109,36 @@ const ProfileCard = ({
     const [state, formAction] = useFormState(updateProfileAction, initialState);
 
     return (
-        <div className="rounded-2xl border border-white/10 bg-slate-900/40 p-4">
+        <div className="rounded-2xl border border-white/10 bg-yellow-900/40 p-4">
             {isEditing ? (
                 <form action={formAction} className="space-y-3">
                     <input type="hidden" name="id" value={profile.id} />
 
                     <div className="grid gap-3 md:grid-cols-2">
                         <label className="space-y-2 text-sm">
-                            <span className="text-slate-300">Display Name</span>
+                            <span className="text-yellow-300">Display Name</span>
                             <input
                                 name="display_name"
                                 defaultValue={profile.display_name || ""}
-                                className="w-full rounded-lg border border-white/10 bg-slate-900/60 px-3 py-2 text-white outline-none focus:border-indigo-400 focus:ring-2 focus:ring-indigo-400/40"
+                                className="w-full rounded-lg border border-white/10 bg-yellow-900/60 px-3 py-2 text-white outline-none focus:border-indigo-400 focus:ring-2 focus:ring-indigo-400/40"
                             />
                         </label>
                         <label className="space-y-2 text-sm">
-                            <span className="text-slate-300">Phone</span>
+                            <span className="text-yellow-300">Phone</span>
                             <input
                                 name="phone"
                                 defaultValue={profile.phone || ""}
-                                className="w-full rounded-lg border border-white/10 bg-slate-900/60 px-3 py-2 text-white outline-none focus:border-indigo-400 focus:ring-2 focus:ring-indigo-400/40"
+                                className="w-full rounded-lg border border-white/10 bg-yellow-900/60 px-3 py-2 text-white outline-none focus:border-indigo-400 focus:ring-2 focus:ring-indigo-400/40"
                             />
                         </label>
                     </div>
 
                     <label className="block space-y-2 text-sm">
-                        <span className="text-slate-300">Role</span>
+                        <span className="text-yellow-300">Role</span>
                         <select
                             name="role"
                             defaultValue={profile.role}
-                            className="w-full rounded-lg border border-white/10 bg-slate-900/60 px-3 py-2 text-white outline-none focus:border-indigo-400 focus:ring-2 focus:ring-indigo-400/40"
+                            className="w-full rounded-lg border border-white/10 bg-yellow-900/60 px-3 py-2 text-white outline-none focus:border-indigo-400 focus:ring-2 focus:ring-indigo-400/40"
                         >
                             <option value="customer">Customer</option>
                             <option value="admin">Admin</option>
@@ -146,47 +146,47 @@ const ProfileCard = ({
                     </label>
 
                     <label className="block space-y-2 text-sm">
-                        <span className="text-slate-300">Address</span>
+                        <span className="text-yellow-300">Address</span>
                         <input
                             name="address"
                             defaultValue={profile.address || ""}
-                            className="w-full rounded-lg border border-white/10 bg-slate-900/60 px-3 py-2 text-white outline-none focus:border-indigo-400 focus:ring-2 focus:ring-indigo-400/40"
+                            className="w-full rounded-lg border border-white/10 bg-yellow-900/60 px-3 py-2 text-white outline-none focus:border-indigo-400 focus:ring-2 focus:ring-indigo-400/40"
                         />
                     </label>
 
                     <div className="grid gap-3 md:grid-cols-3">
                         <label className="space-y-2 text-sm">
-                            <span className="text-slate-300">City</span>
+                            <span className="text-yellow-300">City</span>
                             <input
                                 name="city"
                                 defaultValue={profile.city || ""}
-                                className="w-full rounded-lg border border-white/10 bg-slate-900/60 px-3 py-2 text-white outline-none focus:border-indigo-400 focus:ring-2 focus:ring-indigo-400/40"
+                                className="w-full rounded-lg border border-white/10 bg-yellow-900/60 px-3 py-2 text-white outline-none focus:border-indigo-400 focus:ring-2 focus:ring-indigo-400/40"
                             />
                         </label>
                         <label className="space-y-2 text-sm">
-                            <span className="text-slate-300">State</span>
+                            <span className="text-yellow-300">State</span>
                             <input
                                 name="state"
                                 defaultValue={profile.state || ""}
-                                className="w-full rounded-lg border border-white/10 bg-slate-900/60 px-3 py-2 text-white outline-none focus:border-indigo-400 focus:ring-2 focus:ring-indigo-400/40"
+                                className="w-full rounded-lg border border-white/10 bg-yellow-900/60 px-3 py-2 text-white outline-none focus:border-indigo-400 focus:ring-2 focus:ring-indigo-400/40"
                             />
                         </label>
                         <label className="space-y-2 text-sm">
-                            <span className="text-slate-300">Zip Code</span>
+                            <span className="text-yellow-300">Zip Code</span>
                             <input
                                 name="zip_code"
                                 defaultValue={profile.zip_code || ""}
-                                className="w-full rounded-lg border border-white/10 bg-slate-900/60 px-3 py-2 text-white outline-none focus:border-indigo-400 focus:ring-2 focus:ring-indigo-400/40"
+                                className="w-full rounded-lg border border-white/10 bg-yellow-900/60 px-3 py-2 text-white outline-none focus:border-indigo-400 focus:ring-2 focus:ring-indigo-400/40"
                             />
                         </label>
                     </div>
 
                     <label className="block space-y-2 text-sm">
-                        <span className="text-slate-300">Country</span>
+                        <span className="text-yellow-300">Country</span>
                         <input
                             name="country"
                             defaultValue={profile.country || ""}
-                            className="w-full rounded-lg border border-white/10 bg-slate-900/60 px-3 py-2 text-white outline-none focus:border-indigo-400 focus:ring-2 focus:ring-indigo-400/40"
+                            className="w-full rounded-lg border border-white/10 bg-yellow-900/60 px-3 py-2 text-white outline-none focus:border-indigo-400 focus:ring-2 focus:ring-indigo-400/40"
                         />
                     </label>
 
@@ -198,13 +198,13 @@ const ProfileCard = ({
                         <div className="grid gap-2 text-sm">
 
                             <div className="flex justify-between">
-                                <span className="text-slate-400">User ID:</span>
-                                <span className="font-mono text-xs text-slate-300">
+                                <span className="text-yellow-400">User ID:</span>
+                                <span className="font-mono text-xs text-yellow-300">
                                     {profile.uid?.slice(0, 12)}...
                                 </span>
                             </div>
                             <div className="flex justify-between">
-                                <span className="text-slate-400">Tier Status:</span>
+                                <span className="text-yellow-400">Tier Status:</span>
                                 <span className="font-semibold text-white">{profile.tier_status}</span>
                             </div>
 
@@ -225,7 +225,7 @@ const ProfileCard = ({
                         <button
                             type="button"
                             onClick={onCancelEdit}
-                            className="rounded-lg bg-slate-800 px-4 py-2 text-sm text-white hover:bg-slate-700"
+                            className="rounded-lg bg-yellow-800 px-4 py-2 text-sm text-white hover:bg-yellow-700"
                         >
                             Cancel
                         </button>
@@ -243,11 +243,11 @@ const ProfileCard = ({
                                     {profile.role}
                                 </span>
                             </div>
-                            <p className="text-sm text-slate-400">{profile.email}</p>
+                            <p className="text-sm text-yellow-400">{profile.email}</p>
                             {profile.phone && (
-                                <p className="text-sm text-slate-500">{profile.phone}</p>
+                                <p className="text-sm text-yellow-500">{profile.phone}</p>
                             )}
-                            <p className="mt-1 text-xs text-slate-600">
+                            <p className="mt-1 text-xs text-yellow-600">
                                 Last login:{" "}
                                 {profile.last_login
                                     ? formatDistanceToNow(new Date(profile.last_login), {
@@ -269,7 +269,7 @@ const ProfileCard = ({
                             <button
                                 type="button"
                                 onClick={onEdit}
-                                className="rounded-lg bg-slate-800 px-3 py-1 text-xs text-white hover:bg-slate-700"
+                                className="rounded-lg bg-yellow-800 px-3 py-1 text-xs text-white hover:bg-yellow-700"
                             >
                                 Edit
                             </button>
@@ -277,7 +277,7 @@ const ProfileCard = ({
                     </div>
 
                     {profile.address && (
-                        <div className="mt-3 text-sm text-slate-400">
+                        <div className="mt-3 text-sm text-yellow-400">
                             <p>{profile.address}</p>
                             <p>
                                 {[profile.city, profile.state, profile.zip_code]
@@ -291,7 +291,7 @@ const ProfileCard = ({
 
                     <div className="mt-3 grid grid-cols-2 gap-2 text-sm">
                         <div>
-                            <p className="text-xs text-slate-500">Tier Status</p>
+                            <p className="text-xs text-yellow-500">Tier Status</p>
                             <p className="font-semibold text-white">{profile.tier_status}</p>
                         </div>
                     </div>

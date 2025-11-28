@@ -92,11 +92,11 @@ export const ProductBoard = ({ products, comments, favorites, onAddProduct }: Pr
   };
 
   return (
-    <div className="rounded-2xl border border-white/10 bg-slate-950/40 p-6">
+    <div className="rounded-2xl border border-white/10 bg-yellow-950/40 p-6">
       <div className="mb-4 flex items-center justify-between">
         <div className="flex-1">
           <h2 className="text-xl font-semibold text-white">Menu Management</h2>
-          <p className="mt-1 text-sm text-slate-400">
+          <p className="mt-1 text-sm text-yellow-400">
             Control availability, pricing, and storytelling for every PA Catering experience
             {!isExpanded && ` • ${products.length} products`}
           </p>
@@ -104,7 +104,7 @@ export const ProductBoard = ({ products, comments, favorites, onAddProduct }: Pr
         <button
           type="button"
           onClick={() => setIsExpanded(!isExpanded)}
-          className="flex items-center gap-2 rounded-lg bg-slate-800 px-4 py-2 text-sm text-white hover:bg-slate-700"
+          className="flex items-center gap-2 rounded-lg bg-yellow-800 px-4 py-2 text-sm text-white hover:bg-yellow-700"
         >
           {isExpanded ? (
             <>
@@ -124,29 +124,29 @@ export const ProductBoard = ({ products, comments, favorites, onAddProduct }: Pr
         <div className="space-y-5">
           {/* Insights - Full Width */}
           <div className="space-y-4">
-            <div className="rounded-xl border border-white/10 bg-slate-900/50 p-4">
-              <p className="mb-3 text-xs uppercase tracking-[0.3em] text-slate-500">
+            <div className="rounded-xl border border-white/10 bg-yellow-900/50 p-4">
+              <p className="mb-3 text-xs uppercase tracking-[0.3em] text-yellow-500">
                 Product Insights
               </p>
               <div className="grid grid-cols-2 gap-4 md:grid-cols-5">
                 <div className="text-center">
-                  <p className="text-xs text-slate-400">Avg Price</p>
+                  <p className="text-xs text-yellow-400">Avg Price</p>
                   <p className="mt-1 text-lg font-semibold text-white">R{avgPrice.toFixed(2)}</p>
                 </div>
                 <div className="text-center">
-                  <p className="text-xs text-slate-400">Total Stock</p>
+                  <p className="text-xs text-yellow-400">Total Stock</p>
                   <p className="mt-1 text-lg font-semibold text-white">{totalStock}</p>
                 </div>
                 <div className="text-center">
-                  <p className="text-xs text-slate-400">Low Stock</p>
+                  <p className="text-xs text-yellow-400">Low Stock</p>
                   <p className="mt-1 text-lg font-semibold text-yellow-400">{lowStock}</p>
                 </div>
                 <div className="text-center">
-                  <p className="text-xs text-slate-400">Out of Stock</p>
+                  <p className="text-xs text-yellow-400">Out of Stock</p>
                   <p className="mt-1 text-lg font-semibold text-rose-400">{outOfStock}</p>
                 </div>
                 <div className="text-center">
-                  <p className="text-xs text-slate-400">Total Value</p>
+                  <p className="text-xs text-yellow-400">Total Value</p>
                   <p className="mt-1 text-lg font-semibold text-emerald-400">R{totalValue.toFixed(2)}</p>
                 </div>
               </div>
@@ -154,15 +154,15 @@ export const ProductBoard = ({ products, comments, favorites, onAddProduct }: Pr
 
             {/* Favorites Summary */}
             {productsWithFavorites.length > 0 && (
-              <div className="rounded-xl border border-white/10 bg-slate-900/50 p-4">
-                <p className="mb-3 text-xs uppercase tracking-[0.3em] text-slate-500">
+              <div className="rounded-xl border border-white/10 bg-yellow-900/50 p-4">
+                <p className="mb-3 text-xs uppercase tracking-[0.3em] text-yellow-500">
                   Top Favorited Products
                 </p>
                 <div className="space-y-2">
                   {productsWithFavorites.map(({ product, count }) => (
                     <div
                       key={product!.id}
-                      className="flex items-center justify-between rounded-lg bg-slate-800/40 px-3 py-2"
+                      className="flex items-center justify-between rounded-lg bg-yellow-800/40 px-3 py-2"
                     >
                       <span className="text-sm text-white">{product!.name}</span>
                       <span className="text-xs text-emerald-400">{count} favorites</span>
@@ -175,23 +175,23 @@ export const ProductBoard = ({ products, comments, favorites, onAddProduct }: Pr
 
           {/* Search and Category Filters */}
           <div className="grid gap-3 md:grid-cols-2">
-            <label className="space-y-2 text-sm text-slate-300">
+            <label className="space-y-2 text-sm text-yellow-300">
               <span>Search</span>
               <input
                 type="search"
                 placeholder="Name or description"
                 value={search}
                 onChange={(event) => setSearch(event.target.value)}
-                className="w-full rounded-xl border border-white/10 bg-slate-900/60 px-3 py-2 text-white outline-none focus:border-indigo-400 focus:ring-2 focus:ring-indigo-400/40"
+                className="w-full rounded-xl border border-white/10 bg-yellow-900/60 px-3 py-2 text-white outline-none focus:border-indigo-400 focus:ring-2 focus:ring-indigo-400/40"
               />
             </label>
 
-            <label className="space-y-2 text-sm text-slate-300">
+            <label className="space-y-2 text-sm text-yellow-300">
               <span>Category</span>
               <select
                 value={category}
                 onChange={(event) => setCategory(event.target.value)}
-                className="w-full rounded-xl border border-white/10 bg-slate-900/60 px-3 py-2 text-white outline-none focus:border-indigo-400 focus:ring-2 focus:ring-indigo-400/40"
+                className="w-full rounded-xl border border-white/10 bg-yellow-900/60 px-3 py-2 text-white outline-none focus:border-indigo-400 focus:ring-2 focus:ring-indigo-400/40"
               >
                 {categories.map((item) => (
                   <option key={item} value={item}>
@@ -209,7 +209,7 @@ export const ProductBoard = ({ products, comments, favorites, onAddProduct }: Pr
                 onClick={() => setViewMode("list")}
                 className={`rounded-lg px-3 py-1.5 text-sm ${viewMode === "list"
                   ? "bg-indigo-600 text-white"
-                  : "bg-slate-800 text-slate-400 hover:text-white"
+                  : "bg-yellow-800 text-yellow-400 hover:text-white"
                   }`}
               >
                 List
@@ -219,7 +219,7 @@ export const ProductBoard = ({ products, comments, favorites, onAddProduct }: Pr
                 onClick={() => setViewMode("grid")}
                 className={`rounded-lg px-3 py-1.5 text-sm ${viewMode === "grid"
                   ? "bg-indigo-600 text-white"
-                  : "bg-slate-800 text-slate-400 hover:text-white"
+                  : "bg-yellow-800 text-yellow-400 hover:text-white"
                   }`}
               >
                 Grid
@@ -240,14 +240,14 @@ export const ProductBoard = ({ products, comments, favorites, onAddProduct }: Pr
 
           <div className={viewMode === "grid" ? "grid gap-4 md:grid-cols-2 lg:grid-cols-3" : "grid gap-4 md:grid-cols-2"}>
             {productData.length === 0 ? (
-              <div className="col-span-full rounded-2xl border border-white/10 bg-slate-900/40 p-8 text-center text-slate-500">
+              <div className="col-span-full rounded-2xl border border-white/10 bg-yellow-900/40 p-8 text-center text-yellow-500">
                 No menu items match your filters.
               </div>
             ) : (
               productData.map((product) => (
                 <article
                   key={product.id}
-                  className="rounded-2xl border border-white/10 bg-slate-900/40 p-4 shadow-inner shadow-black/30"
+                  className="rounded-2xl border border-white/10 bg-yellow-900/40 p-4 shadow-inner shadow-black/30"
                 >
                   {product.image_url && (
                     <div className="relative mb-4 aspect-[4/3] w-full overflow-hidden rounded-md bg-black/20">
@@ -262,13 +262,13 @@ export const ProductBoard = ({ products, comments, favorites, onAddProduct }: Pr
 
                   <div className="flex items-start justify-between gap-4">
                     <div className="flex-1">
-                      <p className="text-xs uppercase tracking-[0.3em] text-slate-500">
+                      <p className="text-xs uppercase tracking-[0.3em] text-yellow-500">
                         {product.category_name ?? "Uncategorised"}
                       </p>
                       <h3 className="text-lg font-semibold text-white">
                         {product.name}
                       </h3>
-                      <p className="text-sm text-slate-400">
+                      <p className="text-sm text-yellow-400">
                         {product.description ?? "No description yet."}
                       </p>
                     </div>
@@ -276,12 +276,12 @@ export const ProductBoard = ({ products, comments, favorites, onAddProduct }: Pr
                       <p className="text-2xl font-semibold text-white">
                         R{product.price?.toFixed(2) ?? "0.00"}
                       </p>
-                      <p className="text-xs text-slate-500">
+                      <p className="text-xs text-yellow-500">
                         {product.stock ?? 0} in stock
                       </p>
                       <Link
                         href={`/menu/products/${product.id}/edit`}
-                        className="mt-2 flex items-center gap-1 rounded-lg bg-slate-800 px-3 py-1.5 text-xs text-white hover:bg-slate-700"
+                        className="mt-2 flex items-center gap-1 rounded-lg bg-yellow-800 px-3 py-1.5 text-xs text-white hover:bg-yellow-700"
                       >
                         <HiOutlinePencil className="h-3 w-3" />
                         Edit
@@ -296,12 +296,12 @@ export const ProductBoard = ({ products, comments, favorites, onAddProduct }: Pr
                   )}
 
                   {/* Product Stats */}
-                  <div className="mt-3 flex items-center gap-4 text-xs text-slate-500">
+                  <div className="mt-3 flex items-center gap-4 text-xs text-yellow-500">
                     <span>{product.likes?.length ?? 0} likes</span>
                     <button
                       type="button"
                       onClick={() => toggleComments(product.id)}
-                      className="flex items-center gap-1 hover:text-slate-300"
+                      className="flex items-center gap-1 hover:text-yellow-300"
                     >
                       <HiOutlineChatBubbleLeft className="h-3 w-3" />
                       {product.comments.length} comments
@@ -310,26 +310,26 @@ export const ProductBoard = ({ products, comments, favorites, onAddProduct }: Pr
 
                   {/* Comments Section */}
                   {expandedComments.has(product.id) && (
-                    <div className="mt-3 rounded-lg border border-white/10 bg-slate-800/40 p-3">
-                      <h4 className="mb-2 text-xs font-semibold uppercase tracking-wider text-slate-400">
+                    <div className="mt-3 rounded-lg border border-white/10 bg-yellow-800/40 p-3">
+                      <h4 className="mb-2 text-xs font-semibold uppercase tracking-wider text-yellow-400">
                         Comments
                       </h4>
                       {product.comments.length === 0 ? (
-                        <p className="text-xs text-slate-500">No comments yet</p>
+                        <p className="text-xs text-yellow-500">No comments yet</p>
                       ) : (
                         <div className="space-y-2">
                           {product.comments.map((comment) => (
                             <div
                               key={comment.id}
-                              className="rounded bg-slate-900/60 p-2"
+                              className="rounded bg-yellow-900/60 p-2"
                             >
                               <p className="text-xs font-semibold text-white">
                                 {comment.user_name || "Anonymous"}
                               </p>
-                              <p className="mt-1 text-xs text-slate-300">
+                              <p className="mt-1 text-xs text-yellow-300">
                                 {comment.body}
                               </p>
-                              <p className="mt-1 text-xs text-slate-600">
+                              <p className="mt-1 text-xs text-yellow-600">
                                 {new Date(comment.created_at).toLocaleDateString()}
                               </p>
                             </div>

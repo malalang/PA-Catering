@@ -29,14 +29,14 @@ export const UpdateOrderStatusForm = ({ orderId, currentStatus }: Props) => {
   );
 
   return (
-    <form action={formAction} className="space-y-2 text-sm text-slate-200">
+    <form action={formAction} className="space-y-2 text-sm text-yellow-200">
       <input type="hidden" name="orderId" value={orderId} />
-      <label className="space-y-1 text-xs uppercase tracking-[0.3em] text-slate-500">
+      <label className="space-y-1 text-xs uppercase tracking-[0.3em] text-yellow-500">
         Status
         <select
           name="status"
           defaultValue={currentStatus}
-          className="mt-1 w-full rounded-lg border border-white/10 bg-slate-900/60 px-3 py-2 text-white outline-none focus:border-indigo-400 focus:ring-2 focus:ring-indigo-400/40"
+          className="mt-1 w-full rounded-lg border border-white/10 bg-yellow-900/60 px-3 py-2 text-white outline-none focus:border-indigo-400 focus:ring-2 focus:ring-indigo-400/40"
         >
           {STATUSES.map((status) => (
             <option key={status} value={status}>
@@ -56,7 +56,7 @@ export const UpdateOrderStatusForm = ({ orderId, currentStatus }: Props) => {
       <SubmitButton
         label="Update status"
         loadingLabel="Updating..."
-        className="bg-slate-800 px-3 py-2 text-xs"
+        className="bg-yellow-800 px-3 py-2 text-xs"
       />
     </form>
   );

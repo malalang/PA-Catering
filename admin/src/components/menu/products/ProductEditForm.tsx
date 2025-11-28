@@ -45,28 +45,28 @@ export const ProductEditForm = ({ product, categories }: Props) => {
 
     return (
         <div className="space-y-6">
-            <form action={formAction} className="rounded-2xl border border-white/10 bg-slate-900/40 p-6 space-y-4">
+            <form action={formAction} className="rounded-2xl border border-white/10 bg-yellow-900/40 p-6 space-y-4">
                 <input type="hidden" name="id" value={product.id} />
 
                 <div className="grid gap-4 md:grid-cols-2">
                     <label className="space-y-2 text-sm">
-                        <span className="text-slate-300">Product Name *</span>
+                        <span className="text-yellow-300">Product Name *</span>
                         <input
                             name="name"
                             type="text"
                             required
                             defaultValue={product.name}
-                            className="w-full rounded-lg border border-white/10 bg-slate-900/60 px-3 py-2 text-white outline-none focus:border-indigo-400 focus:ring-2 focus:ring-indigo-400/40"
+                            className="w-full rounded-lg border border-white/10 bg-yellow-900/60 px-3 py-2 text-white outline-none focus:border-indigo-400 focus:ring-2 focus:ring-indigo-400/40"
                         />
                     </label>
 
                     <label className="space-y-2 text-sm">
-                        <span className="text-slate-300">Category *</span>
+                        <span className="text-yellow-300">Category *</span>
                         <select
                             name="category"
                             required
                             defaultValue={product.category_name ?? ""}
-                            className="w-full rounded-lg border border-white/10 bg-slate-900/60 px-3 py-2 text-white outline-none focus:border-indigo-400 focus:ring-2 focus:ring-indigo-400/40"
+                            className="w-full rounded-lg border border-white/10 bg-yellow-900/60 px-3 py-2 text-white outline-none focus:border-indigo-400 focus:ring-2 focus:ring-indigo-400/40"
                         >
                             {categories.map((cat) => (
                                 <option key={cat} value={cat}>
@@ -79,7 +79,7 @@ export const ProductEditForm = ({ product, categories }: Props) => {
 
                 <div className="grid gap-4 md:grid-cols-2">
                     <label className="space-y-2 text-sm">
-                        <span className="text-slate-300">Price (ZAR) *</span>
+                        <span className="text-yellow-300">Price (ZAR) *</span>
                         <input
                             name="price"
                             type="number"
@@ -87,25 +87,25 @@ export const ProductEditForm = ({ product, categories }: Props) => {
                             min="0"
                             required
                             defaultValue={product.price ?? 0}
-                            className="w-full rounded-lg border border-white/10 bg-slate-900/60 px-3 py-2 text-white outline-none focus:border-indigo-400 focus:ring-2 focus:ring-indigo-400/40"
+                            className="w-full rounded-lg border border-white/10 bg-yellow-900/60 px-3 py-2 text-white outline-none focus:border-indigo-400 focus:ring-2 focus:ring-indigo-400/40"
                         />
                     </label>
 
                     <label className="space-y-2 text-sm">
-                        <span className="text-slate-300">Stock *</span>
+                        <span className="text-yellow-300">Stock *</span>
                         <input
                             name="stock"
                             type="number"
                             min="0"
                             required
                             defaultValue={product.stock ?? 0}
-                            className="w-full rounded-lg border border-white/10 bg-slate-900/60 px-3 py-2 text-white outline-none focus:border-indigo-400 focus:ring-2 focus:ring-indigo-400/40"
+                            className="w-full rounded-lg border border-white/10 bg-yellow-900/60 px-3 py-2 text-white outline-none focus:border-indigo-400 focus:ring-2 focus:ring-indigo-400/40"
                         />
                     </label>
                 </div>
 
                 <label className="block space-y-2 text-sm">
-                    <span className="text-slate-300">Product Image</span>
+                    <span className="text-yellow-300">Product Image</span>
                     <ImageUpload
                         defaultValue={product.image_url}
                         onChange={(url, path) => setUploadedPath(path || "")}
@@ -114,22 +114,22 @@ export const ProductEditForm = ({ product, categories }: Props) => {
                 </label>
 
                 <label className="block space-y-2 text-sm">
-                    <span className="text-slate-300">Badge</span>
+                    <span className="text-yellow-300">Badge</span>
                     <input
                         name="badge"
                         defaultValue={product.badge ?? ""}
                         placeholder="Chef's pick, New, Bestseller, etc."
-                        className="w-full rounded-lg border border-white/10 bg-slate-900/60 px-3 py-2 text-white outline-none focus:border-indigo-400 focus:ring-2 focus:ring-indigo-400/40"
+                        className="w-full rounded-lg border border-white/10 bg-yellow-900/60 px-3 py-2 text-white outline-none focus:border-indigo-400 focus:ring-2 focus:ring-indigo-400/40"
                     />
                 </label>
 
                 <label className="block space-y-2 text-sm">
-                    <span className="text-slate-300">Description</span>
+                    <span className="text-yellow-300">Description</span>
                     <textarea
                         name="description"
                         rows={4}
                         defaultValue={product.description ?? ""}
-                        className="w-full rounded-lg border border-white/10 bg-slate-900/60 px-3 py-2 text-white outline-none focus:border-indigo-400 focus:ring-2 focus:ring-indigo-400/40"
+                        className="w-full rounded-lg border border-white/10 bg-yellow-900/60 px-3 py-2 text-white outline-none focus:border-indigo-400 focus:ring-2 focus:ring-indigo-400/40"
                     />
                 </label>
 
@@ -138,9 +138,9 @@ export const ProductEditForm = ({ product, categories }: Props) => {
                         name="is_hidden"
                         type="checkbox"
                         defaultChecked={product.is_hidden ?? false}
-                        className="h-4 w-4 rounded border-white/10 bg-slate-900/60 text-indigo-600 focus:ring-2 focus:ring-indigo-400/40"
+                        className="h-4 w-4 rounded border-white/10 bg-yellow-900/60 text-indigo-600 focus:ring-2 focus:ring-indigo-400/40"
                     />
-                    <span className="text-slate-300">Hide this product from public view</span>
+                    <span className="text-yellow-300">Hide this product from public view</span>
                 </label>
 
                 {state.error && <p className="text-sm text-rose-400">{state.error}</p>}
@@ -157,7 +157,7 @@ export const ProductEditForm = ({ product, categories }: Props) => {
                     <button
                         type="button"
                         onClick={handleCancel}
-                        className="rounded-lg bg-slate-800 px-4 py-2 text-sm text-white hover:bg-slate-700"
+                        className="rounded-lg bg-yellow-800 px-4 py-2 text-sm text-white hover:bg-yellow-700"
                     >
                         Cancel
                     </button>
@@ -167,7 +167,7 @@ export const ProductEditForm = ({ product, categories }: Props) => {
             {/* Delete Section */}
             <div className="rounded-2xl border border-rose-500/30 bg-rose-500/5 p-6">
                 <h3 className="text-lg font-semibold text-white">Danger Zone</h3>
-                <p className="mt-1 text-sm text-slate-400">
+                <p className="mt-1 text-sm text-yellow-400">
                     Permanently delete this product. This action cannot be undone.
                 </p>
                 <button

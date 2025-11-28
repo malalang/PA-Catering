@@ -17,14 +17,14 @@ export const ProfileDetailModal = ({ profile, orders, favorites, onClose }: Prop
 
     return (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-4 backdrop-blur-sm">
-            <div className="w-full max-w-4xl max-h-[90vh] overflow-y-auto rounded-2xl border border-white/10 bg-slate-900/95 p-6">
+            <div className="w-full max-w-4xl max-h-[90vh] overflow-y-auto rounded-2xl border border-white/10 bg-yellow-900/95 p-6">
                 {/* Header */}
                 <div className="mb-6 flex items-start justify-between">
                     <div>
                         <h2 className="text-2xl font-bold text-white">
                             {profile.display_name || "No name"}
                         </h2>
-                        <p className="text-sm text-slate-400">{profile.email}</p>
+                        <p className="text-sm text-yellow-400">{profile.email}</p>
                         <div className="mt-2 flex gap-2">
                             <span className="rounded-full bg-indigo-500/20 px-2 py-0.5 text-xs font-medium uppercase text-indigo-300">
                                 {profile.role}
@@ -38,7 +38,7 @@ export const ProfileDetailModal = ({ profile, orders, favorites, onClose }: Prop
                     <button
                         type="button"
                         onClick={onClose}
-                        className="rounded-lg bg-slate-800 p-2 text-white hover:bg-slate-700"
+                        className="rounded-lg bg-yellow-800 p-2 text-white hover:bg-yellow-700"
                     >
                         <HiXMark className="h-5 w-5" />
                     </button>
@@ -51,7 +51,7 @@ export const ProfileDetailModal = ({ profile, orders, favorites, onClose }: Prop
                         onClick={() => setActiveTab("info")}
                         className={`px-4 py-2 text-sm font-medium transition-colors ${activeTab === "info"
                             ? "border-b-2 border-indigo-500 text-indigo-400"
-                            : "text-slate-400 hover:text-white"
+                            : "text-yellow-400 hover:text-white"
                             }`}
                     >
                         Profile Info
@@ -61,7 +61,7 @@ export const ProfileDetailModal = ({ profile, orders, favorites, onClose }: Prop
                         onClick={() => setActiveTab("orders")}
                         className={`flex items-center gap-2 px-4 py-2 text-sm font-medium transition-colors ${activeTab === "orders"
                             ? "border-b-2 border-indigo-500 text-indigo-400"
-                            : "text-slate-400 hover:text-white"
+                            : "text-yellow-400 hover:text-white"
                             }`}
                     >
                         <HiOutlineShoppingBag className="h-4 w-4" />
@@ -72,7 +72,7 @@ export const ProfileDetailModal = ({ profile, orders, favorites, onClose }: Prop
                         onClick={() => setActiveTab("favorites")}
                         className={`flex items-center gap-2 px-4 py-2 text-sm font-medium transition-colors ${activeTab === "favorites"
                             ? "border-b-2 border-indigo-500 text-indigo-400"
-                            : "text-slate-400 hover:text-white"
+                            : "text-yellow-400 hover:text-white"
                             }`}
                     >
                         <HiOutlineHeart className="h-4 w-4" />
@@ -113,19 +113,19 @@ export const ProfileDetailModal = ({ profile, orders, favorites, onClose }: Prop
                     {activeTab === "orders" && (
                         <div className="space-y-3">
                             {orders.length === 0 ? (
-                                <p className="text-center text-sm text-slate-500">No orders yet</p>
+                                <p className="text-center text-sm text-yellow-500">No orders yet</p>
                             ) : (
                                 orders.map((order) => (
                                     <div
                                         key={order.id}
-                                        className="rounded-lg border border-white/10 bg-slate-800/40 p-4"
+                                        className="rounded-lg border border-white/10 bg-yellow-800/40 p-4"
                                     >
                                         <div className="flex items-start justify-between">
                                             <div>
                                                 <p className="font-semibold text-white">
                                                     Order #{order.id.slice(0, 8)}
                                                 </p>
-                                                <p className="text-sm text-slate-400">
+                                                <p className="text-sm text-yellow-400">
                                                     {formatDistanceToNow(new Date(order.created_at), {
                                                         addSuffix: true,
                                                     })}
@@ -136,7 +136,7 @@ export const ProfileDetailModal = ({ profile, orders, favorites, onClose }: Prop
                                             </span>
                                         </div>
                                         <div className="mt-2 flex justify-between text-sm">
-                                            <span className="text-slate-400">Total:</span>
+                                            <span className="text-yellow-400">Total:</span>
                                             <span className="font-semibold text-white">
                                                 ${order.total_price?.toFixed(2) || "0.00"}
                                             </span>
@@ -150,12 +150,12 @@ export const ProfileDetailModal = ({ profile, orders, favorites, onClose }: Prop
                     {activeTab === "favorites" && (
                         <div className="grid gap-3 md:grid-cols-2">
                             {favorites.length === 0 ? (
-                                <p className="col-span-2 text-center text-sm text-slate-500">No favorites yet</p>
+                                <p className="col-span-2 text-center text-sm text-yellow-500">No favorites yet</p>
                             ) : (
                                 favorites.map((fav: any) => (
                                     <div
                                         key={fav.product_id}
-                                        className="rounded-lg border border-white/10 bg-slate-800/40 p-3"
+                                        className="rounded-lg border border-white/10 bg-yellow-800/40 p-3"
                                     >
                                         <div className="flex items-center gap-3">
                                             {fav.products?.image_url && (
@@ -169,7 +169,7 @@ export const ProfileDetailModal = ({ profile, orders, favorites, onClose }: Prop
                                                 <p className="font-semibold text-white">
                                                     {fav.products?.name || "Product"}
                                                 </p>
-                                                <p className="text-sm text-slate-400">
+                                                <p className="text-sm text-yellow-400">
                                                     ${fav.products?.price?.toFixed(2) || "0.00"}
                                                 </p>
                                             </div>
@@ -191,8 +191,8 @@ type InfoFieldProps = {
 };
 
 const InfoField = ({ label, value }: InfoFieldProps) => (
-    <div className="rounded-lg border border-white/10 bg-slate-800/40 p-3">
-        <p className="text-xs text-slate-500">{label}</p>
+    <div className="rounded-lg border border-white/10 bg-yellow-800/40 p-3">
+        <p className="text-xs text-yellow-500">{label}</p>
         <p className="mt-1 text-sm font-medium text-white">{value}</p>
     </div>
 );

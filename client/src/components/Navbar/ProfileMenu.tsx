@@ -21,10 +21,10 @@ const ProfileMenu: React.FC<{ setMenubar: (path: 'mobile' | 'profile') => void; 
 	if (!user) return null;
 
 	return (
-		<nav className='absolute top-full right-0 w-full sm:w-80 bg-gradient-to-b from-slate-900/98 to-slate-800/98 backdrop-blur-xl border border-amber-400/10 rounded-b-xl shadow-2xl transition-all duration-300 z-40'>
+		<nav className='absolute top-full right-0 w-full sm:w-80 bg-gradient-to-b from-yellow-900/98 to-yellow-800/98 backdrop-blur-xl border border-amber-400/10 rounded-b-xl shadow-2xl transition-all duration-300 z-40'>
 			{/* User Info */}
 			<div className='px-4 py-3 border-b border-white/10'>
-				<p className='text-sm text-slate-400'>Signed in as</p>
+				<p className='text-sm text-yellow-400'>Signed in as</p>
 				<p className='text-white font-semibold truncate'>{user.email}</p>
 			</div>
 
@@ -39,7 +39,7 @@ const ProfileMenu: React.FC<{ setMenubar: (path: 'mobile' | 'profile') => void; 
 								onClick={() => setMenubar('profile')}
 								className={`flex items-center gap-3 px-4 py-2.5 rounded-lg font-medium transition-all duration-200 w-full ${isActive
 									? 'bg-gradient-to-r from-amber-600/20 to-yellow-600/20 border border-amber-400/30 text-amber-400'
-									: 'text-slate-300 hover:text-white hover:bg-white/5 border border-transparent hover:border-white/10'
+									: 'text-yellow-300 hover:text-white hover:bg-white/5 border border-transparent hover:border-white/10'
 									}`}>
 								<Icon className={`text-lg ${isActive ? 'text-amber-400' : ''}`} />
 								<span>{label}</span>

@@ -54,17 +54,17 @@ export const OrdersBoard = ({ orders }: Props) => {
   return (
     <div className="space-y-4">
       <div className="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
-        <label className="w-full max-w-md text-sm text-slate-300">
+        <label className="w-full max-w-md text-sm text-yellow-300">
           <span className="sr-only">Search orders</span>
           <input
             type="search"
             placeholder="Search by order ID, customer, or item"
             value={search}
             onChange={(event) => setSearch(event.target.value)}
-            className="w-full rounded-full border border-white/10 bg-slate-900/60 px-4 py-3 text-white outline-none focus:border-indigo-400 focus:ring-2 focus:ring-indigo-400/40"
+            className="w-full rounded-full border border-white/10 bg-yellow-900/60 px-4 py-3 text-white outline-none focus:border-indigo-400 focus:ring-2 focus:ring-indigo-400/40"
           />
         </label>
-        <p className="text-xs uppercase tracking-[0.3em] text-slate-500">
+        <p className="text-xs uppercase tracking-[0.3em] text-yellow-500">
           Showing {filtered.length} of {orders.length} orders
         </p>
       </div>
@@ -73,10 +73,10 @@ export const OrdersBoard = ({ orders }: Props) => {
         {grouped.map(({ status, items }) => (
           <section
             key={status}
-            className="rounded-2xl border border-white/10 bg-slate-900/40 p-4"
+            className="rounded-2xl border border-white/10 bg-yellow-900/40 p-4"
           >
             <header className="flex items-center justify-between">
-              <p className="text-xs uppercase tracking-[0.3em] text-slate-500">
+              <p className="text-xs uppercase tracking-[0.3em] text-yellow-500">
                 {status}
               </p>
               <span className="rounded-full bg-white/10 px-3 py-1 text-xs text-white">
@@ -86,37 +86,37 @@ export const OrdersBoard = ({ orders }: Props) => {
 
             <div className="mt-4 space-y-3">
               {items.length === 0 ? (
-                <p className="text-xs text-slate-500">
+                <p className="text-xs text-yellow-500">
                   No orders in this lane.
                 </p>
               ) : (
                 items.map((order) => (
                   <article
                     key={order.id}
-                    className="rounded-xl border border-white/10 bg-slate-950/40 p-3 text-sm text-slate-200"
+                    className="rounded-xl border border-white/10 bg-yellow-950/40 p-3 text-sm text-yellow-200"
                   >
                     <div className="flex items-start justify-between gap-2">
                       <div>
-                        <p className="text-xs uppercase tracking-[0.3em] text-slate-500">
+                        <p className="text-xs uppercase tracking-[0.3em] text-yellow-500">
                           #{order.id.slice(0, 8)}
                         </p>
                         <p className="font-semibold text-white">
                           R{order.total_price?.toFixed(2) ?? "0.00"}
                         </p>
-                        <p className="text-xs text-slate-500">
+                        <p className="text-xs text-yellow-500">
                           {formatDistanceToNow(new Date(order.created_at), {
                             addSuffix: true,
                           })}
                         </p>
                       </div>
-                      <div className="text-right text-xs text-slate-500">
+                      <div className="text-right text-xs text-yellow-500">
                         <p>{order.total_quantity} items</p>
                         <p>{order.user_id ?? "Guest"}</p>
                       </div>
                     </div>
 
-                    <div className="mt-3 rounded-lg bg-slate-900/60 p-2 text-xs text-slate-400">
-                      <p className="text-[10px] uppercase tracking-[0.4em] text-slate-500">
+                    <div className="mt-3 rounded-lg bg-yellow-900/60 p-2 text-xs text-yellow-400">
+                      <p className="text-[10px] uppercase tracking-[0.4em] text-yellow-500">
                         Items
                       </p>
                       <ul className="mt-1 space-y-1">
@@ -125,19 +125,19 @@ export const OrdersBoard = ({ orders }: Props) => {
                           const name = resolveItemName(displayItem);
                           const quantity = resolveItemQuantity(displayItem);
                           return (
-                          <li
-                            key={`${order.id}-${displayItem.ProductID ?? name}-${index}`}
-                            className="flex justify-between text-white"
-                          >
-                            <span>{name}</span>
-                            <span className="text-slate-400">
-                              x{quantity}
-                            </span>
-                          </li>
+                            <li
+                              key={`${order.id}-${displayItem.ProductID ?? name}-${index}`}
+                              className="flex justify-between text-white"
+                            >
+                              <span>{name}</span>
+                              <span className="text-yellow-400">
+                                x{quantity}
+                              </span>
+                            </li>
                           );
                         })}
                         {(order.items ?? []).length > 4 ? (
-                          <li className="text-[10px] uppercase tracking-[0.3em] text-slate-500">
+                          <li className="text-[10px] uppercase tracking-[0.3em] text-yellow-500">
                             + more
                           </li>
                         ) : null}

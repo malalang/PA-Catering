@@ -60,7 +60,7 @@ export const ImageUpload = ({ defaultValue, onChange, folder = "uploads", fieldN
         <div className="space-y-4">
             <div className="flex items-center gap-4">
                 {preview ? (
-                    <div className="relative h-40 w-40 overflow-hidden rounded-lg border border-white/10 bg-slate-900/50">
+                    <div className="relative h-40 w-40 overflow-hidden rounded-lg border border-white/10 bg-yellow-900/50">
                         <Image
                             src={preview}
                             alt="Preview"
@@ -84,10 +84,10 @@ export const ImageUpload = ({ defaultValue, onChange, folder = "uploads", fieldN
                     <button
                         type="button"
                         onClick={() => fileInputRef.current?.click()}
-                        className="flex h-40 w-40 flex-col items-center justify-center gap-2 rounded-lg border border-dashed border-white/20 bg-slate-900/20 hover:bg-slate-900/40 transition-colors"
+                        className="flex h-40 w-40 flex-col items-center justify-center gap-2 rounded-lg border border-dashed border-white/20 bg-yellow-900/20 hover:bg-yellow-900/40 transition-colors"
                     >
-                        <HiPhoto className="h-8 w-8 text-slate-400" />
-                        <span className="text-xs text-slate-400">Upload Image</span>
+                        <HiPhoto className="h-8 w-8 text-yellow-400" />
+                        <span className="text-xs text-yellow-400">Upload Image</span>
                     </button>
                 )}
                 <input
@@ -98,7 +98,7 @@ export const ImageUpload = ({ defaultValue, onChange, folder = "uploads", fieldN
                     className="hidden"
                 />
             </div>
-            <input type="text" name={fieldName} value={value} readOnly className="w-full text-xs bg-slate-800 text-slate-400 p-2 rounded" />
+            <input type="text" name={fieldName} value={value} readOnly className="w-full text-xs bg-yellow-800 text-yellow-400 p-2 rounded" />
         </div>
     );
 };

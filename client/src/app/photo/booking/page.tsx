@@ -76,14 +76,14 @@ export default function PhotoBoothBookingPage() {
                     <form onSubmit={handleSubmit(onSubmit)} className='space-y-6'>
                         {/* Name */}
                         <div>
-                            <label className='block text-sm font-medium text-slate-300 mb-2' htmlFor='name'>
+                            <label className='block text-sm font-medium text-yellow-300 mb-2' htmlFor='name'>
                                 Full Name *
                             </label>
                             <input
                                 type='text'
                                 id='name'
                                 {...register('name', { required: 'Name is required' })}
-                                className='w-full rounded-lg border border-white/30 bg-slate-900/60 text-white px-4 py-2.5 outline-none transition focus:border-amber-400 focus:ring-2 focus:ring-amber-400/40'
+                                className='w-full rounded-lg border border-white/30 bg-yellow-900/60 text-white px-4 py-2.5 outline-none transition focus:border-amber-400 focus:ring-2 focus:ring-amber-400/40'
                                 placeholder='John Doe'
                             />
                             {errors.name && <p className='mt-1 text-sm text-red-300'>{errors.name.message}</p>}
@@ -91,7 +91,7 @@ export default function PhotoBoothBookingPage() {
 
                         {/* Email */}
                         <div>
-                            <label className='block text-sm font-medium text-slate-300 mb-2' htmlFor='email'>
+                            <label className='block text-sm font-medium text-yellow-300 mb-2' htmlFor='email'>
                                 Email Address *
                             </label>
                             <input
@@ -104,7 +104,7 @@ export default function PhotoBoothBookingPage() {
                                         message: 'Invalid email address'
                                     }
                                 })}
-                                className='w-full rounded-lg border border-white/30 bg-slate-900/60 text-white px-4 py-2.5 outline-none transition focus:border-amber-400 focus:ring-2 focus:ring-amber-400/40'
+                                className='w-full rounded-lg border border-white/30 bg-yellow-900/60 text-white px-4 py-2.5 outline-none transition focus:border-amber-400 focus:ring-2 focus:ring-amber-400/40'
                                 placeholder='john@example.com'
                             />
                             {errors.email && <p className='mt-1 text-sm text-red-300'>{errors.email.message}</p>}
@@ -112,14 +112,14 @@ export default function PhotoBoothBookingPage() {
 
                         {/* Phone */}
                         <div>
-                            <label className='block text-sm font-medium text-slate-300 mb-2' htmlFor='phone'>
+                            <label className='block text-sm font-medium text-yellow-300 mb-2' htmlFor='phone'>
                                 Phone Number *
                             </label>
                             <input
                                 type='tel'
                                 id='phone'
                                 {...register('phone', { required: 'Phone number is required' })}
-                                className='w-full rounded-lg border border-white/30 bg-slate-900/60 text-white px-4 py-2.5 outline-none transition focus:border-amber-400 focus:ring-2 focus:ring-amber-400/40'
+                                className='w-full rounded-lg border border-white/30 bg-yellow-900/60 text-white px-4 py-2.5 outline-none transition focus:border-amber-400 focus:ring-2 focus:ring-amber-400/40'
                                 placeholder='+27 12 345 6789'
                             />
                             {errors.phone && <p className='mt-1 text-sm text-red-300'>{errors.phone.message}</p>}
@@ -127,41 +127,41 @@ export default function PhotoBoothBookingPage() {
 
                         {/* Date */}
                         <div>
-                            <label className='block text-sm font-medium text-slate-300 mb-2' htmlFor='date'>
+                            <label className='block text-sm font-medium text-yellow-300 mb-2' htmlFor='date'>
                                 Preferred Date *
                             </label>
                             <input
                                 type='date'
                                 id='date'
                                 {...register('date', { required: 'Date is required' })}
-                                className='w-full rounded-lg border border-white/30 bg-slate-900/60 text-white px-4 py-2.5 outline-none transition focus:border-amber-400 focus:ring-2 focus:ring-amber-400/40'
+                                className='w-full rounded-lg border border-white/30 bg-yellow-900/60 text-white px-4 py-2.5 outline-none transition focus:border-amber-400 focus:ring-2 focus:ring-amber-400/40'
                             />
                             {errors.date && <p className='mt-1 text-sm text-red-300'>{errors.date.message}</p>}
                         </div>
 
                         {/* Time */}
                         <div>
-                            <label className='block text-sm font-medium text-slate-300 mb-2' htmlFor='time'>
+                            <label className='block text-sm font-medium text-yellow-300 mb-2' htmlFor='time'>
                                 Preferred Time *
                             </label>
                             <input
                                 type='time'
                                 id='time'
                                 {...register('time', { required: 'Time is required' })}
-                                className='w-full rounded-lg border border-white/30 bg-slate-900/60 text-white px-4 py-2.5 outline-none transition focus:border-amber-400 focus:ring-2 focus:ring-amber-400/40'
+                                className='w-full rounded-lg border border-white/30 bg-yellow-900/60 text-white px-4 py-2.5 outline-none transition focus:border-amber-400 focus:ring-2 focus:ring-amber-400/40'
                             />
                             {errors.time && <p className='mt-1 text-sm text-red-300'>{errors.time.message}</p>}
                         </div>
 
                         {/* Package Type */}
                         <div>
-                            <label className='block text-sm font-medium text-slate-300 mb-2' htmlFor='package'>
+                            <label className='block text-sm font-medium text-yellow-300 mb-2' htmlFor='package'>
                                 Package Type *
                             </label>
                             <select
                                 id='package'
                                 {...register('package', { required: 'Please select a package' })}
-                                className='w-full rounded-lg border border-white/30 bg-slate-900/60 text-white px-4 py-2.5 outline-none transition focus:border-amber-400 focus:ring-2 focus:ring-amber-400/40'>
+                                className='w-full rounded-lg border border-white/30 bg-yellow-900/60 text-white px-4 py-2.5 outline-none transition focus:border-amber-400 focus:ring-2 focus:ring-amber-400/40'>
                                 <option value=''>Select a package</option>
                                 <option value='individual'>Individual Session (R50/person)</option>
                                 <option value='event'>Event Package (Contact for pricing)</option>
@@ -171,7 +171,7 @@ export default function PhotoBoothBookingPage() {
 
                         {/* Number of People */}
                         <div>
-                            <label className='block text-sm font-medium text-slate-300 mb-2' htmlFor='people'>
+                            <label className='block text-sm font-medium text-yellow-300 mb-2' htmlFor='people'>
                                 Number of People
                             </label>
                             <input
@@ -183,21 +183,21 @@ export default function PhotoBoothBookingPage() {
                                 })}
                                 min='1'
                                 defaultValue='1'
-                                className='w-full rounded-lg border border-white/30 bg-slate-900/60 text-white px-4 py-2.5 outline-none transition focus:border-amber-400 focus:ring-2 focus:ring-amber-400/40'
+                                className='w-full rounded-lg border border-white/30 bg-yellow-900/60 text-white px-4 py-2.5 outline-none transition focus:border-amber-400 focus:ring-2 focus:ring-amber-400/40'
                             />
                             {errors.people && <p className='mt-1 text-sm text-red-300'>{errors.people.message}</p>}
                         </div>
 
                         {/* Special Requests */}
                         <div>
-                            <label className='block text-sm font-medium text-slate-300 mb-2' htmlFor='message'>
+                            <label className='block text-sm font-medium text-yellow-300 mb-2' htmlFor='message'>
                                 Special Requests or Notes
                             </label>
                             <textarea
                                 id='message'
                                 {...register('message')}
                                 rows={4}
-                                className='w-full rounded-lg border border-white/30 bg-slate-900/60 text-white px-4 py-2.5 outline-none transition focus:border-amber-400 focus:ring-2 focus:ring-amber-400/40'
+                                className='w-full rounded-lg border border-white/30 bg-yellow-900/60 text-white px-4 py-2.5 outline-none transition focus:border-amber-400 focus:ring-2 focus:ring-amber-400/40'
                                 placeholder='Any special requirements or questions?'
                             />
                         </div>
@@ -210,7 +210,7 @@ export default function PhotoBoothBookingPage() {
                             {isSubmitting ? 'Submitting...' : 'Submit Booking Request'}
                         </button>
 
-                        <p className='text-sm text-slate-400 text-center'>
+                        <p className='text-sm text-yellow-400 text-center'>
                             * Required fields. We'll confirm your booking via email within 24 hours.
                         </p>
                     </form>

@@ -6,7 +6,7 @@ export default function SupportPage() {
       title="Ops support"
       description="Get help from leadership or open a ticket with the tech team."
     >
-      <div className="space-y-4 text-sm text-slate-300">
+      <div className="space-y-4 text-sm text-yellow-300">
         <p>Need assistance? Reach out via the following channels:</p>
         <ul className="list-disc space-y-2 pl-5">
           <li>Email: ops@pacatering.co.za</li>

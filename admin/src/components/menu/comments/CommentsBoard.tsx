@@ -45,9 +45,9 @@ export const CommentsBoard = ({ comments }: Props) => {
                     placeholder="Search comments..."
                     value={search}
                     onChange={(e) => setSearch(e.target.value)}
-                    className="w-full max-w-md rounded-full border border-white/10 bg-slate-900/60 px-4 py-3 text-white outline-none focus:border-indigo-400 focus:ring-2 focus:ring-indigo-400/40"
+                    className="w-full max-w-md rounded-full border border-white/10 bg-yellow-900/60 px-4 py-3 text-white outline-none focus:border-indigo-400 focus:ring-2 focus:ring-indigo-400/40"
                 />
-                <p className="text-xs uppercase tracking-[0.3em] text-slate-500">
+                <p className="text-xs uppercase tracking-[0.3em] text-yellow-500">
                     {filtered.length} comments
                 </p>
             </div>
@@ -94,14 +94,14 @@ const CommentCard = ({
     const [state, formAction] = useFormState(updateCommentAction, initialState);
 
     return (
-        <div className="rounded-2xl border border-white/10 bg-slate-900/40 p-4">
+        <div className="rounded-2xl border border-white/10 bg-yellow-900/40 p-4">
             <div className="flex items-start justify-between gap-4">
                 <div className="flex-1">
                     <div className="flex items-center gap-2">
                         <p className="text-sm font-semibold text-white">
                             {comment.user_name || "Anonymous"}
                         </p>
-                        <p className="text-xs text-slate-500">
+                        <p className="text-xs text-yellow-500">
                             {formatDistanceToNow(new Date(comment.created_at), {
                                 addSuffix: true,
                             })}
@@ -115,13 +115,13 @@ const CommentCard = ({
                                 name="body"
                                 defaultValue={comment.body}
                                 rows={3}
-                                className="w-full rounded-lg border border-white/10 bg-slate-900/60 px-3 py-2 text-white outline-none focus:border-indigo-400 focus:ring-2 focus:ring-indigo-400/40"
+                                className="w-full rounded-lg border border-white/10 bg-yellow-900/60 px-3 py-2 text-white outline-none focus:border-indigo-400 focus:ring-2 focus:ring-indigo-400/40"
                             />
                             <input
                                 name="user_name"
                                 defaultValue={comment.user_name || ""}
                                 placeholder="User name"
-                                className="w-full rounded-lg border border-white/10 bg-slate-900/60 px-3 py-2 text-sm text-white outline-none focus:border-indigo-400 focus:ring-2 focus:ring-indigo-400/40"
+                                className="w-full rounded-lg border border-white/10 bg-yellow-900/60 px-3 py-2 text-sm text-white outline-none focus:border-indigo-400 focus:ring-2 focus:ring-indigo-400/40"
                             />
                             {state.error && (
                                 <p className="text-sm text-rose-400">{state.error}</p>
@@ -138,14 +138,14 @@ const CommentCard = ({
                                 <button
                                     type="button"
                                     onClick={onCancelEdit}
-                                    className="rounded-lg bg-slate-800 px-4 py-2 text-sm text-white hover:bg-slate-700"
+                                    className="rounded-lg bg-yellow-800 px-4 py-2 text-sm text-white hover:bg-yellow-700"
                                 >
                                     Cancel
                                 </button>
                             </div>
                         </form>
                     ) : (
-                        <p className="mt-2 text-sm text-slate-300">{comment.body}</p>
+                        <p className="mt-2 text-sm text-yellow-300">{comment.body}</p>
                     )}
                 </div>
 
@@ -154,7 +154,7 @@ const CommentCard = ({
                         <button
                             type="button"
                             onClick={onEdit}
-                            className="rounded-lg bg-slate-800 px-3 py-1 text-xs text-white hover:bg-slate-700"
+                            className="rounded-lg bg-yellow-800 px-3 py-1 text-xs text-white hover:bg-yellow-700"
                         >
                             Edit
                         </button>

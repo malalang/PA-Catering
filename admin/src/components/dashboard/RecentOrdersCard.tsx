@@ -25,7 +25,7 @@ export const RecentOrdersCard = ({ orders }: Props) => (
     actions={
       <Link
         href="/orders"
-        className="inline-flex items-center gap-1 rounded-full border border-white/10 px-3 py-2 text-xs uppercase tracking-[0.25em] text-slate-200 transition hover:border-indigo-400 hover:text-white"
+        className="inline-flex items-center gap-1 rounded-full border border-white/10 px-3 py-2 text-xs uppercase tracking-[0.25em] text-yellow-200 transition hover:border-indigo-400 hover:text-white"
       >
         View queue
         <HiOutlineArrowRight />
@@ -33,8 +33,8 @@ export const RecentOrdersCard = ({ orders }: Props) => (
     }
   >
     <div className="overflow-x-auto">
-      <table className="min-w-full text-left text-sm text-slate-300">
-        <thead className="text-xs uppercase tracking-[0.2em] text-slate-500">
+      <table className="min-w-full text-left text-sm text-yellow-300">
+        <thead className="text-xs uppercase tracking-[0.2em] text-yellow-500">
           <tr>
             <th className="py-3">Order</th>
             <th className="py-3">Status</th>
@@ -45,9 +45,9 @@ export const RecentOrdersCard = ({ orders }: Props) => (
         <tbody>
           {orders.length === 0 ? (
             <tr>
-              <td colSpan={4} className="py-10 text-center text-slate-500">
+              <td colSpan={4} className="py-10 text-center text-yellow-500">
                 <div className="flex flex-col items-center gap-2">
-                  <HiOutlineClipboardDocumentCheck className="text-3xl text-slate-600" />
+                  <HiOutlineClipboardDocumentCheck className="text-3xl text-yellow-600" />
                   <p>No orders in the last hour.</p>
                 </div>
               </td>
@@ -59,14 +59,14 @@ export const RecentOrdersCard = ({ orders }: Props) => (
                   #{order.id.slice(0, 8)}
                 </td>
                 <td
-                  className={`py-3 text-xs uppercase tracking-[0.25em] ${statusColor[order.status] ?? "text-slate-400"}`}
+                  className={`py-3 text-xs uppercase tracking-[0.25em] ${statusColor[order.status] ?? "text-yellow-400"}`}
                 >
                   {order.status}
                 </td>
                 <td className="py-3 font-medium text-white">
                   R{order.total_price?.toFixed(2) ?? "0.00"}
                 </td>
-                <td className="py-3 text-slate-400">
+                <td className="py-3 text-yellow-400">
                   {formatDistanceToNow(new Date(order.created_at), {
                     addSuffix: true,
                   })}

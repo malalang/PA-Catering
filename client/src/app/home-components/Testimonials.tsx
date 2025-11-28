@@ -71,7 +71,7 @@ const Testimonials: React.FC = () => {
 						className=' rounded-xl border border-yellow-500/30 bg-gradient-to-br from-yellow-900/20 to-amber-900/20 backdrop-blur-md hover:border-yellow-400/50 transition-all duration-300 shadow-lg p-6 flex flex-col'>
 						<div className='flex-grow'>
 							<FaQuoteLeft className='text-2xl text-amber-400/50 mb-4' />
-							<p className='italic text-slate-300 mb-4'>{testimonial.text}</p>
+							<p className='italic text-yellow-300 mb-4'>{testimonial.text}</p>
 						</div>
 						<div className='mt-auto'>
 							<div className='flex items-center mb-4'>
@@ -93,7 +93,7 @@ const Testimonials: React.FC = () => {
 										size={20}
 										className='text-white hover:text-yellow-500 transition-colors'
 									/>
-									<span className='text-xs text-slate-400'>{(testimonial.comments as any[])?.length || 0}</span>
+									<span className='text-xs text-yellow-400'>{(testimonial.comments as any[])?.length || 0}</span>
 								</Button>
 								<Button
 									variant='icon'
@@ -104,7 +104,7 @@ const Testimonials: React.FC = () => {
 										size={20}
 										className='text-white hover:text-yellow-500 transition-colors'
 									/>
-									<span className='text-xs text-slate-400'>Share</span>
+									<span className='text-xs text-yellow-400'>Share</span>
 								</Button>
 							</div>
 						</div>

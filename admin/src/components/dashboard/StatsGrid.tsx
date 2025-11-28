@@ -52,11 +52,11 @@ export const StatsGrid = ({ stats }: Props) => {
       {cards.map(({ label, value, change, icon: Icon }) => (
         <article
           key={label}
-          className="rounded-2xl border border-white/5 bg-gradient-to-br from-slate-900/70 to-slate-900/30 p-4 shadow-lg shadow-black/10"
+          className="rounded-2xl border border-white/5 bg-gradient-to-br from-yellow-900/70 to-yellow-900/30 p-4 shadow-lg shadow-black/10"
         >
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-sm uppercase tracking-[0.2em] text-slate-400">
+              <p className="text-sm uppercase tracking-[0.2em] text-yellow-400">
                 {label}
               </p>
               <p className="mt-2 text-2xl font-semibold text-white">{value}</p>
@@ -65,7 +65,7 @@ export const StatsGrid = ({ stats }: Props) => {
               <Icon className="text-xl" />
             </div>
           </div>
-          <p className="mt-4 text-xs uppercase tracking-[0.25em] text-slate-500">
+          <p className="mt-4 text-xs uppercase tracking-[0.25em] text-yellow-500">
             {change}
           </p>
         </article>
