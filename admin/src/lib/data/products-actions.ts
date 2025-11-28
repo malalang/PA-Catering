@@ -16,11 +16,13 @@ export const createProductAction = async (
   _prev: ProductActionState,
   formData: FormData,
 ): Promise<ProductActionState> => {
+  console.log("createProductAction: Received formData");
   const name = sanitize(formData.get("name"));
   const category = sanitize(formData.get("category"));
   const description = sanitize(formData.get("description"));
   const badge = sanitize(formData.get("badge")) || null;
   const imageUrl = sanitize(formData.get("image_url")) || null;
+  console.log("createProductAction: Image URL:", imageUrl);
   const price = Number(formData.get("price") ?? 0);
   const stock = Number(formData.get("stock") ?? 0);
 
@@ -42,6 +44,7 @@ export const createProductAction = async (
     price,
     stock: Number.isNaN(stock) ? 0 : stock,
   };
+  console.log("createProductAction: Inserting data:", productData);
   const { error } = await supabase.from("products").insert(productData as never);
 
   if (error) {
@@ -58,6 +61,7 @@ export const updateProductAction = async (
   _prev: ProductActionState,
   formData: FormData,
 ): Promise<ProductActionState> => {
+  console.log("updateProductAction: Received formData");
   const id = sanitize(formData.get("id"));
   const name = sanitize(formData.get("name")) || undefined;
   const category = sanitize(formData.get("category")) || undefined;
@@ -66,6 +70,7 @@ export const updateProductAction = async (
   const badge = sanitize(formData.get("badge")) || null;
   const description = sanitize(formData.get("description")) || null;
   const imageUrl = sanitize(formData.get("image_url")) || null;
+  console.log("updateProductAction: Image URL:", imageUrl);
   const isHidden = formData.get("is_hidden") === "on";
 
   if (!id) {

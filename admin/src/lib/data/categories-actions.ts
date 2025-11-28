@@ -15,8 +15,10 @@ export const createCategoryAction = async (
     _prev: CategoryActionState,
     formData: FormData,
 ): Promise<CategoryActionState> => {
+    console.log("createCategoryAction: Received formData");
     const categoryName = sanitize(formData.get("category_name"));
     const image = sanitize(formData.get("image")) || null;
+    console.log("createCategoryAction: Image URL:", image);
     const description = sanitize(formData.get("description")) || null;
     const isHidden = formData.get("is_hidden") === "on";
 
@@ -31,6 +33,7 @@ export const createCategoryAction = async (
         description,
         is_hidden: isHidden,
     };
+    console.log("createCategoryAction: Inserting data:", categoryData);
 
     const { error } = await supabase
         .from("products_category")
@@ -50,9 +53,11 @@ export const updateCategoryAction = async (
     _prev: CategoryActionState,
     formData: FormData,
 ): Promise<CategoryActionState> => {
+    console.log("updateCategoryAction: Received formData");
     const id = sanitize(formData.get("id"));
     const categoryName = sanitize(formData.get("category_name"));
     const image = sanitize(formData.get("image")) || null;
+    console.log("updateCategoryAction: Image URL:", image);
     const description = sanitize(formData.get("description")) || null;
     const isHidden = formData.get("is_hidden") === "on";
 
