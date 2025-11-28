@@ -27,6 +27,18 @@ export const createCategoryAction = async (
     }
 
     const supabase = await createSupabaseServerClient();
+
+    const { data: { user }, error: authError } = await supabase.auth.getUser();
+    console.log("createCategoryAction: User:", user?.id);
+    if (authError) {
+        console.error("createCategoryAction: Auth Error:", authError);
+    }
+
+    if (!user) {
+        console.error("createCategoryAction: No authenticated user found");
+        return { error: "You must be logged in to perform this action." };
+    }
+
     const categoryData = {
         category_name: categoryName,
         image,
