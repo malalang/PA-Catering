@@ -64,7 +64,7 @@ const FilterSortBar: React.FC = () => {
 	const buttonStyles = 'bg-gradient-to-r from-amber-600/20 to-yellow-600/20 border border-amber-400/30 text-amber-400 hover:bg-amber-600/30 hover:text-amber-300 transition-all duration-200';
 
 	return (
-		<div className='bg-yellow-900/80 blur-[0.1px] backdrop-blur-md p-3 rounded-b-xl border border-amber-400/10 sticky top-20 z-20 col-span-full mt-0 shadow-xl shadow-black/20'>
+		<div className='bg-gradient-to-br from-yellow-900/20 to-amber-900/20 backdrop-blur-md p-3 rounded-b-xl border border-amber-400/10 sticky top-20 z-20 col-span-full mt-0 shadow-xl shadow-black/20'>
 			<div className='flex flex-col md:flex-row gap-4 items-center justify-between'>
 				{/* Sort Options */}
 				<div className='flex items-center gap-3'>

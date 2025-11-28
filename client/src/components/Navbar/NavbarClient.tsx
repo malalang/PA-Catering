@@ -16,7 +16,7 @@ const NavbarClient: React.FC<NavbarClientProps> = ({ user }) => {
     const { profileOpen, mobileOpen, setMenubar } = useMenubarToggle();
 
     return (
-        <header className='sticky top-0 left-0 m-0 p-0 w-full px-4 sm:px-6 lg:px-8 z-50 bg-gradient-to-r from-yellow-900/95 to-yellow-800/95 backdrop-blur-xl border-b border-amber-400/10 shadow-lg'>
+        <header className='sticky top-0 left-0 m-0 p-0 w-full px-4 sm:px-6 lg:px-8 z-50 bg-gradient-to-br from-yellow-900/20 to-amber-900/20 backdrop-blur-md border-b border-amber-400/10 shadow-lg'>
             <div className='max-w-7xl mx-auto flex justify-between items-center py-3'>
                 <MobileNavbar
                     setMenubar={setMenubar}
