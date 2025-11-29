@@ -1,8 +1,5 @@
 import PersonalInformation from './components/PersonalInformation';
-import LoyaltyProgramInfo from './components/LoyaltyProgramInfo';
-import Preferences from './components/Preferences';
-import PaymentInformation from './components/PaymentInformation';
-import AccountManagement from './components/AccountManagement';
+
 import { FaUserCircle } from 'react-icons/fa';
 import Main from '@/components/ui/layout/Main';
 
@@ -64,9 +61,9 @@ const CustomerProfilePage: React.FC = async () => {
 			tittle='Profile'
 			Icon={FaUserCircle}
 			heading='Manage your personal information, preferences, and account security.'>
-			<div className='max-w-4xl mx-auto'>
-				<PersonalInformation user={userProfile} />
-			</div>
+
+			<PersonalInformation user={userProfile} />
+
 		</Main>
 	);
 };

@@ -3,7 +3,7 @@
 import { CartProvider } from '@/lib/context/CartContext';
 import React, { ReactNode } from 'react';
 import Link from 'next/link';
-import { HiShoppingBag, HiClock, HiCog, HiCheckCircle, HiArrowLeft } from 'react-icons/hi2';
+import { HiShoppingBag, HiClock, HiCog, HiCheckCircle, HiArrowLeft, HiXCircle } from 'react-icons/hi2';
 import { usePathname } from 'next/navigation';
 
 interface LayoutProps {
@@ -17,6 +17,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
 		{ href: '/orders/pending', label: 'Pending', icon: HiClock },
 		{ href: '/orders/processing', label: 'Processing', icon: HiCog },
 		{ href: '/orders/completed', label: 'Completed', icon: HiCheckCircle },
+		{ href: '/orders/cancelled', label: 'Cancelled', icon: HiXCircle },
 	];
 
 	return (
