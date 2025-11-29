@@ -1,6 +1,6 @@
 export const dynamic = 'force-dynamic';
 import { createClient } from '@/lib/supabase/server';
-import { getOrdersByUser } from '@/lib/supabase/orders/orders';
+import { getOrdersByUser, Order } from '@/lib/supabase/orders/orders';
 import OrderItem from '@/app/orders/components/OrderItem';
 import Main from '@/components/ui/layout/Main';
 import { HiDocumentText, HiShoppingBag } from 'react-icons/hi2';
@@ -24,7 +24,11 @@ const OrderHistory: React.FC = async () => {
 		console.error('Error fetching orders:', ordersError);
 	}
 
-	const orders = ordersData || [];
+	import { Order } from '@/lib/supabase/orders/orders';
+
+	// ... existing code ...
+
+	const orders = (ordersData as Order[]) || [];
 
 	if (orders.length === 0) {
 		return (
