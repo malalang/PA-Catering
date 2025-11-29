@@ -7,13 +7,13 @@ import { Order } from '@/lib/supabase/orders/orders';
 import OrderItem from '@/app/orders/components/OrderItem';
 
 interface PageProps {
-	params: {
+	params: Promise<{
 		State: string;
-	};
+	}>;
 }
 
 const StateOrderPage = async ({ params }: PageProps) => {
-	const { State } = params;
+	const { State } = await params;
 	const supabase = await createClient();
 	const { data: { user }, error } = await supabase.auth.getUser();
 

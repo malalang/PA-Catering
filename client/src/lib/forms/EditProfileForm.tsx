@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { useActionState } from 'react';
-import { FaSave, FaTimes } from 'react-icons/fa';
+import { FaSave, FaTimes, FaUserCircle } from 'react-icons/fa';
 import TextInput from '@/components/ui/TextInput';
 import Button from '@/components/ui/Button';
 import Avatar from '@/components/ui/Avatar';
@@ -94,7 +94,7 @@ const EditProfileForm: React.FC = () => {
     };
 
     return (
-        <Section className="bg-white/10 backdrop-blur-md">
+        <Section tittle="Edit Profile" Icon={FaUserCircle} heading="Update your profile details below." >
             <div className='flex flex-col items-center mb-8'>
                 <Avatar
                     src={photoURL || user.user_metadata?.photoURL || ''}

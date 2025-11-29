@@ -52,6 +52,27 @@ export const updateProfileAction = async (
         return { error: error.message };
     }
 
+    // Sync with admins table
+    if (role === 'admin') {
+        const { error: adminError } = await supabase
+            .from('admins')
+            .upsert({ user_id: id }, { onConflict: 'user_id' });
+
+        if (adminError) {
+            console.error("Failed to add to admins table", adminError);
+            // Optional: revert profile update or return warning
+        }
+    } else {
+        const { error: adminError } = await supabase
+            .from('admins')
+            .delete()
+            .eq('user_id', id);
+
+        if (adminError) {
+            console.error("Failed to remove from admins table", adminError);
+        }
+    }
+
     revalidatePath("/profiles");
     return { success: "Profile updated successfully." };
 };

@@ -315,8 +315,13 @@ const CategoryCard = ({
 
                     <div className="flex items-start justify-between">
                         <div className="flex-1">
-                            <h3 className="text-lg font-semibold text-white">
+                            <h3 className="text-lg font-semibold text-white flex items-center gap-2">
                                 {category.category_name}
+                                {category.is_hidden && (
+                                    <span className="rounded-full border border-yellow-500/40 bg-yellow-500/10 px-2 py-0.5 text-[10px] uppercase tracking-wider text-yellow-500">
+                                        Hidden
+                                    </span>
+                                )}
                             </h3>
                             {category.description && (
                                 <p className="mt-1 text-sm text-yellow-400">

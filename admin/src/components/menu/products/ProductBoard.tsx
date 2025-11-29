@@ -265,8 +265,13 @@ export const ProductBoard = ({ products, comments, favorites, onAddProduct }: Pr
                       <p className="text-xs uppercase tracking-[0.3em] text-yellow-500">
                         {product.category_name ?? "Uncategorised"}
                       </p>
-                      <h3 className="text-lg font-semibold text-white">
+                      <h3 className="text-lg font-semibold text-white flex items-center gap-2">
                         {product.name}
+                        {product.is_hidden && (
+                          <span className="rounded-full border border-yellow-500/40 bg-yellow-500/10 px-2 py-0.5 text-[10px] uppercase tracking-wider text-yellow-500">
+                            Hidden
+                          </span>
+                        )}
                       </h3>
                       <p className="text-sm text-yellow-400">
                         {product.description ?? "No description yet."}
