@@ -24,7 +24,7 @@ const OrderHistory: React.FC = async () => {
 		console.error('Error fetching orders:', ordersError);
 	}
 
-	import { Order } from '@/lib/supabase/orders/orders';
+	// ... existing code ...
 
 	// ... existing code ...
 
