@@ -64,17 +64,8 @@ const CustomerProfilePage: React.FC = async () => {
 			tittle='Profile'
 			Icon={FaUserCircle}
 			heading='Manage your personal information, preferences, and account security.'>
-			<div className='grid grid-cols-1  gap-8'>
-				<div className='lg:col-span-2 space-y-8'>
-					<PersonalInformation user={userProfile} />
-					<PaymentInformation />
-				</div>
-
-				<div className='space-y-8'>
-					<LoyaltyProgramInfo />
-					<Preferences />
-					<AccountManagement />
-				</div>
+			<div className='max-w-4xl mx-auto'>
+				<PersonalInformation user={userProfile} />
 			</div>
 		</Main>
 	);

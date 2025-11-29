@@ -48,7 +48,7 @@ export const AdminSidebar = () => {
 
       {/* Sidebar */}
       <aside
-        className={`fixed inset-y-0 left-0 z-40 w-72 flex-col border-r border-white/10 bg-yellow-950/95 px-6 py-8 backdrop-blur-sm transition-transform duration-300 lg:static lg:flex ${mobileMenuOpen ? "flex tranyellow-x-0" : "-tranyellow-x-full lg:tranyellow-x-0"
+        className={`fixed inset-y-0 left-0 z-40 w-72 flex-col border-r border-white/10 bg-yellow-950/95 px-6 py-8 backdrop-blur-sm transition-transform duration-300 lg:static lg:flex ${mobileMenuOpen ? "flex translate-x-0" : "-translate-x-full lg:translate-x-0"
           }`}
       >
         <Link

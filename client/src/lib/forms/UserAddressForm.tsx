@@ -17,10 +17,10 @@ const UserAddressForm: React.FC = () => {
 
 	const [addressData, setAddressData] = useState({
 		address: '',
-		city: 'Phalaborwa',
-		state: 'Limpopo',
-		zipCode: '1392',
-		country: 'South Africa',
+		city: '',
+		state: '',
+		zipCode: '',
+		country: '',
 	});
 
 	const [errors, setErrors] = useState({
@@ -35,10 +35,10 @@ const UserAddressForm: React.FC = () => {
 		if (user) {
 			setAddressData({
 				address: user.user_metadata?.address || '',
-				city: user.user_metadata?.city || 'Phalaborwa',
-				state: user.user_metadata?.state || 'Limpopo',
-				zipCode: user.user_metadata?.zipCode || '1392',
-				country: user.user_metadata?.country || 'South Africa',
+				city: user.user_metadata?.city || '',
+				state: user.user_metadata?.state || '',
+				zipCode: user.user_metadata?.zipCode || '',
+				country: user.user_metadata?.country || '',
 			});
 		}
 	}, [user]);
@@ -80,13 +80,13 @@ const UserAddressForm: React.FC = () => {
 
 	const fullAddress = `${user.user_metadata?.address || ''}, ${user.user_metadata?.city || ''}, ${user.user_metadata?.state || ''}, ${user.user_metadata?.zipCode || ''}, ${user.user_metadata?.country || ''}`;
 
-	       return (
-		       <article>
-			       <h3 className='flex items-center gap-2 text-xl font-bold mb-3'>
-				       <FaMapMarkerAlt /> Shipping Address
-			       </h3>
+	return (
+		<article>
+			<h3 className='flex items-center gap-2 text-xl font-bold mb-3'>
+				<FaMapMarkerAlt /> Shipping Address
+			</h3>
 
-			       {user.user_metadata?.address && !showAddressInput ? <p className='text-white'>{fullAddress}</p> : null}
+			{user.user_metadata?.address && !showAddressInput ? <p className='text-white'>{fullAddress}</p> : null}
 
 			{showAddressInput ? (
 				<div className='mt-4 flex flex-col gap-3'>
@@ -173,11 +173,11 @@ const UserAddressForm: React.FC = () => {
 					</form>
 				</div>
 			) : (
-				       <button
-					       onClick={() => setShowAddressInput(true)}
-					       className='inline-flex items-center gap-2 px-4 py-2 bg-black/50 text-white rounded-md hover:bg-yellow-600 focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:ring-opacity-50 transition duration-200'>
-					       <TbAccessPoint /> {user.user_metadata?.address ? 'Edit Address' : 'Add Address'}
-				       </button>
+				<button
+					onClick={() => setShowAddressInput(true)}
+					className='inline-flex items-center gap-2 px-4 py-2 bg-black/50 text-white rounded-md hover:bg-yellow-600 focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:ring-opacity-50 transition duration-200'>
+					<TbAccessPoint /> {user.user_metadata?.address ? 'Edit Address' : 'Add Address'}
+				</button>
 			)}
 		</article>
 	);

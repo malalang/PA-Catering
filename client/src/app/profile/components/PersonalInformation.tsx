@@ -43,14 +43,35 @@ const PersonalInformation: React.FC<PersonalInformationProps> = ({ user }) => {
 						label='Role'
 						value={user.role || 'User'}
 					/>
+					<InfoRow
+						label='Address'
+						value={user.address}
+					/>
+					<InfoRow
+						label='City'
+						value={user.city}
+					/>
+					<InfoRow
+						label='State'
+						value={user.state}
+					/>
+					<InfoRow
+						label='Zip Code'
+						value={user.zipCode}
+					/>
+					<InfoRow
+						label='Country'
+						value={user.country}
+					/>
 				</dl>
 			</article>
-			<UserAddress />
-			<AppLink
-				href='/profile/edit'
-				className='underline'>
-				Edit Profile
-			</AppLink>
+			<div className='mt-6'>
+				<AppLink
+					href='/profile/edit'
+					className='underline text-yellow-500 hover:text-yellow-400'>
+					Edit Profile
+				</AppLink>
+			</div>
 		</Section>
 	);
 };

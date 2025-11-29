@@ -111,7 +111,7 @@ export async function signUpAction(
   }
 
   if (user) {
-    redirect("/profile");
+    redirect("/confirm-email");
   }
 
   return {

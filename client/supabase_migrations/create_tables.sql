@@ -83,7 +83,7 @@ CREATE TABLE public.products_category (
   image text,
   description text,
   created_at timestamp with time zone DEFAULT now(),
-  is_hidden boolean NOT NULL DEFAULT false,
+  is_hiremove the dden boolean NOT NULL DEFAULT false,
   CONSTRAINT products_category_pkey PRIMARY KEY (id)
 );
 CREATE TABLE public.profiles (

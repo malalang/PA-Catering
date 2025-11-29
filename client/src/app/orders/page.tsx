@@ -14,7 +14,17 @@ const OrderHistory: React.FC = async () => {
 		return redirect('/login');
 	}
 
-	const orders = await getOrdersByUser(user.id);
+	const { data: ordersData, error: ordersError } = await supabase
+		.from('orders')
+		.select('*')
+		.eq('user_id', user.id)
+		.order('created_at', { ascending: false });
+
+	if (ordersError) {
+		console.error('Error fetching orders:', ordersError);
+	}
+
+	const orders = ordersData || [];
 
 	if (orders.length === 0) {
 		return (

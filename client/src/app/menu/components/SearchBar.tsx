@@ -22,7 +22,7 @@ const SearchBar: React.FC = () => {
 	};
 
 	return (
-		<article className='sticky  top-20 bg-gradient-to-br from-yellow-900/20 to-amber-900/20 backdrop-blur-md border-b border-amber-400/10 shadow-lg z-40 m-0 p-4'>
+		<div className='bg-gradient-to-br from-yellow-900/20 to-amber-900/20 backdrop-blur-md p-3 rounded-b-xl border border-amber-400/10 sticky top-20 z-20 col-span-full mt-0 shadow-xl shadow-black/20'>
 			<div className='max-w-7xl mx-auto relative w-full'>
 				<TextInput
 					id='menu-search'
@@ -42,7 +42,7 @@ const SearchBar: React.FC = () => {
 					}
 				/>
 			</div>
-		</article>
+		</div>
 	);
 };
 

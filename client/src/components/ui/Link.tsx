@@ -16,7 +16,7 @@ const variantClasses = {
 	primary: 'text-yellow-100 shadow-blue-500 font-bold hover:text-yellow-700 hover:underline',
 	secondary: 'text-yellow-200 hover:text-yellow-700 hover:underline',
 	button:
-		'bg-yellow-500 font-bold grow p-2 text-center text-nowrap text-white shadow-md shadow-black active:bg-yellow-900 rounded-md flex gap-2 items-center justify-center font-semibold transition-colors duration-200 focus:outline-none focus-visible:ring-4  focus-visible:ring-yellow-400 ',
+		'bg-yellow-600 font-bold grow p-2 text-center text-nowrap text-white shadow-md shadow-black active:bg-yellow-900 rounded-md flex gap-2 items-center justify-center font-semibold transition-colors duration-200 focus:outline-none focus-visible:ring-4  focus-visible:ring-yellow-400 ',
 };
 
 const AppLink: React.FC<LinkProps> = ({ children, className, variant = 'primary', ...props }) => {
