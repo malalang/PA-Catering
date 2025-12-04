@@ -7,7 +7,7 @@ interface MainProps {
 }
 export default function Main({ children, Icon, heading, tittle, className = '' }: MainProps) {
 	return (
-		<main className={`${className} py-12 px-4 sm:px-6 lg:px-8 max-w-7xl flex flex-wrap gap-4 `}>
+		<main className={`${className} p-4 max-w-7xl flex flex-wrap gap-4 `}>
 			<header>
 				<span className='flex items-center justify-center gap-3'>
 					{Icon && <Icon className='text-3xl text-yellow-500' />}
