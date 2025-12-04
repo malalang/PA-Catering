@@ -1,6 +1,3 @@
-import React from 'react';
-import Main from '@/components/ui/layout/Main';
-import React from 'react';
 import Main from '@/components/ui/layout/Main';
 import { HiEnvelope } from 'react-icons/hi2';
 import AppLink from '@/components/ui/Link';
