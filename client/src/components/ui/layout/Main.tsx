@@ -5,14 +5,9 @@ interface MainProps {
 	tittle?: string;
 	children: React.ReactNode;
 }
-export default function Main({ children, Icon, heading, tittle, className }: MainProps) {
+export default function Main({ children, Icon, heading, tittle, className = '' }: MainProps) {
 	return (
-		<main
-			className={
-				className
-					? className
-					: 'flex flex-col items-center justify-start w-full min-h-screen p-2 md:px-4 '
-			}>
+		<main className={`${className} py-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto`}>
 			<header>
 				<span className='flex items-center justify-center gap-3'>
 					{Icon && <Icon className='text-3xl text-yellow-500' />}

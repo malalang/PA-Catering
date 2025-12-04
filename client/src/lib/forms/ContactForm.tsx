@@ -5,6 +5,7 @@ import { useState } from 'react';
 import { FaWhatsapp, FaEnvelope, FaPhone } from 'react-icons/fa';
 import { createClient } from '@/lib/supabase/client';
 import { Database } from '@/lib/types/database.types';
+import Section from '@/components/ui/layout/Section';
 
 type FormData = {
   name: string;
@@ -57,9 +58,7 @@ export default function ContactForm() {
   };
 
   return (
-    <div className="max-w-4xl mx-auto p-6 bg-white/10 backdrop-blur-md rounded-lg shadow-lg">
-      <h2 className="text-3xl font-bold mb-6 text-center text-white">Contact Us</h2>
-
+    <Section tittle="Contact Us" heading="Have questions or feedback? We'd love to hear from you. Fill out the form below or reach out to us directly.">
       <div className="grid md:grid-cols-2 gap-8">
         <div>
           <h3 className="text-xl font-semibold mb-4 text-white">Get in Touch</h3>
@@ -152,6 +151,6 @@ export default function ContactForm() {
           </button>
         </form>
       </div>
-    </div>
+    </Section>
   );
 }
