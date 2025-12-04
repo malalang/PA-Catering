@@ -1,4 +1,7 @@
 import PersonalInformation from './components/PersonalInformation';
+import ProfileHeader from './components/ProfileHeader';
+import OrdersSummary from './components/OrdersSummary';
+import FavoritesSummary from './components/FavoritesSummary';
 
 import { FaUserCircle } from 'react-icons/fa';
 import Main from '@/components/ui/layout/Main';
@@ -56,11 +59,34 @@ const CustomerProfilePage: React.FC = async () => {
 		lastLogin: profile.last_login ? new Date(profile.last_login) : undefined,
 	};
 
+	// Fetch orders count
+	const { count: ordersCount } = await supabase
+		.from('orders')
+		.select('*', { count: 'exact', head: true })
+		.eq('user_id', user.id);
+
+	// Fetch favorites count
+	const { count: favoritesCount } = await supabase
+		.from('user_favorites')
+		.select('*', { count: 'exact', head: true })
+		.eq('user_id', user.id);
+
 	return (
 		<Main
 			tittle='Profile'
 			Icon={FaUserCircle}
 			heading='Manage your personal information, preferences, and account security.'>
+
+			<ProfileHeader
+				user={profile}
+				ordersCount={ordersCount || 0}
+				favoritesCount={favoritesCount || 0}
+			/>
+
+			<div className="grid md:grid-cols-2 gap-6 mb-8">
+				<OrdersSummary userId={user.id} />
+				<FavoritesSummary userId={user.id} />
+			</div>
 
 			<PersonalInformation user={userProfile} />
 

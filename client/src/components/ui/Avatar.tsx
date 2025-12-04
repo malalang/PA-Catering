@@ -5,38 +5,38 @@ import Image from 'next/image';
 interface AvatarProps {
 	src: string | null | undefined;
 	alt: string;
-	size?: 'small' | 'medium' | 'large';
-	className?: string; // Existing className for external styles
+	initials?: string; // Added initials prop
+	size?: 'small' | 'medium' | 'large' | 'xl'; // Added xl size
+	className?: string;
 }
 
-// Define size classes as an object for better readability and maintainability
 const sizeClassesMap = {
-	small: 'w-8 h-8 text-sm', // Added text-sm for initial/fallback text size
-	medium: 'w-10 h-10 text-base', // Added text-base
-	large: 'w-16 h-16 text-xl', // Added text-xl
+	small: 'w-8 h-8 text-sm',
+	medium: 'w-10 h-10 text-base',
+	large: 'w-16 h-16 text-xl',
+	xl: 'w-24 h-24 text-3xl', // Added xl size
 };
 
-const Avatar: React.FC<AvatarProps> = ({ src, alt, size = 'medium', className }) => {
-	// Get the size-specific classes from the map, defaulting to 'medium'
+const Avatar: React.FC<AvatarProps> = ({ src, alt, initials, size = 'medium', className }) => {
 	const currentSizeClasses = sizeClassesMap[size];
 
 	return (
 		<div
 			className={classNames(
-				'relative flex items-center justify-center rounded-full bg-yellow-200 overflow-hidden',
-				currentSizeClasses, // Apply the size-specific classes
-				className // Apply any additional classes passed from parent
+				'relative flex items-center justify-center rounded-full bg-yellow-200 overflow-hidden shrink-0',
+				currentSizeClasses,
+				className
 			)}>
 			{src ? (
 				<Image
 					src={src}
 					alt={alt}
-					className='absolute inset-0 w-full h-full object-cover'
+					fill // Use fill instead of absolute positioning manually
+					className='object-cover'
 				/>
 			) : (
-				// Fallback for no image: display first letter of alt text
-				<span className='text-yellow-600 font-bold uppercase flex items-center justify-center h-full w-full'>
-					{alt.charAt(0)}
+				<span className='text-yellow-900 font-bold uppercase flex items-center justify-center h-full w-full select-none'>
+					{initials || alt.charAt(0)}
 				</span>
 			)}
 		</div>
