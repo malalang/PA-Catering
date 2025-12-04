@@ -1,6 +1,7 @@
 import React from 'react';
 import { HiShoppingBag, HiHeart } from 'react-icons/hi2';
 import Avatar from '@/components/ui/Avatar';
+import Section from '@/components/ui/layout/Section';
 
 interface ProfileHeaderProps {
     user: any;
@@ -14,7 +15,7 @@ const ProfileHeader: React.FC<ProfileHeaderProps> = ({ user, ordersCount, favori
         : user.email?.[0].toUpperCase() || 'U';
 
     return (
-        <div className="bg-gradient-to-br from-yellow-900/40 to-yellow-800/40 backdrop-blur-md border border-white/10 rounded-2xl p-6 mb-8 flex flex-col md:flex-row items-center gap-6">
+        <Section>
             <div className="relative">
                 <Avatar
                     src={user.photo_url}
@@ -45,7 +46,7 @@ const ProfileHeader: React.FC<ProfileHeaderProps> = ({ user, ordersCount, favori
                     </div>
                 </div>
             </div>
-        </div>
+        </Section>
     );
 };
 

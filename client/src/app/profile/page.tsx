@@ -83,12 +83,12 @@ const CustomerProfilePage: React.FC = async () => {
 				favoritesCount={favoritesCount || 0}
 			/>
 
-			<div className="grid md:grid-cols-2 gap-6 mb-8">
-				<OrdersSummary userId={user.id} />
-				<FavoritesSummary userId={user.id} />
-			</div>
+
 
 			<PersonalInformation user={userProfile} />
+
+			<OrdersSummary userId={user.id} />
+			<FavoritesSummary userId={user.id} />
 
 		</Main>
 	);

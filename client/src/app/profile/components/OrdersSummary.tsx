@@ -2,6 +2,7 @@ import React from 'react';
 import Link from 'next/link';
 import { HiShoppingBag, HiChevronRight } from 'react-icons/hi2';
 import { createClient } from '@/lib/supabase/server';
+import Section from '@/components/ui/layout/Section';
 
 interface OrdersSummaryProps {
     userId: string;
@@ -21,7 +22,7 @@ const OrdersSummary: React.FC<OrdersSummaryProps> = async ({ userId }) => {
     }
 
     return (
-        <div className="bg-white/5 border border-white/10 rounded-2xl p-6">
+        <Section>
             <div className="flex items-center justify-between mb-4">
                 <h2 className="text-xl font-semibold text-white flex items-center gap-2">
                     <HiShoppingBag className="text-amber-400" />
@@ -42,8 +43,8 @@ const OrdersSummary: React.FC<OrdersSummaryProps> = async ({ userId }) => {
                         <div className="text-right">
                             <p className="text-white font-bold">R{order.total_price.toFixed(2)}</p>
                             <span className={`text-xs px-2 py-1 rounded-full capitalize ${order.status === 'completed' ? 'bg-emerald-500/20 text-emerald-400' :
-                                    order.status === 'cancelled' ? 'bg-rose-500/20 text-rose-400' :
-                                        'bg-amber-500/20 text-amber-400'
+                                order.status === 'cancelled' ? 'bg-rose-500/20 text-rose-400' :
+                                    'bg-amber-500/20 text-amber-400'
                                 }`}>
                                 {order.status}
                             </span>
@@ -51,7 +52,7 @@ const OrdersSummary: React.FC<OrdersSummaryProps> = async ({ userId }) => {
                     </div>
                 ))}
             </div>
-        </div>
+        </Section>
     );
 };
 

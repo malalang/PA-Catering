@@ -3,6 +3,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { HiHeart, HiChevronRight } from 'react-icons/hi2';
 import { createClient } from '@/lib/supabase/server';
+import Section from '@/components/ui/layout/Section';
 
 interface FavoritesSummaryProps {
     userId: string;
@@ -21,7 +22,7 @@ const FavoritesSummary: React.FC<FavoritesSummaryProps> = async ({ userId }) => 
     }
 
     return (
-        <div className="bg-white/5 border border-white/10 rounded-2xl p-6">
+        <Section>
             <div className="flex items-center justify-between mb-4">
                 <h2 className="text-xl font-semibold text-white flex items-center gap-2">
                     <HiHeart className="text-rose-400" />
@@ -63,7 +64,7 @@ const FavoritesSummary: React.FC<FavoritesSummaryProps> = async ({ userId }) => 
                     );
                 })}
             </div>
-        </div>
+        </Section>
     );
 };
 
