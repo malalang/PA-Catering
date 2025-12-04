@@ -39,7 +39,7 @@ async function ProductPage({ params }: { params: Promise<{ product: string; Prod
 	// "coca-cola" -> ["coca", "cola"] -> pattern "%coca%cola%" 
 	// This matches "Coca-Cola", "Coca Cola", "coca cola", etc.
 	const words = productId.split('-').filter(w => w.length > 0);
-	const flexiblePattern = words.length > 1 
+	const flexiblePattern = words.length > 1
 		? `%${words.join('%')}%`  // "%coca%cola%" matches both hyphens and spaces
 		: `%${productId}%`;        // Single word, just use wildcards
 
@@ -53,13 +53,13 @@ async function ProductPage({ params }: { params: Promise<{ product: string; Prod
 	if (patternMatch && patternMatch.length > 0 && !patternError) {
 		// If multiple matches, prefer exact match (with spaces or hyphens)
 		const typedMatches = patternMatch as ProductRow[];
-		const exactWithSpaces = typedMatches.find(p => 
+		const exactWithSpaces = typedMatches.find(p =>
 			p.name.toLowerCase().replace(/[-\s]/g, ' ') === productNameSlug.toLowerCase()
 		);
-		const exactWithHyphens = typedMatches.find(p => 
+		const exactWithHyphens = typedMatches.find(p =>
 			p.name.toLowerCase().replace(/[-\s]/g, '-') === productId.toLowerCase()
 		);
-		
+
 		productData = exactWithSpaces || exactWithHyphens || typedMatches[0];
 	} else {
 		// Fallback: try exact match with spaces
@@ -67,7 +67,7 @@ async function ProductPage({ params }: { params: Promise<{ product: string; Prod
 			.from('products')
 			.select('*')
 			.ilike('name', productNameSlug)
-		.single();
+			.single();
 
 		if (exactMatch && !exactError) {
 			productData = exactMatch as ProductRow;
@@ -117,7 +117,7 @@ async function ProductPage({ params }: { params: Promise<{ product: string; Prod
 			<Section>
 				{/* Product Image */}
 				{productUI.Image && (
-					<div className='lg:w-1/2 flex justify-center items-start'>
+					<div className=' flex justify-center items-start'>
 						<div className='relative w-full max-w-md aspect-square bg-black/20 rounded-md shadow-lg overflow-hidden'>
 							<Image
 								src={productUI.Image}
@@ -131,20 +131,20 @@ async function ProductPage({ params }: { params: Promise<{ product: string; Prod
 				)}
 
 				{/* Product Information */}
-				<div className='lg:w-1/2'>
-					<ProductInfo product={productUI} />
 
-					{/* Action Buttons */}
-					<div className='flex flex-wrap gap-4 mt-8'>
-						<AddtoCart
-							product={productUI}
-							className='bg-black/50 hover:bg-yellow-500'>
-							Add to Cart
-						</AddtoCart>
-						<FavoriteButton product={productUI} />
-						<SocialButtons product={productUI} />
-					</div>
+				<ProductInfo product={productUI} />
+
+				{/* Action Buttons */}
+				<div className='flex flex-wrap gap-4 mt-8'>
+					<AddtoCart
+						product={productUI}
+						className='bg-black/50 hover:bg-yellow-500'>
+						Add to Cart
+					</AddtoCart>
+					<FavoriteButton product={productUI} />
+					<SocialButtons product={productUI} />
 				</div>
+
 			</Section>
 
 			{/* Related Products */}
