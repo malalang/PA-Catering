@@ -16,16 +16,28 @@
 
 
 	/* Typography Hierarchy */
+	/* Typography Hierarchy */
+	:root {
+		--theme-gold: #f59e0b;
+		/* amber-500 */
+		--theme-gold-light: #fcd34d;
+		/* amber-300 */
+		--theme-gold-dark: #b45309;
+		/* amber-700 */
+	}
+
 	h1 {
-		@apply text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-tight;
+		@apply text-5xl md:text-6xl lg:text-7xl font-bold tracking-widest leading-tight;
+		font-variant-caps: small-caps;
 		/* Removed heavy drop-shadow for cleaner look */
 	}
 
 	h2 {
-		@apply text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight leading-tight mb-8 relative inline-block;
+		@apply text-3xl md:text-4xl lg:text-5xl font-bold tracking-widest leading-tight mb-8 relative inline-block;
+		font-variant-caps: small-caps;
 		/* Refined border treatment */
 	}
-	
+
 	h2::after {
 		content: '';
 		@apply block w-1/3 h-1 bg-amber-500 mt-4 mx-auto rounded-full opacity-80;
@@ -58,7 +70,12 @@
 	}
 
 	/* Reset generic heading overrides to allow component-specific styling */
-	h1, h2, h3, h4, h5, h6 {
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6 {
 		@apply text-white text-center;
 	}
 

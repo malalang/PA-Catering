@@ -11,7 +11,7 @@ interface ProductCardProps {
 }
 
 const ProductCard: React.FC<ProductCardProps> = ({ product, categoryName }) => (
-	<article className='group relative flex flex-col h-full bg-neutral-900/40 backdrop-blur-sm border border-white/5 rounded-2xl p-6 transition-all duration-500 hover:bg-neutral-900/60 hover:border-amber-500/20 hover:shadow-2xl hover:shadow-black/50'>
+	<article className='group relative flex flex-col h-full bg-neutral-900/40 backdrop-blur-sm border border-white/5 rounded-2xl p-6 transition-all duration-500 ease-in-out hover:-translate-y-1 hover:shadow-2xl hover:shadow-amber-900/40 hover:bg-neutral-900/60 hover:border-amber-500/20'>
 		<div className='flex items-center justify-between gap-4 mb-6'>
 			{product.badge ? (
 				<span className='px-4 py-1.5 rounded-full text-[10px] font-bold tracking-widest uppercase bg-amber-500/10 text-amber-500 border border-amber-500/20'>

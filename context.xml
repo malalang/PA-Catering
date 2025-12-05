@@ -4019,6 +4019,305 @@ export interface SupabaseOrderRecord {
 }
 </file>
 
+<file path="client/.gitignore">
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+/node_modules
+/.pnp
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/versions
+
+# testing
+/coverage
+
+# next.js
+/.next/
+/out/
+
+# production
+/build
+
+# misc
+.DS_Store
+*.pem
+
+# debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# env files (can opt-in for committing if needed)
+.env*
+
+# vercel
+.vercel
+
+# typescript
+*.tsbuildinfo
+next-env.d.ts
+</file>
+
+<file path="client/biome.json">
+{
+  "$schema": "https://biomejs.dev/schemas/2.2.0/schema.json",
+  "vcs": {
+    "enabled": true,
+    "clientKind": "git",
+    "useIgnoreFile": true
+  },
+  "files": {
+    "ignoreUnknown": true,
+    "includes": ["**", "!node_modules", "!.next", "!dist", "!build"]
+  },
+  "formatter": {
+    "enabled": true,
+    "indentStyle": "space",
+    "indentWidth": 2
+  },
+  "linter": {
+    "enabled": true,
+    "rules": {
+      "recommended": true,
+      "suspicious": {
+        "noUnknownAtRules": "off"
+      }
+    },
+    "domains": {
+      "next": "recommended",
+      "react": "recommended"
+    }
+  },
+  "assist": {
+    "actions": {
+      "source": {
+        "organizeImports": "on"
+      }
+    }
+  }
+}
+</file>
+
+<file path="client/postcss.config.mjs">
+const config = {
+  plugins: {
+    "@tailwindcss/postcss": {},
+  },
+};
+
+export default config;
+</file>
+
+<file path="client/public/file.svg">
+<svg fill="none" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="M14.5 13.5V5.41a1 1 0 0 0-.3-.7L9.8.29A1 1 0 0 0 9.08 0H1.5v13.5A2.5 2.5 0 0 0 4 16h8a2.5 2.5 0 0 0 2.5-2.5m-1.5 0v-7H8v-5H3v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1M9.5 5V2.12L12.38 5zM5.13 5h-.62v1.25h2.12V5zm-.62 3h7.12v1.25H4.5zm.62 3h-.62v1.25h7.12V11z" clip-rule="evenodd" fill="#666" fill-rule="evenodd"/></svg>
+</file>
+
+<file path="client/public/globe.svg">
+<svg fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><g clip-path="url(#a)"><path fill-rule="evenodd" clip-rule="evenodd" d="M10.27 14.1a6.5 6.5 0 0 0 3.67-3.45q-1.24.21-2.7.34-.31 1.83-.97 3.1M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16m.48-1.52a7 7 0 0 1-.96 0H7.5a4 4 0 0 1-.84-1.32q-.38-.89-.63-2.08a40 40 0 0 0 3.92 0q-.25 1.2-.63 2.08a4 4 0 0 1-.84 1.31zm2.94-4.76q1.66-.15 2.95-.43a7 7 0 0 0 0-2.58q-1.3-.27-2.95-.43a18 18 0 0 1 0 3.44m-1.27-3.54a17 17 0 0 1 0 3.64 39 39 0 0 1-4.3 0 17 17 0 0 1 0-3.64 39 39 0 0 1 4.3 0m1.1-1.17q1.45.13 2.69.34a6.5 6.5 0 0 0-3.67-3.44q.65 1.26.98 3.1M8.48 1.5l.01.02q.41.37.84 1.31.38.89.63 2.08a40 40 0 0 0-3.92 0q.25-1.2.63-2.08a4 4 0 0 1 .85-1.32 7 7 0 0 1 .96 0m-2.75.4a6.5 6.5 0 0 0-3.67 3.44 29 29 0 0 1 2.7-.34q.31-1.83.97-3.1M4.58 6.28q-1.66.16-2.95.43a7 7 0 0 0 0 2.58q1.3.27 2.95.43a18 18 0 0 1 0-3.44m.17 4.71q-1.45-.12-2.69-.34a6.5 6.5 0 0 0 3.67 3.44q-.65-1.27-.98-3.1" fill="#666"/></g><defs><clipPath id="a"><path fill="#fff" d="M0 0h16v16H0z"/></clipPath></defs></svg>
+</file>
+
+<file path="client/public/next.svg">
+<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 394 80"><path fill="#000" d="M262 0h68.5v12.7h-27.2v66.6h-13.6V12.7H262V0ZM149 0v12.7H94v20.4h44.3v12.6H94v21h55v12.6H80.5V0h68.7zm34.3 0h-17.8l63.8 79.4h17.9l-32-39.7 32-39.6h-17.9l-23 28.6-23-28.6zm18.3 56.7-9-11-27.1 33.7h17.8l18.3-22.7z"/><path fill="#000" d="M81 79.3 17 0H0v79.3h13.6V17l50.2 62.3H81Zm252.6-.4c-1 0-1.8-.4-2.5-1s-1.1-1.6-1.1-2.6.3-1.8 1-2.5 1.6-1 2.6-1 1.8.3 2.5 1a3.4 3.4 0 0 1 .6 4.3 3.7 3.7 0 0 1-3 1.8zm23.2-33.5h6v23.3c0 2.1-.4 4-1.3 5.5a9.1 9.1 0 0 1-3.8 3.5c-1.6.8-3.5 1.3-5.7 1.3-2 0-3.7-.4-5.3-1s-2.8-1.8-3.7-3.2c-.9-1.3-1.4-3-1.4-5h6c.1.8.3 1.6.7 2.2s1 1.2 1.6 1.5c.7.4 1.5.5 2.4.5 1 0 1.8-.2 2.4-.6a4 4 0 0 0 1.6-1.8c.3-.8.5-1.8.5-3V45.5zm30.9 9.1a4.4 4.4 0 0 0-2-3.3 7.5 7.5 0 0 0-4.3-1.1c-1.3 0-2.4.2-3.3.5-.9.4-1.6 1-2 1.6a3.5 3.5 0 0 0-.3 4c.3.5.7.9 1.3 1.2l1.8 1 2 .5 3.2.8c1.3.3 2.5.7 3.7 1.2a13 13 0 0 1 3.2 1.8 8.1 8.1 0 0 1 3 6.5c0 2-.5 3.7-1.5 5.1a10 10 0 0 1-4.4 3.5c-1.8.8-4.1 1.2-6.8 1.2-2.6 0-4.9-.4-6.8-1.2-2-.8-3.4-2-4.5-3.5a10 10 0 0 1-1.7-5.6h6a5 5 0 0 0 3.5 4.6c1 .4 2.2.6 3.4.6 1.3 0 2.5-.2 3.5-.6 1-.4 1.8-1 2.4-1.7a4 4 0 0 0 .8-2.4c0-.9-.2-1.6-.7-2.2a11 11 0 0 0-2.1-1.4l-3.2-1-3.8-1c-2.8-.7-5-1.7-6.6-3.2a7.2 7.2 0 0 1-2.4-5.7 8 8 0 0 1 1.7-5 10 10 0 0 1 4.3-3.5c2-.8 4-1.2 6.4-1.2 2.3 0 4.4.4 6.2 1.2 1.8.8 3.2 2 4.3 3.4 1 1.4 1.5 3 1.5 5h-5.8z"/></svg>
+</file>
+
+<file path="client/public/robots.txt">
+# Allow all web crawlers to index the site
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://yourdomain.com/sitemap.xml
+
+# Disallow admin and API routes
+Disallow: /admin/
+Disallow: /api/
+
+# Allow media files
+Allow: /public/
+
+# Crawl-delay: 10  # Uncomment and adjust if needed to limit crawl rate
+</file>
+
+<file path="client/public/vercel.svg">
+<svg fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1155 1000"><path d="m577.3 0 577.4 1000H0z" fill="#fff"/></svg>
+</file>
+
+<file path="client/public/window.svg">
+<svg fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path fill-rule="evenodd" clip-rule="evenodd" d="M1.5 2.5h13v10a1 1 0 0 1-1 1h-11a1 1 0 0 1-1-1zM0 1h16v11.5a2.5 2.5 0 0 1-2.5 2.5h-11A2.5 2.5 0 0 1 0 12.5zm3.75 4.5a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5M7 4.75a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0m1.75.75a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5" fill="#666"/></svg>
+</file>
+
+<file path="client/README.md">
+This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+
+## Getting Started
+
+First, run the development server:
+
+```bash
+npm run dev
+# or
+yarn dev
+# or
+pnpm dev
+# or
+bun dev
+```
+
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+
+You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+
+This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+
+## Learn More
+
+To learn more about Next.js, take a look at the following resources:
+
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+
+## Deploy on Vercel
+
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+</file>
+
+<file path="client/src/app/blog/loading.tsx">
+import Loading from '@/components/ui/Loading';
+
+export default function LoadingPage() {
+	return <Loading message='Loading Blog Posts...' />;
+}
+</file>
+
+<file path="client/src/app/contact/loading.tsx">
+import Loading from '@/components/ui/Loading';
+
+export default function LoadingPage() {
+	return <Loading message='Loading Contact Page...' />;
+}
+</file>
+
+<file path="client/src/app/gallery/loading.tsx">
+import Loading from '@/components/ui/Loading';
+
+export default function LoadingPage() {
+	return <Loading message='Loading Gallery...' />;
+}
+</file>
+
+<file path="client/src/app/loading.tsx">
+import Loading from '@/components/ui/Loading';
+
+export default function LoadingPage() {
+	return <Loading message='Loading Home page...' />;
+}
+</file>
+
+<file path="client/src/app/menu/[Products]/[product]/comments/loading.tsx">
+import Loading from '@/components/ui/Loading';
+
+export default function LoadingPage() {
+	return <Loading message='Loading Product Comments...' />;
+}
+</file>
+
+<file path="client/src/app/menu/[Products]/[product]/loading.tsx">
+import Loading from '@/components/ui/Loading';
+
+export default function LoadingPage() {
+	return <Loading message='Loading Product Details...' />;
+}
+</file>
+
+<file path="client/src/app/menu/[Products]/loading.tsx">
+import Loading from '@/components/ui/Loading';
+
+export default function LoadingPage() {
+	return <Loading message='Loading Products...' />;
+}
+</file>
+
+<file path="client/src/app/menu/cart/loading.tsx">
+import Loading from '@/components/ui/Loading';
+
+export default function LoadingPage() {
+	return <Loading message='Loading Cart...' />;
+}
+</file>
+
+<file path="client/src/app/menu/components/ProductDetails.tsx">
+import Image from 'next/image';
+import React from 'react';
+
+function ProductDetails({ item }: { item: CartItem }) {
+	return (
+		<div className='flex items-center gap-4 w-full text-white bg-black/20  rounded-md p-4'>
+			{item.Image && (
+				<div className=' w-20 h-20 sm:w-24 sm:h-24  flex-shrink-0'>
+					<Image
+						src={item.Image}
+						alt={item.Name}
+						height={100}
+						width={100}
+						className='w-full rounded-md  '
+					/>
+				</div>
+			)}
+			<div className='flex-grow flex flex-col justify-between h-full'>
+				<h4>{item.Name}</h4>
+				<div className='space-y-1 text-sm'>
+					<div className='flex justify-between'>
+						<span className='text-white'>Quantity:</span>
+						<span className='font-semibold'>{item.quantity}</span>
+					</div>
+					<div className='flex justify-between'>
+						<span className='text-white'>Price:</span>
+						<span className='font-semibold'>R{item.Price.toFixed(2)}</span>
+					</div>
+					{item.quantity > 1 && (
+						<div className='flex justify-between font-bold border-t border-white/20 pt-1 mt-1'>
+							<span className='text-white'>Total:</span>
+							<span>R{(item.Price * item.quantity).toFixed(2)}</span>
+						</div>
+					)}
+				</div>
+			</div>
+		</div>
+	);
+}
+
+export default ProductDetails;
+</file>
+
+<file path="client/src/app/menu/loading.tsx">
+import Loading from '@/components/ui/Loading';
+
+export default function LoadingPage() {
+	return <Loading message='Loading Menu...' />;
+}
+</file>
+
+<file path="client/src/app/privacy/loading.tsx">
+const Loading: React.FC = () => {
+  return (
+    <main>
+      Loading Privacy Policy...
+    </main>
+  );
+};
+
+export default Loading;
+</file>
+
 <file path="client/src/app/profile/components/FavoritesSummary.tsx">
 import React from 'react';
 import Link from 'next/link';
@@ -4209,6 +4508,99 @@ const ProfileHeader: React.FC<ProfileHeaderProps> = ({ user, ordersCount, favori
 };
 
 export default ProfileHeader;
+</file>
+
+<file path="client/src/app/profile/loading.tsx">
+import Loading from '@/components/ui/Loading';
+
+export default function LoadingPage() {
+	return <Loading message='Loading Profile...' />;
+}
+</file>
+
+<file path="client/src/app/terms/loading.tsx">
+const Loading: React.FC = () => {
+	return <div>Loading Terms and Conditions...</div>;
+};
+
+export default Loading;
+</file>
+
+<file path="client/src/components/Navbar/MobileNavbar.tsx">
+'use client';
+import React, { useState, useRef, useEffect, Dispatch, SetStateAction } from 'react';
+import Button from '@/components/ui/Button';
+
+const MobileNavbar: React.FC<{
+	setMenubar: (path: 'mobile' | 'profile') => void;
+	mobileOpen: boolean;
+}> = ({ mobileOpen, setMenubar }) => {
+	return (
+		<nav className='md:hidden w-full m-0 z-50 p-0'>
+			<div className='flex flex-row items-center justify-between w-full '>
+				<Button
+					variant='icon'
+					onClick={() => {
+						setMenubar('mobile');
+					}}
+					title={mobileOpen ? 'Close menu' : 'Open menu'}
+					aria-label={mobileOpen ? 'Close menu' : 'Open menu'}>
+					<svg
+						className='h-6 w-6'
+						fill='none'
+						stroke='currentColor'
+						viewBox='0 0 24 24'
+						xmlns='http://www.w3.org/2000/svg'>
+						{mobileOpen ? (
+							<path
+								strokeLinecap='round'
+								strokeLinejoin='round'
+								strokeWidth='2'
+								d='M6 18L18 6M6 6l12 12'
+							/>
+						) : (
+							<path
+								strokeLinecap='round'
+								strokeLinejoin='round'
+								strokeWidth='2'
+								d='M4 6h16M4 12h16m-7 6h7'
+							/>
+						)}
+					</svg>
+				</Button>
+			</div>
+		</nav>
+	);
+};
+
+export default MobileNavbar;
+</file>
+
+<file path="client/src/components/Navbar/useMenubarToggle.ts">
+import { useState } from 'react';
+
+type MenuPath = 'mobile' | 'profile';
+
+export const useMenubarToggle = () => {
+  const [profileOpen, setProfileOpen] = useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
+
+  const setMenubar = (path: MenuPath) => {
+    if (path === 'mobile') {
+      setMobileOpen(prev => !prev);
+      setProfileOpen(false);
+    } else if (path === 'profile') {
+      setProfileOpen(prev => !prev);
+      setMobileOpen(false);
+    }
+  };
+
+  return {
+    profileOpen,
+    mobileOpen,
+    setMenubar,
+  };
+};
 </file>
 
 <file path="admin/src/components/auth/AuthShell.tsx">
@@ -5129,177 +5521,6 @@ export * from "./database-records";
 export * from "./testimonials";
 </file>
 
-<file path="client/.gitignore">
-# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
-
-# dependencies
-/node_modules
-/.pnp
-.pnp.*
-.yarn/*
-!.yarn/patches
-!.yarn/plugins
-!.yarn/releases
-!.yarn/versions
-
-# testing
-/coverage
-
-# next.js
-/.next/
-/out/
-
-# production
-/build
-
-# misc
-.DS_Store
-*.pem
-
-# debug
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-.pnpm-debug.log*
-
-# env files (can opt-in for committing if needed)
-.env*
-
-# vercel
-.vercel
-
-# typescript
-*.tsbuildinfo
-next-env.d.ts
-</file>
-
-<file path="client/biome.json">
-{
-  "$schema": "https://biomejs.dev/schemas/2.2.0/schema.json",
-  "vcs": {
-    "enabled": true,
-    "clientKind": "git",
-    "useIgnoreFile": true
-  },
-  "files": {
-    "ignoreUnknown": true,
-    "includes": ["**", "!node_modules", "!.next", "!dist", "!build"]
-  },
-  "formatter": {
-    "enabled": true,
-    "indentStyle": "space",
-    "indentWidth": 2
-  },
-  "linter": {
-    "enabled": true,
-    "rules": {
-      "recommended": true,
-      "suspicious": {
-        "noUnknownAtRules": "off"
-      }
-    },
-    "domains": {
-      "next": "recommended",
-      "react": "recommended"
-    }
-  },
-  "assist": {
-    "actions": {
-      "source": {
-        "organizeImports": "on"
-      }
-    }
-  }
-}
-</file>
-
-<file path="client/postcss.config.mjs">
-const config = {
-  plugins: {
-    "@tailwindcss/postcss": {},
-  },
-};
-
-export default config;
-</file>
-
-<file path="client/public/file.svg">
-<svg fill="none" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="M14.5 13.5V5.41a1 1 0 0 0-.3-.7L9.8.29A1 1 0 0 0 9.08 0H1.5v13.5A2.5 2.5 0 0 0 4 16h8a2.5 2.5 0 0 0 2.5-2.5m-1.5 0v-7H8v-5H3v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1M9.5 5V2.12L12.38 5zM5.13 5h-.62v1.25h2.12V5zm-.62 3h7.12v1.25H4.5zm.62 3h-.62v1.25h7.12V11z" clip-rule="evenodd" fill="#666" fill-rule="evenodd"/></svg>
-</file>
-
-<file path="client/public/globe.svg">
-<svg fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><g clip-path="url(#a)"><path fill-rule="evenodd" clip-rule="evenodd" d="M10.27 14.1a6.5 6.5 0 0 0 3.67-3.45q-1.24.21-2.7.34-.31 1.83-.97 3.1M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16m.48-1.52a7 7 0 0 1-.96 0H7.5a4 4 0 0 1-.84-1.32q-.38-.89-.63-2.08a40 40 0 0 0 3.92 0q-.25 1.2-.63 2.08a4 4 0 0 1-.84 1.31zm2.94-4.76q1.66-.15 2.95-.43a7 7 0 0 0 0-2.58q-1.3-.27-2.95-.43a18 18 0 0 1 0 3.44m-1.27-3.54a17 17 0 0 1 0 3.64 39 39 0 0 1-4.3 0 17 17 0 0 1 0-3.64 39 39 0 0 1 4.3 0m1.1-1.17q1.45.13 2.69.34a6.5 6.5 0 0 0-3.67-3.44q.65 1.26.98 3.1M8.48 1.5l.01.02q.41.37.84 1.31.38.89.63 2.08a40 40 0 0 0-3.92 0q.25-1.2.63-2.08a4 4 0 0 1 .85-1.32 7 7 0 0 1 .96 0m-2.75.4a6.5 6.5 0 0 0-3.67 3.44 29 29 0 0 1 2.7-.34q.31-1.83.97-3.1M4.58 6.28q-1.66.16-2.95.43a7 7 0 0 0 0 2.58q1.3.27 2.95.43a18 18 0 0 1 0-3.44m.17 4.71q-1.45-.12-2.69-.34a6.5 6.5 0 0 0 3.67 3.44q-.65-1.27-.98-3.1" fill="#666"/></g><defs><clipPath id="a"><path fill="#fff" d="M0 0h16v16H0z"/></clipPath></defs></svg>
-</file>
-
-<file path="client/public/next.svg">
-<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 394 80"><path fill="#000" d="M262 0h68.5v12.7h-27.2v66.6h-13.6V12.7H262V0ZM149 0v12.7H94v20.4h44.3v12.6H94v21h55v12.6H80.5V0h68.7zm34.3 0h-17.8l63.8 79.4h17.9l-32-39.7 32-39.6h-17.9l-23 28.6-23-28.6zm18.3 56.7-9-11-27.1 33.7h17.8l18.3-22.7z"/><path fill="#000" d="M81 79.3 17 0H0v79.3h13.6V17l50.2 62.3H81Zm252.6-.4c-1 0-1.8-.4-2.5-1s-1.1-1.6-1.1-2.6.3-1.8 1-2.5 1.6-1 2.6-1 1.8.3 2.5 1a3.4 3.4 0 0 1 .6 4.3 3.7 3.7 0 0 1-3 1.8zm23.2-33.5h6v23.3c0 2.1-.4 4-1.3 5.5a9.1 9.1 0 0 1-3.8 3.5c-1.6.8-3.5 1.3-5.7 1.3-2 0-3.7-.4-5.3-1s-2.8-1.8-3.7-3.2c-.9-1.3-1.4-3-1.4-5h6c.1.8.3 1.6.7 2.2s1 1.2 1.6 1.5c.7.4 1.5.5 2.4.5 1 0 1.8-.2 2.4-.6a4 4 0 0 0 1.6-1.8c.3-.8.5-1.8.5-3V45.5zm30.9 9.1a4.4 4.4 0 0 0-2-3.3 7.5 7.5 0 0 0-4.3-1.1c-1.3 0-2.4.2-3.3.5-.9.4-1.6 1-2 1.6a3.5 3.5 0 0 0-.3 4c.3.5.7.9 1.3 1.2l1.8 1 2 .5 3.2.8c1.3.3 2.5.7 3.7 1.2a13 13 0 0 1 3.2 1.8 8.1 8.1 0 0 1 3 6.5c0 2-.5 3.7-1.5 5.1a10 10 0 0 1-4.4 3.5c-1.8.8-4.1 1.2-6.8 1.2-2.6 0-4.9-.4-6.8-1.2-2-.8-3.4-2-4.5-3.5a10 10 0 0 1-1.7-5.6h6a5 5 0 0 0 3.5 4.6c1 .4 2.2.6 3.4.6 1.3 0 2.5-.2 3.5-.6 1-.4 1.8-1 2.4-1.7a4 4 0 0 0 .8-2.4c0-.9-.2-1.6-.7-2.2a11 11 0 0 0-2.1-1.4l-3.2-1-3.8-1c-2.8-.7-5-1.7-6.6-3.2a7.2 7.2 0 0 1-2.4-5.7 8 8 0 0 1 1.7-5 10 10 0 0 1 4.3-3.5c2-.8 4-1.2 6.4-1.2 2.3 0 4.4.4 6.2 1.2 1.8.8 3.2 2 4.3 3.4 1 1.4 1.5 3 1.5 5h-5.8z"/></svg>
-</file>
-
-<file path="client/public/robots.txt">
-# Allow all web crawlers to index the site
-User-agent: *
-Allow: /
-
-# Sitemap location
-Sitemap: https://yourdomain.com/sitemap.xml
-
-# Disallow admin and API routes
-Disallow: /admin/
-Disallow: /api/
-
-# Allow media files
-Allow: /public/
-
-# Crawl-delay: 10  # Uncomment and adjust if needed to limit crawl rate
-</file>
-
-<file path="client/public/vercel.svg">
-<svg fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1155 1000"><path d="m577.3 0 577.4 1000H0z" fill="#fff"/></svg>
-</file>
-
-<file path="client/public/window.svg">
-<svg fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path fill-rule="evenodd" clip-rule="evenodd" d="M1.5 2.5h13v10a1 1 0 0 1-1 1h-11a1 1 0 0 1-1-1zM0 1h16v11.5a2.5 2.5 0 0 1-2.5 2.5h-11A2.5 2.5 0 0 1 0 12.5zm3.75 4.5a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5M7 4.75a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0m1.75.75a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5" fill="#666"/></svg>
-</file>
-
-<file path="client/README.md">
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
-
-## Getting Started
-
-First, run the development server:
-
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
-</file>
-
 <file path="client/src/app/(auth)/confirm-email/page.tsx">
 import Main from '@/components/ui/layout/Main';
 import { HiEnvelope } from 'react-icons/hi2';
@@ -5795,6 +6016,14 @@ const WhatMakesUsSpecial: React.FC = () => {
 export default WhatMakesUsSpecial;
 </file>
 
+<file path="client/src/app/about/loading.tsx">
+import Loading from '@/components/ui/Loading';
+
+export default function LoadingPage() {
+	return <Loading message='Loading About PA Luxe Creation...' />;
+}
+</file>
+
 <file path="client/src/app/blog/components/BlogPostList.tsx">
 import React from 'react';
 
@@ -5837,12 +6066,26 @@ const BlogPostList: React.FC = () => {
 export default BlogPostList;
 </file>
 
-<file path="client/src/app/blog/loading.tsx">
-import Loading from '@/components/ui/Loading';
+<file path="client/src/app/blog/page.tsx">
+import React from 'react';
+import BlogPostList from '@/app/blog/components/BlogPostList';
+import Main from '@/components/ui/layout/Main';
+import { FaBlog } from 'react-icons/fa';
+import Section from '@/components/ui/layout/Section';
 
-export default function LoadingPage() {
-	return <Loading message='Loading Blog Posts...' />;
-}
+const BlogNewsPage: React.FC = () => {
+	return (
+		<Main
+			tittle='Blog'
+			Icon={FaBlog}>
+			<Section>
+				<BlogPostList />
+			</Section>
+		</Main>
+	);
+};
+
+export default BlogNewsPage;
 </file>
 
 <file path="client/src/app/contact/components/OperatingHours.tsx">
@@ -5886,14 +6129,6 @@ const OperatingHours: React.FC = () => {
 };
 
 export default OperatingHours;
-</file>
-
-<file path="client/src/app/contact/loading.tsx">
-import Loading from '@/components/ui/Loading';
-
-export default function LoadingPage() {
-	return <Loading message='Loading Contact Page...' />;
-}
 </file>
 
 <file path="client/src/app/gallery/components/ImageModal.tsx">
@@ -5960,11 +6195,20 @@ const ImageModal: NextPage<Props> = ({ handleBackdropClick, setModalOpen, produc
 export default ImageModal;
 </file>
 
-<file path="client/src/app/gallery/loading.tsx">
-import Loading from '@/components/ui/Loading';
+<file path="client/src/app/gallery/page.tsx">
+import ImageGallery from '@/app/gallery/components/ImageGallery';
+import Main from '@/components/ui/layout/Main';
+import { FcGallery } from 'react-icons/fc';
 
-export default function LoadingPage() {
-	return <Loading message='Loading Gallery...' />;
+export default function Gallery() {
+	return (
+		<Main
+			tittle='Gallery'
+			Icon={FcGallery}
+			heading='Find Your Convenience'>
+			<ImageGallery />
+		</Main>
+	);
 }
 </file>
 
@@ -6200,44 +6444,129 @@ const TargetMarketCallout: React.FC = () => {
 export default TargetMarketCallout;
 </file>
 
-<file path="client/src/app/loading.tsx">
-import Loading from '@/components/ui/Loading';
+<file path="client/src/app/layout.css">
+@import 'tailwindcss';
+@import './globals.css';
 
-export default function LoadingPage() {
-	return <Loading message='Loading Home page...' />;
+@layer base {
+	body {
+		@apply m-0 p-0 text-white bg-black  bg-fixed h-full relative;
+		font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+			'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+			'Segoe UI Symbol', 'Noto Color Emoji';
+		background-image: url('/BackGround.png');
+		background-size: cover;
+		background-repeat: no-repeat;
+		color: white;
+	}
+
+	article {
+		@apply bg-yellow-700 rounded-md py-2 md:p-6 my-3 mt-6 mb-6 px-8 shadow-sm shadow-black;
+	}
+	nav {
+		@apply m-0 p-0 md:p-6;
+	}
+	footer {
+		@apply w-full bg-white/10 border border-yellow-500 rounded-md p-6 my-3 mt-6 mb-6 px-8;
+	}
 }
 </file>
 
-<file path="client/src/app/menu/[Products]/[product]/comments/loading.tsx">
-import Loading from '@/components/ui/Loading';
+<file path="client/src/app/menu/[Products]/[product]/components/ProductInfo.tsx">
+import React from 'react';
+import { FaExclamationTriangle, FaLeaf, FaFire } from 'react-icons/fa';
 
-export default function LoadingPage() {
-	return <Loading message='Loading Product Comments...' />;
+interface ProductInfoProps {
+	product: ProductType;
 }
-</file>
 
-<file path="client/src/app/menu/[Products]/[product]/loading.tsx">
-import Loading from '@/components/ui/Loading';
+const ProductInfo: React.FC<ProductInfoProps> = ({ product }) => {
+	// Mock nutritional data - can be replaced with real data from product
+	const nutritionalInfo = {
+		calories: product?.nutritional?.calories || 450,
+		protein: product?.nutritional?.protein || '12g',
+		carbs: product?.nutritional?.carbs || '45g',
+		fat: product?.nutritional?.fat || '18g',
+		fiber: product?.nutritional?.fiber || '3g',
+		sugar: product?.nutritional?.sugar || '8g',
+	};
 
-export default function LoadingPage() {
-	return <Loading message='Loading Product Details...' />;
-}
-</file>
+	// Mock allergen info - can be replaced with real data from product
+	const allergens = product?.allergens || ['Gluten', 'Dairy', 'Eggs'];
+	const isVegetarian = product?.isVegetarian || true;
+	const isSpicy = product?.isSpicy || true;
 
-<file path="client/src/app/menu/[Products]/loading.tsx">
-import Loading from '@/components/ui/Loading';
+	return (
+		<div className=' p-2 rounded-md text-white space-y-8'>
+			{/* Product Name and Price */}
+			<article>
+				<h1 className='text-4xl font-extrabold'>{product.Name}</h1>
+				<p className='text-3xl text-center text-yellow-500 font-bold text-white mt-2'>
+					R{product.Price.toFixed(2)}
+				</p>
+			</article>
 
-export default function LoadingPage() {
-	return <Loading message='Loading Products...' />;
-}
-</file>
+			{/* Description & Dietary Tags */}
+			<article>
+				<h2 className='text-2xl font-bold text-white mb-3'>Description</h2>
+				<ul className='list-disc list-inside space-y-1.5 text-white'>
+					{product.Description.map((d: string, index: number) => (
+						<li key={index}>{d}</li>
+					))}
+				</ul>
+				<div className='flex flex-wrap gap-3 mt-4'>
+					{isVegetarian && (
+						<span className='flex items-center gap-2 px-3 py-1 bg-yellow-600 text-white rounded-full text-sm font-semibold'>
+							<FaLeaf /> Vegetarian
+						</span>
+					)}
+					{isSpicy && (
+						<span className='flex items-center gap-2 px-3 py-1 bg-yellow-600 text-white rounded-full text-sm font-semibold'>
+							<FaFire /> Spicy
+						</span>
+					)}
+				</div>
+			</article>
 
-<file path="client/src/app/menu/cart/loading.tsx">
-import Loading from '@/components/ui/Loading';
+			{/* Allergen Warnings Card */}
+			{allergens.length > 0 && (
+				<article className='bg-yellow-500/20 border border-yellow-500/50 rounded-md p-4'>
+					<div className='flex items-center gap-3 mb-3'>
+						<FaExclamationTriangle className='text-yellow-400 text-xl' />
+						<h3 className='text-xl font-bold text-white'>Allergen Information</h3>
+					</div>
+					<p className='text-white text-sm mb-3'>This product contains the following allergens:</p>
+					<div className='flex flex-wrap gap-2'>
+						{allergens.map((allergen: string, index: number) => (
+							<span
+								key={index}
+								className='px-2.5 py-1 bg-yellow-600 text-white rounded-md text-xs font-medium'>
+								{allergen}
+							</span>
+						))}
+					</div>
+				</article>
+			)}
 
-export default function LoadingPage() {
-	return <Loading message='Loading Cart...' />;
-}
+			{/* Nutritional Information Card */}
+			<div className='bg-black/20 rounded-md p-4'>
+				<h3 className='text-xl font-bold text-white mb-4 text-center'>Nutritional Information</h3>
+				<div className='grid grid-cols-2 sm:grid-cols-3 gap-4'>
+					{Object.entries(nutritionalInfo).map(([key, value]) => (
+						<div
+							key={key}
+							className='text-center bg-yellow-500/20 p-3 rounded-md'>
+							<div className='text-2xl font-bold text-white'>{value}</div>
+							<div className='text-sm text-white capitalize'>{key}</div>
+						</div>
+					))}
+				</div>
+			</div>
+		</div>
+	);
+};
+
+export default ProductInfo;
 </file>
 
 <file path="client/src/app/menu/components/CategoryCard.tsx">
@@ -6304,50 +6633,6 @@ const NoResults: React.FC = () => (
 );
 
 export default NoResults;
-</file>
-
-<file path="client/src/app/menu/components/ProductDetails.tsx">
-import Image from 'next/image';
-import React from 'react';
-
-function ProductDetails({ item }: { item: CartItem }) {
-	return (
-		<div className='flex items-center gap-4 w-full text-white bg-black/20  rounded-md p-4'>
-			{item.Image && (
-				<div className=' w-20 h-20 sm:w-24 sm:h-24  flex-shrink-0'>
-					<Image
-						src={item.Image}
-						alt={item.Name}
-						height={100}
-						width={100}
-						className='w-full rounded-md  '
-					/>
-				</div>
-			)}
-			<div className='flex-grow flex flex-col justify-between h-full'>
-				<h4>{item.Name}</h4>
-				<div className='space-y-1 text-sm'>
-					<div className='flex justify-between'>
-						<span className='text-white'>Quantity:</span>
-						<span className='font-semibold'>{item.quantity}</span>
-					</div>
-					<div className='flex justify-between'>
-						<span className='text-white'>Price:</span>
-						<span className='font-semibold'>R{item.Price.toFixed(2)}</span>
-					</div>
-					{item.quantity > 1 && (
-						<div className='flex justify-between font-bold border-t border-white/20 pt-1 mt-1'>
-							<span className='text-white'>Total:</span>
-							<span>R{(item.Price * item.quantity).toFixed(2)}</span>
-						</div>
-					)}
-				</div>
-			</div>
-		</div>
-	);
-}
-
-export default ProductDetails;
 </file>
 
 <file path="client/src/app/menu/components/PromotionsBanner.tsx">
@@ -6439,14 +6724,6 @@ const PromotionsBanner: React.FC = () => {
 export default PromotionsBanner;
 </file>
 
-<file path="client/src/app/menu/loading.tsx">
-import Loading from '@/components/ui/Loading';
-
-export default function LoadingPage() {
-	return <Loading message='Loading Menu...' />;
-}
-</file>
-
 <file path="client/src/app/photo/placeholder-images.json">
 {
   "placeholderImages": [
@@ -6515,109 +6792,344 @@ export type ImagePlaceholder = {
 export const PlaceHolderImages: ImagePlaceholder[] = data.placeholderImages;
 </file>
 
-<file path="client/src/app/privacy/loading.tsx">
-const Loading: React.FC = () => {
-  return (
-    <main>
-      Loading Privacy Policy...
-    </main>
-  );
-};
+<file path="client/src/app/privacy/components/PrivacyContent.tsx">
+import Section from '@/components/ui/layout/Section';
 
-export default Loading;
-</file>
-
-<file path="client/src/app/profile/loading.tsx">
-import Loading from '@/components/ui/Loading';
-
-export default function LoadingPage() {
-	return <Loading message='Loading Profile...' />;
-}
-</file>
-
-<file path="client/src/app/terms/loading.tsx">
-const Loading: React.FC = () => {
-	return <div>Loading Terms and Conditions...</div>;
-};
-
-export default Loading;
-</file>
-
-<file path="client/src/components/Navbar/MobileNavbar.tsx">
-'use client';
-import React, { useState, useRef, useEffect, Dispatch, SetStateAction } from 'react';
-import Button from '@/components/ui/Button';
-
-const MobileNavbar: React.FC<{
-	setMenubar: (path: 'mobile' | 'profile') => void;
-	mobileOpen: boolean;
-}> = ({ mobileOpen, setMenubar }) => {
+const PrivacyContent: React.FC = () => {
 	return (
-		<nav className='md:hidden w-full m-0 z-50 p-0'>
-			<div className='flex flex-row items-center justify-between w-full '>
-				<Button
-					variant='icon'
-					onClick={() => {
-						setMenubar('mobile');
-					}}
-					title={mobileOpen ? 'Close menu' : 'Open menu'}
-					aria-label={mobileOpen ? 'Close menu' : 'Open menu'}>
-					<svg
-						className='h-6 w-6'
-						fill='none'
-						stroke='currentColor'
-						viewBox='0 0 24 24'
-						xmlns='http://www.w3.org/2000/svg'>
-						{mobileOpen ? (
-							<path
-								strokeLinecap='round'
-								strokeLinejoin='round'
-								strokeWidth='2'
-								d='M6 18L18 6M6 6l12 12'
-							/>
-						) : (
-							<path
-								strokeLinecap='round'
-								strokeLinejoin='round'
-								strokeWidth='2'
-								d='M4 6h16M4 12h16m-7 6h7'
-							/>
-						)}
-					</svg>
-				</Button>
-			</div>
-		</nav>
+		<Section tittle='Privacy policy '>
+			<article>
+				<div className='space-y-4'>
+					<p>Privacy policy details will be listed here.</p>
+				</div>
+			</article>
+		</Section>
 	);
 };
 
-export default MobileNavbar;
+export default PrivacyContent;
 </file>
 
-<file path="client/src/components/Navbar/useMenubarToggle.ts">
-import { useState } from 'react';
+<file path="client/src/app/terms/components/TermsContent.tsx">
+import Section from '@/components/ui/layout/Section';
 
-type MenuPath = 'mobile' | 'profile';
+const TermsContent: React.FC = () => {
+	return (
+		<Section>
+			<div className='bg-yellow-700 p-6 sm:p-8 rounded-md text-white'>
+				<header className='text-center mb-8'>
+					<h1
+						className='text-3xl sm:text-4xl font-bold'
+						style={{ filter: 'drop-shadow(0 0 4px #f0b100)' }}>
+						Terms and Conditions
+					</h1>
+					<p className='text-white mt-2'>Last updated: July 24, 2024</p>
+				</header>
 
-export const useMenubarToggle = () => {
-  const [profileOpen, setProfileOpen] = useState(false);
-  const [mobileOpen, setMobileOpen] = useState(false);
+				<div className='space-y-6'>
+					<div className='bg-black/20 p-4 rounded-md'>
+						<h2 className='text-xl font-semibold mb-3'>1. Introduction</h2>
+						<p className='text-white'>
+							Welcome to PA Luxe Creation. These terms and conditions outline the rules and
+							regulations for the use of our services. By accessing this website and using our
+							services, you accept these terms and conditions in full.
+						</p>
+					</div>
 
-  const setMenubar = (path: MenuPath) => {
-    if (path === 'mobile') {
-      setMobileOpen(prev => !prev);
-      setProfileOpen(false);
-    } else if (path === 'profile') {
-      setProfileOpen(prev => !prev);
-      setMobileOpen(false);
-    }
-  };
+					<div className='bg-black/20 p-4 rounded-md'>
+						<h2 className='text-xl font-semibold mb-3'>2. User Responsibilities</h2>
+						<p className='text-white mb-2'>
+							You are responsible for ensuring that your account information is accurate and for
+							maintaining the confidentiality of your password. You agree to accept responsibility
+							for all activities that occur under your account.
+						</p>
+						<ul className='list-disc list-inside space-y-1 text-white pl-2'>
+							<li>You must not misuse our services.</li>
+							<li>You must not attempt to gain unauthorized access to our systems.</li>
+							<li>You must comply with all applicable laws and regulations.</li>
+						</ul>
+					</div>
 
-  return {
-    profileOpen,
-    mobileOpen,
-    setMenubar,
-  };
+					<div className='bg-black/20 p-4 rounded-md'>
+						<h2 className='text-xl font-semibold mb-3'>3. Limitation of Liability</h2>
+						<p className='text-white'>
+							In no event shall PA Luxe Creation, nor any of its officers, directors, and employees,
+							be liable to you for anything arising out of or in any way connected with your use of
+							this website, whether such liability is under contract, tort or otherwise.
+						</p>
+					</div>
+
+					<div className='bg-black/20 p-4 rounded-md'>
+						<h2 className='text-xl font-semibold mb-3'>4. Governing Law</h2>
+						<p className='text-white'>
+							These Terms will be governed by and construed in accordance with the laws of South
+							Africa, and you submit to the non-exclusive jurisdiction of the state and federal
+							courts located in Limpopo for the resolution of any disputes.
+						</p>
+					</div>
+				</div>
+			</div>
+		</Section>
+	);
 };
+
+export default TermsContent;
+</file>
+
+<file path="client/src/app/terms/page.tsx">
+import { Suspense } from 'react';
+import Loading from '@/components/ui/Loading';
+import Main from '@/components/ui/layout/Main';
+import { FaUserCircle } from 'react-icons/fa';
+import Image from 'next/image';
+import Link from 'next/link';
+import AppLink from '@/components/ui/Link';
+import Section from '@/components/ui/layout/Section';
+import { BiX } from 'react-icons/bi';
+
+export default function TermsAndConditionsPage() {
+	const team = [
+		{
+			name: 'Ntsako Nyath',
+			role: 'Maneger (Industrial Engineering)',
+			image: '/users/Abram.jpg',
+			bio: 'My name is Abram Elton Ntsako Nyathi and I live in Phalaborwa Evander. I’m passionate about chess and enjoy playing it in my free time. I’m also interested in entrepreneurship and my goal is to have and run my own company. I have experience in coding (HTML, CSS, JavaScript), CAD (Fusion 360), and editing (Photoshop, Illustrator, After Effects). I’m proficient in Microsoft Word, Excel, and PowerPoint. I’m currently a student at Vaal University of Technology studying Industrial Engineering. Here are some of the subjects I’ve taken so far:',
+			link: {
+				Link: 'http://abrameltonntsako.web.app',
+				Name: 'abrameltonntsako.web.app',
+			},
+		},
+	];
+	return (
+		<Main
+			tittle='Terms and Conditions'
+			Icon={FaUserCircle}
+			heading='Our Centarl Eatery Terms and Conditions'>
+			<Section className='grid md:grid-cols-2 gap-12'>
+				{team.map((member, index) => (
+					<div
+						key={member.name}
+						className='group'>
+						<div className='relative w-[300]    rounded-2xl overflow-hidden p-0 mb-8 border border-[var(--glass-border)] shadow-xl'>
+							<Image
+								src={member.image}
+								alt={member.name}
+								width={300}
+								height={300}
+								className=' rounded-md transition-all duration-500 group-hover:scale-110'
+							/>
+							<div className='absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300' />
+						</div>
+						<div className='text-center'>
+							<h3 className='text-2xl font-bold mb-3 text-high-contrast group-hover:text-[var(--color-yellow-light)] transition-colors duration-300 drop-shadow-text'>
+								{member.name}
+							</h3>
+							<p className='text-lg font-medium text-[var(--color-yellow)] mb-4 drop-shadow'>
+								{member.role}
+							</p>
+							<p className='text-high-contrast leading-relaxed'>{member.bio}</p>
+							<AppLink
+								variant='primary'
+								href={member.link.Link}>
+								{member.link.Name}
+							</AppLink>
+						</div>
+						<div className='mt-6 flex justify-center space-x-4'>
+							<a
+								href='#'
+								className='text-high-contrast/70 hover:text-[var(--color-yellow-light)] transition-colors duration-300 hover:drop-shadow-glow'>
+								<BiX />
+								<svg
+									className='w-6 h-6'
+									fill='currentColor'
+									viewBox='0 0 24 24'>
+									<path d='M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z' />
+								</svg>
+							</a>
+							<a
+								href='#'
+								className='text-high-contrast/70 hover:text-[var(--color-yellow-light)] transition-colors duration-300 hover:drop-shadow-glow'>
+								<svg
+									className='w-6 h-6'
+									fill='currentColor'
+									viewBox='0 0 24 24'>
+									<path d='M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z' />
+								</svg>
+							</a>
+						</div>
+					</div>
+				))}
+			</Section>
+		</Main>
+	);
+}
+</file>
+
+<file path="client/src/components/components.css">
+.spinner {
+  width: 48px;
+  height: 48px;
+  border: 6px solid rgba(255, 255, 255, 0.3);
+  border-top-color: #f0b100;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 16px;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+</file>
+
+<file path="client/src/components/ui/Alert.tsx">
+import React from 'react';
+import { FaCheckCircle, FaExclamationTriangle, FaTimes } from 'react-icons/fa';
+
+interface AlertProps {
+  variant: 'success' | 'danger';
+  onClose?: () => void;
+  className?: string;
+  children?: React.ReactNode;
+  message?: string; // Keeping for backward compatibility
+}
+
+const Alert: React.FC<AlertProps> = ({
+  variant,
+  onClose,
+  className = '',
+  children,
+  message,
+}) => {
+  const styles = {
+    success: 'bg-green-500/20 text-white',
+    danger: 'bg-yellow-500/20 text-white',
+  };
+
+  const displayMessage = children || message;
+
+  return (
+    <div
+      className={`mt-4 p-3 rounded-md flex items-center gap-2 relative ${
+        styles[variant]
+      } ${className}`}
+    >
+      {variant === 'success' ? <FaCheckCircle /> : <FaExclamationTriangle />}
+      <span className='flex-1'>{displayMessage}</span>
+      {onClose && (
+        <button
+          onClick={onClose}
+          className='text-white hover:opacity-75 transition-opacity'
+          aria-label='Close alert'
+        >
+          <FaTimes />
+        </button>
+      )}
+    </div>
+  );
+};
+
+export default Alert;
+</file>
+
+<file path="client/src/components/ui/Icon.tsx">
+import React from 'react';
+
+interface IconProps {
+	icon: React.ElementType;
+	className?: string;
+	variant?: 'default' | 'inline' | 'inlineCircular';
+	heading?: string;
+}
+
+const Icon: React.FC<IconProps> = ({
+	icon: IconComponent,
+	className,
+	variant = 'default',
+	heading,
+}) => {
+	if (variant === 'inline') {
+		return (
+			<div className='flex items-center justify-center gap-2'>
+				<IconComponent className={`${className} text-3xl text-yellow-500`} />
+				{heading && <h2 className='border-none'>{heading}</h2>}
+			</div>
+		);
+	}
+
+	if (variant === 'inlineCircular') {
+		return (
+			<div className='flex items-center  gap-2 '>
+				<span className='bg-yellow-500 shadow-sm shadow-black/50 rounded-full p-2 '>
+					<IconComponent className={` text-white text-xl   ${className || ''}`} />
+				</span>
+
+				{heading && <h3 className='text-shadow-sm text-shadow-black/50 p-2'>{heading}</h3>}
+			</div>
+		);
+	}
+
+	// Default variant (circular icon)
+	return (
+		<div className='flex flex-col items-center text-center'>
+			<div className='flex items-center justify-center w-12 h-12 bg-yellow-500 mx-auto text-white rounded-full shadow-sm shadow-black/50 '>
+				<IconComponent className={`w-6 h-6 ${className || ''}`} />
+			</div>
+			{heading && <h3 className='mt-4 text-shadow-sm text-shadow-black/50'>{heading}</h3>}
+		</div>
+	);
+};
+
+export default Icon;
+</file>
+
+<file path="client/src/components/ui/TimeSlotPicker.tsx">
+import React from 'react';
+
+const timeSlots = ['09:00', '10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00'];
+
+interface TimeSlotPickerProps {
+	selectedTime: string;
+	onChange: (time: string) => void;
+	availableWorkers: string[];
+	disabled?: boolean;
+}
+
+const TimeSlotPicker: React.FC<TimeSlotPickerProps> = ({
+	selectedTime,
+	onChange,
+	availableWorkers,
+	disabled = false,
+}) => (
+	<div className='space-y-4'>
+		<h3 className='text-lg font-semibold text-white'>Available Time Slots</h3>
+		<div className='grid grid-cols-2 sm:grid-cols-4 gap-3'>
+			{timeSlots.map((time) => {
+				const isAvailable = !disabled && availableWorkers.length > 0;
+				return (
+					<button
+						key={time}
+						type='button'
+						onClick={() => isAvailable && onChange(time)}
+						disabled={!isAvailable}
+						className={`p-3 rounded-md text-center transition-colors ${
+							selectedTime === time
+								? 'bg-yellow-500 text-white'
+								: isAvailable
+								? 'bg-black/30 text-white hover:bg-yellow-500/20'
+								: 'bg-black/10 text-white/40 cursor-not-allowed'
+						}`}>
+						{time}
+					</button>
+				);
+			})}
+		</div>
+		{!disabled && availableWorkers.length === 0 && (
+			<p className='text-yellow-400'>No workers available for these time slots.</p>
+		)}
+	</div>
+);
+
+export default TimeSlotPicker;
 </file>
 
 <file path="client/src/lib/hooks/Cookies/getdelete.ts">
@@ -8283,34 +8795,86 @@ export interface AdminProfileSummary {
 }
 </file>
 
-<file path="client/src/app/about/loading.tsx">
-import Loading from '@/components/ui/Loading';
-
-export default function LoadingPage() {
-	return <Loading message='Loading About PA Luxe Creation...' />;
+<file path="client/package.json">
+{
+  "name": "client",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "analyze": "cross-env ANALYZE=true next build",
+    "start": "next start",
+    "lint": "biome check",
+    "format": "biome format --write"
+  },
+  "dependencies": {
+    "@radix-ui/react-slot": "^1.2.4",
+    "@supabase/auth-helpers-nextjs": "^0.10.0",
+    "@supabase/ssr": "^0.7.0",
+    "@supabase/supabase-js": "^2.81.1",
+    "@vercel/analytics": "^1.5.0",
+    "class-variance-authority": "^0.7.1",
+    "classnames": "^2.5.1",
+    "clsx": "^2.1.1",
+    "next": "16.0.1",
+    "react": "19.2.0",
+    "react-dom": "19.2.0",
+    "react-hook-form": "^7.66.0",
+    "react-icons": "^5.5.0",
+    "tailwind-merge": "^3.4.0"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "2.2.0",
+    "@tailwindcss/postcss": "^4",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "babel-plugin-react-compiler": "1.0.0",
+    "cross-env": "^7.0.3",
+    "tailwindcss": "^4",
+    "tw-animate-css": "^1.4.0",
+    "typescript": "^5"
+  }
 }
 </file>
 
-<file path="client/src/app/blog/page.tsx">
-import React from 'react';
-import BlogPostList from '@/app/blog/components/BlogPostList';
+<file path="client/src/app/about/page.tsx">
+import OurJourney from './components/OurJourney';
+import OurCommitment from './components/OurCommitment';
+import WhatMakesUsSpecial from './components/WhatMakesUsSpecial';
+import CoreValues from './components/CoreValues';
+import OurVision from './components/OurVision';
+import KeyLeadership from './components/KeyLeadership';
+import CompanyDescription from './components/CompanyDescription';
+import KeyHighlights from './components/KeyHighlights';
+import StrengthsAndOpportunities from './components/StrengthsAndOpportunities';
+import WeaknessesAndThreats from './components/WeaknessesAndThreats';
+import MilestonesAndVision from './components/MilestonesAndVision';
 import Main from '@/components/ui/layout/Main';
-import { FaBlog } from 'react-icons/fa';
-import Section from '@/components/ui/layout/Section';
+import { IoFastFoodOutline } from 'react-icons/io5';
 
-const BlogNewsPage: React.FC = () => {
+const AboutPage = () => {
 	return (
 		<Main
-			tittle='Blog'
-			Icon={FaBlog}>
-			<Section>
-				<BlogPostList />
-			</Section>
+			tittle='About PA Luxe Creation'
+			Icon={IoFastFoodOutline}>
+			<OurJourney />
+			<OurVision />
+			<CompanyDescription />
+			<OurCommitment />
+			<MilestonesAndVision />
+			<WhatMakesUsSpecial />
+			<KeyHighlights />
+			<CoreValues />
+			<StrengthsAndOpportunities />
+			<WeaknessesAndThreats />
+			<KeyLeadership />
 		</Main>
 	);
 };
 
-export default BlogNewsPage;
+export default AboutPage;
 </file>
 
 <file path="client/src/app/contact/components/ContactInfo.tsx">
@@ -8368,23 +8932,6 @@ const MapEmbed = () => (
 export default MapEmbed;
 </file>
 
-<file path="client/src/app/gallery/page.tsx">
-import ImageGallery from '@/app/gallery/components/ImageGallery';
-import Main from '@/components/ui/layout/Main';
-import { FcGallery } from 'react-icons/fc';
-
-export default function Gallery() {
-	return (
-		<Main
-			tittle='Gallery'
-			Icon={FcGallery}
-			heading='Find Your Convenience'>
-			<ImageGallery />
-		</Main>
-	);
-}
-</file>
-
 <file path="client/src/app/home-components/HeroSection.tsx">
 import Image from 'next/image';
 import Link from '@/components/ui/Link';
@@ -8430,34 +8977,6 @@ const HeroSection: React.FC = () => {
 export default HeroSection;
 </file>
 
-<file path="client/src/app/layout.css">
-@import 'tailwindcss';
-@import './globals.css';
-
-@layer base {
-	body {
-		@apply m-0 p-0 text-white bg-black  bg-fixed h-full relative;
-		font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
-			'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
-			'Segoe UI Symbol', 'Noto Color Emoji';
-		background-image: url('/BackGround.png');
-		background-size: cover;
-		background-repeat: no-repeat;
-		color: white;
-	}
-
-	article {
-		@apply bg-yellow-700 rounded-md py-2 md:p-6 my-3 mt-6 mb-6 px-8 shadow-sm shadow-black;
-	}
-	nav {
-		@apply m-0 p-0 md:p-6;
-	}
-	footer {
-		@apply w-full bg-white/10 border border-yellow-500 rounded-md p-6 my-3 mt-6 mb-6 px-8;
-	}
-}
-</file>
-
 <file path="client/src/app/menu/[Products]/[product]/components/AddtoCart.tsx">
 'use client';
 
@@ -8497,103 +9016,6 @@ const AddtoCart: React.FC<AddtoCartProps> = ({ product, ...props }) => {
 };
 
 export default AddtoCart;
-</file>
-
-<file path="client/src/app/menu/[Products]/[product]/components/ProductInfo.tsx">
-import React from 'react';
-import { FaExclamationTriangle, FaLeaf, FaFire } from 'react-icons/fa';
-
-interface ProductInfoProps {
-	product: ProductType;
-}
-
-const ProductInfo: React.FC<ProductInfoProps> = ({ product }) => {
-	// Mock nutritional data - can be replaced with real data from product
-	const nutritionalInfo = {
-		calories: product?.nutritional?.calories || 450,
-		protein: product?.nutritional?.protein || '12g',
-		carbs: product?.nutritional?.carbs || '45g',
-		fat: product?.nutritional?.fat || '18g',
-		fiber: product?.nutritional?.fiber || '3g',
-		sugar: product?.nutritional?.sugar || '8g',
-	};
-
-	// Mock allergen info - can be replaced with real data from product
-	const allergens = product?.allergens || ['Gluten', 'Dairy', 'Eggs'];
-	const isVegetarian = product?.isVegetarian || true;
-	const isSpicy = product?.isSpicy || true;
-
-	return (
-		<div className=' p-2 rounded-md text-white space-y-8'>
-			{/* Product Name and Price */}
-			<article>
-				<h1 className='text-4xl font-extrabold'>{product.Name}</h1>
-				<p className='text-3xl text-center text-yellow-500 font-bold text-white mt-2'>
-					R{product.Price.toFixed(2)}
-				</p>
-			</article>
-
-			{/* Description & Dietary Tags */}
-			<article>
-				<h2 className='text-2xl font-bold text-white mb-3'>Description</h2>
-				<ul className='list-disc list-inside space-y-1.5 text-white'>
-					{product.Description.map((d: string, index: number) => (
-						<li key={index}>{d}</li>
-					))}
-				</ul>
-				<div className='flex flex-wrap gap-3 mt-4'>
-					{isVegetarian && (
-						<span className='flex items-center gap-2 px-3 py-1 bg-yellow-600 text-white rounded-full text-sm font-semibold'>
-							<FaLeaf /> Vegetarian
-						</span>
-					)}
-					{isSpicy && (
-						<span className='flex items-center gap-2 px-3 py-1 bg-yellow-600 text-white rounded-full text-sm font-semibold'>
-							<FaFire /> Spicy
-						</span>
-					)}
-				</div>
-			</article>
-
-			{/* Allergen Warnings Card */}
-			{allergens.length > 0 && (
-				<article className='bg-yellow-500/20 border border-yellow-500/50 rounded-md p-4'>
-					<div className='flex items-center gap-3 mb-3'>
-						<FaExclamationTriangle className='text-yellow-400 text-xl' />
-						<h3 className='text-xl font-bold text-white'>Allergen Information</h3>
-					</div>
-					<p className='text-white text-sm mb-3'>This product contains the following allergens:</p>
-					<div className='flex flex-wrap gap-2'>
-						{allergens.map((allergen: string, index: number) => (
-							<span
-								key={index}
-								className='px-2.5 py-1 bg-yellow-600 text-white rounded-md text-xs font-medium'>
-								{allergen}
-							</span>
-						))}
-					</div>
-				</article>
-			)}
-
-			{/* Nutritional Information Card */}
-			<div className='bg-black/20 rounded-md p-4'>
-				<h3 className='text-xl font-bold text-white mb-4 text-center'>Nutritional Information</h3>
-				<div className='grid grid-cols-2 sm:grid-cols-3 gap-4'>
-					{Object.entries(nutritionalInfo).map(([key, value]) => (
-						<div
-							key={key}
-							className='text-center bg-yellow-500/20 p-3 rounded-md'>
-							<div className='text-2xl font-bold text-white'>{value}</div>
-							<div className='text-sm text-white capitalize'>{key}</div>
-						</div>
-					))}
-				</div>
-			</div>
-		</div>
-	);
-};
-
-export default ProductInfo;
 </file>
 
 <file path="client/src/app/menu/[Products]/components/CommentsButton.tsx">
@@ -8682,6 +9104,72 @@ const CommentsButton: React.FC<CommentsButtonsProps> = ({ product }) => {
 };
 
 export default CommentsButton;
+</file>
+
+<file path="client/src/app/menu/components/SpecialOffers.tsx">
+import Section from '@/components/ui/layout/Section';
+
+const SpecialOffers: React.FC = () => {
+	return (
+		<Section tittle='	Special Offers'>
+			<article>
+				<div className='grid grid-cols-1 md:grid-cols-2 gap-6'>
+					{/* Offer 1 */}
+					<div className='bg-black/50 border border-yellow-500 rounded-md p-2 flex flex-col'>
+						<div className='bg-yellow-700 rounded-md p-6 flex flex-col h-full'>
+							<h3
+								className='text-xl font-bold text-white mb-2'
+								style={{ filter: 'drop-shadow(0 0 2px #f0b100)' }}>
+								Weekend Promotion
+							</h3>
+							<p className='text-white flex-grow'>
+								Get a Free Pork Plate with Every Photo boot on Saturdays and Sundays!
+							</p>
+						</div>
+					</div>
+					{/* Offer 2 */}
+					<div className='bg-black/50 border border-yellow-500 rounded-md p-2 flex flex-col'>
+						<div className='bg-yellow-700 rounded-md p-6 flex flex-col h-full'>
+							<h3
+								className='text-xl font-bold text-white mb-2'
+								style={{ filter: 'drop-shadow(0 0 2px #f0b100)' }}>
+								Taxi Partnerships
+							</h3>
+							<p className='text-white flex-grow'>
+								Bulk discounts available for taxi associations. For example, 10 washes = 1 free!
+							</p>
+						</div>
+					</div>
+				</div>
+			</article>
+		</Section>
+	);
+};
+
+export default SpecialOffers;
+</file>
+
+<file path="client/src/app/menu/layout.tsx">
+'use client';
+
+import { CartProvider } from '@/lib/context/CartContext';
+import { ToastProvider } from '@/lib/context/CartContext';
+
+import React, { ReactNode } from 'react';
+
+interface LayoutProps {
+	children: ReactNode;
+}
+
+const Layout: React.FC<LayoutProps> = ({ children }) => {
+	return (
+		<ToastProvider>
+			<CartProvider>{children}</CartProvider>
+		</ToastProvider>
+	);
+};
+
+export default Layout;
 </file>
 
 <file path="client/src/app/photo/booking/page.tsx">
@@ -8908,344 +9396,398 @@ export default function PhotoBoothBookingPage() {
 }
 </file>
 
-<file path="client/src/app/privacy/components/PrivacyContent.tsx">
-import Section from '@/components/ui/layout/Section';
-
-const PrivacyContent: React.FC = () => {
-	return (
-		<Section tittle='Privacy policy '>
-			<article>
-				<div className='space-y-4'>
-					<p>Privacy policy details will be listed here.</p>
-				</div>
-			</article>
-		</Section>
-	);
-};
-
-export default PrivacyContent;
-</file>
-
-<file path="client/src/app/terms/components/TermsContent.tsx">
-import Section from '@/components/ui/layout/Section';
-
-const TermsContent: React.FC = () => {
-	return (
-		<Section>
-			<div className='bg-yellow-700 p-6 sm:p-8 rounded-md text-white'>
-				<header className='text-center mb-8'>
-					<h1
-						className='text-3xl sm:text-4xl font-bold'
-						style={{ filter: 'drop-shadow(0 0 4px #f0b100)' }}>
-						Terms and Conditions
-					</h1>
-					<p className='text-white mt-2'>Last updated: July 24, 2024</p>
-				</header>
-
-				<div className='space-y-6'>
-					<div className='bg-black/20 p-4 rounded-md'>
-						<h2 className='text-xl font-semibold mb-3'>1. Introduction</h2>
-						<p className='text-white'>
-							Welcome to PA Luxe Creation. These terms and conditions outline the rules and
-							regulations for the use of our services. By accessing this website and using our
-							services, you accept these terms and conditions in full.
-						</p>
-					</div>
-
-					<div className='bg-black/20 p-4 rounded-md'>
-						<h2 className='text-xl font-semibold mb-3'>2. User Responsibilities</h2>
-						<p className='text-white mb-2'>
-							You are responsible for ensuring that your account information is accurate and for
-							maintaining the confidentiality of your password. You agree to accept responsibility
-							for all activities that occur under your account.
-						</p>
-						<ul className='list-disc list-inside space-y-1 text-white pl-2'>
-							<li>You must not misuse our services.</li>
-							<li>You must not attempt to gain unauthorized access to our systems.</li>
-							<li>You must comply with all applicable laws and regulations.</li>
-						</ul>
-					</div>
-
-					<div className='bg-black/20 p-4 rounded-md'>
-						<h2 className='text-xl font-semibold mb-3'>3. Limitation of Liability</h2>
-						<p className='text-white'>
-							In no event shall PA Luxe Creation, nor any of its officers, directors, and employees,
-							be liable to you for anything arising out of or in any way connected with your use of
-							this website, whether such liability is under contract, tort or otherwise.
-						</p>
-					</div>
-
-					<div className='bg-black/20 p-4 rounded-md'>
-						<h2 className='text-xl font-semibold mb-3'>4. Governing Law</h2>
-						<p className='text-white'>
-							These Terms will be governed by and construed in accordance with the laws of South
-							Africa, and you submit to the non-exclusive jurisdiction of the state and federal
-							courts located in Limpopo for the resolution of any disputes.
-						</p>
-					</div>
-				</div>
-			</div>
-		</Section>
-	);
-};
-
-export default TermsContent;
-</file>
-
-<file path="client/src/app/terms/page.tsx">
-import { Suspense } from 'react';
-import Loading from '@/components/ui/Loading';
+<file path="client/src/app/privacy/page.tsx">
 import Main from '@/components/ui/layout/Main';
-import { FaUserCircle } from 'react-icons/fa';
-import Image from 'next/image';
-import Link from 'next/link';
-import AppLink from '@/components/ui/Link';
 import Section from '@/components/ui/layout/Section';
-import { BiX } from 'react-icons/bi';
 
-export default function TermsAndConditionsPage() {
-	const team = [
-		{
-			name: 'Ntsako Nyath',
-			role: 'Maneger (Industrial Engineering)',
-			image: '/users/Abram.jpg',
-			bio: 'My name is Abram Elton Ntsako Nyathi and I live in Phalaborwa Evander. I’m passionate about chess and enjoy playing it in my free time. I’m also interested in entrepreneurship and my goal is to have and run my own company. I have experience in coding (HTML, CSS, JavaScript), CAD (Fusion 360), and editing (Photoshop, Illustrator, After Effects). I’m proficient in Microsoft Word, Excel, and PowerPoint. I’m currently a student at Vaal University of Technology studying Industrial Engineering. Here are some of the subjects I’ve taken so far:',
-			link: {
-				Link: 'http://abrameltonntsako.web.app',
-				Name: 'abrameltonntsako.web.app',
-			},
-		},
-	];
+const PrivacyPolicyPage: React.FC = () => {
 	return (
-		<Main
-			tittle='Terms and Conditions'
-			Icon={FaUserCircle}
-			heading='Our Centarl Eatery Terms and Conditions'>
-			<Section className='grid md:grid-cols-2 gap-12'>
-				{team.map((member, index) => (
-					<div
-						key={member.name}
-						className='group'>
-						<div className='relative w-[300]    rounded-2xl overflow-hidden p-0 mb-8 border border-[var(--glass-border)] shadow-xl'>
-							<Image
-								src={member.image}
-								alt={member.name}
-								width={300}
-								height={300}
-								className=' rounded-md transition-all duration-500 group-hover:scale-110'
-							/>
-							<div className='absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300' />
-						</div>
-						<div className='text-center'>
-							<h3 className='text-2xl font-bold mb-3 text-high-contrast group-hover:text-[var(--color-yellow-light)] transition-colors duration-300 drop-shadow-text'>
-								{member.name}
-							</h3>
-							<p className='text-lg font-medium text-[var(--color-yellow)] mb-4 drop-shadow'>
-								{member.role}
-							</p>
-							<p className='text-high-contrast leading-relaxed'>{member.bio}</p>
-							<AppLink
-								variant='primary'
-								href={member.link.Link}>
-								{member.link.Name}
-							</AppLink>
-						</div>
-						<div className='mt-6 flex justify-center space-x-4'>
-							<a
-								href='#'
-								className='text-high-contrast/70 hover:text-[var(--color-yellow-light)] transition-colors duration-300 hover:drop-shadow-glow'>
-								<BiX />
-								<svg
-									className='w-6 h-6'
-									fill='currentColor'
-									viewBox='0 0 24 24'>
-									<path d='M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z' />
-								</svg>
-							</a>
-							<a
-								href='#'
-								className='text-high-contrast/70 hover:text-[var(--color-yellow-light)] transition-colors duration-300 hover:drop-shadow-glow'>
-								<svg
-									className='w-6 h-6'
-									fill='currentColor'
-									viewBox='0 0 24 24'>
-									<path d='M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z' />
-								</svg>
-							</a>
-						</div>
-					</div>
-				))}
+		<Main tittle='Privacy Policy'>
+			<Section>
+				<div className='space-y-6'>
+					<p>Effective Date: 26 July 2024</p>
+
+					<article>
+						<h2 className='text-2xl font-semibold mb-2'>1. Introduction</h2>
+						<p>
+							Welcome to PA Luxe Creation PTY Ltd. We are committed to protecting your privacy and
+							ensuring that your personal information is handled in a safe and responsible manner.
+							This Privacy Policy outlines how we collect, use, disclose, and safeguard your
+							information when you use our services, including our website and digital booking
+							system.
+						</p>
+					</article>
+
+					<article>
+						<h2 className='text-2xl font-semibold mb-2'>2. Information We Collect</h2>
+						<p>
+							We may collect information about you in a variety of ways. The information we may
+							collect includes:
+						</p>
+						<h3 className='text-xl font-semibold mt-4 mb-2'>Personal Data</h3>
+						<p>
+							Personally identifiable information, such as your name, email address, and telephone
+							number, that you voluntarily give to us when you use our digital booking system or
+							contact us.
+						</p>
+						<h3 className='text-xl font-semibold mt-4 mb-2'>Usage Data</h3>
+						<p>
+							Information that our servers automatically collect when you access our website, such
+							as your IP address, browser type, operating system, access times, and the pages you
+							have viewed directly before and after accessing the site.
+						</p>
+					</article>
+
+					<article>
+						<h2 className='text-2xl font-semibold mb-2'>3. How We Use Your Information</h2>
+						<p>
+							Having accurate information about you permits us to provide you with a smooth,
+							efficient, and customized experience. Specifically, we may use information collected
+							about you to:
+						</p>
+						<ul className='list-disc list-inside ml-4 mt-2'>
+							<li>Manage your bookings and appointments for our Photo boot services.</li>
+							<li>Send you confirmations, reminders, and updates regarding your bookings.</li>
+							<li>Respond to your comments and questions and provide customer service.</li>
+							<li>
+								Monitor and analyze usage and trends to improve your experience with our services.
+							</li>
+							<li>Notify you of updates to our services.</li>
+						</ul>
+					</article>
+
+					<article>
+						<h2 className='text-2xl font-semibold mb-2'>4. Data Sharing and Disclosure</h2>
+						<p>
+							We do not share, sell, rent, or trade your personal information with third parties for
+							their commercial purposes. We may share information we have collected about you in
+							certain situations, such as:
+						</p>
+						<ul className='list-disc list-inside ml-4 mt-2'>
+							<li>
+								<strong>By Law or to Protect Rights:</strong> If we believe the release of
+								information about you is necessary to respond to legal process, to investigate or
+								remedy potential violations of our policies, or to protect the rights, property, and
+								safety of others, we may share your information as permitted or required by any
+								applicable law, rule, or regulation.
+							</li>
+							<li>
+								<strong>Service Providers:</strong> We may share your information with third parties
+								that perform services for us or on our behalf, including payment processing, data
+								analysis, email delivery, hosting services, and customer service.
+							</li>
+						</ul>
+					</article>
+
+					<article>
+						<h2 className='text-2xl font-semibold mb-2'>5. Data Security</h2>
+						<p>
+							We use administrative, technical, and physical security measures to help protect your
+							personal information. While we have taken reasonable steps to secure the personal
+							information you provide to us, please be aware that despite our efforts, no security
+							measures are perfect or impenetrable, and no method of data transmission can be
+							guaranteed against any interception or other type of misuse.
+						</p>
+					</article>
+
+					<article>
+						<h2 className='text-2xl font-semibold mb-2'>6. Your Rights</h2>
+						<p>
+							You have the right to access, correct, or delete your personal information. You may
+							also have the right to object to or restrict certain processing of your data. To
+							exercise these rights, please contact us using the contact information provided below.
+						</p>
+					</article>
+
+					<article>
+						<h2 className='text-2xl font-semibold mb-2'>7. Changes to This Privacy Policy</h2>
+						<p>
+							We may update this Privacy Policy from time to time in order to reflect, for example,
+							changes to our practices or for other operational, legal, or regulatory reasons. We
+							will notify you of any changes by posting the new Privacy Policy on this page.
+						</p>
+					</article>
+
+					<article>
+						<h2 className='text-2xl font-semibold mb-2'>8. Contact Us</h2>
+						<p>
+							If you have questions or comments about this Privacy Policy, please contact us at:
+							<br />
+							PA Luxe Creation PTY Ltd
+							<br />
+							[Your Address Here]
+							<br />
+							Email: [Your Email Here]
+							<br />
+							Phone: [Your Phone Number Here]
+						</p>
+					</article>
+				</div>
 			</Section>
 		</Main>
 	);
-}
-</file>
-
-<file path="client/src/components/components.css">
-.spinner {
-  width: 48px;
-  height: 48px;
-  border: 6px solid rgba(255, 255, 255, 0.3);
-  border-top-color: #f0b100;
-  border-radius: 50%;
-  animation: spin 1s linear infinite;
-  margin-bottom: 16px;
-}
-
-@keyframes spin {
-  to { transform: rotate(360deg); }
-}
-</file>
-
-<file path="client/src/components/ui/Alert.tsx">
-import React from 'react';
-import { FaCheckCircle, FaExclamationTriangle, FaTimes } from 'react-icons/fa';
-
-interface AlertProps {
-  variant: 'success' | 'danger';
-  onClose?: () => void;
-  className?: string;
-  children?: React.ReactNode;
-  message?: string; // Keeping for backward compatibility
-}
-
-const Alert: React.FC<AlertProps> = ({
-  variant,
-  onClose,
-  className = '',
-  children,
-  message,
-}) => {
-  const styles = {
-    success: 'bg-green-500/20 text-white',
-    danger: 'bg-yellow-500/20 text-white',
-  };
-
-  const displayMessage = children || message;
-
-  return (
-    <div
-      className={`mt-4 p-3 rounded-md flex items-center gap-2 relative ${
-        styles[variant]
-      } ${className}`}
-    >
-      {variant === 'success' ? <FaCheckCircle /> : <FaExclamationTriangle />}
-      <span className='flex-1'>{displayMessage}</span>
-      {onClose && (
-        <button
-          onClick={onClose}
-          className='text-white hover:opacity-75 transition-opacity'
-          aria-label='Close alert'
-        >
-          <FaTimes />
-        </button>
-      )}
-    </div>
-  );
 };
-
-export default Alert;
+export default PrivacyPolicyPage;
 </file>
 
-<file path="client/src/components/ui/Icon.tsx">
+<file path="client/src/components/ui/AddOnSelector.tsx">
 import React from 'react';
 
-interface IconProps {
-	icon: React.ElementType;
-	className?: string;
-	variant?: 'default' | 'inline' | 'inlineCircular';
-	heading?: string;
+const photoBoothAddOns = [
+	{ id: 'premium-backdrop', label: 'Premium Backdrop', price: '150' },
+	{ id: 'extra-prints', label: 'Extra Prints Package', price: '100' },
+	{ id: 'props-upgrade', label: 'Props Upgrade', price: '80' },
+	{ id: 'digital-album', label: 'Digital Album', price: '50' },
+];
+
+interface AddOnSelectorProps {
+	selectedAddOns: string[];
+	onChange: (addOns: string[]) => void;
 }
 
-const Icon: React.FC<IconProps> = ({
-	icon: IconComponent,
-	className,
-	variant = 'default',
-	heading,
-}) => {
-	if (variant === 'inline') {
-		return (
-			<div className='flex items-center justify-center gap-2'>
-				<IconComponent className={`${className} text-3xl text-yellow-500`} />
-				{heading && <h2 className='border-none'>{heading}</h2>}
-			</div>
-		);
-	}
+const AddOnSelector: React.FC<AddOnSelectorProps> = ({ selectedAddOns, onChange }) => {
+	const handleAddOnChange = (addOn: string) => {
+		const newSelection = selectedAddOns.includes(addOn)
+			? selectedAddOns.filter((item) => item !== addOn)
+			: [...selectedAddOns, addOn];
+		onChange(newSelection);
+	};
 
-	if (variant === 'inlineCircular') {
-		return (
-			<div className='flex items-center  gap-2 '>
-				<span className='bg-yellow-500 shadow-sm shadow-black/50 rounded-full p-2 '>
-					<IconComponent className={` text-white text-xl   ${className || ''}`} />
-				</span>
-
-				{heading && <h3 className='text-shadow-sm text-shadow-black/50 p-2'>{heading}</h3>}
-			</div>
-		);
-	}
-
-	// Default variant (circular icon)
 	return (
-		<div className='flex flex-col items-center text-center'>
-			<div className='flex items-center justify-center w-12 h-12 bg-yellow-500 mx-auto text-white rounded-full shadow-sm shadow-black/50 '>
-				<IconComponent className={`w-6 h-6 ${className || ''}`} />
+		<div className='space-y-4'>
+			<h3 className='text-lg font-semibold text-white'>Additional Services</h3>
+			<div className='grid grid-cols-1 md:grid-cols-2 gap-4'>
+				{photoBoothAddOns.map(({ id, label, price }) => (
+					<div
+						key={id}
+						className='flex items-center space-x-3 p-3 rounded-md bg-black/30 border border-white/20'>
+						<input
+							type='checkbox'
+							id={id}
+							checked={selectedAddOns.includes(label)}
+							onChange={() => handleAddOnChange(label)}
+							className='h-5 w-5 text-yellow-500 rounded focus:ring-yellow-500 bg-black/30 border-white/20'
+						/>
+						<label
+							htmlFor={id}
+							className='flex-1 cursor-pointer'>
+							<span className='block text-white'>{label}</span>
+							<span className='block text-sm text-white/60'>R{price}</span>
+						</label>
+					</div>
+				))}
 			</div>
-			{heading && <h3 className='mt-4 text-shadow-sm text-shadow-black/50'>{heading}</h3>}
 		</div>
 	);
 };
 
-export default Icon;
+export default AddOnSelector;
 </file>
 
-<file path="client/src/components/ui/TimeSlotPicker.tsx">
+<file path="client/src/components/ui/Avatar.tsx">
 import React from 'react';
+import classNames from 'classnames'; // Import classNames
+import Image from 'next/image';
 
-const timeSlots = ['09:00', '10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00'];
-
-interface TimeSlotPickerProps {
-	selectedTime: string;
-	onChange: (time: string) => void;
-	availableWorkers: string[];
-	disabled?: boolean;
+interface AvatarProps {
+	src: string | null | undefined;
+	alt: string;
+	initials?: string; // Added initials prop
+	size?: 'small' | 'medium' | 'large' | 'xl'; // Added xl size
+	className?: string;
 }
 
-const TimeSlotPicker: React.FC<TimeSlotPickerProps> = ({
-	selectedTime,
-	onChange,
-	availableWorkers,
-	disabled = false,
-}) => (
-	<div className='space-y-4'>
-		<h3 className='text-lg font-semibold text-white'>Available Time Slots</h3>
-		<div className='grid grid-cols-2 sm:grid-cols-4 gap-3'>
-			{timeSlots.map((time) => {
-				const isAvailable = !disabled && availableWorkers.length > 0;
-				return (
-					<button
-						key={time}
-						type='button'
-						onClick={() => isAvailable && onChange(time)}
-						disabled={!isAvailable}
-						className={`p-3 rounded-md text-center transition-colors ${
-							selectedTime === time
-								? 'bg-yellow-500 text-white'
-								: isAvailable
-								? 'bg-black/30 text-white hover:bg-yellow-500/20'
-								: 'bg-black/10 text-white/40 cursor-not-allowed'
-						}`}>
-						{time}
-					</button>
-				);
-			})}
+const sizeClassesMap = {
+	small: 'w-8 h-8 text-sm',
+	medium: 'w-10 h-10 text-base',
+	large: 'w-16 h-16 text-xl',
+	xl: 'w-24 h-24 text-3xl', // Added xl size
+};
+
+const Avatar: React.FC<AvatarProps> = ({ src, alt, initials, size = 'medium', className }) => {
+	const currentSizeClasses = sizeClassesMap[size];
+
+	return (
+		<div
+			className={classNames(
+				'relative flex items-center justify-center rounded-full bg-yellow-200 overflow-hidden shrink-0',
+				currentSizeClasses,
+				className
+			)}>
+			{src ? (
+				<Image
+					src={src}
+					alt={alt}
+					fill // Use fill instead of absolute positioning manually
+					className='object-cover'
+				/>
+			) : (
+				<span className='text-yellow-900 font-bold uppercase flex items-center justify-center h-full w-full select-none'>
+					{initials || alt.charAt(0)}
+				</span>
+			)}
 		</div>
-		{!disabled && availableWorkers.length === 0 && (
-			<p className='text-yellow-400'>No workers available for these time slots.</p>
+	);
+};
+
+export default Avatar;
+</file>
+
+<file path="client/src/components/ui/Button.tsx">
+import React from 'react';
+import classNames from 'classnames';
+
+export type ButtonVariant = 'primary' | 'secondary' | 'danger' | 'icon' | 'suggestion';
+export type ButtonSize = 'sm' | 'md' | 'lg';
+
+interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+	variant?: ButtonVariant;
+	size?: ButtonSize;
+	loading?: boolean;
+}
+
+const baseClasses =
+	'rounded-md flex gap-2 items-center justify-center font-semibold transition-colors duration-200 focus:outline-none focus-visible:ring-4  focus-visible:ring-yellow-400 text-nowrap';
+const variantClasses = {
+	primary: 'bg-yellow-600 text-white hover:bg-yellow-700 shadow-sm shadow-black',
+	secondary: 'bg-white text-yellow-600 border border-yellow-400 hover:bg-red-50',
+	danger: 'bg-yellow-100 text-yellow-700 border border-yellow-400 hover:bg-yellow-200',
+	icon: 'bg-none text-yellow-500 hover:text-yellow-700',
+	suggestion: 'bg-transparent text-white hover:bg-yellow-700',
+};
+const sizeClasses = {
+	sm: 'px-3 py-1 text-sm',
+	md: 'px-4 py-2 text-base',
+	lg: 'px-6 py-3 text-lg',
+};
+
+const Button: React.FC<ButtonProps> = ({
+	children,
+	variant = 'primary',
+	size = 'sm',
+	loading = false,
+	disabled,
+	className,
+	...props
+}) => (
+	<button
+		className={classNames(baseClasses, variantClasses[variant], sizeClasses[size], className, {
+			'opacity-50 cursor-not-allowed': disabled || loading,
+		})}
+		disabled={disabled || loading}
+		{...props}>
+		{loading ? (
+			<span className='inline-block w-4 h-4 border-2 border-white border-t-yellow-600 rounded-full animate-spin mr-2'></span>
+		) : (
+			children
+		)}
+	</button>
+);
+
+export default Button;
+</file>
+
+<file path="client/src/components/ui/layout/FormField.tsx">
+import React from 'react';
+
+interface FormFieldProps {
+	label: string;
+	name: string;
+	type?: 'text' | 'date' | 'time' | 'select';
+	value?: string;
+	onChange?: (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => void;
+	required?: boolean;
+	placeholder?: string;
+	className?: string;
+	children?: React.ReactNode;
+	min?: string;
+	id?: string;
+}
+
+const formInputStyle =
+	'w-full p-3 rounded-md bg-black/30 border border-white/20 focus:ring-2 focus:ring-yellow-500 focus:border-yellow-500 outline-none';
+
+const FormField: React.FC<FormFieldProps> = ({
+	label,
+	name,
+	type = 'text',
+	value,
+	onChange,
+	required = false,
+	placeholder,
+	className = '',
+	children,
+	min,
+	id,
+}) => (
+	<div className={className}>
+		<label
+			htmlFor={id || name}
+			className='block mb-2 font-semibold text-white'>
+			{label}
+		</label>
+		{type === 'select' ? (
+			<select
+				name={name}
+				id={id || name}
+				value={value}
+				onChange={onChange}
+				required={required}
+				className={formInputStyle}>
+				{children}
+			</select>
+		) : (
+			<input
+				type={type}
+				name={name}
+				id={id || name}
+				value={value}
+				onChange={onChange}
+				required={required}
+				placeholder={placeholder}
+				className={formInputStyle}
+				min={min}
+			/>
 		)}
 	</div>
 );
 
-export default TimeSlotPicker;
+export default FormField;
+</file>
+
+<file path="client/src/components/ui/Link.tsx">
+import React from 'react';
+import Link, { LinkProps as NextLinkProps } from 'next/link';
+import classNames from 'classnames';
+
+export type LinkVariant = 'primary' | 'secondary' | 'button';
+
+interface LinkProps extends NextLinkProps {
+	children: React.ReactNode;
+	className?: string;
+	variant?: LinkVariant;
+}
+
+const baseClasses = 'transition-colors duration-200 flex gap-2 items-center justify-center';
+
+const variantClasses = {
+	primary: 'text-yellow-100 shadow-blue-500 font-bold hover:text-yellow-700 hover:underline',
+	secondary: 'text-yellow-200 hover:text-yellow-700 hover:underline',
+	button:
+		'bg-yellow-600 font-bold grow p-2 text-center text-nowrap text-white shadow-md shadow-black active:bg-yellow-900 rounded-md flex gap-2 items-center justify-center font-semibold transition-colors duration-200 focus:outline-none focus-visible:ring-4  focus-visible:ring-yellow-400 ',
+};
+
+const AppLink: React.FC<LinkProps> = ({ children, className, variant = 'primary', ...props }) => {
+	return (
+		<Link
+			{...props}
+			className={classNames(baseClasses, variantClasses[variant], className)}>
+			{children}
+		</Link>
+	);
+};
+
+export default AppLink;
 </file>
 
 <file path="client/src/lib/context/CartContext.tsx">
@@ -9520,6 +10062,52 @@ export const config = {
         '/((?!_next/static|_next/image|favicon.ico|.*\\.(?:svg|png|jpg|jpeg|gif|webp)$).*)',
     ],
 };
+</file>
+
+<file path="client/tsconfig.json">
+{
+  "compilerOptions": {
+    "target": "ES2018",
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "noEmit": true,
+    "esModuleInterop": true,
+    "module": "esnext",
+    "moduleResolution": "bundler",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "jsx": "react-jsx",
+    "incremental": true,
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ],
+    "paths": {
+      "@/*": [
+        "./src/*"
+      ]
+    }
+  },
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    "**/*.mts",
+    ".next/types/**/*.ts",
+    ".next/dev/types/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    ".next"
+  ]
+}
 </file>
 
 <file path="admin/src/components/layout/AdminSidebar.tsx">
@@ -10737,86 +11325,39 @@ export interface ProductRecord {
 }
 </file>
 
-<file path="client/package.json">
-{
-  "name": "client",
-  "version": "0.1.0",
-  "private": true,
-  "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "analyze": "cross-env ANALYZE=true next build",
-    "start": "next start",
-    "lint": "biome check",
-    "format": "biome format --write"
-  },
-  "dependencies": {
-    "@radix-ui/react-slot": "^1.2.4",
-    "@supabase/auth-helpers-nextjs": "^0.10.0",
-    "@supabase/ssr": "^0.7.0",
-    "@supabase/supabase-js": "^2.81.1",
-    "@vercel/analytics": "^1.5.0",
-    "class-variance-authority": "^0.7.1",
-    "classnames": "^2.5.1",
-    "clsx": "^2.1.1",
-    "next": "16.0.1",
-    "react": "19.2.0",
-    "react-dom": "19.2.0",
-    "react-hook-form": "^7.66.0",
-    "react-icons": "^5.5.0",
-    "tailwind-merge": "^3.4.0"
-  },
-  "devDependencies": {
-    "@biomejs/biome": "2.2.0",
-    "@tailwindcss/postcss": "^4",
-    "@types/node": "^20",
-    "@types/react": "^19",
-    "@types/react-dom": "^19",
-    "babel-plugin-react-compiler": "1.0.0",
-    "cross-env": "^7.0.3",
-    "tailwindcss": "^4",
-    "tw-animate-css": "^1.4.0",
-    "typescript": "^5"
-  }
-}
-</file>
+<file path="client/next.config.ts">
+import type { NextConfig } from 'next';
 
-<file path="client/src/app/about/page.tsx">
-import OurJourney from './components/OurJourney';
-import OurCommitment from './components/OurCommitment';
-import WhatMakesUsSpecial from './components/WhatMakesUsSpecial';
-import CoreValues from './components/CoreValues';
-import OurVision from './components/OurVision';
-import KeyLeadership from './components/KeyLeadership';
-import CompanyDescription from './components/CompanyDescription';
-import KeyHighlights from './components/KeyHighlights';
-import StrengthsAndOpportunities from './components/StrengthsAndOpportunities';
-import WeaknessesAndThreats from './components/WeaknessesAndThreats';
-import MilestonesAndVision from './components/MilestonesAndVision';
-import Main from '@/components/ui/layout/Main';
-import { IoFastFoodOutline } from 'react-icons/io5';
-
-const AboutPage = () => {
-	return (
-		<Main
-			tittle='About PA Luxe Creation'
-			Icon={IoFastFoodOutline}>
-			<OurJourney />
-			<OurVision />
-			<CompanyDescription />
-			<OurCommitment />
-			<MilestonesAndVision />
-			<WhatMakesUsSpecial />
-			<KeyHighlights />
-			<CoreValues />
-			<StrengthsAndOpportunities />
-			<WeaknessesAndThreats />
-			<KeyLeadership />
-		</Main>
-	);
+const nextConfig: NextConfig = {
+  reactCompiler: true,
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'placehold.co',
+        port: '',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'images.unsplash.com',
+        port: '',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'picsum.photos',
+        port: '',
+        pathname: '/**',
+      }, {
+        protocol: "https",
+        hostname: "qiksfxnjdfpncpsmzvko.supabase.co",
+      },
+    ],
+  },
 };
 
-export default AboutPage;
+module.exports = nextConfig;
 </file>
 
 <file path="client/src/app/gallery/components/ImageGallery.tsx">
@@ -10970,6 +11511,134 @@ const ImageGallery: React.FC = () => {
 export default ImageGallery;
 </file>
 
+<file path="client/src/app/menu/[Products]/[product]/components/comments.tsx">
+import { getCommentsForProduct } from '@/lib/supabase/comments';
+import Button from '@/components/ui/Button';
+import { BiCommentAdd } from 'react-icons/bi';
+import Section from '@/components/ui/layout/Section';
+
+interface CommentsProps {
+	product: ProductType;
+}
+
+/**
+ * Displays comments for a given product.
+ * Fetches comments for the specific product from Supabase.
+ * Note: Comment submission is handled via client-side components.
+ * @param product The product for which to display comments.
+ */
+const Comments: React.FC<CommentsProps> = async ({ product }) => {
+	// Determine product id/key used in this app (fallbacks for different shapes)
+	const productKey = (product as any).ProductID || (product as any).id || (product as any).Name || (product as any).slug || (product as any).Slug;
+	
+	let comments: any[] = [];
+	try {
+		if (productKey) {
+			comments = (await getCommentsForProduct(productKey)) || [];
+		}
+	} catch (err) {
+		console.error('Failed to load comments', err);
+	}
+
+	return (
+		<Section tittle='Reviews & Comments'>
+			{/* Existing Comments */}
+			<ul className='space-y-6'>
+				{comments.length > 0 ? (
+					comments.map((comment) => (
+						<li
+							key={comment.id}
+							className='bg-black/20 border border-white/50 rounded-md p-4'>
+							<div className='flex items-start gap-4'>
+								<div className='flex-shrink-0 w-10 h-10 bg-yellow-600 rounded-full flex items-center justify-center text-white font-bold text-lg'>
+									{(comment.user_name || 'U').charAt(0).toUpperCase()}
+								</div>
+								<div className='flex-1'>
+									<div className='flex justify-between items-center mb-1'>
+										<span className='font-bold text-white'>{comment.user_name || 'Anonymous'}</span>
+										<span className='text-xs text-white/70'>
+											{new Date(comment.created_at).toLocaleDateString()}
+										</span>
+									</div>
+									<p className='text-white'>{comment.body}</p>
+									<button className='mt-3 px-3 py-1 bg-yellow-600 text-white text-xs font-semibold rounded-md hover:bg-yellow-600/100 transition-colors duration-200'>
+										Reply
+									</button>
+								</div>
+							</div>
+						</li>
+					))
+				) : (
+					<li className='text-center text-white/70 py-4'>
+						No comments yet. Be the first to review!
+					</li>
+				)}
+			</ul>
+		</Section>
+	);
+};
+
+export default Comments;
+</file>
+
+<file path="client/src/app/menu/[Products]/[product]/components/RelatedProducts.tsx">
+import React from 'react';
+import Image from 'next/image';
+import Link from 'next/link';
+
+
+import Section from '@/components/ui/layout/Section';
+
+interface RelatedProductsProps {
+	currentProduct: ProductType;
+	categoryName: string;
+	products: ProductType[];
+}
+
+const RelatedProducts: React.FC<RelatedProductsProps> = ({ currentProduct, categoryName, products }) => {
+	if (products.length === 0) {
+		return null;
+	}
+
+	return (
+		<Section tittle='You Might Also Like'>
+			<div className='grid grid-cols-3 sm:grid-cols-2 md:grid-cols-4 gap-2'>
+				{products.map((product) => (
+					<Link
+						key={product.ProductID}
+						href={`/menu/${categoryName}/${product.Name.toLowerCase().replace(/\s+/g, '-')}`}
+						className='group relative bg-yellow-700  rounded-md p-2 pt-6  flex flex-col transition-transform duration-300 hover:scale-105 hover:border-white'>
+						{product.Image && (
+							<div className='relative w-full aspect-square  overflow-hidden rounded-md'>
+								<Image
+									src={product.Image}
+									alt={product.Name}
+									fill
+									className=' transition-transform duration-300 group-hover:scale-110'
+								/>
+							</div>
+						)}
+						<div className='flex-grow  flex flex-col'>
+							<h1 className='font-semibold text-white text-base mb-2 line-clamp-2 flex-grow'>
+								{product.Name}
+							</h1>
+							<p className='text-white font-bold text-md mt-auto'>R{product.Price.toFixed(2)}</p>
+							{product.badge && (
+								<span className='absolute w-full top-0 right-0 px-2 py-1 rounded-t-md text-xs font-bold bg-yellow-600 text-white'>
+									{product.badge}
+								</span>
+							)}
+						</div>
+					</Link>
+				))}
+			</div>
+		</Section>
+	);
+};
+
+export default RelatedProducts;
+</file>
+
 <file path="client/src/app/menu/[Products]/components/CommentModal.tsx">
 import { useState } from 'react';
 import { createClient } from '@/lib/supabase/client';
@@ -11085,6 +11754,83 @@ const SocialButtons: React.FC<SocialButtonsProps> = ({ product }) => {
 export default SocialButtons;
 </file>
 
+<file path="client/src/app/menu/[Products]/utils/likesUtils.ts">
+import { createClient } from '@/lib/supabase/client';
+
+export interface ProductLikes {
+  [productKey: string]: {
+    likes: number;
+  };
+}
+
+export const fetchAllProductLikes = async (productKeys: string[]): Promise<ProductLikes> => {
+  const likesData: ProductLikes = {};
+  const supabase = createClient();
+  
+  try {
+    // Fetch likes data for each product from Supabase
+    const promises = productKeys.map(async (productKey) => {
+      try {
+        const { data, error } = await supabase
+          .from('products')
+          .select('likes')
+          .eq('id', productKey)
+          .single();
+        
+        if (!error && data) {
+          // @ts-ignore - Supabase type inference issue with Database types
+          likesData[productKey] = { likes: data.likes || 0 };
+        } else {
+          likesData[productKey] = { likes: 0 };
+        }
+      } catch (err) {
+        likesData[productKey] = { likes: 0 };
+      }
+    });
+    
+    await Promise.all(promises);
+    return likesData;
+  } catch (error) {
+    console.error('Error fetching product likes:', error);
+    // Return default values if there's an error
+    productKeys.forEach(productKey => {
+      likesData[productKey] = { likes: 0 };
+    });
+    return likesData;
+  }
+};
+</file>
+
+<file path="client/src/app/menu/cart/page.tsx">
+import React, { Suspense } from 'react';
+import Loading from '@/components/ui/Loading';
+import { IoClose } from 'react-icons/io5';
+import CartProductForm from '@/lib/forms/CartProductForm';
+import CartFooter from '@/app/menu/cart/components/CartFooter';
+import AppLink from '@/components/ui/Link';
+import Main from '@/components/ui/layout/Main';
+
+
+const CartPage: React.FC = () => {
+	return (
+		<Main >
+			<AppLink className="mb-2 bg-red-500/10 backdrop-blur-sm border border-red-500/30 hover:border-red-500/50 transition-all duration-200 hover:shadow-red-500/20 rounded-xl" href="/menu" >
+				<IoClose /> Close Cart
+			</AppLink>
+			<Suspense fallback={<Loading message="Loading Cart..." />}>
+				<CartProductForm />
+			</Suspense>
+			<Suspense fallback={<Loading message="Loading Cart footer..." />}>
+				<CartFooter />
+			</Suspense>
+		</Main>
+
+	);
+};
+
+export default CartPage;
+</file>
+
 <file path="client/src/app/menu/components/MenuSections.tsx">
 'use client';
 
@@ -11173,204 +11919,45 @@ const MenuSections: React.FC<MenuSectionsProps> = ({ categories, matchingProduct
 export default MenuSections;
 </file>
 
-<file path="client/src/app/menu/components/SpecialOffers.tsx">
-import Section from '@/components/ui/layout/Section';
-
-const SpecialOffers: React.FC = () => {
-	return (
-		<Section tittle='	Special Offers'>
-			<article>
-				<div className='grid grid-cols-1 md:grid-cols-2 gap-6'>
-					{/* Offer 1 */}
-					<div className='bg-black/50 border border-yellow-500 rounded-md p-2 flex flex-col'>
-						<div className='bg-yellow-700 rounded-md p-6 flex flex-col h-full'>
-							<h3
-								className='text-xl font-bold text-white mb-2'
-								style={{ filter: 'drop-shadow(0 0 2px #f0b100)' }}>
-								Weekend Promotion
-							</h3>
-							<p className='text-white flex-grow'>
-								Get a Free Pork Plate with Every Photo boot on Saturdays and Sundays!
-							</p>
-						</div>
-					</div>
-					{/* Offer 2 */}
-					<div className='bg-black/50 border border-yellow-500 rounded-md p-2 flex flex-col'>
-						<div className='bg-yellow-700 rounded-md p-6 flex flex-col h-full'>
-							<h3
-								className='text-xl font-bold text-white mb-2'
-								style={{ filter: 'drop-shadow(0 0 2px #f0b100)' }}>
-								Taxi Partnerships
-							</h3>
-							<p className='text-white flex-grow'>
-								Bulk discounts available for taxi associations. For example, 10 washes = 1 free!
-							</p>
-						</div>
-					</div>
-				</div>
-			</article>
-		</Section>
-	);
-};
-
-export default SpecialOffers;
-</file>
-
-<file path="client/src/app/menu/layout.tsx">
-'use client';
-
-import { CartProvider } from '@/lib/context/CartContext';
-import { ToastProvider } from '@/lib/context/CartContext';
-
-import React, { ReactNode } from 'react';
-
-interface LayoutProps {
-	children: ReactNode;
-}
-
-const Layout: React.FC<LayoutProps> = ({ children }) => {
-	return (
-		<ToastProvider>
-			<CartProvider>{children}</CartProvider>
-		</ToastProvider>
-	);
-};
-
-export default Layout;
-</file>
-
-<file path="client/src/app/privacy/page.tsx">
+<file path="client/src/app/page.tsx">
+import AboutUsSnippet from '@/app/home-components/AboutUsSnippet';
+import ContactSection from '@/app/home-components/ContactSection';
+import FeaturedItemsServices from '@/app/home-components/FeaturedItemsServices';
+import HeroSection from '@/app/home-components/HeroSection';
+import KeyDifferentiators from '@/app/home-components/KeyDifferentiators';
+import TargetMarketCallout from '@/app/home-components/TargetMarketCallout';
+import Testimonials from '@/app/home-components/Testimonials';
 import Main from '@/components/ui/layout/Main';
-import Section from '@/components/ui/layout/Section';
-
-const PrivacyPolicyPage: React.FC = () => {
+const HomePage = () => {
 	return (
-		<Main tittle='Privacy Policy'>
-			<Section>
-				<div className='space-y-6'>
-					<p>Effective Date: 26 July 2024</p>
-
-					<article>
-						<h2 className='text-2xl font-semibold mb-2'>1. Introduction</h2>
-						<p>
-							Welcome to PA Luxe Creation PTY Ltd. We are committed to protecting your privacy and
-							ensuring that your personal information is handled in a safe and responsible manner.
-							This Privacy Policy outlines how we collect, use, disclose, and safeguard your
-							information when you use our services, including our website and digital booking
-							system.
-						</p>
-					</article>
-
-					<article>
-						<h2 className='text-2xl font-semibold mb-2'>2. Information We Collect</h2>
-						<p>
-							We may collect information about you in a variety of ways. The information we may
-							collect includes:
-						</p>
-						<h3 className='text-xl font-semibold mt-4 mb-2'>Personal Data</h3>
-						<p>
-							Personally identifiable information, such as your name, email address, and telephone
-							number, that you voluntarily give to us when you use our digital booking system or
-							contact us.
-						</p>
-						<h3 className='text-xl font-semibold mt-4 mb-2'>Usage Data</h3>
-						<p>
-							Information that our servers automatically collect when you access our website, such
-							as your IP address, browser type, operating system, access times, and the pages you
-							have viewed directly before and after accessing the site.
-						</p>
-					</article>
-
-					<article>
-						<h2 className='text-2xl font-semibold mb-2'>3. How We Use Your Information</h2>
-						<p>
-							Having accurate information about you permits us to provide you with a smooth,
-							efficient, and customized experience. Specifically, we may use information collected
-							about you to:
-						</p>
-						<ul className='list-disc list-inside ml-4 mt-2'>
-							<li>Manage your bookings and appointments for our Photo boot services.</li>
-							<li>Send you confirmations, reminders, and updates regarding your bookings.</li>
-							<li>Respond to your comments and questions and provide customer service.</li>
-							<li>
-								Monitor and analyze usage and trends to improve your experience with our services.
-							</li>
-							<li>Notify you of updates to our services.</li>
-						</ul>
-					</article>
-
-					<article>
-						<h2 className='text-2xl font-semibold mb-2'>4. Data Sharing and Disclosure</h2>
-						<p>
-							We do not share, sell, rent, or trade your personal information with third parties for
-							their commercial purposes. We may share information we have collected about you in
-							certain situations, such as:
-						</p>
-						<ul className='list-disc list-inside ml-4 mt-2'>
-							<li>
-								<strong>By Law or to Protect Rights:</strong> If we believe the release of
-								information about you is necessary to respond to legal process, to investigate or
-								remedy potential violations of our policies, or to protect the rights, property, and
-								safety of others, we may share your information as permitted or required by any
-								applicable law, rule, or regulation.
-							</li>
-							<li>
-								<strong>Service Providers:</strong> We may share your information with third parties
-								that perform services for us or on our behalf, including payment processing, data
-								analysis, email delivery, hosting services, and customer service.
-							</li>
-						</ul>
-					</article>
-
-					<article>
-						<h2 className='text-2xl font-semibold mb-2'>5. Data Security</h2>
-						<p>
-							We use administrative, technical, and physical security measures to help protect your
-							personal information. While we have taken reasonable steps to secure the personal
-							information you provide to us, please be aware that despite our efforts, no security
-							measures are perfect or impenetrable, and no method of data transmission can be
-							guaranteed against any interception or other type of misuse.
-						</p>
-					</article>
-
-					<article>
-						<h2 className='text-2xl font-semibold mb-2'>6. Your Rights</h2>
-						<p>
-							You have the right to access, correct, or delete your personal information. You may
-							also have the right to object to or restrict certain processing of your data. To
-							exercise these rights, please contact us using the contact information provided below.
-						</p>
-					</article>
-
-					<article>
-						<h2 className='text-2xl font-semibold mb-2'>7. Changes to This Privacy Policy</h2>
-						<p>
-							We may update this Privacy Policy from time to time in order to reflect, for example,
-							changes to our practices or for other operational, legal, or regulatory reasons. We
-							will notify you of any changes by posting the new Privacy Policy on this page.
-						</p>
-					</article>
-
-					<article>
-						<h2 className='text-2xl font-semibold mb-2'>8. Contact Us</h2>
-						<p>
-							If you have questions or comments about this Privacy Policy, please contact us at:
-							<br />
-							PA Luxe Creation PTY Ltd
-							<br />
-							[Your Address Here]
-							<br />
-							Email: [Your Email Here]
-							<br />
-							Phone: [Your Phone Number Here]
-						</p>
-					</article>
-				</div>
-			</Section>
+		<Main>
+			<HeroSection />
+			<AboutUsSnippet />
+			<KeyDifferentiators />
+			<FeaturedItemsServices />
+			<TargetMarketCallout />
+			<Testimonials />
+			<ContactSection />
 		</Main>
 	);
 };
-export default PrivacyPolicyPage;
+export default HomePage;
+</file>
+
+<file path="client/src/components/Navbar/Navbar.tsx">
+import { createClient } from '@/lib/supabase/server';
+import NavbarClient from './NavbarClient';
+
+const Navbar = async () => {
+	const supabase = await createClient();
+	const {
+		data: { user },
+	} = await supabase.auth.getUser();
+
+	return <NavbarClient user={user} />;
+};
+
+export default Navbar;
 </file>
 
 <file path="client/src/components/Navbar/NavbarClient.tsx">
@@ -11409,264 +11996,88 @@ const NavbarClient: React.FC<NavbarClientProps> = ({ user }) => {
 export default NavbarClient;
 </file>
 
-<file path="client/src/components/ui/AddOnSelector.tsx">
-import React from 'react';
-
-const photoBoothAddOns = [
-	{ id: 'premium-backdrop', label: 'Premium Backdrop', price: '150' },
-	{ id: 'extra-prints', label: 'Extra Prints Package', price: '100' },
-	{ id: 'props-upgrade', label: 'Props Upgrade', price: '80' },
-	{ id: 'digital-album', label: 'Digital Album', price: '50' },
-];
-
-interface AddOnSelectorProps {
-	selectedAddOns: string[];
-	onChange: (addOns: string[]) => void;
-}
-
-const AddOnSelector: React.FC<AddOnSelectorProps> = ({ selectedAddOns, onChange }) => {
-	const handleAddOnChange = (addOn: string) => {
-		const newSelection = selectedAddOns.includes(addOn)
-			? selectedAddOns.filter((item) => item !== addOn)
-			: [...selectedAddOns, addOn];
-		onChange(newSelection);
-	};
-
-	return (
-		<div className='space-y-4'>
-			<h3 className='text-lg font-semibold text-white'>Additional Services</h3>
-			<div className='grid grid-cols-1 md:grid-cols-2 gap-4'>
-				{photoBoothAddOns.map(({ id, label, price }) => (
-					<div
-						key={id}
-						className='flex items-center space-x-3 p-3 rounded-md bg-black/30 border border-white/20'>
-						<input
-							type='checkbox'
-							id={id}
-							checked={selectedAddOns.includes(label)}
-							onChange={() => handleAddOnChange(label)}
-							className='h-5 w-5 text-yellow-500 rounded focus:ring-yellow-500 bg-black/30 border-white/20'
-						/>
-						<label
-							htmlFor={id}
-							className='flex-1 cursor-pointer'>
-							<span className='block text-white'>{label}</span>
-							<span className='block text-sm text-white/60'>R{price}</span>
-						</label>
-					</div>
-				))}
-			</div>
-		</div>
-	);
-};
-
-export default AddOnSelector;
-</file>
-
-<file path="client/src/components/ui/Avatar.tsx">
-import React from 'react';
-import classNames from 'classnames'; // Import classNames
-import Image from 'next/image';
-
-interface AvatarProps {
-	src: string | null | undefined;
-	alt: string;
-	initials?: string; // Added initials prop
-	size?: 'small' | 'medium' | 'large' | 'xl'; // Added xl size
-	className?: string;
-}
-
-const sizeClassesMap = {
-	small: 'w-8 h-8 text-sm',
-	medium: 'w-10 h-10 text-base',
-	large: 'w-16 h-16 text-xl',
-	xl: 'w-24 h-24 text-3xl', // Added xl size
-};
-
-const Avatar: React.FC<AvatarProps> = ({ src, alt, initials, size = 'medium', className }) => {
-	const currentSizeClasses = sizeClassesMap[size];
-
-	return (
-		<div
-			className={classNames(
-				'relative flex items-center justify-center rounded-full bg-yellow-200 overflow-hidden shrink-0',
-				currentSizeClasses,
-				className
-			)}>
-			{src ? (
-				<Image
-					src={src}
-					alt={alt}
-					fill // Use fill instead of absolute positioning manually
-					className='object-cover'
-				/>
-			) : (
-				<span className='text-yellow-900 font-bold uppercase flex items-center justify-center h-full w-full select-none'>
-					{initials || alt.charAt(0)}
-				</span>
-			)}
-		</div>
-	);
-};
-
-export default Avatar;
-</file>
-
-<file path="client/src/components/ui/Button.tsx">
+<file path="client/src/components/ui/TextInput.tsx">
 import React from 'react';
 import classNames from 'classnames';
 
-export type ButtonVariant = 'primary' | 'secondary' | 'danger' | 'icon' | 'suggestion';
-export type ButtonSize = 'sm' | 'md' | 'lg';
+export type TextInputVariant = 'default' | 'error';
+export type CustomTextInputSize = 'sm' | 'md' | 'lg'; // Renamed to avoid conflict
 
-interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-	variant?: ButtonVariant;
-	size?: ButtonSize;
+interface TextInputProps extends React.InputHTMLAttributes<HTMLInputElement> {
+	variant?: TextInputVariant;
+	customSize?: CustomTextInputSize; // Using the new name
 	loading?: boolean;
+	label?: string;
+	fullWidth?: boolean;
+	icon?: React.ReactNode;
 }
 
-const baseClasses =
-	'rounded-md flex gap-2 items-center justify-center font-semibold transition-colors duration-200 focus:outline-none focus-visible:ring-4  focus-visible:ring-yellow-400 text-nowrap';
+const baseClasses = 'block rounded-md transition-all duration-200 focus:outline-none focus:ring-2 ';
+
 const variantClasses = {
-	primary: 'bg-yellow-600 text-white hover:bg-yellow-700 shadow-sm shadow-black',
-	secondary: 'bg-white text-yellow-600 border border-yellow-400 hover:bg-red-50',
-	danger: 'bg-yellow-100 text-yellow-700 border border-yellow-400 hover:bg-yellow-200',
-	icon: 'bg-none text-yellow-500 hover:text-yellow-700',
-	suggestion: 'bg-transparent text-white hover:bg-yellow-700',
+	default: 'border-white/30 bg-yellow-900/60 text-white focus:border-amber-400 focus:ring-amber-400/40',
+	error: 'border-red-500/50 bg-yellow-900/60 text-white focus:border-red-400 focus:ring-red-400/40',
 };
+
+// Use the new custom size type here
 const sizeClasses = {
 	sm: 'px-3 py-1 text-sm',
 	md: 'px-4 py-2 text-base',
-	lg: 'px-6 py-3 text-lg',
+	lg: 'px-5 py-2.5 text-lg',
 };
 
-const Button: React.FC<ButtonProps> = ({
-	children,
-	variant = 'primary',
-	size = 'sm',
+const TextInput: React.FC<TextInputProps> = ({
+	label,
+	variant = 'default',
+	customSize = 'md',
 	loading = false,
 	disabled,
 	className,
+	fullWidth = true,
+	icon,
 	...props
-}) => (
-	<button
-		className={classNames(baseClasses, variantClasses[variant], sizeClasses[size], className, {
+}) => {
+	const inputId = props.id || `text-input-${Math.random().toString(36).substring(2, 9)}`;
+
+	const containerClasses = classNames('relative', { 'w-full': fullWidth });
+
+	const inputClasses = classNames(
+		baseClasses,
+		variantClasses[variant],
+		sizeClasses[customSize],
+		className,
+		{
 			'opacity-50 cursor-not-allowed': disabled || loading,
-		})}
-		disabled={disabled || loading}
-		{...props}>
-		{loading ? (
-			<span className='inline-block w-4 h-4 border-2 border-white border-t-yellow-600 rounded-full animate-spin mr-2'></span>
-		) : (
-			children
-		)}
-	</button>
-);
+			'w-full': fullWidth,
+			'pl-10': icon,
+		}
+	);
 
-export default Button;
-</file>
-
-<file path="client/src/components/ui/layout/FormField.tsx">
-import React from 'react';
-
-interface FormFieldProps {
-	label: string;
-	name: string;
-	type?: 'text' | 'date' | 'time' | 'select';
-	value?: string;
-	onChange?: (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => void;
-	required?: boolean;
-	placeholder?: string;
-	className?: string;
-	children?: React.ReactNode;
-	min?: string;
-	id?: string;
-}
-
-const formInputStyle =
-	'w-full p-3 rounded-md bg-black/30 border border-white/20 focus:ring-2 focus:ring-yellow-500 focus:border-yellow-500 outline-none';
-
-const FormField: React.FC<FormFieldProps> = ({
-	label,
-	name,
-	type = 'text',
-	value,
-	onChange,
-	required = false,
-	placeholder,
-	className = '',
-	children,
-	min,
-	id,
-}) => (
-	<div className={className}>
-		<label
-			htmlFor={id || name}
-			className='block mb-2 font-semibold text-white'>
-			{label}
-		</label>
-		{type === 'select' ? (
-			<select
-				name={name}
-				id={id || name}
-				value={value}
-				onChange={onChange}
-				required={required}
-				className={formInputStyle}>
-				{children}
-			</select>
-		) : (
-			<input
-				type={type}
-				name={name}
-				id={id || name}
-				value={value}
-				onChange={onChange}
-				required={required}
-				placeholder={placeholder}
-				className={formInputStyle}
-				min={min}
-			/>
-		)}
-	</div>
-);
-
-export default FormField;
-</file>
-
-<file path="client/src/components/ui/Link.tsx">
-import React from 'react';
-import Link, { LinkProps as NextLinkProps } from 'next/link';
-import classNames from 'classnames';
-
-export type LinkVariant = 'primary' | 'secondary' | 'button';
-
-interface LinkProps extends NextLinkProps {
-	children: React.ReactNode;
-	className?: string;
-	variant?: LinkVariant;
-}
-
-const baseClasses = 'transition-colors duration-200 flex gap-2 items-center justify-center';
-
-const variantClasses = {
-	primary: 'text-yellow-100 shadow-blue-500 font-bold hover:text-yellow-700 hover:underline',
-	secondary: 'text-yellow-200 hover:text-yellow-700 hover:underline',
-	button:
-		'bg-yellow-600 font-bold grow p-2 text-center text-nowrap text-white shadow-md shadow-black active:bg-yellow-900 rounded-md flex gap-2 items-center justify-center font-semibold transition-colors duration-200 focus:outline-none focus-visible:ring-4  focus-visible:ring-yellow-400 ',
-};
-
-const AppLink: React.FC<LinkProps> = ({ children, className, variant = 'primary', ...props }) => {
 	return (
-		<Link
-			{...props}
-			className={classNames(baseClasses, variantClasses[variant], className)}>
-			{children}
-		</Link>
+		<div className={containerClasses}>
+			{label && (
+				<label
+					htmlFor={inputId}
+					className='block text-sm font-medium text-white mb-1'>
+					{label}
+				</label>
+			)}
+			{icon && (
+				<div className='absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none'>
+					{icon}
+				</div>
+			)}
+			<input
+				id={inputId}
+				className={inputClasses}
+				disabled={disabled || loading}
+				{...props}
+			/>
+		</div>
 	);
 };
 
-export default AppLink;
+export default TextInput;
 </file>
 
 <file path="client/src/lib/supabase/client.ts">
@@ -11881,52 +12292,6 @@ declare global {
   }
 }
 export { };
-</file>
-
-<file path="client/tsconfig.json">
-{
-  "compilerOptions": {
-    "target": "ES2018",
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
-    "allowJs": true,
-    "skipLibCheck": true,
-    "strict": true,
-    "noEmit": true,
-    "esModuleInterop": true,
-    "module": "esnext",
-    "moduleResolution": "bundler",
-    "resolveJsonModule": true,
-    "isolatedModules": true,
-    "jsx": "react-jsx",
-    "incremental": true,
-    "plugins": [
-      {
-        "name": "next"
-      }
-    ],
-    "paths": {
-      "@/*": [
-        "./src/*"
-      ]
-    }
-  },
-  "include": [
-    "next-env.d.ts",
-    "**/*.ts",
-    "**/*.tsx",
-    "**/*.mts",
-    ".next/types/**/*.ts",
-    ".next/dev/types/**/*.ts"
-  ],
-  "exclude": [
-    "node_modules",
-    ".next"
-  ]
-}
 </file>
 
 <file path="admin/src/components/layout/nav-items.tsx">
@@ -12524,41 +12889,6 @@ export const fetchAdminProfileWithClient = (client: SupabaseServerClient) =>
   fetchProfile(client);
 </file>
 
-<file path="client/next.config.ts">
-import type { NextConfig } from 'next';
-
-const nextConfig: NextConfig = {
-  reactCompiler: true,
-  images: {
-    remotePatterns: [
-      {
-        protocol: 'https',
-        hostname: 'placehold.co',
-        port: '',
-        pathname: '/**',
-      },
-      {
-        protocol: 'https',
-        hostname: 'images.unsplash.com',
-        port: '',
-        pathname: '/**',
-      },
-      {
-        protocol: 'https',
-        hostname: 'picsum.photos',
-        port: '',
-        pathname: '/**',
-      }, {
-        protocol: "https",
-        hostname: "qiksfxnjdfpncpsmzvko.supabase.co",
-      },
-    ],
-  },
-};
-
-module.exports = nextConfig;
-</file>
-
 <file path="client/src/app/globals.css">
 @import 'tailwindcss';
 @import "tw-animate-css";
@@ -12577,61 +12907,51 @@ module.exports = nextConfig;
 	}
 
 
+	/* Typography Hierarchy */
 	h1 {
-		filter: drop-shadow(0 0 3px #f0b100);
-		@apply text-4xl md:text-5xl font-bold;
+		@apply text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-tight;
+		/* Removed heavy drop-shadow for cleaner look */
 	}
 
 	h2 {
-		@apply text-2xl md:text-4xl font-bold border-b-2 p-2 border-yellow-500 mb-4;
-		filter: drop-shadow(0 0 3px #f0b100);
+		@apply text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight leading-tight mb-8 relative inline-block;
+		/* Refined border treatment */
+	}
+	
+	h2::after {
+		content: '';
+		@apply block w-1/3 h-1 bg-amber-500 mt-4 mx-auto rounded-full opacity-80;
 	}
 
 	h3 {
-		@apply text-xl md:text-2xl font-semibold;
-	}
-
-	strong {
-		@apply text-yellow-100 font-bold;
+		@apply text-2xl md:text-3xl font-semibold tracking-tight;
 	}
 
 	h4 {
-		@apply text-lg md:text-xl font-semibold;
-		filter: drop-shadow(0 0 3px #f0b100);
+		@apply text-xl md:text-2xl font-semibold tracking-tight;
 	}
 
 	h5 {
-		@apply text-base md:text-lg font-semibold;
-		filter: drop-shadow(0 0 3px #f0b100);
+		@apply text-lg md:text-xl font-medium tracking-tight;
 	}
 
 	h6 {
-		@apply text-sm md:text-base font-semibold;
-		filter: drop-shadow(0 0 3px #f0b100);
+		@apply text-base md:text-lg font-medium tracking-wide uppercase;
 	}
 
 	p {
-		@apply text-balance text-base md:text-lg font-normal;
+		@apply text-base md:text-lg font-normal leading-relaxed text-white/80;
+		text-wrap: pretty;
 	}
 
 	body,
 	html {
-		color: white;
+		@apply bg-black text-white antialiased;
 	}
 
-	h1 {
-		@apply text-4xl md:text-5xl font-bold;
-		filter: drop-shadow(0 0 3px #f0b100);
-	}
-
-	/* All other heading tags remain white for consistency */
-	h1,
-	h2,
-	h3,
-	h4,
-	h5,
-	h6 {
-		@apply text-white font-bold text-center my-2 text-shadow-sm text-shadow-black;
+	/* Reset generic heading overrides to allow component-specific styling */
+	h1, h2, h3, h4, h5, h6 {
+		@apply text-white text-center;
 	}
 
 	img {
@@ -12670,234 +12990,29 @@ module.exports = nextConfig;
 }
 </file>
 
-<file path="client/src/app/menu/[Products]/[product]/components/comments.tsx">
-import { getCommentsForProduct } from '@/lib/supabase/comments';
-import Button from '@/components/ui/Button';
-import { BiCommentAdd } from 'react-icons/bi';
-import Section from '@/components/ui/layout/Section';
+<file path="client/src/app/layout.tsx">
+import type { Metadata } from 'next';
+import './globals.css';
+import './layout.css';
 
-interface CommentsProps {
-	product: ProductType;
+import Navbar from '@/components/Navbar/Navbar';
+import { Analytics } from '@vercel/analytics/next';
+
+export default function RootLayout({
+	children,
+}: Readonly<{
+	children: React.ReactNode;
+}>) {
+	return (
+		<html lang='en'>
+			<body className={`antialiased min-h-screen`}>
+				<Navbar />
+				{children}
+				<Analytics />
+			</body>
+		</html>
+	);
 }
-
-/**
- * Displays comments for a given product.
- * Fetches comments for the specific product from Supabase.
- * Note: Comment submission is handled via client-side components.
- * @param product The product for which to display comments.
- */
-const Comments: React.FC<CommentsProps> = async ({ product }) => {
-	// Determine product id/key used in this app (fallbacks for different shapes)
-	const productKey = (product as any).ProductID || (product as any).id || (product as any).Name || (product as any).slug || (product as any).Slug;
-	
-	let comments: any[] = [];
-	try {
-		if (productKey) {
-			comments = (await getCommentsForProduct(productKey)) || [];
-		}
-	} catch (err) {
-		console.error('Failed to load comments', err);
-	}
-
-	return (
-		<Section tittle='Reviews & Comments'>
-			{/* Existing Comments */}
-			<ul className='space-y-6'>
-				{comments.length > 0 ? (
-					comments.map((comment) => (
-						<li
-							key={comment.id}
-							className='bg-black/20 border border-white/50 rounded-md p-4'>
-							<div className='flex items-start gap-4'>
-								<div className='flex-shrink-0 w-10 h-10 bg-yellow-600 rounded-full flex items-center justify-center text-white font-bold text-lg'>
-									{(comment.user_name || 'U').charAt(0).toUpperCase()}
-								</div>
-								<div className='flex-1'>
-									<div className='flex justify-between items-center mb-1'>
-										<span className='font-bold text-white'>{comment.user_name || 'Anonymous'}</span>
-										<span className='text-xs text-white/70'>
-											{new Date(comment.created_at).toLocaleDateString()}
-										</span>
-									</div>
-									<p className='text-white'>{comment.body}</p>
-									<button className='mt-3 px-3 py-1 bg-yellow-600 text-white text-xs font-semibold rounded-md hover:bg-yellow-600/100 transition-colors duration-200'>
-										Reply
-									</button>
-								</div>
-							</div>
-						</li>
-					))
-				) : (
-					<li className='text-center text-white/70 py-4'>
-						No comments yet. Be the first to review!
-					</li>
-				)}
-			</ul>
-		</Section>
-	);
-};
-
-export default Comments;
-</file>
-
-<file path="client/src/app/menu/[Products]/[product]/components/RelatedProducts.tsx">
-import React from 'react';
-import Image from 'next/image';
-import Link from 'next/link';
-
-
-import Section from '@/components/ui/layout/Section';
-
-interface RelatedProductsProps {
-	currentProduct: ProductType;
-	categoryName: string;
-	products: ProductType[];
-}
-
-const RelatedProducts: React.FC<RelatedProductsProps> = ({ currentProduct, categoryName, products }) => {
-	if (products.length === 0) {
-		return null;
-	}
-
-	return (
-		<Section tittle='You Might Also Like'>
-			<div className='grid grid-cols-3 sm:grid-cols-2 md:grid-cols-4 gap-2'>
-				{products.map((product) => (
-					<Link
-						key={product.ProductID}
-						href={`/menu/${categoryName}/${product.Name.toLowerCase().replace(/\s+/g, '-')}`}
-						className='group relative bg-yellow-700  rounded-md p-2 pt-6  flex flex-col transition-transform duration-300 hover:scale-105 hover:border-white'>
-						{product.Image && (
-							<div className='relative w-full aspect-square  overflow-hidden rounded-md'>
-								<Image
-									src={product.Image}
-									alt={product.Name}
-									fill
-									className=' transition-transform duration-300 group-hover:scale-110'
-								/>
-							</div>
-						)}
-						<div className='flex-grow  flex flex-col'>
-							<h1 className='font-semibold text-white text-base mb-2 line-clamp-2 flex-grow'>
-								{product.Name}
-							</h1>
-							<p className='text-white font-bold text-md mt-auto'>R{product.Price.toFixed(2)}</p>
-							{product.badge && (
-								<span className='absolute w-full top-0 right-0 px-2 py-1 rounded-t-md text-xs font-bold bg-yellow-600 text-white'>
-									{product.badge}
-								</span>
-							)}
-						</div>
-					</Link>
-				))}
-			</div>
-		</Section>
-	);
-};
-
-export default RelatedProducts;
-</file>
-
-<file path="client/src/app/menu/[Products]/utils/likesUtils.ts">
-import { createClient } from '@/lib/supabase/client';
-
-export interface ProductLikes {
-  [productKey: string]: {
-    likes: number;
-  };
-}
-
-export const fetchAllProductLikes = async (productKeys: string[]): Promise<ProductLikes> => {
-  const likesData: ProductLikes = {};
-  const supabase = createClient();
-  
-  try {
-    // Fetch likes data for each product from Supabase
-    const promises = productKeys.map(async (productKey) => {
-      try {
-        const { data, error } = await supabase
-          .from('products')
-          .select('likes')
-          .eq('id', productKey)
-          .single();
-        
-        if (!error && data) {
-          // @ts-ignore - Supabase type inference issue with Database types
-          likesData[productKey] = { likes: data.likes || 0 };
-        } else {
-          likesData[productKey] = { likes: 0 };
-        }
-      } catch (err) {
-        likesData[productKey] = { likes: 0 };
-      }
-    });
-    
-    await Promise.all(promises);
-    return likesData;
-  } catch (error) {
-    console.error('Error fetching product likes:', error);
-    // Return default values if there's an error
-    productKeys.forEach(productKey => {
-      likesData[productKey] = { likes: 0 };
-    });
-    return likesData;
-  }
-};
-</file>
-
-<file path="client/src/app/menu/cart/page.tsx">
-import React, { Suspense } from 'react';
-import Loading from '@/components/ui/Loading';
-import { IoClose } from 'react-icons/io5';
-import CartProductForm from '@/lib/forms/CartProductForm';
-import CartFooter from '@/app/menu/cart/components/CartFooter';
-import AppLink from '@/components/ui/Link';
-import Main from '@/components/ui/layout/Main';
-
-
-const CartPage: React.FC = () => {
-	return (
-		<Main >
-			<AppLink className="mb-2 bg-red-500/10 backdrop-blur-sm border border-red-500/30 hover:border-red-500/50 transition-all duration-200 hover:shadow-red-500/20 rounded-xl" href="/menu" >
-				<IoClose /> Close Cart
-			</AppLink>
-			<Suspense fallback={<Loading message="Loading Cart..." />}>
-				<CartProductForm />
-			</Suspense>
-			<Suspense fallback={<Loading message="Loading Cart footer..." />}>
-				<CartFooter />
-			</Suspense>
-		</Main>
-
-	);
-};
-
-export default CartPage;
-</file>
-
-<file path="client/src/app/page.tsx">
-import AboutUsSnippet from '@/app/home-components/AboutUsSnippet';
-import ContactSection from '@/app/home-components/ContactSection';
-import FeaturedItemsServices from '@/app/home-components/FeaturedItemsServices';
-import HeroSection from '@/app/home-components/HeroSection';
-import KeyDifferentiators from '@/app/home-components/KeyDifferentiators';
-import TargetMarketCallout from '@/app/home-components/TargetMarketCallout';
-import Testimonials from '@/app/home-components/Testimonials';
-import Main from '@/components/ui/layout/Main';
-const HomePage = () => {
-	return (
-		<Main>
-			<HeroSection />
-			<AboutUsSnippet />
-			<KeyDifferentiators />
-			<FeaturedItemsServices />
-			<TargetMarketCallout />
-			<Testimonials />
-			<ContactSection />
-		</Main>
-	);
-};
-export default HomePage;
 </file>
 
 <file path="client/src/app/photo/page.tsx">
@@ -12999,104 +13114,33 @@ export default function PhotoBoothPage() {
 }
 </file>
 
-<file path="client/src/components/Navbar/Navbar.tsx">
-import { createClient } from '@/lib/supabase/server';
-import NavbarClient from './NavbarClient';
+<file path="client/src/components/ui/Loading.tsx">
+import Image from 'next/image';
+import '../components.css'; // Optional: for custom styles
+import Main from './layout/Main';
+import Section from './layout/Section';
 
-const Navbar = async () => {
-	const supabase = await createClient();
-	const {
-		data: { user },
-	} = await supabase.auth.getUser();
+const Loading = ({ message = 'Loading...' }: { message?: string }) => (
+	<Main className='flex flex-col justify-center items-center min-h-screen  p-4' tittle='PA Luxe Creation' heading='Experience the unique convenience of delicious food and a state-of-the-art Photo boot, all in
+				one place in Lulekani.'>
+		<Section className='flex flex-col items-center text-center max-w-md'>
+			<div className='mt-8 animate-pulse'>
+				<Image
+					src='/PA_Logo.png'
+					alt='PA Luxe Creation Logo'
+					width={220}
+					height={220}
+					className='w-48 h-48 mb-4'
+					priority
+				/>
+			</div>
+			<div className='spinner' />
+			<p className='text-white font-semibold'>{message}</p>
+		</Section>
+	</Main>
+);
 
-	return <NavbarClient user={user} />;
-};
-
-export default Navbar;
-</file>
-
-<file path="client/src/components/ui/TextInput.tsx">
-import React from 'react';
-import classNames from 'classnames';
-
-export type TextInputVariant = 'default' | 'error';
-export type CustomTextInputSize = 'sm' | 'md' | 'lg'; // Renamed to avoid conflict
-
-interface TextInputProps extends React.InputHTMLAttributes<HTMLInputElement> {
-	variant?: TextInputVariant;
-	customSize?: CustomTextInputSize; // Using the new name
-	loading?: boolean;
-	label?: string;
-	fullWidth?: boolean;
-	icon?: React.ReactNode;
-}
-
-const baseClasses = 'block rounded-md transition-all duration-200 focus:outline-none focus:ring-2 ';
-
-const variantClasses = {
-	default: 'border-white/30 bg-yellow-900/60 text-white focus:border-amber-400 focus:ring-amber-400/40',
-	error: 'border-red-500/50 bg-yellow-900/60 text-white focus:border-red-400 focus:ring-red-400/40',
-};
-
-// Use the new custom size type here
-const sizeClasses = {
-	sm: 'px-3 py-1 text-sm',
-	md: 'px-4 py-2 text-base',
-	lg: 'px-5 py-2.5 text-lg',
-};
-
-const TextInput: React.FC<TextInputProps> = ({
-	label,
-	variant = 'default',
-	customSize = 'md',
-	loading = false,
-	disabled,
-	className,
-	fullWidth = true,
-	icon,
-	...props
-}) => {
-	const inputId = props.id || `text-input-${Math.random().toString(36).substring(2, 9)}`;
-
-	const containerClasses = classNames('relative', { 'w-full': fullWidth });
-
-	const inputClasses = classNames(
-		baseClasses,
-		variantClasses[variant],
-		sizeClasses[customSize],
-		className,
-		{
-			'opacity-50 cursor-not-allowed': disabled || loading,
-			'w-full': fullWidth,
-			'pl-10': icon,
-		}
-	);
-
-	return (
-		<div className={containerClasses}>
-			{label && (
-				<label
-					htmlFor={inputId}
-					className='block text-sm font-medium text-white mb-1'>
-					{label}
-				</label>
-			)}
-			{icon && (
-				<div className='absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none'>
-					{icon}
-				</div>
-			)}
-			<input
-				id={inputId}
-				className={inputClasses}
-				disabled={disabled || loading}
-				{...props}
-			/>
-		</div>
-	);
-};
-
-export default TextInput;
+export default Loading;
 </file>
 
 <file path="client/src/lib/forms/CartProductForm.tsx">
@@ -13719,29 +13763,254 @@ export default async function MenuPage() {
 }
 </file>
 
-<file path="client/src/app/layout.tsx">
-import type { Metadata } from 'next';
-import './globals.css';
-import './layout.css';
+<file path="client/src/app/menu/[Products]/[product]/components/FavoriteButton.tsx">
+'use client';
 
-import Navbar from '@/components/Navbar/Navbar';
-import { Analytics } from '@vercel/analytics/next';
+import React, { useState, useEffect } from 'react';
+import { FaHeart, FaRegHeart } from 'react-icons/fa';
+import { useAuth } from '@/lib/supabase/auth/useAuth';
+import { getUserFavorites, toggleFavorite } from '@/lib/supabase/favorites';
 
-export default function RootLayout({
-	children,
-}: Readonly<{
-	children: React.ReactNode;
-}>) {
+import Button from '@/components/ui/Button';
+
+interface FavoriteButtonProps {
+	product: ProductType;
+}
+
+const FavoriteButton: React.FC<FavoriteButtonProps> = ({ product }) => {
+	const [isFavorite, setIsFavorite] = useState(false);
+	const [isLoading, setIsLoading] = useState(false);
+	const { user } = useAuth();
+	const userId = (user as any)?.id || (user as any)?.uid || null;
+
+	// Determine product id/key used in this app (fallbacks for different shapes)
+	const productKey = (product as any).ProductID || (product as any).id || (product as any).Name || (product as any).slug || (product as any).Slug;
+
+	useEffect(() => {
+		if (!userId || !productKey) return;
+
+		const checkFavoriteStatus = async () => {
+			try {
+				const favorites = await getUserFavorites(userId);
+				setIsFavorite(favorites.includes(productKey));
+			} catch (error) {
+				console.error('Error checking favorite status:', error);
+			}
+		};
+
+		checkFavoriteStatus();
+	}, [userId, productKey]);
+
+	const handleToggleFavorite = async () => {
+		if (!userId) {
+			alert('Please log in to save favorites');
+			return;
+		}
+
+		setIsLoading(true);
+		try {
+			const result = await toggleFavorite(userId, productKey);
+			setIsFavorite(result.added);
+		} catch (error) {
+			console.error('Error toggling favorite:', error);
+			alert('Failed to update favorites');
+		} finally {
+			setIsLoading(false);
+		}
+	};
+
 	return (
-		<html lang='en'>
-			<body className={`antialiased min-h-screen`}>
-				<Navbar />
-				{children}
-				<Analytics />
-			</body>
-		</html>
+		<Button
+			onClick={handleToggleFavorite}
+			disabled={isLoading || !userId}
+			className={`flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl border font-semibold text-white transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-black/50 focus:ring-amber-500 shadow-md ${isLoading || !userId
+				? 'bg-yellow-700/50 border-white/10 cursor-not-allowed opacity-50'
+				: 'bg-gradient-to-r from-amber-600 to-yellow-600 hover:from-amber-500 hover:to-yellow-500 border-0 hover:shadow-amber-500/50'
+				}`}
+			aria-live='polite'>
+			{isLoading ? (
+				<>
+					<div className='w-4 h-4 border-2 border-white/50 border-t-white rounded-full animate-spin'></div>
+					<span>Updating...</span>
+				</>
+			) : (
+				<>
+					{isFavorite ? <FaHeart /> : <FaRegHeart />}
+					<span>{isFavorite ? 'Saved' : 'Save to Favorites'}</span>
+				</>
+			)}
+		</Button>
+	);
+};
+
+export default FavoriteButton;
+</file>
+
+<file path="client/src/app/menu/[Products]/[product]/page.tsx">
+import Image from 'next/image';
+import SocialButtons from '../components/SocialButtons';
+import Comments from './components/comments';
+import ProductInfo from './components/ProductInfo';
+import RelatedProducts from './components/RelatedProducts';
+import FavoriteButton from './components/FavoriteButton';
+import AddtoCart from '@/app/menu/[Products]/[product]/components/AddtoCart';
+import Main from '@/components/ui/layout/Main';
+import Section from '@/components/ui/layout/Section';
+import { createClient } from '@/lib/supabase/server';
+
+async function ProductPage({ params }: { params: Promise<{ product: string; Products: string }> }) {
+	const { product: productId, Products: categorySlug } = await params;
+	const supabase = await createClient();
+
+	// Reconstruct name from slug - handle both hyphens and spaces
+	// The slug might be "coca-cola" but the DB has "Coca-Cola" or "Coca Cola"
+	// We'll try multiple patterns to match both hyphens and spaces
+	const productNameSlug = productId.replace(/-/g, ' ');
+	const categoryName = categorySlug.replace(/-/g, ' ');
+
+	// Fetch product
+	type ProductRow = {
+		id: string;
+		name: string;
+		description: string | null;
+		price: number | null;
+		image_url: string | null;
+		badge: string | null;
+		likes: number | null;
+	};
+
+	// Try multiple search patterns to handle hyphens in product names
+	// PostgreSQL ilike uses SQL LIKE patterns, so we use % wildcards
+	let productData = null;
+	let error = null;
+
+	// Strategy: Split slug into words and create flexible pattern
+	// "coca-cola" -> ["coca", "cola"] -> pattern "%coca%cola%" 
+	// This matches "Coca-Cola", "Coca Cola", "coca cola", etc.
+	const words = productId.split('-').filter(w => w.length > 0);
+	const flexiblePattern = words.length > 1
+		? `%${words.join('%')}%`  // "%coca%cola%" matches both hyphens and spaces
+		: `%${productId}%`;        // Single word, just use wildcards
+
+	// Try flexible pattern first (handles hyphens, spaces, and case)
+	const { data: patternMatch, error: patternError } = await supabase
+		.from('products')
+		.select('*')
+		.ilike('name', flexiblePattern)
+		.limit(10); // Get multiple matches to find the best one
+
+	if (patternMatch && patternMatch.length > 0 && !patternError) {
+		// If multiple matches, prefer exact match (with spaces or hyphens)
+		const typedMatches = patternMatch as ProductRow[];
+		const exactWithSpaces = typedMatches.find(p =>
+			p.name.toLowerCase().replace(/[-\s]/g, ' ') === productNameSlug.toLowerCase()
+		);
+		const exactWithHyphens = typedMatches.find(p =>
+			p.name.toLowerCase().replace(/[-\s]/g, '-') === productId.toLowerCase()
+		);
+
+		productData = exactWithSpaces || exactWithHyphens || typedMatches[0];
+	} else {
+		// Fallback: try exact match with spaces
+		const { data: exactMatch, error: exactError } = await supabase
+			.from('products')
+			.select('*')
+			.ilike('name', productNameSlug)
+			.single();
+
+		if (exactMatch && !exactError) {
+			productData = exactMatch as ProductRow;
+		} else {
+			error = exactError || patternError;
+		}
+	}
+
+	if (error || !productData) {
+		return <div>Product not found</div>;
+	}
+
+	const product = productData as ProductRow;
+
+	// Map to UI ProductType
+	const productUI: ProductType = {
+		ProductID: product.id,
+		Name: product.name,
+		Description: [product.description || ''],
+		Price: product.price || 0,
+		Image: product.image_url || '/Menus/placeholder.png',
+		badge: product.badge || undefined,
+		rating: product.likes ? 5 : undefined,
+	};
+
+	// Fetch related products (same category, exclude current)
+	const { data: relatedData } = await supabase
+		.from('products')
+		.select('*')
+		.ilike('category', categoryName)
+		.neq('id', productUI.ProductID)
+		.limit(4);
+
+	const relatedProducts: ProductType[] = ((relatedData as ProductRow[]) || []).map((p) => ({
+		ProductID: p.id,
+		Name: p.name,
+		Description: [p.description || ''],
+		Price: p.price || 0,
+		Image: p.image_url || '/Menus/placeholder.png',
+		badge: p.badge || undefined,
+		rating: p.likes ? 5 : undefined,
+	}));
+
+	return (
+		<Main>
+			{/* Main Product Section */}
+			<Section>
+				{/* Product Image */}
+				{productUI.Image && (
+					<div className=' flex justify-center items-start'>
+						<div className='relative w-full max-w-md aspect-square bg-black/20 rounded-md shadow-lg overflow-hidden'>
+							<Image
+								src={productUI.Image}
+								alt={productUI.Name}
+								fill
+								style={{ objectFit: 'contain' }}
+								className='rounded-md'
+							/>
+						</div>
+					</div>
+				)}
+
+				{/* Product Information */}
+
+				<ProductInfo product={productUI} />
+
+				{/* Action Buttons */}
+				<div className='flex flex-wrap gap-4 mt-8'>
+					<AddtoCart
+						product={productUI}
+						className='bg-black/50 hover:bg-yellow-500'>
+						Add to Cart
+					</AddtoCart>
+					<FavoriteButton product={productUI} />
+					<SocialButtons product={productUI} />
+				</div>
+
+			</Section>
+
+			{/* Related Products */}
+			<RelatedProducts
+				currentProduct={productUI}
+				categoryName={categorySlug}
+				products={relatedProducts}
+			/>
+
+			{/* Comments Section */}
+
+			<Comments product={productUI} />
+		</Main>
 	);
 }
+
+export default ProductPage;
 </file>
 
 <file path="client/src/app/menu/[Products]/components/LikesButton.tsx">
@@ -13966,70 +14235,6 @@ function CartFooter() {
 export default CartFooter;
 </file>
 
-<file path="client/src/app/menu/components/ProductCard.tsx">
-import React from 'react';
-import Image from 'next/image';
-import AppLink from '@/components/ui/Link';
-import LikesButton from '@/app/menu/[Products]/components/LikesButton';
-import { HiStar } from 'react-icons/hi2';
-import AddtoCart from '@/app/menu/[Products]/[product]/components/AddtoCart';
-
-interface ProductCardProps {
-	product: ProductType;
-	categoryName: string;
-}
-
-const ProductCard: React.FC<ProductCardProps> = ({ product, categoryName }) => (
-	<article className='m-0 group flex flex-col h-full bg-gradient-to-br from-yellow-900/80 to-yellow-800/80 backdrop-blur-md border border-white/10 rounded-xl p-4 transition-all duration-300 hover:border-amber-400/40 hover:shadow-xl hover:shadow-amber-500/20'>
-		<span className='flex items-center justify-between gap-2 mb-3'>
-			{product.badge && (
-				<span className='px-3 py-1.5 rounded-full text-xs font-bold z-10 shadow-lg bg-gradient-to-r from-amber-600 to-yellow-600 text-white uppercase tracking-wider'>
-					{product.badge}
-				</span>
-			)}
-			<LikesButton itemId={product.ProductID} table="products" />
-		</span>
-
-		<div className='flex flex-col flex-grow'>
-			<AppLink
-				href={`/menu/${categoryName}/${product.Name.toLowerCase().replace(/\s+/g, '-')}`}
-				className='flex flex-col items-center text-center flex-grow rounded-lg focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-black/50 focus:ring-amber-500 transition-all duration-200'>
-				{product.Image && (
-					<div className='relative w-full aspect-[4/3] mb-4 bg-black/30 rounded-lg overflow-hidden border border-white/5'>
-						<Image
-							src={product.Image}
-							alt={product.Name}
-							fill
-							className='object-contain rounded-lg transition-transform duration-300 group-hover:scale-110'
-						/>
-					</div>
-				)}
-				<h2 className='text-base font-bold text-white mb-2 line-clamp-2 flex-grow'>
-					{product.Name}
-				</h2>
-				<p className='text-2xl font-extrabold text-transparent bg-gradient-to-r from-amber-400 to-yellow-400 bg-clip-text mb-3'>
-					R{product.Price.toFixed(2)}
-				</p>
-				<div className='flex items-center justify-center gap-1 mb-4'>
-					<HiStar className='text-amber-500' size={18} />
-					<HiStar className='text-amber-500' size={18} />
-					<HiStar className='text-amber-500' size={18} />
-					<HiStar className='text-amber-500' size={18} />
-					<HiStar className='text-white/30' size={18} />
-					<span className='text-xs text-yellow-400 font-semibold ml-2'>(4.5)</span>
-				</div>
-			</AppLink>
-		</div>
-
-		<div className='mt-auto'>
-			<AddtoCart product={product}>Add to Cart</AddtoCart>
-		</div>
-	</article>
-);
-
-export default ProductCard;
-</file>
-
 <file path="client/src/app/orders/components/OrderItem.tsx">
 import React from 'react';
 import { HiClock, HiCurrencyDollar, HiShoppingBag, HiCheckCircle } from 'react-icons/hi2';
@@ -14152,33 +14357,129 @@ const OrderItem: React.FC<{ order: any }> = ({ order }) => {
 export default OrderItem;
 </file>
 
-<file path="client/src/components/ui/Loading.tsx">
-import Image from 'next/image';
-import '../components.css'; // Optional: for custom styles
-import Main from './layout/Main';
-import Section from './layout/Section';
+<file path="client/src/app/orders/layout.tsx">
+'use client';
 
-const Loading = ({ message = 'Loading...' }: { message?: string }) => (
-	<Main className='flex flex-col justify-center items-center min-h-screen  p-4' tittle='PA Luxe Creation' heading='Experience the unique convenience of delicious food and a state-of-the-art Photo boot, all in
-				one place in Lulekani.'>
-		<Section className='flex flex-col items-center text-center max-w-md'>
-			<div className='mt-8 animate-pulse'>
-				<Image
-					src='/PA_Logo.png'
-					alt='PA Luxe Creation Logo'
-					width={220}
-					height={220}
-					className='w-48 h-48 mb-4'
-					priority
-				/>
-			</div>
-			<div className='spinner' />
-			<p className='text-white font-semibold'>{message}</p>
-		</Section>
-	</Main>
-);
+import { CartProvider } from '@/lib/context/CartContext';
+import React, { ReactNode } from 'react';
+import Link from 'next/link';
+import { HiShoppingBag, HiClock, HiCog, HiCheckCircle, HiArrowLeft, HiXCircle } from 'react-icons/hi2';
+import { usePathname } from 'next/navigation';
 
-export default Loading;
+interface LayoutProps {
+	children: ReactNode;
+}
+
+const Layout: React.FC<LayoutProps> = ({ children }) => {
+	const pathname = usePathname();
+
+	const navItems = [
+		{ href: '/orders/pending', label: 'Pending', icon: HiClock },
+		{ href: '/orders/processing', label: 'Processing', icon: HiCog },
+		{ href: '/orders/completed', label: 'Completed', icon: HiCheckCircle },
+		{ href: '/orders/cancelled', label: 'Cancelled', icon: HiXCircle },
+	];
+
+	return (
+		<CartProvider>
+			{/* Enhanced Navigation */}
+			<nav className='sticky top-[73px] bg-gradient-to-r from-yellow-900/98 to-yellow-800/98 backdrop-blur-xl border-b border-amber-400/10 shadow-lg z-40 px-4 py-3'>
+				<div className='max-w-7xl mx-auto flex items-center gap-4'>
+					{/* Back to Menu Button */}
+					<Link
+						href='/menu'
+						className='flex items-center gap-2 px-4 py-2 rounded-lg text-yellow-300 hover:text-white hover:bg-white/5 border border-transparent hover:border-white/10 transition-all duration-200 font-medium'>
+						<HiArrowLeft className='text-lg' />
+						<span className='hidden sm:inline'>Menu</span>
+					</Link>
+
+					{/* Divider */}
+					<div className='h-8 w-px bg-white/10'></div>
+
+					{/* Status Filter Tabs */}
+					<div className='flex gap-2 flex-1 overflow-x-auto'>
+						{navItems.map(({ href, label, icon: Icon }) => {
+							const isActive = pathname === href;
+							return (
+								<Link
+									key={href}
+									href={href}
+									className={`flex items-center gap-2 px-4 py-2 rounded-lg font-medium transition-all duration-200 whitespace-nowrap ${isActive
+										? 'bg-gradient-to-r from-amber-600/20 to-yellow-600/20 border border-amber-400/30 text-amber-400 shadow-md shadow-amber-500/10'
+										: 'text-yellow-300 hover:text-white hover:bg-white/5 border border-transparent hover:border-white/10'
+										}`}>
+									<Icon className={`text-lg ${isActive ? 'text-amber-400' : ''}`} />
+									<span className='text-sm sm:text-base'>{label}</span>
+								</Link>
+							);
+						})}
+					</div>
+
+					{/* Orders Icon (decorative) */}
+					<div className='hidden md:flex items-center gap-2 text-yellow-400'>
+						<HiShoppingBag className='text-xl text-amber-400' />
+						<span className='text-sm'>Orders</span>
+					</div>
+				</div>
+			</nav>
+
+			{children}
+		</CartProvider>
+	);
+};
+
+export default Layout;
+</file>
+
+<file path="client/src/app/profile/edit/page.tsx">
+import Main from "@/components/ui/layout/Main";
+import EditProfileForm from "@/lib/forms/EditProfileForm";
+
+
+const EditProfilePage: React.FC = () => {
+
+	return (
+		<Main tittle="Edit Profile">
+			<EditProfileForm />
+		</Main>
+	);
+};
+
+export default EditProfilePage;
+</file>
+
+<file path="client/src/components/Navbar/AuthButton.tsx">
+'use client';
+import AppLink from '@/components/ui/Link';
+import Button from '@/components/ui/Button';
+import { HiLogin, HiUserCircle } from 'react-icons/hi';
+import { User } from '@supabase/supabase-js';
+
+const AuthButton: React.FC<{ setMenubar: (path: 'mobile' | 'profile') => void; user: User | null }> = ({
+	setMenubar,
+	user,
+}) => {
+	if (user)
+		return (
+			<Button
+				variant='icon'
+				onClick={() => setMenubar('profile')}
+				className='bg-white/5 hover:bg-amber-500/20 border border-white/10 hover:border-amber-400/30 transition-all duration-200 p-2 rounded-lg'
+				aria-label='Open profile menu'>
+				<HiUserCircle size={28} className='text-amber-400' />
+			</Button>
+		);
+	return (
+		<AppLink
+			href='/login'
+			className='flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-amber-600 to-yellow-600 hover:from-amber-500 hover:to-yellow-500 rounded-lg font-semibold text-white shadow-lg hover:shadow-amber-500/50 transition-all duration-200 border-0'>
+			<HiLogin size={20} />
+			<span className='hidden sm:inline'>Log in</span>
+		</AppLink>
+	);
+};
+
+export default AuthButton;
 </file>
 
 <file path="client/src/lib/forms/EditProfileForm.tsx">
@@ -14531,254 +14832,47 @@ const RegisterForm = () => {
 export default RegisterForm;
 </file>
 
-<file path="client/src/app/menu/[Products]/[product]/components/FavoriteButton.tsx">
-'use client';
+<file path="client/src/app/contact/page.tsx">
+import ContactForm from '@/lib/forms/ContactForm';
+import ContactInfo from './components/ContactInfo';
+import MapEmbed from './components/MapEmbed';
+import Main from '@/components/ui/layout/Main';
 
-import React, { useState, useEffect } from 'react';
-import { FaHeart, FaRegHeart } from 'react-icons/fa';
-import { useAuth } from '@/lib/supabase/auth/useAuth';
-import { getUserFavorites, toggleFavorite } from '@/lib/supabase/favorites';
 
-import Button from '@/components/ui/Button';
+export default function ContactPage() {
+  return (
+    <Main tittle="Contact Us" heading="Have questions or feedback? We'd love to hear from you. Fill out the form below or reach out to us directly.">
 
-interface FavoriteButtonProps {
-	product: ProductType;
+      <ContactInfo />
+
+      <ContactForm />
+
+      <MapEmbed />
+    </Main>
+  );
 }
+</file>
 
-const FavoriteButton: React.FC<FavoriteButtonProps> = ({ product }) => {
-	const [isFavorite, setIsFavorite] = useState(false);
-	const [isLoading, setIsLoading] = useState(false);
-	const { user } = useAuth();
-	const userId = (user as any)?.id || (user as any)?.uid || null;
-
-	// Determine product id/key used in this app (fallbacks for different shapes)
-	const productKey = (product as any).ProductID || (product as any).id || (product as any).Name || (product as any).slug || (product as any).Slug;
-
-	useEffect(() => {
-		if (!userId || !productKey) return;
-
-		const checkFavoriteStatus = async () => {
-			try {
-				const favorites = await getUserFavorites(userId);
-				setIsFavorite(favorites.includes(productKey));
-			} catch (error) {
-				console.error('Error checking favorite status:', error);
-			}
-		};
-
-		checkFavoriteStatus();
-	}, [userId, productKey]);
-
-	const handleToggleFavorite = async () => {
-		if (!userId) {
-			alert('Please log in to save favorites');
-			return;
-		}
-
-		setIsLoading(true);
-		try {
-			const result = await toggleFavorite(userId, productKey);
-			setIsFavorite(result.added);
-		} catch (error) {
-			console.error('Error toggling favorite:', error);
-			alert('Failed to update favorites');
-		} finally {
-			setIsLoading(false);
-		}
-	};
-
+<file path="client/src/app/menu/[Products]/[product]/comments/page.tsx">
+import { createClient } from "@/lib/supabase/server";
+import CommentsForm from "@/lib/forms/CommentsForm";
+import { redirect } from "next/navigation";
+interface CommentsProps {
+	params: Promise<{ product: string }>;
+}
+const Comments:React.FC<CommentsProps> = async ({ params }) => {
+		const supabase = await createClient();
+		const { data: { user }, error } = await supabase.auth.getUser();
+	if (error || !user?.id) {
+		return redirect('/login');
+	}
+	const ProductName = (await params).product;
 	return (
-		<Button
-			onClick={handleToggleFavorite}
-			disabled={isLoading || !userId}
-			className={`flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl border font-semibold text-white transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-black/50 focus:ring-amber-500 shadow-md ${isLoading || !userId
-				? 'bg-yellow-700/50 border-white/10 cursor-not-allowed opacity-50'
-				: 'bg-gradient-to-r from-amber-600 to-yellow-600 hover:from-amber-500 hover:to-yellow-500 border-0 hover:shadow-amber-500/50'
-				}`}
-			aria-live='polite'>
-			{isLoading ? (
-				<>
-					<div className='w-4 h-4 border-2 border-white/50 border-t-white rounded-full animate-spin'></div>
-					<span>Updating...</span>
-				</>
-			) : (
-				<>
-					{isFavorite ? <FaHeart /> : <FaRegHeart />}
-					<span>{isFavorite ? 'Saved' : 'Save to Favorites'}</span>
-				</>
-			)}
-		</Button>
+		<CommentsForm ProductName={ProductName}  />
 	);
 };
 
-export default FavoriteButton;
-</file>
-
-<file path="client/src/app/menu/[Products]/[product]/page.tsx">
-import Image from 'next/image';
-import SocialButtons from '../components/SocialButtons';
-import Comments from './components/comments';
-import ProductInfo from './components/ProductInfo';
-import RelatedProducts from './components/RelatedProducts';
-import FavoriteButton from './components/FavoriteButton';
-import AddtoCart from '@/app/menu/[Products]/[product]/components/AddtoCart';
-import Main from '@/components/ui/layout/Main';
-import Section from '@/components/ui/layout/Section';
-import { createClient } from '@/lib/supabase/server';
-
-async function ProductPage({ params }: { params: Promise<{ product: string; Products: string }> }) {
-	const { product: productId, Products: categorySlug } = await params;
-	const supabase = await createClient();
-
-	// Reconstruct name from slug - handle both hyphens and spaces
-	// The slug might be "coca-cola" but the DB has "Coca-Cola" or "Coca Cola"
-	// We'll try multiple patterns to match both hyphens and spaces
-	const productNameSlug = productId.replace(/-/g, ' ');
-	const categoryName = categorySlug.replace(/-/g, ' ');
-
-	// Fetch product
-	type ProductRow = {
-		id: string;
-		name: string;
-		description: string | null;
-		price: number | null;
-		image_url: string | null;
-		badge: string | null;
-		likes: number | null;
-	};
-
-	// Try multiple search patterns to handle hyphens in product names
-	// PostgreSQL ilike uses SQL LIKE patterns, so we use % wildcards
-	let productData = null;
-	let error = null;
-
-	// Strategy: Split slug into words and create flexible pattern
-	// "coca-cola" -> ["coca", "cola"] -> pattern "%coca%cola%" 
-	// This matches "Coca-Cola", "Coca Cola", "coca cola", etc.
-	const words = productId.split('-').filter(w => w.length > 0);
-	const flexiblePattern = words.length > 1
-		? `%${words.join('%')}%`  // "%coca%cola%" matches both hyphens and spaces
-		: `%${productId}%`;        // Single word, just use wildcards
-
-	// Try flexible pattern first (handles hyphens, spaces, and case)
-	const { data: patternMatch, error: patternError } = await supabase
-		.from('products')
-		.select('*')
-		.ilike('name', flexiblePattern)
-		.limit(10); // Get multiple matches to find the best one
-
-	if (patternMatch && patternMatch.length > 0 && !patternError) {
-		// If multiple matches, prefer exact match (with spaces or hyphens)
-		const typedMatches = patternMatch as ProductRow[];
-		const exactWithSpaces = typedMatches.find(p =>
-			p.name.toLowerCase().replace(/[-\s]/g, ' ') === productNameSlug.toLowerCase()
-		);
-		const exactWithHyphens = typedMatches.find(p =>
-			p.name.toLowerCase().replace(/[-\s]/g, '-') === productId.toLowerCase()
-		);
-
-		productData = exactWithSpaces || exactWithHyphens || typedMatches[0];
-	} else {
-		// Fallback: try exact match with spaces
-		const { data: exactMatch, error: exactError } = await supabase
-			.from('products')
-			.select('*')
-			.ilike('name', productNameSlug)
-			.single();
-
-		if (exactMatch && !exactError) {
-			productData = exactMatch as ProductRow;
-		} else {
-			error = exactError || patternError;
-		}
-	}
-
-	if (error || !productData) {
-		return <div>Product not found</div>;
-	}
-
-	const product = productData as ProductRow;
-
-	// Map to UI ProductType
-	const productUI: ProductType = {
-		ProductID: product.id,
-		Name: product.name,
-		Description: [product.description || ''],
-		Price: product.price || 0,
-		Image: product.image_url || '/Menus/placeholder.png',
-		badge: product.badge || undefined,
-		rating: product.likes ? 5 : undefined,
-	};
-
-	// Fetch related products (same category, exclude current)
-	const { data: relatedData } = await supabase
-		.from('products')
-		.select('*')
-		.ilike('category', categoryName)
-		.neq('id', productUI.ProductID)
-		.limit(4);
-
-	const relatedProducts: ProductType[] = ((relatedData as ProductRow[]) || []).map((p) => ({
-		ProductID: p.id,
-		Name: p.name,
-		Description: [p.description || ''],
-		Price: p.price || 0,
-		Image: p.image_url || '/Menus/placeholder.png',
-		badge: p.badge || undefined,
-		rating: p.likes ? 5 : undefined,
-	}));
-
-	return (
-		<Main>
-			{/* Main Product Section */}
-			<Section>
-				{/* Product Image */}
-				{productUI.Image && (
-					<div className=' flex justify-center items-start'>
-						<div className='relative w-full max-w-md aspect-square bg-black/20 rounded-md shadow-lg overflow-hidden'>
-							<Image
-								src={productUI.Image}
-								alt={productUI.Name}
-								fill
-								style={{ objectFit: 'contain' }}
-								className='rounded-md'
-							/>
-						</div>
-					</div>
-				)}
-
-				{/* Product Information */}
-
-				<ProductInfo product={productUI} />
-
-				{/* Action Buttons */}
-				<div className='flex flex-wrap gap-4 mt-8'>
-					<AddtoCart
-						product={productUI}
-						className='bg-black/50 hover:bg-yellow-500'>
-						Add to Cart
-					</AddtoCart>
-					<FavoriteButton product={productUI} />
-					<SocialButtons product={productUI} />
-				</div>
-
-			</Section>
-
-			{/* Related Products */}
-			<RelatedProducts
-				currentProduct={productUI}
-				categoryName={categorySlug}
-				products={relatedProducts}
-			/>
-
-			{/* Comments Section */}
-
-			<Comments product={productUI} />
-		</Main>
-	);
-}
-
-export default ProductPage;
+export default Comments;
 </file>
 
 <file path="client/src/app/menu/[Products]/components/FilterSortBar.tsx">
@@ -14939,441 +15033,6 @@ const FilterSortBar: React.FC = () => {
 export default FilterSortBar;
 </file>
 
-<file path="client/src/app/orders/layout.tsx">
-'use client';
-
-import { CartProvider } from '@/lib/context/CartContext';
-import React, { ReactNode } from 'react';
-import Link from 'next/link';
-import { HiShoppingBag, HiClock, HiCog, HiCheckCircle, HiArrowLeft, HiXCircle } from 'react-icons/hi2';
-import { usePathname } from 'next/navigation';
-
-interface LayoutProps {
-	children: ReactNode;
-}
-
-const Layout: React.FC<LayoutProps> = ({ children }) => {
-	const pathname = usePathname();
-
-	const navItems = [
-		{ href: '/orders/pending', label: 'Pending', icon: HiClock },
-		{ href: '/orders/processing', label: 'Processing', icon: HiCog },
-		{ href: '/orders/completed', label: 'Completed', icon: HiCheckCircle },
-		{ href: '/orders/cancelled', label: 'Cancelled', icon: HiXCircle },
-	];
-
-	return (
-		<CartProvider>
-			{/* Enhanced Navigation */}
-			<nav className='sticky top-[73px] bg-gradient-to-r from-yellow-900/98 to-yellow-800/98 backdrop-blur-xl border-b border-amber-400/10 shadow-lg z-40 px-4 py-3'>
-				<div className='max-w-7xl mx-auto flex items-center gap-4'>
-					{/* Back to Menu Button */}
-					<Link
-						href='/menu'
-						className='flex items-center gap-2 px-4 py-2 rounded-lg text-yellow-300 hover:text-white hover:bg-white/5 border border-transparent hover:border-white/10 transition-all duration-200 font-medium'>
-						<HiArrowLeft className='text-lg' />
-						<span className='hidden sm:inline'>Menu</span>
-					</Link>
-
-					{/* Divider */}
-					<div className='h-8 w-px bg-white/10'></div>
-
-					{/* Status Filter Tabs */}
-					<div className='flex gap-2 flex-1 overflow-x-auto'>
-						{navItems.map(({ href, label, icon: Icon }) => {
-							const isActive = pathname === href;
-							return (
-								<Link
-									key={href}
-									href={href}
-									className={`flex items-center gap-2 px-4 py-2 rounded-lg font-medium transition-all duration-200 whitespace-nowrap ${isActive
-										? 'bg-gradient-to-r from-amber-600/20 to-yellow-600/20 border border-amber-400/30 text-amber-400 shadow-md shadow-amber-500/10'
-										: 'text-yellow-300 hover:text-white hover:bg-white/5 border border-transparent hover:border-white/10'
-										}`}>
-									<Icon className={`text-lg ${isActive ? 'text-amber-400' : ''}`} />
-									<span className='text-sm sm:text-base'>{label}</span>
-								</Link>
-							);
-						})}
-					</div>
-
-					{/* Orders Icon (decorative) */}
-					<div className='hidden md:flex items-center gap-2 text-yellow-400'>
-						<HiShoppingBag className='text-xl text-amber-400' />
-						<span className='text-sm'>Orders</span>
-					</div>
-				</div>
-			</nav>
-
-			{children}
-		</CartProvider>
-	);
-};
-
-export default Layout;
-</file>
-
-<file path="client/src/app/profile/edit/page.tsx">
-import Main from "@/components/ui/layout/Main";
-import EditProfileForm from "@/lib/forms/EditProfileForm";
-
-
-const EditProfilePage: React.FC = () => {
-
-	return (
-		<Main tittle="Edit Profile">
-			<EditProfileForm />
-		</Main>
-	);
-};
-
-export default EditProfilePage;
-</file>
-
-<file path="client/src/components/Navbar/AuthButton.tsx">
-'use client';
-import AppLink from '@/components/ui/Link';
-import Button from '@/components/ui/Button';
-import { HiLogin, HiUserCircle } from 'react-icons/hi';
-import { User } from '@supabase/supabase-js';
-
-const AuthButton: React.FC<{ setMenubar: (path: 'mobile' | 'profile') => void; user: User | null }> = ({
-	setMenubar,
-	user,
-}) => {
-	if (user)
-		return (
-			<Button
-				variant='icon'
-				onClick={() => setMenubar('profile')}
-				className='bg-white/5 hover:bg-amber-500/20 border border-white/10 hover:border-amber-400/30 transition-all duration-200 p-2 rounded-lg'
-				aria-label='Open profile menu'>
-				<HiUserCircle size={28} className='text-amber-400' />
-			</Button>
-		);
-	return (
-		<AppLink
-			href='/login'
-			className='flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-amber-600 to-yellow-600 hover:from-amber-500 hover:to-yellow-500 rounded-lg font-semibold text-white shadow-lg hover:shadow-amber-500/50 transition-all duration-200 border-0'>
-			<HiLogin size={20} />
-			<span className='hidden sm:inline'>Log in</span>
-		</AppLink>
-	);
-};
-
-export default AuthButton;
-</file>
-
-<file path="admin/src/lib/data/products-actions.ts">
-"use server";
-
-import { revalidatePath } from "next/cache";
-import { createSupabaseServerClient } from "@/lib/supabase/server";
-import type { Database } from "@/lib/database.types";
-
-export type ProductActionState = {
-  error?: string;
-  success?: string;
-};
-
-const sanitize = (value: FormDataEntryValue | null) =>
-  String(value ?? "").trim();
-
-export const createProductAction = async (
-  _prev: ProductActionState,
-  formData: FormData,
-): Promise<ProductActionState> => {
-  console.log("createProductAction: Received formData");
-  const name = sanitize(formData.get("name"));
-  const category = sanitize(formData.get("category"));
-  const description = sanitize(formData.get("description"));
-  const badge = sanitize(formData.get("badge")) || null;
-  const imageUrl = sanitize(formData.get("image_url")) || null;
-  console.log("createProductAction: Image URL:", imageUrl);
-  const price = Number(formData.get("price") ?? 0);
-  const stock = Number(formData.get("stock") ?? 0);
-
-  if (!name || !category) {
-    return { error: "Name and category are required." };
-  }
-
-  if (Number.isNaN(price) || price <= 0) {
-    return { error: "Price must be greater than zero." };
-  }
-
-  const supabase = await createSupabaseServerClient();
-  const productData: Database["public"]["Tables"]["products"]["Insert"] = {
-    name,
-    category_name: category,
-    description: description || null,
-    badge,
-    image_url: imageUrl,
-    price,
-    stock: Number.isNaN(stock) ? 0 : stock,
-  };
-  console.log("createProductAction: Inserting data:", productData);
-  const { error } = await supabase.from("products").insert(productData as never);
-
-  if (error) {
-    console.error("Failed to create product", error);
-    return { error: error.message };
-  }
-
-  revalidatePath("/menu");
-  revalidatePath("/products");
-  return { success: `${name} added to menu.` };
-};
-
-export const updateProductAction = async (
-  _prev: ProductActionState,
-  formData: FormData,
-): Promise<ProductActionState> => {
-  console.log("updateProductAction: Received formData");
-  const id = sanitize(formData.get("id"));
-  const name = sanitize(formData.get("name")) || undefined;
-  const category = sanitize(formData.get("category")) || undefined;
-  const priceValue = formData.get("price");
-  const stockValue = formData.get("stock");
-  const badge = sanitize(formData.get("badge")) || null;
-  const description = sanitize(formData.get("description")) || null;
-  const imageUrl = sanitize(formData.get("image_url")) || null;
-  console.log("updateProductAction: Image URL:", imageUrl);
-  const isHidden = formData.get("is_hidden") === "on";
-
-  if (!id) {
-    return { error: "Missing product identifier." };
-  }
-
-  const price = priceValue !== null ? Number(priceValue) : undefined;
-  const stock = stockValue !== null ? Number(stockValue) : undefined;
-
-  const payload: Record<string, unknown> = {
-    badge,
-    description,
-    image_url: imageUrl,
-    is_hidden: isHidden,
-  };
-
-  if (name) {
-    payload.name = name;
-  }
-
-  if (category) {
-    payload.category_name = category;
-  }
-
-  if (price !== undefined && !Number.isNaN(price)) {
-    payload.price = price;
-  }
-
-  if (stock !== undefined && !Number.isNaN(stock)) {
-    payload.stock = stock;
-  }
-
-  const supabase = await createSupabaseServerClient();
-  const updateData: Database["public"]["Tables"]["products"]["Update"] = {
-    ...payload,
-  };
-  const { error } = await supabase
-    .from("products")
-    .update(updateData as never)
-    .eq("id", id);
-
-  if (error) {
-    console.error("Failed to update product", error);
-    return { error: error.message };
-  }
-
-  revalidatePath("/menu");
-  revalidatePath("/products");
-  return { success: "Product updated." };
-};
-
-export const deleteProductAction = async (
-  productId: string,
-): Promise<ProductActionState> => {
-  if (!productId) {
-    return { error: "Product ID is required." };
-  }
-
-  const supabase = await createSupabaseServerClient();
-  const { error } = await supabase.from("products").delete().eq("id", productId);
-
-  if (error) {
-    console.error("Failed to delete product", error);
-    return { error: error.message };
-  }
-
-  revalidatePath("/menu");
-  revalidatePath("/products");
-  return { success: "Product deleted successfully." };
-};
-</file>
-
-<file path="client/src/app/contact/page.tsx">
-import ContactForm from '@/lib/forms/ContactForm';
-import ContactInfo from './components/ContactInfo';
-import MapEmbed from './components/MapEmbed';
-import Main from '@/components/ui/layout/Main';
-
-
-export default function ContactPage() {
-  return (
-    <Main tittle="Contact Us" heading="Have questions or feedback? We'd love to hear from you. Fill out the form below or reach out to us directly.">
-
-      <ContactInfo />
-
-      <ContactForm />
-
-      <MapEmbed />
-    </Main>
-  );
-}
-</file>
-
-<file path="client/src/app/home-components/Testimonials.tsx">
-'use client';
-import React, { useState, useEffect } from 'react';
-import { BiSolidComment, BiSolidShare } from 'react-icons/bi';
-import { FaQuoteLeft } from 'react-icons/fa';
-import Button from '@/components/ui/Button';
-import Section from '@/components/ui/layout/Section';
-import { useAuth } from '@/lib/supabase/auth/useAuth';
-import { useRouter } from 'next/navigation';
-import LikesButton from '@/app/menu/[Products]/components/LikesButton';
-import { createClient } from '@/lib/supabase/client';
-
-interface Testimonial {
-	id: string;
-	text: string;
-	author: string;
-	rating: number;
-	likes: string[] | null;
-	comments: any[] | null;
-}
-
-const Testimonials: React.FC = () => {
-	const { user } = useAuth();
-	const router = useRouter();
-	const [testimonials, setTestimonials] = useState<Testimonial[]>([]);
-
-	useEffect(() => {
-		const fetchTestimonials = async () => {
-			const supabase = createClient();
-			const { data, error } = await supabase
-				.from('testimonials')
-				.select('*')
-				.order('created_at', { ascending: false });
-
-			if (error) {
-				console.error('Error fetching testimonials:', error);
-			} else {
-				setTestimonials(data || []);
-			}
-		};
-		fetchTestimonials();
-	}, []);
-
-	const handleComment = (testimonialId: string) => {
-		if (!user) {
-			router.push('/login');
-			return;
-		}
-		alert('Comment functionality - would open a modal or navigate to comments');
-	};
-
-	const handleShare = (testimonialId: string) => {
-		if (navigator.share) {
-			navigator.share({
-				title: 'PA Luxe Creation Testimonial',
-				text: 'Check out this customer review!',
-				url: window.location.href,
-			});
-		} else {
-			alert('Share functionality - URL copied to clipboard');
-		}
-	};
-
-	return (
-		<Section
-			Icon={FaQuoteLeft}
-			tittle='What Our Customers Say'>
-			<div className='grid grid-cols-1 md:grid-cols-2 gap-2'>
-				{testimonials.map((testimonial) => (
-					<article
-						key={testimonial.id}
-						className=' rounded-xl border border-yellow-500/30 bg-gradient-to-br from-yellow-900/20 to-amber-900/20 backdrop-blur-md hover:border-yellow-400/50 transition-all duration-300 shadow-lg p-6 flex flex-col'>
-						<div className='flex-grow'>
-							<FaQuoteLeft className='text-2xl text-amber-400/50 mb-4' />
-							<p className='italic text-yellow-300 mb-4'>{testimonial.text}</p>
-						</div>
-						<div className='mt-auto'>
-							<div className='flex items-center mb-4'>
-								<span className='flex-shrink-0 w-10 h-10 rounded-full bg-gradient-to-br from-amber-500 to-yellow-500 flex items-center justify-center text-white font-bold text-lg shadow-md'>
-									{testimonial.author.charAt(0).toUpperCase()}
-								</span>
-								<p className='font-semibold text-white ml-3'>{testimonial.author}</p>
-							</div>
-							<div className='flex justify-around items-center border-t border-white/20 pt-4 bg-white/5 -mx-6 px-6 -mb-6 pb-6 rounded-b-xl'>
-								<div className="flex flex-col items-center gap-1">
-									<LikesButton itemId={testimonial.id} table="testimonials" />
-								</div>
-								<Button
-									variant='icon'
-									onClick={() => handleComment(testimonial.id)}
-									className='flex flex-col items-center gap-1'
-									aria-label={`Comment on testimonial by ${testimonial.author}`}>
-									<BiSolidComment
-										size={20}
-										className='text-white hover:text-yellow-500 transition-colors'
-									/>
-									<span className='text-xs text-yellow-400'>{(testimonial.comments as any[])?.length || 0}</span>
-								</Button>
-								<Button
-									variant='icon'
-									onClick={() => handleShare(testimonial.id)}
-									className='flex flex-col items-center gap-1'
-									aria-label={`Share testimonial by ${testimonial.author}`}>
-									<BiSolidShare
-										size={20}
-										className='text-white hover:text-yellow-500 transition-colors'
-									/>
-									<span className='text-xs text-yellow-400'>Share</span>
-								</Button>
-							</div>
-						</div>
-					</article>
-				))}
-			</div>
-		</Section>
-	);
-};
-
-export default Testimonials;
-</file>
-
-<file path="client/src/app/menu/[Products]/[product]/comments/page.tsx">
-import { createClient } from "@/lib/supabase/server";
-import CommentsForm from "@/lib/forms/CommentsForm";
-import { redirect } from "next/navigation";
-interface CommentsProps {
-	params: Promise<{ product: string }>;
-}
-const Comments:React.FC<CommentsProps> = async ({ params }) => {
-		const supabase = await createClient();
-		const { data: { user }, error } = await supabase.auth.getUser();
-	if (error || !user?.id) {
-		return redirect('/login');
-	}
-	const ProductName = (await params).product;
-	return (
-		<CommentsForm ProductName={ProductName}  />
-	);
-};
-
-export default Comments;
-</file>
-
 <file path="client/src/app/menu/[Products]/page.tsx">
 import { Suspense } from 'react';
 import Loading from '@/components/ui/Loading';
@@ -15489,6 +15148,70 @@ export default async function Page({
 		</>
 	);
 }
+</file>
+
+<file path="client/src/app/menu/components/ProductCard.tsx">
+import React from 'react';
+import Image from 'next/image';
+import AppLink from '@/components/ui/Link';
+import LikesButton from '@/app/menu/[Products]/components/LikesButton';
+import { HiStar } from 'react-icons/hi2';
+import AddtoCart from '@/app/menu/[Products]/[product]/components/AddtoCart';
+
+interface ProductCardProps {
+	product: ProductType;
+	categoryName: string;
+}
+
+const ProductCard: React.FC<ProductCardProps> = ({ product, categoryName }) => (
+	<article className='group relative flex flex-col h-full bg-neutral-900/40 backdrop-blur-sm border border-white/5 rounded-2xl p-6 transition-all duration-500 hover:bg-neutral-900/60 hover:border-amber-500/20 hover:shadow-2xl hover:shadow-black/50'>
+		<div className='flex items-center justify-between gap-4 mb-6'>
+			{product.badge ? (
+				<span className='px-4 py-1.5 rounded-full text-[10px] font-bold tracking-widest uppercase bg-amber-500/10 text-amber-500 border border-amber-500/20'>
+					{product.badge}
+				</span>
+			) : <span></span>}
+			<LikesButton itemId={product.ProductID} table="products" />
+		</div>
+
+		<div className='flex flex-col flex-grow'>
+			<AppLink
+				href={`/menu/${categoryName}/${product.Name.toLowerCase().replace(/\s+/g, '-')}`}
+				className='flex flex-col items-center text-center flex-grow focus:outline-none group-focus-visible:ring-2 ring-amber-500/50 rounded-lg'>
+				{product.Image && (
+					<div className='relative w-full aspect-square mb-6 bg-black/20 rounded-xl overflow-hidden'>
+						<Image
+							src={product.Image}
+							alt={product.Name}
+							fill
+							className='object-cover transition-transform duration-700 ease-out group-hover:scale-105'
+						/>
+					</div>
+				)}
+				<h2 className='text-xl md:text-2xl font-bold text-white mb-2 line-clamp-2 leading-tight tracking-tight group-hover:text-amber-400 transition-colors'>
+					{product.Name}
+				</h2>
+				<p className='text-3xl font-light text-amber-500/90 mb-4 tracking-tight'>
+					R{product.Price.toFixed(2)}
+				</p>
+				<div className='flex items-center justify-center gap-1 mb-6 opacity-60 group-hover:opacity-100 transition-opacity'>
+					<HiStar className='text-amber-500' size={16} />
+					<HiStar className='text-amber-500' size={16} />
+					<HiStar className='text-amber-500' size={16} />
+					<HiStar className='text-amber-500' size={16} />
+					<HiStar className='text-white/20' size={16} />
+					<span className='text-xs text-white/50 font-medium ml-2 tracking-wide'>(4.5)</span>
+				</div>
+			</AppLink>
+		</div>
+
+		<div className='mt-auto pt-6 border-t border-white/5'>
+			<AddtoCart product={product} className="w-full py-4 text-sm font-bold tracking-widest uppercase hover:bg-amber-500 hover:text-black transition-colors duration-300">Add to Cart</AddtoCart>
+		</div>
+	</article>
+);
+
+export default ProductCard;
 </file>
 
 <file path="client/src/app/menu/page.tsx">
@@ -15883,6 +15606,430 @@ const MobileMenu: React.FC<{
 export default MobileMenu;
 </file>
 
+<file path="admin/src/lib/data/products-actions.ts">
+"use server";
+
+import { revalidatePath } from "next/cache";
+import { createSupabaseServerClient } from "@/lib/supabase/server";
+import type { Database } from "@/lib/database.types";
+
+export type ProductActionState = {
+  error?: string;
+  success?: string;
+};
+
+const sanitize = (value: FormDataEntryValue | null) =>
+  String(value ?? "").trim();
+
+export const createProductAction = async (
+  _prev: ProductActionState,
+  formData: FormData,
+): Promise<ProductActionState> => {
+  console.log("createProductAction: Received formData");
+  const name = sanitize(formData.get("name"));
+  const category = sanitize(formData.get("category"));
+  const description = sanitize(formData.get("description"));
+  const badge = sanitize(formData.get("badge")) || null;
+  const imageUrl = sanitize(formData.get("image_url")) || null;
+  console.log("createProductAction: Image URL:", imageUrl);
+  const price = Number(formData.get("price") ?? 0);
+  const stock = Number(formData.get("stock") ?? 0);
+
+  if (!name || !category) {
+    return { error: "Name and category are required." };
+  }
+
+  if (Number.isNaN(price) || price <= 0) {
+    return { error: "Price must be greater than zero." };
+  }
+
+  const supabase = await createSupabaseServerClient();
+  const productData: Database["public"]["Tables"]["products"]["Insert"] = {
+    name,
+    category_name: category,
+    description: description || null,
+    badge,
+    image_url: imageUrl,
+    price,
+    stock: Number.isNaN(stock) ? 0 : stock,
+  };
+  console.log("createProductAction: Inserting data:", productData);
+  const { error } = await supabase.from("products").insert(productData as never);
+
+  if (error) {
+    console.error("Failed to create product", error);
+    return { error: error.message };
+  }
+
+  revalidatePath("/menu");
+  revalidatePath("/products");
+  return { success: `${name} added to menu.` };
+};
+
+export const updateProductAction = async (
+  _prev: ProductActionState,
+  formData: FormData,
+): Promise<ProductActionState> => {
+  console.log("updateProductAction: Received formData");
+  const id = sanitize(formData.get("id"));
+  const name = sanitize(formData.get("name")) || undefined;
+  const category = sanitize(formData.get("category")) || undefined;
+  const priceValue = formData.get("price");
+  const stockValue = formData.get("stock");
+  const badge = sanitize(formData.get("badge")) || null;
+  const description = sanitize(formData.get("description")) || null;
+  const imageUrl = sanitize(formData.get("image_url")) || null;
+  console.log("updateProductAction: Image URL:", imageUrl);
+  const isHidden = formData.get("is_hidden") === "on";
+
+  if (!id) {
+    return { error: "Missing product identifier." };
+  }
+
+  const price = priceValue !== null ? Number(priceValue) : undefined;
+  const stock = stockValue !== null ? Number(stockValue) : undefined;
+
+  const payload: Record<string, unknown> = {
+    badge,
+    description,
+    image_url: imageUrl,
+    is_hidden: isHidden,
+  };
+
+  if (name) {
+    payload.name = name;
+  }
+
+  if (category) {
+    payload.category_name = category;
+  }
+
+  if (price !== undefined && !Number.isNaN(price)) {
+    payload.price = price;
+  }
+
+  if (stock !== undefined && !Number.isNaN(stock)) {
+    payload.stock = stock;
+  }
+
+  const supabase = await createSupabaseServerClient();
+  const updateData: Database["public"]["Tables"]["products"]["Update"] = {
+    ...payload,
+  };
+  const { error } = await supabase
+    .from("products")
+    .update(updateData as never)
+    .eq("id", id);
+
+  if (error) {
+    console.error("Failed to update product", error);
+    return { error: error.message };
+  }
+
+  revalidatePath("/menu");
+  revalidatePath("/products");
+  return { success: "Product updated." };
+};
+
+export const deleteProductAction = async (
+  productId: string,
+): Promise<ProductActionState> => {
+  if (!productId) {
+    return { error: "Product ID is required." };
+  }
+
+  const supabase = await createSupabaseServerClient();
+  const { error } = await supabase.from("products").delete().eq("id", productId);
+
+  if (error) {
+    console.error("Failed to delete product", error);
+    return { error: error.message };
+  }
+
+  revalidatePath("/menu");
+  revalidatePath("/products");
+  return { success: "Product deleted successfully." };
+};
+</file>
+
+<file path="client/src/app/home-components/Testimonials.tsx">
+'use client';
+import React, { useState, useEffect } from 'react';
+import { BiSolidComment, BiSolidShare } from 'react-icons/bi';
+import { FaQuoteLeft } from 'react-icons/fa';
+import Button from '@/components/ui/Button';
+import Section from '@/components/ui/layout/Section';
+import { useAuth } from '@/lib/supabase/auth/useAuth';
+import { useRouter } from 'next/navigation';
+import LikesButton from '@/app/menu/[Products]/components/LikesButton';
+import { createClient } from '@/lib/supabase/client';
+
+interface Testimonial {
+	id: string;
+	text: string;
+	author: string;
+	rating: number;
+	likes: string[] | null;
+	comments: any[] | null;
+}
+
+const Testimonials: React.FC = () => {
+	const { user } = useAuth();
+	const router = useRouter();
+	const [testimonials, setTestimonials] = useState<Testimonial[]>([]);
+
+	useEffect(() => {
+		const fetchTestimonials = async () => {
+			const supabase = createClient();
+			const { data, error } = await supabase
+				.from('testimonials')
+				.select('*')
+				.order('created_at', { ascending: false });
+
+			if (error) {
+				console.error('Error fetching testimonials:', error);
+			} else {
+				setTestimonials(data || []);
+			}
+		};
+		fetchTestimonials();
+	}, []);
+
+	const handleComment = (testimonialId: string) => {
+		if (!user) {
+			router.push('/login');
+			return;
+		}
+		alert('Comment functionality - would open a modal or navigate to comments');
+	};
+
+	const handleShare = (testimonialId: string) => {
+		if (navigator.share) {
+			navigator.share({
+				title: 'PA Luxe Creation Testimonial',
+				text: 'Check out this customer review!',
+				url: window.location.href,
+			});
+		} else {
+			alert('Share functionality - URL copied to clipboard');
+		}
+	};
+
+	return (
+		<Section
+			Icon={FaQuoteLeft}
+			tittle='What Our Customers Say'>
+			<div className='grid grid-cols-1 md:grid-cols-2 gap-2'>
+				{testimonials.map((testimonial) => (
+					<article
+						key={testimonial.id}
+						className=' rounded-xl border border-yellow-500/30 bg-gradient-to-br from-yellow-900/20 to-amber-900/20 backdrop-blur-md hover:border-yellow-400/50 transition-all duration-300 shadow-lg p-6 flex flex-col'>
+						<div className='flex-grow'>
+							<FaQuoteLeft className='text-2xl text-amber-400/50 mb-4' />
+							<p className='italic text-yellow-300 mb-4'>{testimonial.text}</p>
+						</div>
+						<div className='mt-auto'>
+							<div className='flex items-center mb-4'>
+								<span className='flex-shrink-0 w-10 h-10 rounded-full bg-gradient-to-br from-amber-500 to-yellow-500 flex items-center justify-center text-white font-bold text-lg shadow-md'>
+									{testimonial.author.charAt(0).toUpperCase()}
+								</span>
+								<p className='font-semibold text-white ml-3'>{testimonial.author}</p>
+							</div>
+							<div className='flex justify-around items-center border-t border-white/20 pt-4 bg-white/5 -mx-6 px-6 -mb-6 pb-6 rounded-b-xl'>
+								<div className="flex flex-col items-center gap-1">
+									<LikesButton itemId={testimonial.id} table="testimonials" />
+								</div>
+								<Button
+									variant='icon'
+									onClick={() => handleComment(testimonial.id)}
+									className='flex flex-col items-center gap-1'
+									aria-label={`Comment on testimonial by ${testimonial.author}`}>
+									<BiSolidComment
+										size={20}
+										className='text-white hover:text-yellow-500 transition-colors'
+									/>
+									<span className='text-xs text-yellow-400'>{(testimonial.comments as any[])?.length || 0}</span>
+								</Button>
+								<Button
+									variant='icon'
+									onClick={() => handleShare(testimonial.id)}
+									className='flex flex-col items-center gap-1'
+									aria-label={`Share testimonial by ${testimonial.author}`}>
+									<BiSolidShare
+										size={20}
+										className='text-white hover:text-yellow-500 transition-colors'
+									/>
+									<span className='text-xs text-yellow-400'>Share</span>
+								</Button>
+							</div>
+						</div>
+					</article>
+				))}
+			</div>
+		</Section>
+	);
+};
+
+export default Testimonials;
+</file>
+
+<file path="client/src/components/Navbar/DesktopNavbar.tsx">
+'use client';
+import AppLink from '@/components/ui/Link';
+import Image from 'next/image';
+import {
+	HiHome,
+	HiInformationCircle,
+	HiEnvelope,
+	HiPhoto,
+	HiCamera,
+	HiDocumentText,
+	HiShoppingBag,
+} from 'react-icons/hi2';
+import React, { useState, useRef, useEffect } from 'react';
+import Button from '@/components/ui/Button';
+import { useAuth } from '@/lib/supabase/auth/useAuth';
+import { usePathname } from 'next/navigation';
+
+const publicPaths = [
+	{ path: '/', icon: HiHome, label: 'Home' },
+	{ path: '/about', icon: HiInformationCircle, label: 'About' },
+	{ path: '/gallery', icon: HiPhoto, label: 'Gallery' },
+	{ path: '/contact', icon: HiEnvelope, label: 'Contact' },
+	{ path: '/photo', icon: HiCamera, label: '360 Booth' },
+	{ path: '/menu', icon: HiShoppingBag, label: 'Menu' },
+];
+
+const DesktopNavbar: React.FC = () => {
+	const { user } = useAuth();
+	const pathname = usePathname();
+	const [profileOpen, setProfileOpen] = useState(false);
+	const profileRef = useRef<HTMLLIElement>(null);
+
+	useEffect(() => {
+		const handleClickOutside = (event: MouseEvent) => {
+			if (profileRef.current && !profileRef.current.contains(event.target as Node)) {
+				setProfileOpen(false);
+			}
+		};
+		document.addEventListener('mousedown', handleClickOutside);
+		return () => {
+			document.removeEventListener('mousedown', handleClickOutside);
+		};
+	}, []);
+
+	return (
+		<nav className='hidden md:flex gap-4 justify-between items-center p-0 m-0 w-full'>
+			<AppLink href='/' className='shrink-0'>
+				<Image
+					src='/PA_Logo.png'
+					alt='PA Catering Logo'
+					width={64}
+					height={64}
+					className='h-16 w-auto'
+					priority
+				/>
+			</AppLink>
+
+			<ul className='flex space-x-2 items-center'>
+				{publicPaths.map(({ path, icon: Icon, label }) => {
+					const isActive = pathname === path;
+					return (
+						<li key={path}>
+							<AppLink
+								href={path}
+								className={`flex items-center gap-2 px-4 py-2 rounded-lg font-medium transition-all duration-200 ${isActive
+									? 'bg-gradient-to-r from-amber-600/20 to-yellow-600/20 border border-amber-400/30 text-amber-400 shadow-md shadow-amber-500/10'
+									: 'text-yellow-300 hover:text-white hover:bg-white/5 border border-transparent hover:border-white/10'
+									}`}>
+								<Icon className={`text-lg ${isActive ? 'text-amber-400' : ''}`} />
+								<span>{label}</span>
+							</AppLink>
+						</li>
+					);
+				})}
+			</ul>
+		</nav>
+	);
+};
+
+export default DesktopNavbar;
+</file>
+
+<file path="client/src/components/Navbar/ProfileMenu.tsx">
+'use client';
+import AppLink from '../ui/Link';
+import { HiUser, HiClipboardList, HiShoppingBag, HiLogout, HiCamera } from 'react-icons/hi';
+import Button from '../ui/Button';
+import { User } from '@supabase/supabase-js';
+import { usePathname } from 'next/navigation';
+
+const protectedPaths = [
+	{ path: '/profile', icon: HiUser, label: 'Profile' },
+	{ path: '/orders', icon: HiClipboardList, label: 'Orders' },
+
+	{ path: '/photo/booking', icon: HiCamera, label: '360 Booth Booking' },
+];
+
+const ProfileMenu: React.FC<{ setMenubar: (path: 'mobile' | 'profile') => void; user: User | null }> = ({
+	setMenubar,
+	user,
+}) => {
+	const pathname = usePathname();
+
+	if (!user) return null;
+
+	return (
+		<nav className='absolute top-full right-0 w-full sm:w-80 bg-gradient-to-b from-yellow-900/98 to-yellow-800/98 backdrop-blur-xl border border-amber-400/10 rounded-b-xl shadow-2xl transition-all duration-300 z-40'>
+			{/* User Info */}
+			<div className='px-4 py-3 border-b border-white/10'>
+				<p className='text-sm text-yellow-400'>Signed in as</p>
+				<p className='text-white font-semibold truncate'>{user.email}</p>
+			</div>
+
+			{/* Menu Items */}
+			<ul className='flex flex-col p-2'>
+				{protectedPaths.map(({ path, icon: Icon, label }) => {
+					const isActive = pathname === path;
+					return (
+						<li key={path}>
+							<AppLink
+								href={path}
+								onClick={() => setMenubar('profile')}
+								className={`flex items-center gap-3 px-4 py-2.5 rounded-lg font-medium transition-all duration-200 w-full ${isActive
+									? 'bg-gradient-to-r from-amber-600/20 to-yellow-600/20 border border-amber-400/30 text-amber-400'
+									: 'text-yellow-300 hover:text-white hover:bg-white/5 border border-transparent hover:border-white/10'
+									}`}>
+								<Icon className={`text-lg ${isActive ? 'text-amber-400' : ''}`} />
+								<span>{label}</span>
+							</AppLink>
+						</li>
+					);
+				})}
+			</ul>
+
+			{/* Logout Button */}
+			<div className='p-2 border-t border-white/10'>
+				<Button
+					variant='primary'
+					onClick={async () => {
+						const { createClient } = await import('@/lib/supabase/client');
+						const supabase = createClient();
+						await supabase.auth.signOut();
+						setMenubar('profile');
+					}}
+					className='flex items-center justify-center gap-2 px-4 py-2.5 w-full bg-red-500/10 hover:bg-red-500/20 border border-red-500/30 hover:border-red-500/50 text-red-300 hover:text-red-200 rounded-lg font-semibold transition-all duration-200'>
+					<HiLogout className='text-lg' />
+					<span>Log Out</span>
+				</Button>
+			</div>
+		</nav>
+	);
+};
+
+export default ProfileMenu;
+</file>
+
 <file path="client/src/components/ui/layout/Main.tsx">
 interface MainProps {
 	Icon?: React.ElementType;
@@ -15893,13 +16040,13 @@ interface MainProps {
 }
 export default function Main({ children, Icon, heading, tittle, className = '' }: MainProps) {
 	return (
-		<main className={`${className} p-4 max-w-7xl flex flex-wrap gap-4 `}>
-			<header>
-				<span className='flex items-center justify-center gap-3'>
-					{Icon && <Icon className='text-3xl text-yellow-500' />}
-					{tittle && <h1>{tittle}</h1>}
+		<main className={`${className} flex flex-col gap-16 md:gap-24 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-20`}>
+			<header className="flex flex-col items-center justify-center space-y-6 max-w-3xl mx-auto text-center">
+				<span className='flex flex-col items-center gap-4'>
+					{Icon && <Icon className='text-4xl md:text-5xl text-yellow-500/90 drop-shadow-lg' />}
+					{tittle && <h1 className="tracking-tight">{tittle}</h1>}
 				</span>
-				<p className='text-white/70 text-center mt-2 flex-grow'>{heading}</p>
+				<p className='text-white/80 text-lg md:text-xl leading-relaxed max-w-2xl font-light'>{heading}</p>
 			</header>
 			{children}
 		</main>
@@ -16213,163 +16360,6 @@ const SearchBar: React.FC = () => {
 export default SearchBar;
 </file>
 
-<file path="client/src/components/Navbar/DesktopNavbar.tsx">
-'use client';
-import AppLink from '@/components/ui/Link';
-import Image from 'next/image';
-import {
-	HiHome,
-	HiInformationCircle,
-	HiEnvelope,
-	HiPhoto,
-	HiCamera,
-	HiDocumentText,
-	HiShoppingBag,
-} from 'react-icons/hi2';
-import React, { useState, useRef, useEffect } from 'react';
-import Button from '@/components/ui/Button';
-import { useAuth } from '@/lib/supabase/auth/useAuth';
-import { usePathname } from 'next/navigation';
-
-const publicPaths = [
-	{ path: '/', icon: HiHome, label: 'Home' },
-	{ path: '/about', icon: HiInformationCircle, label: 'About' },
-	{ path: '/gallery', icon: HiPhoto, label: 'Gallery' },
-	{ path: '/contact', icon: HiEnvelope, label: 'Contact' },
-	{ path: '/photo', icon: HiCamera, label: '360 Booth' },
-	{ path: '/menu', icon: HiShoppingBag, label: 'Menu' },
-];
-
-const DesktopNavbar: React.FC = () => {
-	const { user } = useAuth();
-	const pathname = usePathname();
-	const [profileOpen, setProfileOpen] = useState(false);
-	const profileRef = useRef<HTMLLIElement>(null);
-
-	useEffect(() => {
-		const handleClickOutside = (event: MouseEvent) => {
-			if (profileRef.current && !profileRef.current.contains(event.target as Node)) {
-				setProfileOpen(false);
-			}
-		};
-		document.addEventListener('mousedown', handleClickOutside);
-		return () => {
-			document.removeEventListener('mousedown', handleClickOutside);
-		};
-	}, []);
-
-	return (
-		<nav className='hidden md:flex gap-4 justify-between items-center p-0 m-0 w-full'>
-			<AppLink href='/' className='shrink-0'>
-				<Image
-					src='/PA_Logo.png'
-					alt='PA Catering Logo'
-					width={64}
-					height={64}
-					className='h-16 w-auto'
-					priority
-				/>
-			</AppLink>
-
-			<ul className='flex space-x-2 items-center'>
-				{publicPaths.map(({ path, icon: Icon, label }) => {
-					const isActive = pathname === path;
-					return (
-						<li key={path}>
-							<AppLink
-								href={path}
-								className={`flex items-center gap-2 px-4 py-2 rounded-lg font-medium transition-all duration-200 ${isActive
-									? 'bg-gradient-to-r from-amber-600/20 to-yellow-600/20 border border-amber-400/30 text-amber-400 shadow-md shadow-amber-500/10'
-									: 'text-yellow-300 hover:text-white hover:bg-white/5 border border-transparent hover:border-white/10'
-									}`}>
-								<Icon className={`text-lg ${isActive ? 'text-amber-400' : ''}`} />
-								<span>{label}</span>
-							</AppLink>
-						</li>
-					);
-				})}
-			</ul>
-		</nav>
-	);
-};
-
-export default DesktopNavbar;
-</file>
-
-<file path="client/src/components/Navbar/ProfileMenu.tsx">
-'use client';
-import AppLink from '../ui/Link';
-import { HiUser, HiClipboardList, HiShoppingBag, HiLogout, HiCamera } from 'react-icons/hi';
-import Button from '../ui/Button';
-import { User } from '@supabase/supabase-js';
-import { usePathname } from 'next/navigation';
-
-const protectedPaths = [
-	{ path: '/profile', icon: HiUser, label: 'Profile' },
-	{ path: '/orders', icon: HiClipboardList, label: 'Orders' },
-
-	{ path: '/photo/booking', icon: HiCamera, label: '360 Booth Booking' },
-];
-
-const ProfileMenu: React.FC<{ setMenubar: (path: 'mobile' | 'profile') => void; user: User | null }> = ({
-	setMenubar,
-	user,
-}) => {
-	const pathname = usePathname();
-
-	if (!user) return null;
-
-	return (
-		<nav className='absolute top-full right-0 w-full sm:w-80 bg-gradient-to-b from-yellow-900/98 to-yellow-800/98 backdrop-blur-xl border border-amber-400/10 rounded-b-xl shadow-2xl transition-all duration-300 z-40'>
-			{/* User Info */}
-			<div className='px-4 py-3 border-b border-white/10'>
-				<p className='text-sm text-yellow-400'>Signed in as</p>
-				<p className='text-white font-semibold truncate'>{user.email}</p>
-			</div>
-
-			{/* Menu Items */}
-			<ul className='flex flex-col p-2'>
-				{protectedPaths.map(({ path, icon: Icon, label }) => {
-					const isActive = pathname === path;
-					return (
-						<li key={path}>
-							<AppLink
-								href={path}
-								onClick={() => setMenubar('profile')}
-								className={`flex items-center gap-3 px-4 py-2.5 rounded-lg font-medium transition-all duration-200 w-full ${isActive
-									? 'bg-gradient-to-r from-amber-600/20 to-yellow-600/20 border border-amber-400/30 text-amber-400'
-									: 'text-yellow-300 hover:text-white hover:bg-white/5 border border-transparent hover:border-white/10'
-									}`}>
-								<Icon className={`text-lg ${isActive ? 'text-amber-400' : ''}`} />
-								<span>{label}</span>
-							</AppLink>
-						</li>
-					);
-				})}
-			</ul>
-
-			{/* Logout Button */}
-			<div className='p-2 border-t border-white/10'>
-				<Button
-					variant='primary'
-					onClick={async () => {
-						const { createClient } = await import('@/lib/supabase/client');
-						const supabase = createClient();
-						await supabase.auth.signOut();
-						setMenubar('profile');
-					}}
-					className='flex items-center justify-center gap-2 px-4 py-2.5 w-full bg-red-500/10 hover:bg-red-500/20 border border-red-500/30 hover:border-red-500/50 text-red-300 hover:text-red-200 rounded-lg font-semibold transition-all duration-200'>
-					<HiLogout className='text-lg' />
-					<span>Log Out</span>
-				</Button>
-			</div>
-		</nav>
-	);
-};
-
-export default ProfileMenu;
-</file>
-
 <file path="client/src/app/orders/page.tsx">
 export const dynamic = 'force-dynamic';
 import { createClient } from '@/lib/supabase/server';
@@ -16473,19 +16463,19 @@ export default function Section({
 	return (
 		<section
 			{...props}
-			className={` ${className} bg-gradient-to-br from-yellow-900/20 to-amber-900/20 backdrop-blur-md border border-yellow-500/30 rounded-xl p-6 hover:border-yellow-400/50 transition-all duration-300 w-full m-2`}>
-			<header>
+			className={`${className} bg-gradient-to-br from-yellow-950/30 to-black/40 backdrop-blur-xl border border-yellow-500/10 rounded-2xl p-8 md:p-12 hover:border-yellow-500/20 transition-all duration-500 w-full`}>
+			<header className="mb-10 md:mb-14">
 				{Icon ? (
-					<div className='flex flex-col items-center text-center'>
-						<span className='bg-gradient-to-br from-amber-500/20 to-yellow-500/20 p-3 rounded-lg border border-amber-400/30 w-fit mb-4'>
-							<Icon className='text-amber-400 text-3xl' />
+					<div className='flex flex-col items-center text-center space-y-4'>
+						<span className='bg-gradient-to-br from-amber-500/10 to-yellow-500/5 p-4 rounded-xl border border-amber-500/20 shadow-inner shadow-amber-500/5'>
+							<Icon className='text-amber-400 text-3xl md:text-4xl' />
 						</span>
-						{tittle && <h3 className='mt-4 text-shadow-sm text-shadow-black/50'>{tittle}</h3>}
+						{tittle && <h3 className='mt-2 text-2xl md:text-3xl tracking-tight text-white/95'>{tittle}</h3>}
 					</div>
 				) : (
-					tittle && <h2 className='text-shadow-sm text-shadow-black/50'>{tittle}</h2>
+					tittle && <h2 className='text-3xl md:text-4xl tracking-tight mb-4'>{tittle}</h2>
 				)}
-				<p className='text-white/70 text-center mt-2 flex-grow'>{heading}</p>
+				{heading && <p className='text-white/60 text-center text-base md:text-lg max-w-xl mx-auto leading-relaxed mt-4 font-light'>{heading}</p>}
 			</header>
 			{children}
 		</section>
