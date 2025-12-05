@@ -19,21 +19,19 @@ export default function Section({
 	return (
 		<section
 			{...props}
-			className={
-				className ? className : 'bg-gradient-to-br from-yellow-900/20 to-amber-900/20 backdrop-blur-md border border-yellow-500/30 rounded-xl p-6 hover:border-yellow-400/50 transition-all duration-300 w-full m-2'
-			}>
-			<header>
+			className={`${className} bg-gradient-to-br from-yellow-950/30 to-black/40 backdrop-blur-xl border border-yellow-500/10 rounded-2xl p-8 md:p-12 hover:border-yellow-500/20 transition-all duration-500 w-full`}>
+			<header className="mb-10 md:mb-14">
 				{Icon ? (
-					<div className='flex flex-col items-center text-center'>
-						<span className='bg-gradient-to-br from-amber-500/20 to-yellow-500/20 p-3 rounded-lg border border-amber-400/30 w-fit mb-4'>
-							<Icon className='text-amber-400 text-3xl' />
+					<div className='flex flex-col items-center text-center space-y-4'>
+						<span className='bg-gradient-to-br from-amber-500/10 to-yellow-500/5 p-4 rounded-xl border border-amber-500/20 shadow-inner shadow-amber-500/5'>
+							<Icon className='text-amber-400 text-3xl md:text-4xl' />
 						</span>
-						{tittle && <h3 className='mt-4 text-shadow-sm text-shadow-black/50'>{tittle}</h3>}
+						{tittle && <h3 className='mt-2 text-2xl md:text-3xl tracking-tight text-white/95'>{tittle}</h3>}
 					</div>
 				) : (
-					tittle && <h2 className='text-shadow-sm text-shadow-black/50'>{tittle}</h2>
+					tittle && <h2 className='text-3xl md:text-4xl tracking-tight mb-4'>{tittle}</h2>
 				)}
-				<p className='text-white/70 text-center mt-2 flex-grow'>{heading}</p>
+				{heading && <p className='text-white/60 text-center text-base md:text-lg max-w-xl mx-auto leading-relaxed mt-4 font-light'>{heading}</p>}
 			</header>
 			{children}
 		</section>

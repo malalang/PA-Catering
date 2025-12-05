@@ -11,49 +11,49 @@ interface ProductCardProps {
 }
 
 const ProductCard: React.FC<ProductCardProps> = ({ product, categoryName }) => (
-	<article className='m-0 group flex flex-col h-full bg-gradient-to-br from-yellow-900/80 to-yellow-800/80 backdrop-blur-md border border-white/10 rounded-xl p-4 transition-all duration-300 hover:border-amber-400/40 hover:shadow-xl hover:shadow-amber-500/20'>
-		<span className='flex items-center justify-between gap-2 mb-3'>
-			{product.badge && (
-				<span className='px-3 py-1.5 rounded-full text-xs font-bold z-10 shadow-lg bg-gradient-to-r from-amber-600 to-yellow-600 text-white uppercase tracking-wider'>
+	<article className='group relative flex flex-col h-full bg-neutral-900/40 backdrop-blur-sm border border-white/5 rounded-2xl p-6 transition-all duration-500 hover:bg-neutral-900/60 hover:border-amber-500/20 hover:shadow-2xl hover:shadow-black/50'>
+		<div className='flex items-center justify-between gap-4 mb-6'>
+			{product.badge ? (
+				<span className='px-4 py-1.5 rounded-full text-[10px] font-bold tracking-widest uppercase bg-amber-500/10 text-amber-500 border border-amber-500/20'>
 					{product.badge}
 				</span>
-			)}
+			) : <span></span>}
 			<LikesButton itemId={product.ProductID} table="products" />
-		</span>
+		</div>
 
 		<div className='flex flex-col flex-grow'>
 			<AppLink
 				href={`/menu/${categoryName}/${product.Name.toLowerCase().replace(/\s+/g, '-')}`}
-				className='flex flex-col items-center text-center flex-grow rounded-lg focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-black/50 focus:ring-amber-500 transition-all duration-200'>
+				className='flex flex-col items-center text-center flex-grow focus:outline-none group-focus-visible:ring-2 ring-amber-500/50 rounded-lg'>
 				{product.Image && (
-					<div className='relative w-full aspect-[4/3] mb-4 bg-black/30 rounded-lg overflow-hidden border border-white/5'>
+					<div className='relative w-full aspect-square mb-6 bg-black/20 rounded-xl overflow-hidden'>
 						<Image
 							src={product.Image}
 							alt={product.Name}
 							fill
-							className='object-contain rounded-lg transition-transform duration-300 group-hover:scale-110'
+							className='object-cover transition-transform duration-700 ease-out group-hover:scale-105'
 						/>
 					</div>
 				)}
-				<h2 className='text-base font-bold text-white mb-2 line-clamp-2 flex-grow'>
+				<h2 className='text-xl md:text-2xl font-bold text-white mb-2 line-clamp-2 leading-tight tracking-tight group-hover:text-amber-400 transition-colors'>
 					{product.Name}
 				</h2>
-				<p className='text-2xl font-extrabold text-transparent bg-gradient-to-r from-amber-400 to-yellow-400 bg-clip-text mb-3'>
+				<p className='text-3xl font-light text-amber-500/90 mb-4 tracking-tight'>
 					R{product.Price.toFixed(2)}
 				</p>
-				<div className='flex items-center justify-center gap-1 mb-4'>
-					<HiStar className='text-amber-500' size={18} />
-					<HiStar className='text-amber-500' size={18} />
-					<HiStar className='text-amber-500' size={18} />
-					<HiStar className='text-amber-500' size={18} />
-					<HiStar className='text-white/30' size={18} />
-					<span className='text-xs text-yellow-400 font-semibold ml-2'>(4.5)</span>
+				<div className='flex items-center justify-center gap-1 mb-6 opacity-60 group-hover:opacity-100 transition-opacity'>
+					<HiStar className='text-amber-500' size={16} />
+					<HiStar className='text-amber-500' size={16} />
+					<HiStar className='text-amber-500' size={16} />
+					<HiStar className='text-amber-500' size={16} />
+					<HiStar className='text-white/20' size={16} />
+					<span className='text-xs text-white/50 font-medium ml-2 tracking-wide'>(4.5)</span>
 				</div>
 			</AppLink>
 		</div>
 
-		<div className='mt-auto'>
-			<AddtoCart product={product}>Add to Cart</AddtoCart>
+		<div className='mt-auto pt-6 border-t border-white/5'>
+			<AddtoCart product={product} className="w-full py-4 text-sm font-bold tracking-widest uppercase hover:bg-amber-500 hover:text-black transition-colors duration-300">Add to Cart</AddtoCart>
 		</div>
 	</article>
 );

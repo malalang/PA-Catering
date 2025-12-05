@@ -1,10 +1,10 @@
-This file is a merged representation of the entire codebase, combined into a single document by Repomix.
+This file is a merged representation of a subset of the codebase, containing specifically included files, combined into a single document by Repomix.
 
 <file_summary>
 This section contains a summary of this file.
 
 <purpose>
-This file contains a packed representation of the entire repository's contents.
+This file contains a packed representation of a subset of the repository's contents that is considered the most important context.
 It is designed to be easily consumable by AI systems for analysis, code review,
 or other automated processes.
 </purpose>
@@ -32,6 +32,7 @@ The content is organized as follows:
 <notes>
 - Some files may have been excluded based on .gitignore rules and Repomix's configuration
 - Binary files are not included in this packed representation. Please refer to the Repository Structure section for a complete list of file paths, including binary files
+- Only files matching these patterns are included: admin, client
 - Files matching patterns in .gitignore are excluded
 - Files matching default ignore patterns are excluded
 - Files are sorted by Git change count (files with more changes are at the bottom)
@@ -40,7 +41,6 @@ The content is organized as follows:
 </file_summary>
 
 <directory_structure>
-.repomix/bundles.json
 admin/.gitignore
 admin/biome.json
 admin/next.config.ts
@@ -289,7 +289,10 @@ client/src/app/photo/placeholderImages.ts
 client/src/app/privacy/components/PrivacyContent.tsx
 client/src/app/privacy/loading.tsx
 client/src/app/privacy/page.tsx
+client/src/app/profile/components/FavoritesSummary.tsx
+client/src/app/profile/components/OrdersSummary.tsx
 client/src/app/profile/components/PersonalInformation.tsx
+client/src/app/profile/components/ProfileHeader.tsx
 client/src/app/profile/edit/page.tsx
 client/src/app/profile/loading.tsx
 client/src/app/profile/page.tsx
@@ -352,6 +355,7 @@ client/src/lib/types/UserTypes.d.ts
 client/src/lib/utils.ts
 client/src/lib/utils/dateUtils.ts
 client/src/proxy.ts
+client/supabase_migrations/20241129_add_orders_policy.sql
 client/supabase_migrations/add_profile_trigger.sql
 client/supabase_migrations/create_tables.sql
 client/tsconfig.json
@@ -1979,6 +1983,25 @@ export type Database = {
     }
   }
 }
+</file>
+
+<file path="client/supabase_migrations/20241129_add_orders_policy.sql">
+-- Enable RLS on orders table
+ALTER TABLE public.orders ENABLE ROW LEVEL SECURITY;
+
+-- Policy to allow users to view their own orders
+CREATE POLICY "Users can view their own orders"
+ON public.orders
+FOR SELECT
+TO authenticated
+USING (auth.uid() = user_id);
+
+-- Policy to allow users to insert their own orders (if needed from client)
+CREATE POLICY "Users can create their own orders"
+ON public.orders
+FOR INSERT
+TO authenticated
+WITH CHECK (auth.uid() = user_id);
 </file>
 
 <file path="admin/next.config.ts">
@@ -3996,57 +4019,196 @@ export interface SupabaseOrderRecord {
 }
 </file>
 
-<file path="client/src/app/(auth)/confirm-email/page.tsx">
+<file path="client/src/app/profile/components/FavoritesSummary.tsx">
 import React from 'react';
-import Main from '@/components/ui/layout/Main';
-import React from 'react';
-import Main from '@/components/ui/layout/Main';
-import { HiEnvelope } from 'react-icons/hi2';
-import AppLink from '@/components/ui/Link';
+import Link from 'next/link';
+import Image from 'next/image';
+import { HiHeart, HiChevronRight } from 'react-icons/hi2';
+import { createClient } from '@/lib/supabase/server';
+import Section from '@/components/ui/layout/Section';
 
-export default function ConfirmEmailPage() {
-    return (
-        <Main
-            tittle='Confirm Email'
-            Icon={HiEnvelope}
-            className='flex items-center justify-center min-h-[60vh] p-4 md:p-8'>
-            <div className='max-w-md w-full bg-gradient-to-br from-yellow-900/90 to-yellow-800/90 backdrop-blur-xl p-6 md:p-10 rounded-3xl border border-white/10 shadow-2xl text-center transform transition-all hover:scale-[1.01] duration-300'>
-                <div className='bg-gradient-to-br from-amber-500/20 to-yellow-500/20 p-5 md:p-6 rounded-full border border-amber-400/30 inline-block mb-6 shadow-lg shadow-amber-500/10 animate-pulse'>
-                    <HiEnvelope className='text-5xl md:text-6xl text-amber-400' />
-                </div>
-                <h2 className='text-2xl md:text-3xl font-bold text-white mb-4 tracking-tight'>Check your email</h2>
-                <p className='text-yellow-100/90 mb-8 text-sm md:text-base leading-relaxed'>
-                    We've sent you a confirmation link. Please check your inbox (and spam folder) to verify your account.
-                </p>
-                <div className='space-y-4'>
-                    <AppLink href='/login' variant='button' className='w-full py-3 text-lg shadow-amber-500/20'>
-                        Back to Login
-                    </AppLink>
-                    <p className='text-xs text-yellow-500/60 mt-4'>
-                        Didn't receive the email? Check your spam folder or try logging in again.
-                    </p>
-                </div>
-            </div>
-        </Main>
-    );
+interface FavoritesSummaryProps {
+    userId: string;
 }
+
+const FavoritesSummary: React.FC<FavoritesSummaryProps> = async ({ userId }) => {
+    const supabase = await createClient();
+    const { data: favorites } = await supabase
+        .from('user_favorites')
+        .select('product_id, products(*)')
+        .eq('user_id', userId)
+        .limit(4);
+
+    if (!favorites || favorites.length === 0) {
+        return null;
+    }
+
+    return (
+        <Section>
+            <div className="flex items-center justify-between mb-4">
+                <h2 className="text-xl font-semibold text-white flex items-center gap-2">
+                    <HiHeart className="text-rose-400" />
+                    Favorites
+                </h2>
+                <Link href="/menu" className="text-sm text-yellow-400 hover:text-white transition-colors flex items-center gap-1">
+                    Browse Menu <HiChevronRight />
+                </Link>
+            </div>
+
+            <div className="grid grid-cols-2 gap-3">
+                {favorites.map((fav: any) => {
+                    const product = fav.products;
+                    if (!product) return null;
+
+                    return (
+                        <Link
+                            href={`/menu/${product.category_name}/${product.slug || product.id}`}
+                            key={product.id}
+                            className="bg-white/5 rounded-xl p-3 hover:bg-white/10 transition-colors group"
+                        >
+                            <div className="aspect-square relative mb-2 rounded-lg overflow-hidden bg-black/20">
+                                {product.image_url ? (
+                                    <Image
+                                        src={product.image_url}
+                                        alt={product.name}
+                                        fill
+                                        className="object-cover group-hover:scale-110 transition-transform duration-300"
+                                    />
+                                ) : (
+                                    <div className="w-full h-full flex items-center justify-center text-yellow-500/20">
+                                        <HiHeart className="text-3xl" />
+                                    </div>
+                                )}
+                            </div>
+                            <p className="text-sm text-white font-medium truncate">{product.name}</p>
+                            <p className="text-xs text-yellow-400">R{product.price?.toFixed(2)}</p>
+                        </Link>
+                    );
+                })}
+            </div>
+        </Section>
+    );
+};
+
+export default FavoritesSummary;
 </file>
 
-<file path=".repomix/bundles.json">
-{
-  "bundles": {
-    "context-532": {
-      "name": "context",
-      "created": "2025-11-27T16:24:56.957Z",
-      "lastUsed": "2025-11-29T11:20:56.319Z",
-      "tags": [],
-      "files": [
-        "admin",
-        "client"
-      ]
-    }
-  }
+<file path="client/src/app/profile/components/OrdersSummary.tsx">
+import React from 'react';
+import Link from 'next/link';
+import { HiShoppingBag, HiChevronRight } from 'react-icons/hi2';
+import { createClient } from '@/lib/supabase/server';
+import Section from '@/components/ui/layout/Section';
+
+interface OrdersSummaryProps {
+    userId: string;
 }
+
+const OrdersSummary: React.FC<OrdersSummaryProps> = async ({ userId }) => {
+    const supabase = await createClient();
+    const { data: orders } = await supabase
+        .from('orders')
+        .select('*')
+        .eq('user_id', userId)
+        .order('created_at', { ascending: false })
+        .limit(3);
+
+    if (!orders || orders.length === 0) {
+        return null;
+    }
+
+    return (
+        <Section>
+            <div className="flex items-center justify-between mb-4">
+                <h2 className="text-xl font-semibold text-white flex items-center gap-2">
+                    <HiShoppingBag className="text-amber-400" />
+                    Recent Orders
+                </h2>
+                <Link href="/orders" className="text-sm text-yellow-400 hover:text-white transition-colors flex items-center gap-1">
+                    View All <HiChevronRight />
+                </Link>
+            </div>
+
+            <div className="space-y-3">
+                {orders.map((order: any) => (
+                    <div key={order.id} className="bg-white/5 rounded-xl p-4 flex items-center justify-between hover:bg-white/10 transition-colors">
+                        <div>
+                            <p className="text-white font-medium">Order #{order.id.slice(0, 8)}</p>
+                            <p className="text-sm text-yellow-400/60">{new Date(order.created_at).toLocaleDateString()}</p>
+                        </div>
+                        <div className="text-right">
+                            <p className="text-white font-bold">R{order.total_price.toFixed(2)}</p>
+                            <span className={`text-xs px-2 py-1 rounded-full capitalize ${order.status === 'completed' ? 'bg-emerald-500/20 text-emerald-400' :
+                                order.status === 'cancelled' ? 'bg-rose-500/20 text-rose-400' :
+                                    'bg-amber-500/20 text-amber-400'
+                                }`}>
+                                {order.status}
+                            </span>
+                        </div>
+                    </div>
+                ))}
+            </div>
+        </Section>
+    );
+};
+
+export default OrdersSummary;
+</file>
+
+<file path="client/src/app/profile/components/ProfileHeader.tsx">
+import React from 'react';
+import { HiShoppingBag, HiHeart } from 'react-icons/hi2';
+import Avatar from '@/components/ui/Avatar';
+import Section from '@/components/ui/layout/Section';
+
+interface ProfileHeaderProps {
+    user: any;
+    ordersCount: number;
+    favoritesCount: number;
+}
+
+const ProfileHeader: React.FC<ProfileHeaderProps> = ({ user, ordersCount, favoritesCount }) => {
+    const initials = user.display_name
+        ? user.display_name.split(' ').map((n: string) => n[0]).join('').toUpperCase().slice(0, 2)
+        : user.email?.[0].toUpperCase() || 'U';
+
+    return (
+        <Section>
+            <div className="relative">
+                <Avatar
+                    src={user.photo_url}
+                    alt={user.display_name || 'User'}
+                    initials={initials}
+                    size="xl"
+                    className="w-24 h-24 text-2xl border-4 border-amber-500/20"
+                />
+                <div className="absolute bottom-0 right-0 w-6 h-6 bg-emerald-500 border-4 border-yellow-900 rounded-full"></div>
+            </div>
+
+            <div className="flex-1 text-center md:text-left">
+                <h1 className="text-2xl font-bold text-white mb-1">
+                    {user.display_name || 'Welcome Back'}
+                </h1>
+                <p className="text-yellow-400/80 mb-4">{user.email}</p>
+
+                <div className="flex items-center justify-center md:justify-start gap-6">
+                    <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10">
+                        <HiShoppingBag className="text-amber-400" />
+                        <span className="text-white font-medium">{ordersCount}</span>
+                        <span className="text-yellow-400/60 text-sm">Orders</span>
+                    </div>
+                    <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10">
+                        <HiHeart className="text-rose-400" />
+                        <span className="text-white font-medium">{favoritesCount}</span>
+                        <span className="text-yellow-400/60 text-sm">Favorites</span>
+                    </div>
+                </div>
+            </div>
+        </Section>
+    );
+};
+
+export default ProfileHeader;
 </file>
 
 <file path="admin/src/components/auth/AuthShell.tsx">
@@ -5136,6 +5298,39 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+</file>
+
+<file path="client/src/app/(auth)/confirm-email/page.tsx">
+import Main from '@/components/ui/layout/Main';
+import { HiEnvelope } from 'react-icons/hi2';
+import AppLink from '@/components/ui/Link';
+
+export default function ConfirmEmailPage() {
+    return (
+        <Main
+            tittle='Confirm Email'
+            Icon={HiEnvelope}
+            className='flex items-center justify-center min-h-[60vh] p-4 md:p-8'>
+            <div className='max-w-md w-full bg-gradient-to-br from-yellow-900/90 to-yellow-800/90 backdrop-blur-xl p-6 md:p-10 rounded-3xl border border-white/10 shadow-2xl text-center transform transition-all hover:scale-[1.01] duration-300'>
+                <div className='bg-gradient-to-br from-amber-500/20 to-yellow-500/20 p-5 md:p-6 rounded-full border border-amber-400/30 inline-block mb-6 shadow-lg shadow-amber-500/10 animate-pulse'>
+                    <HiEnvelope className='text-5xl md:text-6xl text-amber-400' />
+                </div>
+                <h2 className='text-2xl md:text-3xl font-bold text-white mb-4 tracking-tight'>Check your email</h2>
+                <p className='text-yellow-100/90 mb-8 text-sm md:text-base leading-relaxed'>
+                    We've sent you a confirmation link. Please check your inbox (and spam folder) to verify your account.
+                </p>
+                <div className='space-y-4'>
+                    <AppLink href='/login' variant='button' className='w-full py-3 text-lg shadow-amber-500/20'>
+                        Back to Login
+                    </AppLink>
+                    <p className='text-xs text-yellow-500/60 mt-4'>
+                        Didn't receive the email? Check your spam folder or try logging in again.
+                    </p>
+                </div>
+            </div>
+        </Main>
+    );
+}
 </file>
 
 <file path="client/src/app/about/components/CompanyDescription.tsx">
@@ -8952,55 +9147,6 @@ const Alert: React.FC<AlertProps> = ({
 export default Alert;
 </file>
 
-<file path="client/src/components/ui/Avatar.tsx">
-import React from 'react';
-import classNames from 'classnames'; // Import classNames
-import Image from 'next/image';
-
-interface AvatarProps {
-	src: string | null | undefined;
-	alt: string;
-	size?: 'small' | 'medium' | 'large';
-	className?: string; // Existing className for external styles
-}
-
-// Define size classes as an object for better readability and maintainability
-const sizeClassesMap = {
-	small: 'w-8 h-8 text-sm', // Added text-sm for initial/fallback text size
-	medium: 'w-10 h-10 text-base', // Added text-base
-	large: 'w-16 h-16 text-xl', // Added text-xl
-};
-
-const Avatar: React.FC<AvatarProps> = ({ src, alt, size = 'medium', className }) => {
-	// Get the size-specific classes from the map, defaulting to 'medium'
-	const currentSizeClasses = sizeClassesMap[size];
-
-	return (
-		<div
-			className={classNames(
-				'relative flex items-center justify-center rounded-full bg-yellow-200 overflow-hidden',
-				currentSizeClasses, // Apply the size-specific classes
-				className // Apply any additional classes passed from parent
-			)}>
-			{src ? (
-				<Image
-					src={src}
-					alt={alt}
-					className='absolute inset-0 w-full h-full object-cover'
-				/>
-			) : (
-				// Fallback for no image: display first letter of alt text
-				<span className='text-yellow-600 font-bold uppercase flex items-center justify-center h-full w-full'>
-					{alt.charAt(0)}
-				</span>
-			)}
-		</div>
-	);
-};
-
-export default Avatar;
-</file>
-
 <file path="client/src/components/ui/Icon.tsx">
 import React from 'react';
 
@@ -11317,6 +11463,55 @@ const AddOnSelector: React.FC<AddOnSelectorProps> = ({ selectedAddOns, onChange 
 export default AddOnSelector;
 </file>
 
+<file path="client/src/components/ui/Avatar.tsx">
+import React from 'react';
+import classNames from 'classnames'; // Import classNames
+import Image from 'next/image';
+
+interface AvatarProps {
+	src: string | null | undefined;
+	alt: string;
+	initials?: string; // Added initials prop
+	size?: 'small' | 'medium' | 'large' | 'xl'; // Added xl size
+	className?: string;
+}
+
+const sizeClassesMap = {
+	small: 'w-8 h-8 text-sm',
+	medium: 'w-10 h-10 text-base',
+	large: 'w-16 h-16 text-xl',
+	xl: 'w-24 h-24 text-3xl', // Added xl size
+};
+
+const Avatar: React.FC<AvatarProps> = ({ src, alt, initials, size = 'medium', className }) => {
+	const currentSizeClasses = sizeClassesMap[size];
+
+	return (
+		<div
+			className={classNames(
+				'relative flex items-center justify-center rounded-full bg-yellow-200 overflow-hidden shrink-0',
+				currentSizeClasses,
+				className
+			)}>
+			{src ? (
+				<Image
+					src={src}
+					alt={alt}
+					fill // Use fill instead of absolute positioning manually
+					className='object-cover'
+				/>
+			) : (
+				<span className='text-yellow-900 font-bold uppercase flex items-center justify-center h-full w-full select-none'>
+					{initials || alt.charAt(0)}
+				</span>
+			)}
+		</div>
+	);
+};
+
+export default Avatar;
+</file>
+
 <file path="client/src/components/ui/Button.tsx">
 import React from 'react';
 import classNames from 'classnames';
@@ -11472,166 +11667,6 @@ const AppLink: React.FC<LinkProps> = ({ children, className, variant = 'primary'
 };
 
 export default AppLink;
-</file>
-
-<file path="client/src/lib/forms/ContactForm.tsx">
-'use client';
-
-import { useForm } from 'react-hook-form';
-import { useState } from 'react';
-import { FaWhatsapp, FaEnvelope, FaPhone } from 'react-icons/fa';
-import { createClient } from '@/lib/supabase/client';
-import { Database } from '@/lib/types/database.types';
-
-type FormData = {
-  name: string;
-  email: string;
-  phone: string;
-  message: string;
-};
-
-export default function ContactForm() {
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState<{ success: boolean; message: string } | null>(null);
-
-  const { register, handleSubmit, formState: { errors }, reset } = useForm<FormData>({
-  });
-
-  const onSubmit = async (data: FormData) => {
-    setIsSubmitting(true);
-    try {
-      const supabase = createClient();
-      const insertData: Database['public']['Tables']['contact']['Insert'] = {
-        name: data.name,
-        email: data.email,
-        phone: data.phone,
-        message: data.message
-      };
-      const { error } = await supabase.from('contact').insert(insertData as any);
-
-      if (error) throw error;
-
-      setSubmitStatus({
-        success: true,
-        message: 'Your message has been sent successfully! We\'ll get back to you soon.'
-      });
-      reset();
-    } catch (error) {
-      console.error('Error submitting contact form:', error);
-      setSubmitStatus({
-        success: false,
-        message: 'Failed to send message. Please try again later.'
-      });
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
-
-  const openWhatsApp = () => {
-    const phoneNumber = '1234567890'; // Replace with your WhatsApp number
-    const message = 'Hello, I have a question about your services.';
-    window.open(`https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`, '_blank');
-  };
-
-  return (
-    <div className="max-w-4xl mx-auto p-6 bg-white/10 backdrop-blur-md rounded-lg shadow-lg">
-      <h2 className="text-3xl font-bold mb-6 text-center text-white">Contact Us</h2>
-
-      <div className="grid md:grid-cols-2 gap-8">
-        <div>
-          <h3 className="text-xl font-semibold mb-4 text-white">Get in Touch</h3>
-          <p className="mb-6 text-gray-200">
-            Have questions or feedback? We'd love to hear from you. Fill out the form or reach out directly.
-          </p>
-
-          <div className="space-y-4">
-            <div className="flex items-center space-x-3">
-              <FaPhone className="text-yellow-500/95 text-xl" />
-              <span className="text-white">+1 (555) 123-4567</span>
-            </div>
-            <div className="flex items-center space-x-3">
-              <FaEnvelope className="text-yellow-500/95 text-xl" />
-              <span className="text-white">info@centraleatery.com</span>
-            </div>
-            <button
-              onClick={openWhatsApp}
-              className="flex items-center space-x-2 bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-md transition-colors"
-            >
-              <FaWhatsapp className="text-xl" />
-              <span>Chat on WhatsApp</span>
-            </button>
-          </div>
-        </div>
-
-        <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
-          {submitStatus && (
-            <div className={`p-4 rounded-md ${submitStatus.success ? 'bg-green-500/20' : 'bg-yellow-500/20'}`}>
-              <p className={submitStatus.success ? 'text-green-200' : 'text-yellow-200'}>
-                {submitStatus.message}
-              </p>
-            </div>
-          )}
-
-          <div>
-            <label htmlFor="name" className="block text-sm font-medium text-white mb-1">Name</label>
-            <input
-              id="name"
-              type="text"
-              {...register('name')}
-              className="w-full px-4 py-2 rounded-md bg-white/10 border border-white/20 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-yellow-500/50"
-              placeholder="Your name"
-            />
-            {errors.name && <p className="mt-1 text-sm text-yellow-300">{errors.name.message}</p>}
-          </div>
-
-          <div>
-            <label htmlFor="email" className="block text-sm font-medium text-white mb-1">Email</label>
-            <input
-              id="email"
-              type="email"
-              {...register('email')}
-              className="w-full px-4 py-2 rounded-md bg-white/10 border border-white/20 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-yellow-500/50"
-              placeholder="your.email@example.com"
-            />
-            {errors.email && <p className="mt-1 text-sm text-yellow-300">{errors.email.message}</p>}
-          </div>
-
-          <div>
-            <label htmlFor="phone" className="block text-sm font-medium text-white mb-1">Phone</label>
-            <input
-              id="phone"
-              type="tel"
-              {...register('phone')}
-              className="w-full px-4 py-2 rounded-md bg-white/10 border border-white/20 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-yellow-500/50"
-              placeholder="+1 (555) 123-4567"
-            />
-            {errors.phone && <p className="mt-1 text-sm text-yellow-300">{errors.phone.message}</p>}
-          </div>
-
-          <div>
-            <label htmlFor="message" className="block text-sm font-medium text-white mb-1">Message</label>
-            <textarea
-              id="message"
-              rows={4}
-              {...register('message')}
-              className="w-full px-4 py-2 rounded-md bg-white/10 border border-white/20 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-yellow-500/50"
-              placeholder="Your message..."
-            />
-            {errors.message && <p className="mt-1 text-sm text-yellow-300">{errors.message.message}</p>}
-          </div>
-
-          <button
-            type="submit"
-            disabled={isSubmitting}
-            className="w-full bg-yellow-500/95 hover:bg-yellow-600 text-white font-medium py-2 px-4 rounded-md transition-colors disabled:opacity-70 disabled:cursor-not-allowed"
-          >
-            {isSubmitting ? 'Sending...' : 'Send Message'}
-          </button>
-        </form>
-      </div>
-    </div>
-  );
-}
 </file>
 
 <file path="client/src/lib/supabase/client.ts">
@@ -12980,35 +13015,6 @@ const Navbar = async () => {
 export default Navbar;
 </file>
 
-<file path="client/src/components/ui/layout/Main.tsx">
-interface MainProps {
-	Icon?: React.ElementType;
-	className?: string;
-	heading?: string;
-	tittle?: string;
-	children: React.ReactNode;
-}
-export default function Main({ children, Icon, heading, tittle, className }: MainProps) {
-	return (
-		<main
-			className={
-				className
-					? className
-					: 'flex flex-col items-center justify-start w-full min-h-screen p-2 md:px-4 '
-			}>
-			<header>
-				<span className='flex items-center justify-center gap-3'>
-					{Icon && <Icon className='text-3xl text-yellow-500' />}
-					{tittle && <h1>{tittle}</h1>}
-				</span>
-				<p className='text-white/70 text-center mt-2 flex-grow'>{heading}</p>
-			</header>
-			{children}
-		</main>
-	);
-}
-</file>
-
 <file path="client/src/components/ui/TextInput.tsx">
 import React from 'react';
 import classNames from 'classnames';
@@ -13244,6 +13250,165 @@ const CommentsForm: React.FC<CommentsProps> = async ({ ProductName }) => {
 };
 
 export default CommentsForm;
+</file>
+
+<file path="client/src/lib/forms/ContactForm.tsx">
+'use client';
+
+import { useForm } from 'react-hook-form';
+import { useState } from 'react';
+import { FaWhatsapp, FaEnvelope, FaPhone } from 'react-icons/fa';
+import { createClient } from '@/lib/supabase/client';
+import { Database } from '@/lib/types/database.types';
+import Section from '@/components/ui/layout/Section';
+
+type FormData = {
+  name: string;
+  email: string;
+  phone: string;
+  message: string;
+};
+
+export default function ContactForm() {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<{ success: boolean; message: string } | null>(null);
+
+  const { register, handleSubmit, formState: { errors }, reset } = useForm<FormData>({
+  });
+
+  const onSubmit = async (data: FormData) => {
+    setIsSubmitting(true);
+    try {
+      const supabase = createClient();
+      const insertData: Database['public']['Tables']['contact']['Insert'] = {
+        name: data.name,
+        email: data.email,
+        phone: data.phone,
+        message: data.message
+      };
+      const { error } = await supabase.from('contact').insert(insertData as any);
+
+      if (error) throw error;
+
+      setSubmitStatus({
+        success: true,
+        message: 'Your message has been sent successfully! We\'ll get back to you soon.'
+      });
+      reset();
+    } catch (error) {
+      console.error('Error submitting contact form:', error);
+      setSubmitStatus({
+        success: false,
+        message: 'Failed to send message. Please try again later.'
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  const openWhatsApp = () => {
+    const phoneNumber = '1234567890'; // Replace with your WhatsApp number
+    const message = 'Hello, I have a question about your services.';
+    window.open(`https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`, '_blank');
+  };
+
+  return (
+    <Section tittle="Contact Us" heading="Have questions or feedback? We'd love to hear from you. Fill out the form below or reach out to us directly.">
+      <div className="grid md:grid-cols-2 gap-8">
+        <div>
+          <h3 className="text-xl font-semibold mb-4 text-white">Get in Touch</h3>
+          <p className="mb-6 text-gray-200">
+            Have questions or feedback? We'd love to hear from you. Fill out the form or reach out directly.
+          </p>
+
+          <div className="space-y-4">
+            <div className="flex items-center space-x-3">
+              <FaPhone className="text-yellow-500/95 text-xl" />
+              <span className="text-white">+1 (555) 123-4567</span>
+            </div>
+            <div className="flex items-center space-x-3">
+              <FaEnvelope className="text-yellow-500/95 text-xl" />
+              <span className="text-white">info@centraleatery.com</span>
+            </div>
+            <button
+              onClick={openWhatsApp}
+              className="flex items-center space-x-2 bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-md transition-colors"
+            >
+              <FaWhatsapp className="text-xl" />
+              <span>Chat on WhatsApp</span>
+            </button>
+          </div>
+        </div>
+
+        <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+          {submitStatus && (
+            <div className={`p-4 rounded-md ${submitStatus.success ? 'bg-green-500/20' : 'bg-yellow-500/20'}`}>
+              <p className={submitStatus.success ? 'text-green-200' : 'text-yellow-200'}>
+                {submitStatus.message}
+              </p>
+            </div>
+          )}
+
+          <div>
+            <label htmlFor="name" className="block text-sm font-medium text-white mb-1">Name</label>
+            <input
+              id="name"
+              type="text"
+              {...register('name')}
+              className="w-full px-4 py-2 rounded-md bg-white/10 border border-white/20 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-yellow-500/50"
+              placeholder="Your name"
+            />
+            {errors.name && <p className="mt-1 text-sm text-yellow-300">{errors.name.message}</p>}
+          </div>
+
+          <div>
+            <label htmlFor="email" className="block text-sm font-medium text-white mb-1">Email</label>
+            <input
+              id="email"
+              type="email"
+              {...register('email')}
+              className="w-full px-4 py-2 rounded-md bg-white/10 border border-white/20 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-yellow-500/50"
+              placeholder="your.email@example.com"
+            />
+            {errors.email && <p className="mt-1 text-sm text-yellow-300">{errors.email.message}</p>}
+          </div>
+
+          <div>
+            <label htmlFor="phone" className="block text-sm font-medium text-white mb-1">Phone</label>
+            <input
+              id="phone"
+              type="tel"
+              {...register('phone')}
+              className="w-full px-4 py-2 rounded-md bg-white/10 border border-white/20 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-yellow-500/50"
+              placeholder="+1 (555) 123-4567"
+            />
+            {errors.phone && <p className="mt-1 text-sm text-yellow-300">{errors.phone.message}</p>}
+          </div>
+
+          <div>
+            <label htmlFor="message" className="block text-sm font-medium text-white mb-1">Message</label>
+            <textarea
+              id="message"
+              rows={4}
+              {...register('message')}
+              className="w-full px-4 py-2 rounded-md bg-white/10 border border-white/20 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-yellow-500/50"
+              placeholder="Your message..."
+            />
+            {errors.message && <p className="mt-1 text-sm text-yellow-300">{errors.message.message}</p>}
+          </div>
+
+          <button
+            type="submit"
+            disabled={isSubmitting}
+            className="w-full bg-yellow-500/95 hover:bg-yellow-600 text-white font-medium py-2 px-4 rounded-md transition-colors disabled:opacity-70 disabled:cursor-not-allowed"
+          >
+            {isSubmitting ? 'Sending...' : 'Send Message'}
+          </button>
+        </form>
+      </div>
+    </Section>
+  );
+}
 </file>
 
 <file path="client/src/lib/forms/UserAddressForm.tsx">
@@ -13577,173 +13742,6 @@ export default function RootLayout({
 		</html>
 	);
 }
-</file>
-
-<file path="client/src/app/menu/[Products]/[product]/page.tsx">
-import Image from 'next/image';
-import SocialButtons from '../components/SocialButtons';
-import Comments from './components/comments';
-import ProductInfo from './components/ProductInfo';
-import RelatedProducts from './components/RelatedProducts';
-import FavoriteButton from './components/FavoriteButton';
-import AddtoCart from '@/app/menu/[Products]/[product]/components/AddtoCart';
-import Main from '@/components/ui/layout/Main';
-import Section from '@/components/ui/layout/Section';
-import { createClient } from '@/lib/supabase/server';
-
-async function ProductPage({ params }: { params: Promise<{ product: string; Products: string }> }) {
-	const { product: productId, Products: categorySlug } = await params;
-	const supabase = await createClient();
-
-	// Reconstruct name from slug - handle both hyphens and spaces
-	// The slug might be "coca-cola" but the DB has "Coca-Cola" or "Coca Cola"
-	// We'll try multiple patterns to match both hyphens and spaces
-	const productNameSlug = productId.replace(/-/g, ' ');
-	const categoryName = categorySlug.replace(/-/g, ' ');
-
-	// Fetch product
-	type ProductRow = {
-		id: string;
-		name: string;
-		description: string | null;
-		price: number | null;
-		image_url: string | null;
-		badge: string | null;
-		likes: number | null;
-	};
-
-	// Try multiple search patterns to handle hyphens in product names
-	// PostgreSQL ilike uses SQL LIKE patterns, so we use % wildcards
-	let productData = null;
-	let error = null;
-
-	// Strategy: Split slug into words and create flexible pattern
-	// "coca-cola" -> ["coca", "cola"] -> pattern "%coca%cola%" 
-	// This matches "Coca-Cola", "Coca Cola", "coca cola", etc.
-	const words = productId.split('-').filter(w => w.length > 0);
-	const flexiblePattern = words.length > 1 
-		? `%${words.join('%')}%`  // "%coca%cola%" matches both hyphens and spaces
-		: `%${productId}%`;        // Single word, just use wildcards
-
-	// Try flexible pattern first (handles hyphens, spaces, and case)
-	const { data: patternMatch, error: patternError } = await supabase
-		.from('products')
-		.select('*')
-		.ilike('name', flexiblePattern)
-		.limit(10); // Get multiple matches to find the best one
-
-	if (patternMatch && patternMatch.length > 0 && !patternError) {
-		// If multiple matches, prefer exact match (with spaces or hyphens)
-		const typedMatches = patternMatch as ProductRow[];
-		const exactWithSpaces = typedMatches.find(p => 
-			p.name.toLowerCase().replace(/[-\s]/g, ' ') === productNameSlug.toLowerCase()
-		);
-		const exactWithHyphens = typedMatches.find(p => 
-			p.name.toLowerCase().replace(/[-\s]/g, '-') === productId.toLowerCase()
-		);
-		
-		productData = exactWithSpaces || exactWithHyphens || typedMatches[0];
-	} else {
-		// Fallback: try exact match with spaces
-		const { data: exactMatch, error: exactError } = await supabase
-			.from('products')
-			.select('*')
-			.ilike('name', productNameSlug)
-		.single();
-
-		if (exactMatch && !exactError) {
-			productData = exactMatch as ProductRow;
-		} else {
-			error = exactError || patternError;
-		}
-	}
-
-	if (error || !productData) {
-		return <div>Product not found</div>;
-	}
-
-	const product = productData as ProductRow;
-
-	// Map to UI ProductType
-	const productUI: ProductType = {
-		ProductID: product.id,
-		Name: product.name,
-		Description: [product.description || ''],
-		Price: product.price || 0,
-		Image: product.image_url || '/Menus/placeholder.png',
-		badge: product.badge || undefined,
-		rating: product.likes ? 5 : undefined,
-	};
-
-	// Fetch related products (same category, exclude current)
-	const { data: relatedData } = await supabase
-		.from('products')
-		.select('*')
-		.ilike('category', categoryName)
-		.neq('id', productUI.ProductID)
-		.limit(4);
-
-	const relatedProducts: ProductType[] = ((relatedData as ProductRow[]) || []).map((p) => ({
-		ProductID: p.id,
-		Name: p.name,
-		Description: [p.description || ''],
-		Price: p.price || 0,
-		Image: p.image_url || '/Menus/placeholder.png',
-		badge: p.badge || undefined,
-		rating: p.likes ? 5 : undefined,
-	}));
-
-	return (
-		<Main>
-			{/* Main Product Section */}
-			<Section>
-				{/* Product Image */}
-				{productUI.Image && (
-					<div className='lg:w-1/2 flex justify-center items-start'>
-						<div className='relative w-full max-w-md aspect-square bg-black/20 rounded-md shadow-lg overflow-hidden'>
-							<Image
-								src={productUI.Image}
-								alt={productUI.Name}
-								fill
-								style={{ objectFit: 'contain' }}
-								className='rounded-md'
-							/>
-						</div>
-					</div>
-				)}
-
-				{/* Product Information */}
-				<div className='lg:w-1/2'>
-					<ProductInfo product={productUI} />
-
-					{/* Action Buttons */}
-					<div className='flex flex-wrap gap-4 mt-8'>
-						<AddtoCart
-							product={productUI}
-							className='bg-black/50 hover:bg-yellow-500'>
-							Add to Cart
-						</AddtoCart>
-						<FavoriteButton product={productUI} />
-						<SocialButtons product={productUI} />
-					</div>
-				</div>
-			</Section>
-
-			{/* Related Products */}
-			<RelatedProducts
-				currentProduct={productUI}
-				categoryName={categorySlug}
-				products={relatedProducts}
-			/>
-
-			{/* Comments Section */}
-
-			<Comments product={productUI} />
-		</Main>
-	);
-}
-
-export default ProductPage;
 </file>
 
 <file path="client/src/app/menu/[Products]/components/LikesButton.tsx">
@@ -14533,39 +14531,6 @@ const RegisterForm = () => {
 export default RegisterForm;
 </file>
 
-<file path="client/src/app/contact/page.tsx">
-import ContactForm from '@/lib/forms/ContactForm';
-import ContactInfo from './components/ContactInfo';
-import MapEmbed from './components/MapEmbed';
-
-
-export default function ContactPage() {
-  return (
-    <div className="py-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
-      <div className="text-center mb-12">
-        <h1 className="text-4xl font-bold text-white mb-4">Get In Touch</h1>
-        <div className="w-24 h-1 bg-yellow-500/95 mx-auto"></div>
-        <p className="mt-6 text-lg text-gray-300 max-w-2xl mx-auto">
-          Have questions or feedback? We'd love to hear from you. Fill out the form below or reach out to us directly.
-        </p>
-      </div>
-
-      <ContactInfo />
-
-      <div className="mt-16">
-        <h2 className="text-3xl font-bold text-white mb-8 text-center">Send Us a Message</h2>
-        <ContactForm />
-      </div>
-
-      <div className="mt-16">
-        <h2 className="text-3xl font-bold text-white mb-8 text-center">Find Us on the Map</h2>
-        <MapEmbed />
-      </div>
-    </div>
-  );
-}
-</file>
-
 <file path="client/src/app/menu/[Products]/[product]/components/FavoriteButton.tsx">
 'use client';
 
@@ -14647,6 +14612,173 @@ const FavoriteButton: React.FC<FavoriteButtonProps> = ({ product }) => {
 };
 
 export default FavoriteButton;
+</file>
+
+<file path="client/src/app/menu/[Products]/[product]/page.tsx">
+import Image from 'next/image';
+import SocialButtons from '../components/SocialButtons';
+import Comments from './components/comments';
+import ProductInfo from './components/ProductInfo';
+import RelatedProducts from './components/RelatedProducts';
+import FavoriteButton from './components/FavoriteButton';
+import AddtoCart from '@/app/menu/[Products]/[product]/components/AddtoCart';
+import Main from '@/components/ui/layout/Main';
+import Section from '@/components/ui/layout/Section';
+import { createClient } from '@/lib/supabase/server';
+
+async function ProductPage({ params }: { params: Promise<{ product: string; Products: string }> }) {
+	const { product: productId, Products: categorySlug } = await params;
+	const supabase = await createClient();
+
+	// Reconstruct name from slug - handle both hyphens and spaces
+	// The slug might be "coca-cola" but the DB has "Coca-Cola" or "Coca Cola"
+	// We'll try multiple patterns to match both hyphens and spaces
+	const productNameSlug = productId.replace(/-/g, ' ');
+	const categoryName = categorySlug.replace(/-/g, ' ');
+
+	// Fetch product
+	type ProductRow = {
+		id: string;
+		name: string;
+		description: string | null;
+		price: number | null;
+		image_url: string | null;
+		badge: string | null;
+		likes: number | null;
+	};
+
+	// Try multiple search patterns to handle hyphens in product names
+	// PostgreSQL ilike uses SQL LIKE patterns, so we use % wildcards
+	let productData = null;
+	let error = null;
+
+	// Strategy: Split slug into words and create flexible pattern
+	// "coca-cola" -> ["coca", "cola"] -> pattern "%coca%cola%" 
+	// This matches "Coca-Cola", "Coca Cola", "coca cola", etc.
+	const words = productId.split('-').filter(w => w.length > 0);
+	const flexiblePattern = words.length > 1
+		? `%${words.join('%')}%`  // "%coca%cola%" matches both hyphens and spaces
+		: `%${productId}%`;        // Single word, just use wildcards
+
+	// Try flexible pattern first (handles hyphens, spaces, and case)
+	const { data: patternMatch, error: patternError } = await supabase
+		.from('products')
+		.select('*')
+		.ilike('name', flexiblePattern)
+		.limit(10); // Get multiple matches to find the best one
+
+	if (patternMatch && patternMatch.length > 0 && !patternError) {
+		// If multiple matches, prefer exact match (with spaces or hyphens)
+		const typedMatches = patternMatch as ProductRow[];
+		const exactWithSpaces = typedMatches.find(p =>
+			p.name.toLowerCase().replace(/[-\s]/g, ' ') === productNameSlug.toLowerCase()
+		);
+		const exactWithHyphens = typedMatches.find(p =>
+			p.name.toLowerCase().replace(/[-\s]/g, '-') === productId.toLowerCase()
+		);
+
+		productData = exactWithSpaces || exactWithHyphens || typedMatches[0];
+	} else {
+		// Fallback: try exact match with spaces
+		const { data: exactMatch, error: exactError } = await supabase
+			.from('products')
+			.select('*')
+			.ilike('name', productNameSlug)
+			.single();
+
+		if (exactMatch && !exactError) {
+			productData = exactMatch as ProductRow;
+		} else {
+			error = exactError || patternError;
+		}
+	}
+
+	if (error || !productData) {
+		return <div>Product not found</div>;
+	}
+
+	const product = productData as ProductRow;
+
+	// Map to UI ProductType
+	const productUI: ProductType = {
+		ProductID: product.id,
+		Name: product.name,
+		Description: [product.description || ''],
+		Price: product.price || 0,
+		Image: product.image_url || '/Menus/placeholder.png',
+		badge: product.badge || undefined,
+		rating: product.likes ? 5 : undefined,
+	};
+
+	// Fetch related products (same category, exclude current)
+	const { data: relatedData } = await supabase
+		.from('products')
+		.select('*')
+		.ilike('category', categoryName)
+		.neq('id', productUI.ProductID)
+		.limit(4);
+
+	const relatedProducts: ProductType[] = ((relatedData as ProductRow[]) || []).map((p) => ({
+		ProductID: p.id,
+		Name: p.name,
+		Description: [p.description || ''],
+		Price: p.price || 0,
+		Image: p.image_url || '/Menus/placeholder.png',
+		badge: p.badge || undefined,
+		rating: p.likes ? 5 : undefined,
+	}));
+
+	return (
+		<Main>
+			{/* Main Product Section */}
+			<Section>
+				{/* Product Image */}
+				{productUI.Image && (
+					<div className=' flex justify-center items-start'>
+						<div className='relative w-full max-w-md aspect-square bg-black/20 rounded-md shadow-lg overflow-hidden'>
+							<Image
+								src={productUI.Image}
+								alt={productUI.Name}
+								fill
+								style={{ objectFit: 'contain' }}
+								className='rounded-md'
+							/>
+						</div>
+					</div>
+				)}
+
+				{/* Product Information */}
+
+				<ProductInfo product={productUI} />
+
+				{/* Action Buttons */}
+				<div className='flex flex-wrap gap-4 mt-8'>
+					<AddtoCart
+						product={productUI}
+						className='bg-black/50 hover:bg-yellow-500'>
+						Add to Cart
+					</AddtoCart>
+					<FavoriteButton product={productUI} />
+					<SocialButtons product={productUI} />
+				</div>
+
+			</Section>
+
+			{/* Related Products */}
+			<RelatedProducts
+				currentProduct={productUI}
+				categoryName={categorySlug}
+				products={relatedProducts}
+			/>
+
+			{/* Comments Section */}
+
+			<Comments product={productUI} />
+		</Main>
+	);
+}
+
+export default ProductPage;
 </file>
 
 <file path="client/src/app/menu/[Products]/components/FilterSortBar.tsx">
@@ -15076,6 +15208,27 @@ export const deleteProductAction = async (
   revalidatePath("/products");
   return { success: "Product deleted successfully." };
 };
+</file>
+
+<file path="client/src/app/contact/page.tsx">
+import ContactForm from '@/lib/forms/ContactForm';
+import ContactInfo from './components/ContactInfo';
+import MapEmbed from './components/MapEmbed';
+import Main from '@/components/ui/layout/Main';
+
+
+export default function ContactPage() {
+  return (
+    <Main tittle="Contact Us" heading="Have questions or feedback? We'd love to hear from you. Fill out the form below or reach out to us directly.">
+
+      <ContactInfo />
+
+      <ContactForm />
+
+      <MapEmbed />
+    </Main>
+  );
+}
 </file>
 
 <file path="client/src/app/home-components/Testimonials.tsx">
@@ -15730,6 +15883,30 @@ const MobileMenu: React.FC<{
 export default MobileMenu;
 </file>
 
+<file path="client/src/components/ui/layout/Main.tsx">
+interface MainProps {
+	Icon?: React.ElementType;
+	className?: string;
+	heading?: string;
+	tittle?: string;
+	children: React.ReactNode;
+}
+export default function Main({ children, Icon, heading, tittle, className = '' }: MainProps) {
+	return (
+		<main className={`${className} p-4 max-w-7xl flex flex-wrap gap-4 `}>
+			<header>
+				<span className='flex items-center justify-center gap-3'>
+					{Icon && <Icon className='text-3xl text-yellow-500' />}
+					{tittle && <h1>{tittle}</h1>}
+				</span>
+				<p className='text-white/70 text-center mt-2 flex-grow'>{heading}</p>
+			</header>
+			{children}
+		</main>
+	);
+}
+</file>
+
 <file path="client/supabase_migrations/create_tables.sql">
 -- WARNING: This schema is for context only and is not meant to be run.
 -- Table order and constraints may not be valid for execution.
@@ -16193,50 +16370,6 @@ const ProfileMenu: React.FC<{ setMenubar: (path: 'mobile' | 'profile') => void; 
 export default ProfileMenu;
 </file>
 
-<file path="client/src/components/ui/layout/Section.tsx">
-import { Suspense } from 'react';
-import Loading from '../Loading';
-
-interface SectionProps extends React.HTMLProps<HTMLElement> {
-	Icon?: React.ElementType;
-	heading?: string;
-	tittle?: string;
-	className?: string;
-	children: React.ReactNode;
-}
-export default function Section({
-	children,
-	Icon,
-	heading,
-	tittle,
-	className,
-	...props
-}: SectionProps) {
-	return (
-		<section
-			{...props}
-			className={
-				className ? className : 'bg-gradient-to-br from-yellow-900/20 to-amber-900/20 backdrop-blur-md border border-yellow-500/30 rounded-xl p-6 hover:border-yellow-400/50 transition-all duration-300 w-full my-4 md:my-6 lg:my-8'
-			}>
-			<header>
-				{Icon ? (
-					<div className='flex flex-col items-center text-center'>
-						<span className='bg-gradient-to-br from-amber-500/20 to-yellow-500/20 p-3 rounded-lg border border-amber-400/30 w-fit mb-4'>
-							<Icon className='text-amber-400 text-3xl' />
-						</span>
-						{tittle && <h3 className='mt-4 text-shadow-sm text-shadow-black/50'>{tittle}</h3>}
-					</div>
-				) : (
-					tittle && <h2 className='text-shadow-sm text-shadow-black/50'>{tittle}</h2>
-				)}
-				<p className='text-white/70 text-center mt-2 flex-grow'>{heading}</p>
-			</header>
-			{children}
-		</section>
-	);
-}
-</file>
-
 <file path="client/src/app/orders/page.tsx">
 export const dynamic = 'force-dynamic';
 import { createClient } from '@/lib/supabase/server';
@@ -16316,6 +16449,48 @@ const OrderHistory: React.FC = async () => {
 };
 
 export default OrderHistory;
+</file>
+
+<file path="client/src/components/ui/layout/Section.tsx">
+import { Suspense } from 'react';
+import Loading from '../Loading';
+
+interface SectionProps extends React.HTMLProps<HTMLElement> {
+	Icon?: React.ElementType;
+	heading?: string;
+	tittle?: string;
+	className?: string;
+	children: React.ReactNode;
+}
+export default function Section({
+	children,
+	Icon,
+	heading,
+	tittle,
+	className,
+	...props
+}: SectionProps) {
+	return (
+		<section
+			{...props}
+			className={` ${className} bg-gradient-to-br from-yellow-900/20 to-amber-900/20 backdrop-blur-md border border-yellow-500/30 rounded-xl p-6 hover:border-yellow-400/50 transition-all duration-300 w-full m-2`}>
+			<header>
+				{Icon ? (
+					<div className='flex flex-col items-center text-center'>
+						<span className='bg-gradient-to-br from-amber-500/20 to-yellow-500/20 p-3 rounded-lg border border-amber-400/30 w-fit mb-4'>
+							<Icon className='text-amber-400 text-3xl' />
+						</span>
+						{tittle && <h3 className='mt-4 text-shadow-sm text-shadow-black/50'>{tittle}</h3>}
+					</div>
+				) : (
+					tittle && <h2 className='text-shadow-sm text-shadow-black/50'>{tittle}</h2>
+				)}
+				<p className='text-white/70 text-center mt-2 flex-grow'>{heading}</p>
+			</header>
+			{children}
+		</section>
+	);
+}
 </file>
 
 <file path="client/src/lib/actions/auth.ts">
@@ -16444,6 +16619,9 @@ export async function signUpAction(
 
 <file path="client/src/app/profile/page.tsx">
 import PersonalInformation from './components/PersonalInformation';
+import ProfileHeader from './components/ProfileHeader';
+import OrdersSummary from './components/OrdersSummary';
+import FavoritesSummary from './components/FavoritesSummary';
 
 import { FaUserCircle } from 'react-icons/fa';
 import Main from '@/components/ui/layout/Main';
@@ -16501,13 +16679,36 @@ const CustomerProfilePage: React.FC = async () => {
 		lastLogin: profile.last_login ? new Date(profile.last_login) : undefined,
 	};
 
+	// Fetch orders count
+	const { count: ordersCount } = await supabase
+		.from('orders')
+		.select('*', { count: 'exact', head: true })
+		.eq('user_id', user.id);
+
+	// Fetch favorites count
+	const { count: favoritesCount } = await supabase
+		.from('user_favorites')
+		.select('*', { count: 'exact', head: true })
+		.eq('user_id', user.id);
+
 	return (
 		<Main
 			tittle='Profile'
 			Icon={FaUserCircle}
 			heading='Manage your personal information, preferences, and account security.'>
 
+			<ProfileHeader
+				user={profile}
+				ordersCount={ordersCount || 0}
+				favoritesCount={favoritesCount || 0}
+			/>
+
+
+
 			<PersonalInformation user={userProfile} />
+
+			<OrdersSummary userId={user.id} />
+			<FavoritesSummary userId={user.id} />
 
 		</Main>
 	);
