@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import SocialButtons from '../components/SocialButtons';
+import ActionFooter from '@/components/ui/ActionFooter';
 import Comments from './components/comments';
 import ProductInfo from './components/ProductInfo';
 import RelatedProducts from './components/RelatedProducts';
@@ -142,7 +142,9 @@ async function ProductPage({ params }: { params: Promise<{ product: string; Prod
 						Add to Cart
 					</AddtoCart>
 					<FavoriteButton product={productUI} />
-					<SocialButtons product={productUI} />
+					<div className="w-full">
+						<ActionFooter itemId={productUI.ProductID} table="products" className="border-t-0 pt-0" />
+					</div>
 				</div>
 
 			</Section>

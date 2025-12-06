@@ -1,3 +1,4 @@
+'use client';
 import React, { useState, useEffect } from 'react';
 import { FaQuoteLeft } from 'react-icons/fa';
 import Section from '@/components/ui/layout/Section';
