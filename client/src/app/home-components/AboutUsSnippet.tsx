@@ -18,14 +18,24 @@ const AboutUsSnippet: React.FC = () => {
 					<span className="text-amber-400 font-medium"> cutting-edge entertainment technology</span>.
 				</p>
 
-				<div className="grid md:grid-cols-2 gap-8 w-full max-w-4xl mt-8">
-					<div className="bg-white/5 border border-white/10 rounded-xl p-6 hover:bg-white/10 transition-colors">
-						<h4 className="text-amber-400 mb-2 font-small-caps tracking-wider">The Restaurant</h4>
-						<p className="text-sm text-white/70">Offering affordable, high-quality meals crafted with passion and fresh ingredients.</p>
+				<div className="grid md:grid-cols-2 gap-8 w-full max-w-4xl mt-12">
+					<div className="group bg-neutral-900/50 border border-white/5 rounded-3xl p-8 hover:border-amber-500/30 hover:bg-white/5 transition-all duration-500 relative overflow-hidden">
+						<div className="absolute top-0 right-0 p-8 opacity-5 group-hover:opacity-10 transition-opacity">
+							<IoInformationCircleOutline className="text-8xl text-white" />
+						</div>
+						<h4 className="text-xl font-bold text-white mb-3 font-small-caps tracking-wide group-hover:text-amber-500 transition-colors">Culinary Artistry</h4>
+						<p className="text-white/70 font-light leading-relaxed">
+							Experience affordable gourmet dining where every dish is crafted with passion, creating a symphony of flavors for the discerning palate.
+						</p>
 					</div>
-					<div className="bg-white/5 border border-white/10 rounded-xl p-6 hover:bg-white/10 transition-colors">
-						<h4 className="text-amber-400 mb-2 font-small-caps tracking-wider">The 360° Experience</h4>
-						<p className="text-sm text-white/70">Competitively priced luxury photo booth rentals to capture your most memorable moments.</p>
+					<div className="group bg-neutral-900/50 border border-white/5 rounded-3xl p-8 hover:border-amber-500/30 hover:bg-white/5 transition-all duration-500 relative overflow-hidden">
+						<div className="absolute top-0 right-0 p-8 opacity-5 group-hover:opacity-10 transition-opacity">
+							<IoInformationCircleOutline className="text-8xl text-white" />
+						</div>
+						<h4 className="text-xl font-bold text-white mb-3 font-small-caps tracking-wide group-hover:text-amber-500 transition-colors">The 360° Experience</h4>
+						<p className="text-white/70 font-light leading-relaxed">
+							Step into the spotlight with our luxury 360° photo booth. Capture immersive memories with cinematic flair at competitive rates.
+						</p>
 					</div>
 				</div>
 

@@ -64,56 +64,57 @@ const FeaturedItemsServices: React.FC = () => {
 		<Section tittle='Featured Items & Services'>
 			<div className='grid grid-cols-1 md:grid-cols-2 gap-2'>
 				{featuredItems.map((item) => (
-					key = { item.id }
-						className = 'group overflow-hidden flex flex-col rounded-3xl border border-white/5 bg-neutral-900/50 backdrop-blur-md hover:border-amber-500/30 hover:shadow-[0_0_30px_-10px_rgba(245,158,11,0.2)] transition-all duration-500 relative' >
-					{
-						item.image_url && (
-							<div className="relative aspect-video overflow-hidden">
-								<Image
-									src={item.image_url}
-									alt={item.name}
-									width={500}
-									height={500}
-									className='w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700'
-								/>
-								<div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-60"></div>
-							</div>
-						)
-					}
-					< div className = 'p-8 flex-grow' >
+					<article
+						key={item.id}
+						className='group overflow-hidden flex flex-col rounded-3xl border border-white/5 bg-neutral-900/50 backdrop-blur-md hover:border-amber-500/30 hover:shadow-[0_0_30px_-10px_rgba(245,158,11,0.2)] transition-all duration-500 relative'>
+						{
+							item.image_url && (
+								<div className="relative aspect-video overflow-hidden">
+									<Image
+										src={item.image_url}
+										alt={item.name}
+										width={500}
+										height={500}
+										className='w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700'
+									/>
+									<div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-60"></div>
+								</div>
+							)
+						}
+						< div className='p-8 flex-grow' >
 							<h3 className='text-2xl font-bold text-white mb-2 font-small-caps tracking-wide'>{item.name}</h3>
 							<p className='text-white/60 font-light leading-relaxed line-clamp-2'>{item.description}</p>
 						</div>
-			<div className='flex justify-between items-center border-t border-white/5 p-6 bg-white/5 mt-auto'>
-				<div className="flex flex-col items-center gap-1 scale-90 origin-left">
-					<LikesButton itemId={item.id} table="featured_items" />
-				</div>
-				<div className="flex gap-2">
-					<Button
-						variant='icon'
-						onClick={() => handleComment(item.id)}
-						className='p-2 hover:bg-white/10 rounded-full transition-colors group/btn'
-						aria-label='Comment on item'>
-						<BiSolidComment
-							size={20}
-							className='text-white/40 group-hover/btn:text-amber-400 transition-colors'
-						/>
-					</Button>
-					<Button
-						variant='icon'
-						onClick={() => handleShare(item.id)}
-						className='p-2 hover:bg-white/10 rounded-full transition-colors group/btn'
-						aria-label='Share item'>
-						<BiSolidShare
-							size={20}
-							className='text-white/40 group-hover/btn:text-amber-400 transition-colors'
-						/>
-					</Button>
-				</div>
-			</div>
-		</article>
-	))
-}
+						<div className='flex justify-between items-center border-t border-white/5 p-6 bg-white/5 mt-auto'>
+							<div className="flex flex-col items-center gap-1 scale-90 origin-left">
+								<LikesButton itemId={item.id} table="featured_items" />
+							</div>
+							<div className="flex gap-2">
+								<Button
+									variant='icon'
+									onClick={() => handleComment(item.id)}
+									className='p-2 hover:bg-white/10 rounded-full transition-colors group/btn'
+									aria-label='Comment on item'>
+									<BiSolidComment
+										size={20}
+										className='text-white/40 group-hover/btn:text-amber-400 transition-colors'
+									/>
+								</Button>
+								<Button
+									variant='icon'
+									onClick={() => handleShare(item.id)}
+									className='p-2 hover:bg-white/10 rounded-full transition-colors group/btn'
+									aria-label='Share item'>
+									<BiSolidShare
+										size={20}
+										className='text-white/40 group-hover/btn:text-amber-400 transition-colors'
+									/>
+								</Button>
+							</div>
+						</div>
+					</article>
+				))
+				}
 			</div >
 		</Section >
 	);

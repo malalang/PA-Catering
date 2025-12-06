@@ -61,7 +61,7 @@ const Testimonials: React.FC = () => {
 	};
 
 	return (
-	return (
+
 		<Section
 			Icon={FaQuoteLeft}
 			tittle='Client Stories'
