@@ -1,12 +1,7 @@
-'use client';
 import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
-import { BiSolidComment, BiSolidShare } from 'react-icons/bi';
-import Button from '@/components/ui/Button';
 import Section from '@/components/ui/layout/Section';
-import { useAuth } from '@/lib/supabase/auth/useAuth';
-import { useRouter } from 'next/navigation';
-import LikesButton from '@/app/menu/[Products]/components/LikesButton';
+import ActionFooter from '@/components/ui/ActionFooter';
 import { createClient } from '@/lib/supabase/client';
 
 interface FeaturedItem {
@@ -19,8 +14,6 @@ interface FeaturedItem {
 }
 
 const FeaturedItemsServices: React.FC = () => {
-	const { user } = useAuth();
-	const router = useRouter();
 	const [featuredItems, setFeaturedItems] = useState<FeaturedItem[]>([]);
 
 	useEffect(() => {
@@ -40,25 +33,7 @@ const FeaturedItemsServices: React.FC = () => {
 		fetchItems();
 	}, []);
 
-	const handleComment = (itemId: string) => {
-		if (!user) {
-			router.push('/login');
-			return;
-		}
-		alert('Comment functionality - would open a modal or navigate to comments');
-	};
 
-	const handleShare = (itemId: string) => {
-		if (navigator.share) {
-			navigator.share({
-				title: 'PA Luxe Creation',
-				text: 'Check out this amazing item!',
-				url: window.location.href,
-			});
-		} else {
-			alert('Share functionality - URL copied to clipboard');
-		}
-	};
 
 	return (
 		<Section tittle='Featured Items & Services'>
@@ -81,42 +56,16 @@ const FeaturedItemsServices: React.FC = () => {
 								</div>
 							)
 						}
-						< div className='p-8 flex-grow' >
+						<div className='p-8 flex-grow'>
 							<h3 className='text-2xl font-bold text-white mb-2 font-small-caps tracking-wide'>{item.name}</h3>
 							<p className='text-white/60 font-light leading-relaxed line-clamp-2'>{item.description}</p>
 						</div>
-						<div className='flex justify-between items-center border-t border-white/5 p-6 bg-white/5 mt-auto'>
-							<div className="flex flex-col items-center gap-1 scale-90 origin-left">
-								<LikesButton itemId={item.id} table="featured_items" />
-							</div>
-							<div className="flex gap-2">
-								<Button
-									variant='icon'
-									onClick={() => handleComment(item.id)}
-									className='p-2 hover:bg-white/10 rounded-full transition-colors group/btn'
-									aria-label='Comment on item'>
-									<BiSolidComment
-										size={20}
-										className='text-white/40 group-hover/btn:text-amber-400 transition-colors'
-									/>
-								</Button>
-								<Button
-									variant='icon'
-									onClick={() => handleShare(item.id)}
-									className='p-2 hover:bg-white/10 rounded-full transition-colors group/btn'
-									aria-label='Share item'>
-									<BiSolidShare
-										size={20}
-										className='text-white/40 group-hover/btn:text-amber-400 transition-colors'
-									/>
-								</Button>
-							</div>
-						</div>
+						<ActionFooter itemId={item.id} table="featured_items" commentsCount={(item.comments as any[])?.length || 0} />
 					</article>
 				))
 				}
-			</div >
-		</Section >
+			</div>
+		</Section>
 	);
 };
 

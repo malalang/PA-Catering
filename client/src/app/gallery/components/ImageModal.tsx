@@ -1,4 +1,4 @@
-import SocialButtons from '@/app/menu/[Products]/components/SocialButtons';
+import ActionFooter from '@/components/ui/ActionFooter';
 
 import { NextPage } from 'next';
 import Image from 'next/image';
@@ -51,7 +51,9 @@ const ImageModal: NextPage<Props> = ({ handleBackdropClick, setModalOpen, produc
 						</div>
 					)}
 					<div className='text-white text-center text-lg font-bold'>{product.Name}</div>
-					<SocialButtons product={product} />
+					<div className="w-full px-4">
+						<ActionFooter itemId={product.ProductID} table="products" className="border-t-0" />
+					</div>
 				</article>
 			</div>
 		</main>

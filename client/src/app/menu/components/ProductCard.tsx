@@ -1,7 +1,7 @@
 import React from 'react';
 import Image from 'next/image';
 import AppLink from '@/components/ui/Link';
-import LikesButton from '@/app/menu/[Products]/components/LikesButton';
+import ActionFooter from '@/components/ui/ActionFooter';
 import { HiStar } from 'react-icons/hi2';
 import AddtoCart from '@/app/menu/[Products]/[product]/components/AddtoCart';
 
@@ -18,7 +18,6 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, categoryName }) => (
 					{product.badge}
 				</span>
 			) : <span></span>}
-			<LikesButton itemId={product.ProductID} table="products" />
 		</div>
 
 		<div className='flex flex-col flex-grow'>
@@ -41,7 +40,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, categoryName }) => (
 				<p className='text-3xl font-light text-amber-500/90 mb-4 tracking-tight'>
 					R{product.Price.toFixed(2)}
 				</p>
-				<div className='flex items-center justify-center gap-1 mb-6 opacity-60 group-hover:opacity-100 transition-opacity'>
+				<div className='flex items-center justify-center gap-1 mb-2 opacity-60 group-hover:opacity-100 transition-opacity'>
 					<HiStar className='text-amber-500' size={16} />
 					<HiStar className='text-amber-500' size={16} />
 					<HiStar className='text-amber-500' size={16} />
@@ -49,10 +48,16 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, categoryName }) => (
 					<HiStar className='text-white/20' size={16} />
 					<span className='text-xs text-white/50 font-medium ml-2 tracking-wide'>(4.5)</span>
 				</div>
+				{product.Description && (
+					<p className="text-white/60 text-sm leading-relaxed mb-4 line-clamp-3 font-light">
+						{product.Description}
+					</p>
+				)}
 			</AppLink>
 		</div>
 
-		<div className='mt-auto pt-6 border-t border-white/5'>
+		<div className='mt-auto pt-6 border-t border-white/5 space-y-4'>
+			<ActionFooter itemId={product.ProductID} table="products" className="border-t-0 pt-0" />
 			<AddtoCart product={product} className="w-full py-4 text-sm font-bold tracking-widest uppercase hover:bg-amber-500 hover:text-black transition-colors duration-300">Add to Cart</AddtoCart>
 		</div>
 	</article>
