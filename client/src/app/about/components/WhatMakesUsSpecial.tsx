@@ -4,52 +4,22 @@ import Section from '@/components/ui/layout/Section';
 
 const WhatMakesUsSpecial: React.FC = () => {
 	return (
-		<Section tittle='What Makes Us Special?'>
-			<div className='grid grid-cols-1 md:grid-cols-2  gap-2 gap-2 '>
-				<article>
-					<Icon
-						icon={IoSparkles}
-						heading='Modern Facilities'
-					/>
-					<p className='text-center'>
-						Unlike competitors, PA Luxe Creation boasts up-to-date facilities for both our eatery and
-						Photo boot, ensuring a higher standard of service and a more comfortable experience for
-						our customers.
-					</p>
-				</article>
-				<article>
-					<Icon
-						icon={IoCalendar}
-						heading='Digital Booking System'
-					/>
-
-					<p className='text-center'>
-						We offer a convenient digital booking system, allowing you to easily schedule Photo boot
-						and potentially food orders, saving you time and providing a seamless experience that
-						our competitors don&apos;t.
-					</p>
-				</article>
-				<article>
-					<Icon
-						icon={IoPeople}
-						heading='Multidisciplinary Expertise'
-					/>
-					<p className='text-center'>
-						Our leadership team possesses diverse expertise, from industrial engineering to design
-						and business management, enabling us to optimize operations, enhance customer
-						experience, and innovate in ways our competitors cannot.
-					</p>
-				</article>
-				<article>
-					<Icon
-						icon={IoFastFood}
-						heading='Dual-Service Convenience'
-					/>
-					<p className='text-center'>
-						We offer the unique convenience of a high-quality eatery and a luxury Photo boot in one
-						location, saving you time and effort compayellow to visiting separate establishments.
-					</p>
-				</article>
+		<Section tittle='Our Distinctive Edge' Icon={IoSparkles}>
+			<div className='grid grid-cols-1 md:grid-cols-2 gap-8'>
+				{[
+					{ icon: IoSparkles, title: 'Modern Facilities', desc: "State-of-the-art facilities for both dining and photography, ensuring superior comfort and service." },
+					{ icon: IoCalendar, title: 'Digital Ecosystem', desc: "Seamless digital booking for food and photos, saving time with integrated scheduling." },
+					{ icon: IoPeople, title: 'Multidisciplinary Experts', desc: "Leadership spanning industrial engineering and design, optimizing every touchpoint of your experience." },
+					{ icon: IoFastFood, title: 'Dual-Service Convenience', desc: "The unique convergence of high-end dining and luxury photo experiences in a single location." },
+				].map((item, idx) => (
+					<article key={idx} className="group p-8 rounded-3xl bg-neutral-900/50 border border-white/5 hover:border-amber-500/30 hover:bg-white/5 transition-all duration-500">
+						<div className="w-12 h-12 rounded-full bg-amber-500/10 text-amber-500 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+							<item.icon className="text-2xl" />
+						</div>
+						<h3 className="text-xl font-bold text-white mb-4 font-small-caps tracking-wide">{item.title}</h3>
+						<p className="text-white/60 leading-relaxed font-light">{item.desc}</p>
+					</article>
+				))}
 			</div>
 		</Section>
 	);

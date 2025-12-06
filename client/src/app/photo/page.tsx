@@ -1,96 +1,106 @@
-import Main from '@/components/ui/layout/Main';
+import Link from '@/components/ui/Link';
 import { HiCamera } from 'react-icons/hi2';
 import Image from 'next/image';
-import AppLink from '@/components/ui/Link';
 
 export default function PhotoBoothPage() {
 	return (
-		<Main
-			tittle='360 Photo Booth'
-			Icon={HiCamera}
-			heading='Capture Your Moments in 360°'>
+		<main className="min-h-screen bg-black text-white selection:bg-amber-500/30">
 			{/* Hero Section */}
-			<div className='grid md:grid-cols-2 gap-8 mb-12'>
-				<div className='flex flex-col justify-center'>
-					<h2 className='text-3xl font-bold text-white mb-4'>Premium 360° Photo Booth Experience</h2>
-					<p className='text-yellow-300 mb-6'>
-						Step into the spotlight with our state-of-the-art 360° photo booth! Create stunning, shareable content that captures every angle of your special moments. Perfect for events, celebrations, and creating unforgettable memories.
+			<section className='relative h-[80vh] flex flex-col items-center justify-center text-center overflow-hidden'>
+				<div className="absolute inset-0 z-0 bg-fixed bg-center bg-cover bg-no-repeat opacity-60 mix-blend-overlay" style={{ backgroundImage: "url('/PhotoBoot.jpg')" }}></div>
+				<div className="absolute inset-0 z-0 bg-gradient-to-b from-black/80 via-black/40 to-black"></div>
+
+				<div className="relative z-10 max-w-5xl mx-auto px-4 animate-in fade-in zoom-in duration-1000 slide-in-from-bottom-10">
+					<span className="inline-block px-4 py-1.5 rounded-full border border-amber-500/30 bg-amber-500/10 text-amber-400 text-sm font-bold tracking-[0.2em] uppercase mb-6 backdrop-blur-md">
+						The 360° Experience
+					</span>
+					<h1 className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-widest text-transparent bg-clip-text bg-gradient-to-b from-amber-100 to-amber-600 mb-8 font-small-caps">
+						Capture Every Angle
+					</h1>
+					<p className='text-xl md:text-2xl text-white/80 font-light max-w-3xl mx-auto leading-relaxed mb-10'>
+						Step into the spotlight. Create stunning, shareable 360° videos that turn fleeting moments into timeless memories.
 					</p>
-					<AppLink
+
+					<Link
 						href='/photo/booking'
-						className='inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-amber-600 to-yellow-600 hover:from-amber-500 hover:to-yellow-500 rounded-xl shadow-lg hover:shadow-amber-500/50 transition-all duration-200 font-semibold text-white w-fit'>
-						<HiCamera size={20} />
+						className='group inline-flex items-center gap-3 px-8 py-4 bg-amber-500 hover:bg-amber-400 text-black rounded-full font-bold uppercase tracking-widest shadow-[0_0_30px_-10px_rgba(245,158,11,0.6)] hover:shadow-[0_0_50px_-10px_rgba(245,158,11,0.8)] transition-all duration-500 transform hover:-translate-y-1'>
+						<HiCamera className="text-xl group-hover:rotate-12 transition-transform" />
 						<span>Book Your Session</span>
-					</AppLink>
+					</Link>
 				</div>
-				<div className='relative h-64 md:h-auto rounded-xl overflow-hidden border border-yellow-500/30 shadow-xl'>
-					<Image
-						src='/PhotoBoot.jpg'
-						alt='360 Photo Booth'
-						fill
-						className='object-cover'
-					/>
-				</div>
-			</div>
+			</section>
 
 			{/* Features Grid */}
-			<div className='grid md:grid-cols-3 gap-6 mb-12'>
-				<div className='bg-gradient-to-br from-yellow-900/20 to-amber-900/20 backdrop-blur-md border border-yellow-500/30 rounded-xl p-6 hover:border-yellow-400/50 transition-all duration-300'>
-					<div className='bg-gradient-to-br from-amber-500/20 to-yellow-500/20 p-3 rounded-lg border border-amber-400/30 w-fit mb-4'>
-						<HiCamera className='text-amber-400 text-3xl' />
-					</div>
-					<h3 className='text-xl font-bold text-white mb-2'>360° Coverage</h3>
-					<p className='text-yellow-300'>
-						Capture every angle with our rotating camera system that creates stunning slow-motion videos.
-					</p>
+			<section className="max-w-7xl mx-auto px-4 py-24">
+				<div className='grid md:grid-cols-3 gap-8'>
+					{[
+						{ title: "360° Coverage", text: "Capture every angle with our rotating camera system that creates stunning slow-motion videos.", delay: "0" },
+						{ title: "Instant Sharing", text: "Get your videos instantly via email or QR code. Share directly to social media within seconds.", delay: "100" },
+						{ title: "Studio Quality", text: "High-definition cameras and professional lighting ensure you look your absolute best.", delay: "200" }
+					].map((feature, i) => (
+						<div key={i} className='group p-8 rounded-3xl bg-white/5 border border-white/5 hover:bg-white/10 hover:border-amber-500/30 transition-all duration-500 hover:-translate-y-2'>
+							<div className='w-14 h-14 flex items-center justify-center rounded-2xl bg-amber-500/10 text-amber-400 mb-6 group-hover:scale-110 transition-transform duration-500'>
+								<HiCamera className='text-2xl' />
+							</div>
+							<h3 className='text-2xl font-bold text-white mb-4 font-small-caps tracking-wide group-hover:text-amber-400 transition-colors'>{feature.title}</h3>
+							<p className='text-white/60 leading-relaxed group-hover:text-white/80 transition-colors'>
+								{feature.text}
+							</p>
+						</div>
+					))}
 				</div>
-
-				<div className='bg-gradient-to-br from-yellow-900/20 to-amber-900/20 backdrop-blur-md border border-yellow-500/30 rounded-xl p-6 hover:border-yellow-400/50 transition-all duration-300'>
-					<div className='bg-gradient-to-br from-amber-500/20 to-yellow-500/20 p-3 rounded-lg border border-amber-400/30 w-fit mb-4'>
-						<HiCamera className='text-amber-400 text-3xl' />
-					</div>
-					<h3 className='text-xl font-bold text-white mb-2'>Instant Sharing</h3>
-					<p className='text-yellow-300'>
-						Get your videos instantly via email or QR code. Share directly to social media!
-					</p>
-				</div>
-
-				<div className='bg-gradient-to-br from-yellow-900/20 to-amber-900/20 backdrop-blur-md border border-yellow-500/30 rounded-xl p-6 hover:border-yellow-400/50 transition-all duration-300'>
-					<div className='bg-gradient-to-br from-amber-500/20 to-yellow-500/20 p-3 rounded-lg border border-amber-400/30 w-fit mb-4'>
-						<HiCamera className='text-amber-400 text-3xl' />
-					</div>
-					<h3 className='text-xl font-bold text-white mb-2'>Professional Quality</h3>
-					<p className='text-yellow-300'>
-						High-definition cameras and professional lighting ensure stunning results every time.
-					</p>
-				</div>
-			</div>
+			</section>
 
 			{/* Pricing Info */}
-			<div className='bg-gradient-to-br from-yellow-900/20 to-amber-900/20 backdrop-blur-md border border-yellow-500/30 rounded-xl p-8'>
-				<h2 className='text-2xl font-bold text-white mb-6 text-center'>Simple Pricing</h2>
-				<div className='grid md:grid-cols-2 gap-6'>
-					<div className='bg-white/5 rounded-lg p-6 border border-white/10'>
-						<h3 className='text-xl font-bold text-amber-400 mb-2'>Individual Session</h3>
-						<p className='text-3xl font-bold text-white mb-4'>R50 <span className='text-lg text-yellow-400'>/ person</span></p>
-						<ul className='text-yellow-300 space-y-2'>
-							<li>✓ 1x 360° video</li>
-							<li>✓ Instant digital delivery</li>
-							<li>✓ Social media ready</li>
-						</ul>
-					</div>
-					<div className='bg-gradient-to-br from-amber-600/20 to-yellow-600/20 rounded-lg p-6 border border-amber-400/40'>
-						<h3 className='text-xl font-bold text-amber-400 mb-2'>Event Package</h3>
-						<p className='text-3xl font-bold text-white mb-4'>Contact <span className='text-lg text-yellow-400'>/ event</span></p>
-						<ul className='text-yellow-300 space-y-2'>
-							<li>✓ Unlimited sessions</li>
-							<li>✓ Custom branding options</li>
-							<li>✓ Dedicated attendant</li>
-							<li>✓ Props included</li>
-						</ul>
+			<section className="relative py-24 border-t border-white/5 bg-neutral-900/30">
+				<div className="absolute inset-0 bg-[url('/noise.png')] opacity-20 mix-blend-overlay"></div>
+				<div className='max-w-5xl mx-auto px-4 relative z-10'>
+					<h2 className='text-4xl md:text-5xl font-bold text-white mb-16 text-center font-small-caps tracking-widest'>Packages</h2>
+
+					<div className='grid md:grid-cols-2 gap-8'>
+						{/* Individual */}
+						<div className='p-8 md:p-12 rounded-3xl bg-black/40 border border-white/10 backdrop-blur-sm hover:border-amber-500/30 transition-all duration-500 group'>
+							<h3 className='text-amber-500 font-bold tracking-[0.2em] uppercase mb-4 text-sm'>Individual Session</h3>
+							<div className="flex items-baseline gap-2 mb-8">
+								<span className='text-5xl font-bold text-white tracking-tighter'>R50</span>
+								<span className='text-white/40'>/ person</span>
+							</div>
+							<ul className='space-y-4 mb-10'>
+								{['1x 360° Video', 'Instant Digital Delivery', 'Props Included', 'Social Media Ready'].map(item => (
+									<li key={item} className='flex items-center gap-3 text-white/80'>
+										<div className="w-1.5 h-1.5 rounded-full bg-amber-500" />
+										{item}
+									</li>
+								))}
+							</ul>
+							<Link href="/photo/booking" className="block w-full py-4 rounded-xl border border-white/20 text-center font-bold uppercase tracking-widest hover:bg-white hover:text-black transition-all duration-300">
+								Book Now
+							</Link>
+						</div>
+
+						{/* Event */}
+						<div className='relative p-8 md:p-12 rounded-3xl bg-gradient-to-br from-amber-900/20 to-black border border-amber-500/30 backdrop-blur-sm group'>
+							<div className="absolute top-4 right-4 px-3 py-1 bg-amber-500 text-black textxs font-bold uppercase tracking-widest rounded-full">Most Popular</div>
+							<h3 className='text-amber-500 font-bold tracking-[0.2em] uppercase mb-4 text-sm'>Event Package</h3>
+							<div className="flex items-baseline gap-2 mb-8">
+								<span className='text-5xl font-bold text-white tracking-tighter'>Custom</span>
+								<span className='text-white/40'>/ event</span>
+							</div>
+							<ul className='space-y-4 mb-10'>
+								{['Unlimited Sessions', 'Custom Overlay Branding', 'Dedicated Attendant', 'All Digital Files'].map(item => (
+									<li key={item} className='flex items-center gap-3 text-white/80'>
+										<div className="w-1.5 h-1.5 rounded-full bg-amber-500" />
+										{item}
+									</li>
+								))}
+							</ul>
+							<Link href="/photo/booking" className="block w-full py-4 rounded-xl bg-amber-500 text-black text-center font-bold uppercase tracking-widest hover:bg-amber-400 hover:scale-[1.02] transition-all duration-300 shadow-lg shadow-amber-900/20">
+								Contact Us
+							</Link>
+						</div>
 					</div>
 				</div>
-			</div>
-		</Main>
+			</section>
+		</main>
 	);
 }

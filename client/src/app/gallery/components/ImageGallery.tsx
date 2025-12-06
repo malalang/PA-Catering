@@ -101,14 +101,13 @@ const ImageGallery: React.FC = () => {
 		<Section
 			Icon={FaImages}
 			tittle='Gallery'>
-			<div className='grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 mt-6'>
+			<div className='columns-1 sm:columns-2 md:columns-3 lg:columns-4 gap-4 space-y-4 mt-8'>
 				{allProducts.map(
 					(product) =>
 						product.Image && (
 							<article
 								key={product.Name}
-								className='group cursor-pointer rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-black/50 focus:ring-yellow-500
-								relative w-full aspect-w-1 aspect-h-1 rounded-md overflow-hidden transition-transform duration-300 m-0 p-2 group-hover:scale-105'
+								className='group cursor-pointer break-inside-avoid relative w-full mb-4 rounded-xl overflow-hidden transition-all duration-500 hover:shadow-xl hover:shadow-amber-500/10'
 								tabIndex={0}
 								aria-label={`Show full image of ${product.Name}`}
 								onClick={() => openModal(product)}
@@ -121,15 +120,17 @@ const ImageGallery: React.FC = () => {
 								<Image
 									src={product.Image}
 									alt={`${product.Name} gallery image`}
-									className='object-contain transition-all duration-300 group-hover:brightness-110'
+									className='w-full h-auto object-cover transition-transform duration-700 group-hover:scale-110'
 									width={500}
 									height={500}
-									sizes='(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 20vw'
+									sizes='(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw'
 								/>
-								<div className='absolute inset-0 bg-gradient-to-t from-black/70 to-transparent'></div>
-								<p className='absolute bottom-2 left-2 right-2 truncate text-center bg-black/70 px-2 py-1 rounded-full text-xs font-bold text-white'>
-									{product.Name}
-								</p>
+								<div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center backdrop-blur-[2px]">
+									<div className="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500 text-center">
+										<p className="text-white font-bold tracking-wider font-small-caps">{product.Name}</p>
+										<div className="w-8 h-0.5 bg-amber-500 mx-auto mt-2"></div>
+									</div>
+								</div>
 							</article>
 						)
 				)}

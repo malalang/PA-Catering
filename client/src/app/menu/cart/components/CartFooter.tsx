@@ -46,73 +46,68 @@ function CartFooter() {
 	};
 
 	return (
-		<footer className='fixed bottom-0 left-0 right-0 z-50 backdrop-blur-xl bg-gradient-to-t from-black/90 via-black/80 to-black/60 border-t border-white/10 shadow-2xl'>
-			<div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4'>
-				<div className='flex flex-col lg:flex-row items-center justify-between gap-4'>
-					{/* Order Summary with improved visual hierarchy */}
-					<div className='flex items-center gap-6 w-full lg:w-auto'>
-						<div className='flex items-center gap-3 bg-white/5 px-4 py-2.5 rounded-xl border border-white/10'>
-							<HiShoppingCart className='text-amber-400 text-2xl' />
-							<div>
-								<p className='text-xs text-yellow-400 uppercase tracking-wider'>Items</p>
-								<p className='text-xl font-bold text-white'>{totalQuantity}</p>
-							</div>
-						</div>
+		<footer className='fixed bottom-0 left-0 right-0 z-50'>
+			{/* Gradient Fade Top */}
+			<div className="absolute -top-24 left-0 w-full h-24 bg-gradient-to-t from-black to-transparent pointer-events-none" />
 
-						<div className='flex items-center gap-3 bg-gradient-to-r from-amber-500/20 to-yellow-500/20 px-6 py-2.5 rounded-xl border border-amber-400/30'>
-							<div>
-								<p className='text-xs text-amber-300 uppercase tracking-wider'>Total</p>
-								<p className='text-2xl font-extrabold text-white tracking-tight'>
+			<div className="bg-black/80 backdrop-blur-xl border-t border-white/10 pb-safe">
+				<div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6'>
+					<div className='flex flex-col gap-6'>
+
+						{/* Receipt Summary */}
+						<div className="flex items-end justify-between border-b border-dashed border-white/20 pb-6">
+							<div className="flex flex-col gap-1">
+								<span className="text-white/50 text-sm uppercase tracking-widest">Total Items</span>
+								<span className="text-xl font-mono text-white">{totalQuantity}</span>
+							</div>
+							<div className="flex flex-col gap-1 text-right">
+								<span className="text-amber-500 text-sm uppercase tracking-widest font-bold">Total Amount</span>
+								<span className="text-4xl font-mono text-white tracking-tighter">
 									R{totalPrice.toFixed(2)}
-								</p>
+								</span>
 							</div>
 						</div>
-					</div>
 
-					{/* Action Buttons with improved styling */}
-					<nav className='flex gap-2.5 w-full lg:w-auto'>
-						{/* Add Items Button */}
-						<Button
-							onClick={() => router.back()}
-							className='flex-1 lg:flex-none bg-white/5 hover:bg-white/10 border border-white/10 hover:border-white/20 transition-all duration-200'
-						>
-							<IoAddCircle size={20} className='text-amber-400' />
-							<span className='hidden sm:inline'>Add Items</span>
-							<span className='sm:hidden'>Add</span>
-						</Button>
-
-						{/* Place Order Button - only show if cart has items */}
-						{cartItems.length > 0 && (
-							<Button
-								onClick={handlePlaceOrder}
-								disabled={isPlacingOrder}
-								className='flex-1 lg:flex-none bg-gradient-to-r from-amber-600 to-yellow-600 hover:from-amber-500 hover:to-yellow-500 border-0 shadow-lg hover:shadow-amber-500/50 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed'
+						{/* Action Buttons */}
+						<nav className='grid grid-cols-2 lg:flex gap-4'>
+							{/* Cancel */}
+							<button
+								onClick={handleCancelOrder}
+								className='col-span-1 lg:flex-none px-6 py-4 rounded-xl text-sm font-bold uppercase tracking-widest text-white/50 hover:text-white hover:bg-white/5 transition-colors'
 							>
-								{isPlacingOrder ? (
-									<>
-										<div className='w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin'></div>
-										<span className='hidden sm:inline'>Placing Order...</span>
-										<span className='sm:hidden'>Placing...</span>
-									</>
-								) : (
-									<>
-										<IoCheckmarkCircleSharp size={20} />
-										<span className='hidden sm:inline'>Place Order</span>
-										<span className='sm:hidden'>Order</span>
-									</>
-								)}
-							</Button>
-						)}
+								Cancel
+							</button>
 
-						{/* Cancel Button */}
-						<Button
-							onClick={handleCancelOrder}
-							className='flex-1 lg:flex-none bg-red-500/10 hover:bg-red-500/20 border border-red-500/30 hover:border-red-500/50 text-red-300 hover:text-red-200 transition-all duration-200'
-						>
-							<TbCancel size={20} />
-							<span className='hidden sm:inline'>Cancel</span>
-						</Button>
-					</nav>
+							{/* Add More */}
+							<button
+								onClick={() => router.back()}
+								className='col-span-1 lg:flex-none px-6 py-4 rounded-xl text-sm font-bold uppercase tracking-widest text-amber-500 hover:text-amber-400 hover:bg-amber-500/10 transition-colors'
+							>
+								Add More
+							</button>
+
+							{/* Place Order - Massive Button */}
+							{cartItems.length > 0 && (
+								<button
+									onClick={handlePlaceOrder}
+									disabled={isPlacingOrder}
+									className='col-span-2 lg:flex-1 bg-amber-500 text-black text-lg md:text-xl font-bold uppercase tracking-[0.2em] py-5 rounded-xl hover:bg-amber-400 hover:shadow-[0_0_40px_-10px_rgba(245,158,11,0.5)] transition-all duration-500 disabled:opacity-50 disabled:cursor-not-allowed transform hover:-translate-y-1'
+								>
+									{isPlacingOrder ? (
+										<div className="flex items-center justify-center gap-3">
+											<div className='w-5 h-5 border-2 border-black/30 border-t-black rounded-full animate-spin'></div>
+											<span>Processing...</span>
+										</div>
+									) : (
+										<div className="flex items-center justify-center gap-3">
+											<span>Confirm Order</span>
+											<IoCheckmarkCircleSharp size={24} />
+										</div>
+									)}
+								</button>
+							)}
+						</nav>
+					</div>
 				</div>
 			</div>
 		</footer>

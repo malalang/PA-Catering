@@ -61,55 +61,74 @@ const Testimonials: React.FC = () => {
 	};
 
 	return (
+	return (
 		<Section
 			Icon={FaQuoteLeft}
-			tittle='What Our Customers Say'>
-			<div className='grid grid-cols-1 md:grid-cols-2 gap-2'>
-				{testimonials.map((testimonial) => (
-					<article
-						key={testimonial.id}
-						className=' rounded-xl border border-yellow-500/30 bg-gradient-to-br from-yellow-900/20 to-amber-900/20 backdrop-blur-md hover:border-yellow-400/50 transition-all duration-300 shadow-lg p-6 flex flex-col'>
-						<div className='flex-grow'>
-							<FaQuoteLeft className='text-2xl text-amber-400/50 mb-4' />
-							<p className='italic text-yellow-300 mb-4'>{testimonial.text}</p>
-						</div>
-						<div className='mt-auto'>
-							<div className='flex items-center mb-4'>
-								<span className='flex-shrink-0 w-10 h-10 rounded-full bg-gradient-to-br from-amber-500 to-yellow-500 flex items-center justify-center text-white font-bold text-lg shadow-md'>
+			tittle='Client Stories'
+			className="overflow-hidden">
+
+			<div className="relative">
+				{/* Horizontal Scroll Container */}
+				<div className='flex overflow-x-auto snap-x snap-mandatory gap-6 pb-12 -mx-4 px-4 md:mx-0 md:px-0 scrollbar-hide'>
+					{testimonials.map((testimonial) => (
+						<article
+							key={testimonial.id}
+							className='snap-center flex-shrink-0 w-[85vw] md:w-[400px] rounded-3xl border border-white/5 bg-white/5 backdrop-blur-md p-8 flex flex-col relative group transition-all duration-500 hover:bg-white/10 hover:border-amber-500/30'>
+
+							{/* Decorative Quote */}
+							<div className="absolute top-6 right-8 text-6xl text-amber-500/10 font-serif leading-none group-hover:text-amber-500/20 transition-colors">"</div>
+
+							{/* Author Header */}
+							<div className='flex items-center gap-4 mb-6'>
+								<span className='flex-shrink-0 w-12 h-12 rounded-full bg-gradient-to-br from-amber-400 to-amber-600 flex items-center justify-center text-black font-bold text-xl shadow-lg shadow-amber-900/40'>
 									{testimonial.author.charAt(0).toUpperCase()}
 								</span>
-								<p className='font-semibold text-white ml-3'>{testimonial.author}</p>
+								<div>
+									<p className='font-bold text-white text-lg font-small-caps tracking-wide'>{testimonial.author}</p>
+									<div className="flex text-amber-500 text-xs gap-0.5">
+										{[...Array(5)].map((_, i) => (
+											<span key={i}>★</span>
+										))}
+									</div>
+								</div>
 							</div>
-							<div className='flex justify-around items-center border-t border-white/20 pt-4 bg-white/5 -mx-6 px-6 -mb-6 pb-6 rounded-b-xl'>
-								<div className="flex flex-col items-center gap-1">
+
+							{/* Content */}
+							<div className='flex-grow mb-8 relative z-10'>
+								<p className='text-white/80 italic leading-relaxed text-lg font-light'>"{testimonial.text}"</p>
+							</div>
+
+							{/* Actions Footer */}
+							<div className='mt-auto flex items-center justify-between border-t border-white/10 pt-6'>
+								<div className="scale-90 origin-left">
 									<LikesButton itemId={testimonial.id} table="testimonials" />
 								</div>
-								<Button
-									variant='icon'
-									onClick={() => handleComment(testimonial.id)}
-									className='flex flex-col items-center gap-1'
-									aria-label={`Comment on testimonial by ${testimonial.author}`}>
-									<BiSolidComment
-										size={20}
-										className='text-white hover:text-yellow-500 transition-colors'
-									/>
-									<span className='text-xs text-yellow-400'>{(testimonial.comments as any[])?.length || 0}</span>
-								</Button>
-								<Button
-									variant='icon'
-									onClick={() => handleShare(testimonial.id)}
-									className='flex flex-col items-center gap-1'
-									aria-label={`Share testimonial by ${testimonial.author}`}>
-									<BiSolidShare
-										size={20}
-										className='text-white hover:text-yellow-500 transition-colors'
-									/>
-									<span className='text-xs text-yellow-400'>Share</span>
-								</Button>
+								<div className="flex gap-2">
+									<Button
+										variant='icon'
+										onClick={() => handleComment(testimonial.id)}
+										className='p-2 hover:bg-white/10 rounded-full transition-colors group/btn'
+										aria-label={`Comment`}>
+										<BiSolidComment
+											size={18}
+											className='text-white/40 group-hover/btn:text-amber-400 transition-colors'
+										/>
+									</Button>
+									<Button
+										variant='icon'
+										onClick={() => handleShare(testimonial.id)}
+										className='p-2 hover:bg-white/10 rounded-full transition-colors group/btn'
+										aria-label={`Share`}>
+										<BiSolidShare
+											size={18}
+											className='text-white/40 group-hover/btn:text-amber-400 transition-colors'
+										/>
+									</Button>
+								</div>
 							</div>
-						</div>
-					</article>
-				))}
+						</article>
+					))}
+				</div>
 			</div>
 		</Section>
 	);

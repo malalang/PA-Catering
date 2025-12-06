@@ -64,53 +64,58 @@ const FeaturedItemsServices: React.FC = () => {
 		<Section tittle='Featured Items & Services'>
 			<div className='grid grid-cols-1 md:grid-cols-2 gap-2'>
 				{featuredItems.map((item) => (
-					<article
-						key={item.id}
-						className='overflow-hidden flex flex-col rounded-xl border border-yellow-500/30 bg-gradient-to-br from-yellow-900/20 to-amber-900/20 backdrop-blur-md hover:border-yellow-400/50  transition-all duration-300 shadow-lg'>
-						{item.image_url && (
-							<Image
-								src={item.image_url}
-								alt={item.name}
-								width={500}
-								height={500}
-								className='w-full h-auto'
-							/>
-						)}
-						<div className='p-6 flex-grow text-center'>
-							<h3 className='text-xl font-bold text-white'>{item.name}</h3>
-							<p className='mt-2 text-yellow-300'>{item.description}</p>
-						</div>
-						<div className='flex justify-around items-center border-t border-white/20 pt-4 bg-white/5 -mx-6 px-6 pb-6 -mb-6 mt-auto rounded-b-xl'>
-							<div className="flex flex-col items-center gap-1">
-								<LikesButton itemId={item.id} table="featured_items" />
+					key = { item.id }
+						className = 'group overflow-hidden flex flex-col rounded-3xl border border-white/5 bg-neutral-900/50 backdrop-blur-md hover:border-amber-500/30 hover:shadow-[0_0_30px_-10px_rgba(245,158,11,0.2)] transition-all duration-500 relative' >
+					{
+						item.image_url && (
+							<div className="relative aspect-video overflow-hidden">
+								<Image
+									src={item.image_url}
+									alt={item.name}
+									width={500}
+									height={500}
+									className='w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700'
+								/>
+								<div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-60"></div>
 							</div>
-							<Button
-								variant='icon'
-								onClick={() => handleComment(item.id)}
-								className='flex flex-col items-center gap-1'
-								aria-label='Comment on item'>
-								<BiSolidComment
-									size={24}
-									className='text-white hover:text-yellow-500 transition-colors'
-								/>
-								<span className='text-xs text-yellow-400'>{(item.comments as any[])?.length || 0}</span>
-							</Button>
-							<Button
-								variant='icon'
-								onClick={() => handleShare(item.id)}
-								className='flex flex-col items-center gap-1'
-								aria-label='Share item'>
-								<BiSolidShare
-									size={24}
-									className='text-white hover:text-yellow-500 transition-colors'
-								/>
-								<span className='text-xs text-yellow-400'>Share</span>
-							</Button>
+						)
+					}
+					< div className = 'p-8 flex-grow' >
+							<h3 className='text-2xl font-bold text-white mb-2 font-small-caps tracking-wide'>{item.name}</h3>
+							<p className='text-white/60 font-light leading-relaxed line-clamp-2'>{item.description}</p>
 						</div>
-					</article>
-				))}
+			<div className='flex justify-between items-center border-t border-white/5 p-6 bg-white/5 mt-auto'>
+				<div className="flex flex-col items-center gap-1 scale-90 origin-left">
+					<LikesButton itemId={item.id} table="featured_items" />
+				</div>
+				<div className="flex gap-2">
+					<Button
+						variant='icon'
+						onClick={() => handleComment(item.id)}
+						className='p-2 hover:bg-white/10 rounded-full transition-colors group/btn'
+						aria-label='Comment on item'>
+						<BiSolidComment
+							size={20}
+							className='text-white/40 group-hover/btn:text-amber-400 transition-colors'
+						/>
+					</Button>
+					<Button
+						variant='icon'
+						onClick={() => handleShare(item.id)}
+						className='p-2 hover:bg-white/10 rounded-full transition-colors group/btn'
+						aria-label='Share item'>
+						<BiSolidShare
+							size={20}
+							className='text-white/40 group-hover/btn:text-amber-400 transition-colors'
+						/>
+					</Button>
+				</div>
 			</div>
-		</Section>
+		</article>
+	))
+}
+			</div >
+		</Section >
 	);
 };
 

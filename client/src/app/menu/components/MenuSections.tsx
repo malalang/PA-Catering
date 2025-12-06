@@ -19,16 +19,19 @@ const MenuSections: React.FC<MenuSectionsProps> = ({ categories, matchingProduct
 	return (
 		<>
 			{showSearchResults ? (
-				<div className='flex flex-col gap-6'>
+				<div className='flex flex-col gap-16'>
 					{categories.length > 0 || matchingProducts.length > 0 ? (
-						<div className='flex flex-col gap-6'>
+						<div className='flex flex-col gap-16'>
 							{/* Categories Section */}
 							{categories.length > 0 && (
-								<div className='space-y-4'>
-									<h2 className='text-2xl font-bold text-white border-b border-yellow-500 pb-2'>
-										Matching Categories
-									</h2>
-									<div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4'>
+								<div className='space-y-8'>
+									<div className="flex items-center gap-4">
+										<h2 className='text-3xl font-bold text-white font-small-caps tracking-widest'>
+											Categories
+										</h2>
+										<div className="h-px flex-grow bg-gradient-to-r from-amber-500/50 to-transparent" />
+									</div>
+									<div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8'>
 										{categories.map((category) => (
 											<CategoryCard
 												key={category.Name}
@@ -41,11 +44,14 @@ const MenuSections: React.FC<MenuSectionsProps> = ({ categories, matchingProduct
 
 							{/* Products Section */}
 							{matchingProducts.length > 0 && (
-								<div className='space-y-4'>
-									<h2 className='text-2xl font-bold text-white border-b border-yellow-500 pb-2'>
-										Matching Products
-									</h2>
-									<div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4'>
+								<div className='space-y-8'>
+									<div className="flex items-center gap-4">
+										<h2 className='text-3xl font-bold text-white font-small-caps tracking-widest'>
+											Products
+										</h2>
+										<div className="h-px flex-grow bg-gradient-to-r from-amber-500/50 to-transparent" />
+									</div>
+									<div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8'>
 										{matchingProducts.map((product) => {
 											// Get category slug from map, fallback to 'menu' if not found
 											const categorySlug = productCategoryMap?.get(product.ProductID) || 'menu';
@@ -67,7 +73,7 @@ const MenuSections: React.FC<MenuSectionsProps> = ({ categories, matchingProduct
 				</div>
 			) : (
 				// Default: show all categories
-				<ul className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4'>
+				<ul className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8'>
 					{categories.map((group: ProductsType[number]) => {
 						return (
 							<CategoryCard
