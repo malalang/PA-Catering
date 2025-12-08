@@ -63,10 +63,7 @@
 		text-wrap: pretty;
 	}
 
-	body,
-	html {
-		@apply bg-black text-white antialiased;
-	}
+
 
 	/* Reset generic heading overrides to allow component-specific styling */
 	h1,
@@ -114,7 +111,7 @@
 
 	/* Consolidated styles from layout.css */
 	body {
-		@apply m-0 p-0 text-white bg-black bg-fixed h-full relative;
+		@apply m-0 p-0 text-white bg-black bg-fixed h-full relative antialiased;
 		font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
 			'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
 			'Segoe UI Symbol', 'Noto Color Emoji';
