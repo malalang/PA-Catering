@@ -2,8 +2,7 @@
 
 import { createClient } from "@/lib/supabase/server";
 import { redirect } from "next/navigation";
-import type { User, SupabaseClient } from "@supabase/supabase-js";
-import { Database } from "@/lib/types/database.types";
+import type { User } from "@supabase/supabase-js";
 
 export type AuthActionState = {
   success: boolean;
@@ -25,10 +24,8 @@ export async function signInAction(
     };
   }
 
-  let user = null;
-
   try {
-    const supabase: SupabaseClient<Database> = await createClient();
+    const supabase = await createClient();
     const { data, error } = await supabase.auth.signInWithPassword({
       email,
       password,
@@ -41,22 +38,20 @@ export async function signInAction(
       };
     }
 
-    user = data.user;
+    if (data.user) {
+      redirect("/profile");
+    }
+
+    return {
+      success: false,
+      error: "Sign in failed. Please check your credentials.",
+    };
   } catch (error) {
     return {
       success: false,
       error: error instanceof Error ? error.message : "An unexpected error occurred during sign in.",
     };
   }
-
-  if (user) {
-    redirect("/profile");
-  }
-
-  return {
-    success: false,
-    error: "Sign in failed. Please check your credentials.",
-  };
 }
 
 export async function signUpAction(
@@ -75,10 +70,8 @@ export async function signUpAction(
     };
   }
 
-  let user = null;
-
   try {
-    const supabase: SupabaseClient<Database> = await createClient();
+    const supabase = await createClient();
 
     // Sign up user
     const { data: authData, error: authError } = await supabase.auth.signUp({
@@ -99,26 +92,24 @@ export async function signUpAction(
       };
     }
 
-    user = authData.user;
 
-    // Profile creation is handled by Postgres trigger on auth.users insert
-    // See: supabase_migrations/add_profile_trigger.sql
+
+    redirect("/confirm-email");
+
+
+    return {
+      success: false,
+      error: "Registration failed. Please try again.",
+    };
   } catch (error) {
     return {
       success: false,
       error: error instanceof Error ? error.message : "An unexpected error occurred during registration.",
     };
   }
-
-  if (user) {
-    redirect("/confirm-email");
-  }
-
-  return {
-    success: false,
-    error: "Registration failed. Please try again.",
-  };
 }
+
+
 
 
 

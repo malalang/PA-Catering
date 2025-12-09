@@ -151,7 +151,7 @@ export default function PhotoBoothBookingPage() {
                                     type='date'
                                     id='date'
                                     {...register('date', { required: 'Date required' })}
-                                    className='w-full bg-transparent border-b border-white/20 px-0 py-3 text-white placeholder-white/20 focus:outline-none focus:border-amber-500 transition-colors bg-[url(hash)]'
+                                    className='w-full bg-transparent border-b border-white/20 px-0 py-3 text-white placeholder-white/20 focus:outline-none focus:border-amber-500 transition-colors'
                                 />
                             </div>
 
